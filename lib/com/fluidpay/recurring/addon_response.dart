@@ -15,6 +15,17 @@ class AddOnResponse extends BaseResponse<AddOnResponseData> {
 }
 
 @JsonSerializable()
+class AddOnSearchResponse extends BaseResponse<List<AddOnResponseData>> {
+
+  AddOnSearchResponse();
+
+  factory AddOnSearchResponse.fromJson(Map<String, dynamic> json) =>
+      _$AddOnSearchResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AddOnSearchResponseToJson(this);
+}
+
+@JsonSerializable()
 class AddOnResponseData extends BaseData {
   String id;
   @JsonKey(name: 'created_at')
@@ -29,15 +40,4 @@ class AddOnResponseData extends BaseData {
 
   @override
   Map<String, dynamic> toJson() => _$AddOnResponseDataToJson(this);
-}
-
-@JsonSerializable()
-class AddOnSearchResponse extends BaseResponse<List<AddOnResponseData>> {
-
-  AddOnSearchResponse();
-
-  factory AddOnSearchResponse.fromJson(Map<String, dynamic> json) =>
-      _$AddOnSearchResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AddOnSearchResponseToJson(this);
 }
