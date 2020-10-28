@@ -13,3 +13,4 @@ build/
 doc/api/
 .idea
 fluidpay-dart.iml
+*.g.dart

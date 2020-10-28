@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'serialization.dart';
 
 abstract class BaseRequest with Serializable {
@@ -11,15 +12,21 @@ abstract class BaseRequest with Serializable {
   }
 }
 
-abstract class BaseResponse extends Deserializable {
+abstract class BaseResponse<Data> {
   String status;
+  Data data;
 
-  BaseResponse.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
-    status = json['status'];
-  }
+  BaseResponse();
 
   @override
   String toString() {
-    return 'BaseResponse{status: $status}';
+    return 'BaseResponse{status: $status, data: $data}';
+  }
+}
+
+abstract class BaseData extends Serializable{
+  @override
+  String toString() {
+    return jsonEncode(toJson());
   }
 }

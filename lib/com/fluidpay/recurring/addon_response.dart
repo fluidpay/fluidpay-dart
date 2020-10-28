@@ -1,40 +1,43 @@
 import 'package:fluidpay_dart/com/fluidpay/common/base.dart';
 
-class AddOnResponse extends BaseResponse {
-  String id;
-  String createdAt;
-  String updatedAt;
+import 'package:json_annotation/json_annotation.dart';
 
-  AddOnResponse.fromJson(Map<String, dynamic> json)
-      : this.fromDataJson(json['data'], fullJson: json);
+part 'addon_response.g.dart';
 
-  AddOnResponse.fromDataJson(Map<String, dynamic> data,
-      {Map<String, dynamic> fullJson = const {}})
-      : super.fromJson(fullJson) {
-    id = data['id'];
-    createdAt = data['created_at'];
-    updatedAt = data['updated_at'];
-  }
+@JsonSerializable()
+class AddOnResponse extends BaseResponse<AddOnResponseData> {
+  AddOnResponse();
 
-  @override
-  String toString() {
-    return super.toString() +
-        '\nAddOnResponse{id: $id, createdAt: $createdAt, updatedAt: $updatedAt}';
-  }
+  factory AddOnResponse.fromJson(Map<String, dynamic> json) =>
+      _$AddOnResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AddOnResponseToJson(this);
 }
 
-class AddOnSearchResponse extends BaseResponse {
-  List<AddOnResponse> data = [];
+@JsonSerializable()
+class AddOnResponseData extends BaseData {
+  String id;
+  @JsonKey(name: 'created_at')
+  String createdAt;
+  @JsonKey(name: 'updated_at')
+  String updatedAt;
 
-  AddOnSearchResponse.fromJson(Map<String, dynamic> json)
-      : super.fromJson(json) {
-    (json['data'] as List<dynamic>).forEach((element) => data.add(
-        AddOnResponse.fromDataJson(element as Map<String, dynamic>,
-            fullJson: json)));
-  }
+  AddOnResponseData();
+
+  factory AddOnResponseData.fromJson(Map<String, dynamic> json) =>
+      _$AddOnResponseDataFromJson(json);
 
   @override
-  String toString() {
-    return super.toString() + '\nAddOnSearchResponse{data: $data}';
-  }
+  Map<String, dynamic> toJson() => _$AddOnResponseDataToJson(this);
+}
+
+@JsonSerializable()
+class AddOnSearchResponse extends BaseResponse<List<AddOnResponseData>> {
+
+  AddOnSearchResponse();
+
+  factory AddOnSearchResponse.fromJson(Map<String, dynamic> json) =>
+      _$AddOnSearchResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AddOnSearchResponseToJson(this);
 }

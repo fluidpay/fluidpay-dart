@@ -3,16 +3,12 @@ A library for Dart developers.
 Created from templates made available by Stagehand under a BSD-style
 [license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
 
-## Usage
+## Development
 
-A simple usage example:
+Before start, generate the request/response serialize support files with:
 
-```dart
-import 'package:fluidpay_dart/fluidpay_dart.dart';
-
-main() {
-  var awesome = new Awesome();
-}
+```shell script
+pub run build_runner build
 ```
 
 ## Features and bugs

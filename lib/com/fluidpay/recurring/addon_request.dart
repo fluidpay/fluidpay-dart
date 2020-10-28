@@ -2,6 +2,11 @@ import 'package:fluidpay_dart/com/fluidpay/common/actions.dart';
 import 'package:fluidpay_dart/com/fluidpay/common/base.dart';
 import 'package:fluidpay_dart/com/fluidpay/recurring/addon_response.dart';
 
+import 'package:json_annotation/json_annotation.dart';
+
+part 'addon_request.g.dart';
+
+@JsonSerializable(createToJson: true)
 class AddOnRequest extends ForCreate {
   String name;
   String description;
@@ -17,13 +22,7 @@ class AddOnRequest extends ForCreate {
       this.duration});
 
   @override
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'description': description,
-        'amount': amount,
-        'percentage': percentage,
-        'duration': duration,
-      };
+  Map<String, dynamic> toJson() => _$AddOnRequestToJson(this);
 
   @override
   String getUrl() => '/recurring/addon';
