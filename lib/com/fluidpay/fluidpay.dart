@@ -11,13 +11,13 @@ class FluidPay {
 
   FluidPay(this.apiKey, {this.baseUrl = 'https://sandbox.fluidpay.com/api'});
 
-  Future<BaseResponse> create(ForCreate request) {
+  Future<Response> create<Response extends BaseResponse>(ForCreate<Response> request) {
     return _CommonClient(baseUrl, apiKey)
         .post(request)
         .then((value) => request.buildResponse(value));
   }
 
-  Future<BaseResponse> get(ForSearch request) {
+  Future<Response> get<Response extends BaseResponse>(ForSearch<Response> request) {
     return _CommonClient(baseUrl, apiKey).get(request).then((value) {
       return request.buildResponse(value);
     });

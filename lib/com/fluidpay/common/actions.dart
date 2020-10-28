@@ -1,9 +1,9 @@
 import 'base.dart';
 
-abstract class ForCreate extends BaseRequest {}
+abstract class ForCreate<Response extends BaseResponse> extends BaseRequest<Response> {}
 
-abstract class ForSearch extends BaseRequest {}
+abstract class ForSearch<Response extends BaseResponse> extends BaseRequest<Response> {}
 
-abstract class ForUpdate extends BaseRequest {}
+abstract class ForUpdate<Response extends BaseResponse> extends BaseRequest<Response> {}
 
-abstract class ForDelete extends BaseRequest {}
+abstract class ForDelete<Response extends BaseResponse> extends BaseRequest<Response> {}

@@ -6,8 +6,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'addon_request.g.dart';
 
-@JsonSerializable(createToJson: true)
-class AddOnRequest extends ForCreate {
+@JsonSerializable()
+class AddOnRequest extends ForCreate<AddOnResponse> {
   String name;
   String description;
   int amount;
@@ -28,12 +28,12 @@ class AddOnRequest extends ForCreate {
   String getUrl() => '/recurring/addon';
 
   @override
-  BaseResponse buildResponse(Map<String, dynamic> json) {
+  AddOnResponse buildResponse(Map<String, dynamic> json) {
     return AddOnResponse.fromJson(json);
   }
 }
 
-class AddOnSearchRequest extends ForSearch {
+class AddOnSearchRequest extends ForSearch<AddOnSearchResponse> {
   @override
   String getUrl() => '/recurring/addons';
 
@@ -41,7 +41,25 @@ class AddOnSearchRequest extends ForSearch {
   Map<String, dynamic> toJson() => {};
 
   @override
-  BaseResponse buildResponse(Map<String, dynamic> json) {
+  AddOnSearchResponse buildResponse(Map<String, dynamic> json) {
+    return AddOnSearchResponse.fromJson(json);
+  }
+}
+
+@JsonSerializable()
+class AddOnGetRequest extends ForSearch<AddOnSearchResponse> {
+  String id;
+
+  AddOnGetRequest(this.id);
+
+  @override
+  String getUrl() => '/recurring/addon/$id';
+
+  @override
+  Map<String, dynamic> toJson() => {};
+
+  @override
+  AddOnSearchResponse buildResponse(Map<String, dynamic> json) {
     return AddOnSearchResponse.fromJson(json);
   }
 }
