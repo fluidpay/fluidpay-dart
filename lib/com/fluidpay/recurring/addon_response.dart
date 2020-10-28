@@ -1,4 +1,4 @@
-import 'package:fluidpay_dart/com/fluidpay/common/base.dart';
+import 'package:fluidpay/com/fluidpay/common/base.dart';
 
 import 'package:json_annotation/json_annotation.dart';
 

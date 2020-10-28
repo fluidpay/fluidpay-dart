@@ -1,7 +1,5 @@
-import 'package:fluidpay_dart/com/fluidpay/common/actions.dart';
-import 'package:fluidpay_dart/com/fluidpay/common/base.dart';
-import 'package:fluidpay_dart/com/fluidpay/recurring/addon_response.dart';
-
+import 'package:fluidpay/com/fluidpay/common/actions.dart';
+import 'package:fluidpay/com/fluidpay/recurring/addon_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'addon_request.g.dart';

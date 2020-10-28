@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:fluidpay_dart/com/fluidpay/recurring/addon_response.dart';
+import 'package:fluidpay/com/fluidpay/recurring/addon_response.dart';
 import 'package:test/test.dart';
 
 void main() {
