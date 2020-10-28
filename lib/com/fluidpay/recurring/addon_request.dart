@@ -1,6 +1,6 @@
 import 'package:fluidpay_dart/com/fluidpay/common/actions.dart';
 import 'package:fluidpay_dart/com/fluidpay/common/base.dart';
-import 'package:fluidpay_dart/com/fluidpay/recurring/addon/response.dart';
+import 'package:fluidpay_dart/com/fluidpay/recurring/addon_response.dart';
 
 class AddOnRequest extends ForCreate {
   String name;
