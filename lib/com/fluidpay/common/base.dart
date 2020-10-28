@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:json_annotation/json_annotation.dart';
+
 import 'serialization.dart';
 
 abstract class BaseRequest<Response extends BaseResponse> with Serializable {
@@ -15,13 +17,15 @@ abstract class BaseRequest<Response extends BaseResponse> with Serializable {
 abstract class BaseResponse<Data> {
   String status;
   String msg;
+  @JsonKey(name: 'total_count')
+  int totalCount;
   Data data;
 
   BaseResponse();
 
   @override
   String toString() {
-    return 'BaseResponse{status: $status, msg: $msg, data: $data}';
+    return 'BaseResponse{status: $status, msg: $msg, totalCount: $totalCount, data: $data}';
   }
 }
 

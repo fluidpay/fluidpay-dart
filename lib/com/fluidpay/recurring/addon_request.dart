@@ -34,26 +34,12 @@ class AddOnRequest extends ForCreate<AddOnResponse> {
 }
 
 class AddOnSearchRequest extends ForSearch<AddOnSearchResponse> {
-  @override
-  String getUrl() => '/recurring/addons';
-
-  @override
-  Map<String, dynamic> toJson() => {};
-
-  @override
-  AddOnSearchResponse buildResponse(Map<String, dynamic> json) {
-    return AddOnSearchResponse.fromJson(json);
-  }
-}
-
-@JsonSerializable()
-class AddOnGetRequest extends ForSearch<AddOnSearchResponse> {
   String id;
 
-  AddOnGetRequest(this.id);
-
   @override
-  String getUrl() => '/recurring/addon/$id';
+  String getUrl() => id?.isNotEmpty == true ? '/recurring/addon/$id' : '/recurring/addons';
+
+  AddOnSearchRequest({this.id});
 
   @override
   Map<String, dynamic> toJson() => {};
