@@ -22,7 +22,7 @@ class AddOnCreateRequest extends ForCreate<AddOnResponse> {
       this.duration});
 
   @override
-  Map<String, dynamic> toJson() => _$AddOnRequestToJson(this);
+  Map<String, dynamic> toJson() => _$AddOnCreateRequestToJson(this);
 
   @override
   String getUrl() => '/recurring/addon';
