@@ -1,12 +1,12 @@
 import 'base.dart';
 
-abstract class ForCreate<Response extends BaseResponse> extends BaseRequest<Response> {}
+abstract class Creatable<Response extends Responsable> extends Requestable<Response> {}
 
-abstract class ForSearch<Response extends BaseResponse> extends BaseRequest<Response> {
+abstract class Searchable<Response extends Responsable> extends Requestable<Response> {
   @override
   Map<String, dynamic> toJson() => {};
 }
 
-abstract class ForUpdate<Response extends BaseResponse> extends BaseRequest<Response> {}
+abstract class Updatable<Response extends Responsable> extends Requestable<Response> {}
 
-abstract class ForDelete<Response extends BaseResponse> extends BaseRequest<Response> {}
+abstract class Deletable<Response extends Responsable> extends Requestable<Response> {}

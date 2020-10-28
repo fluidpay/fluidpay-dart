@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'serialization.dart';
 
-abstract class BaseRequest<Response extends BaseResponse> with Serializable {
+abstract class Requestable<Response extends Responsable> with Serializable {
   String getUrl();
 
   Response buildResponse(Map<String, dynamic> json);
@@ -14,14 +14,14 @@ abstract class BaseRequest<Response extends BaseResponse> with Serializable {
   }
 }
 
-abstract class BaseResponse<Data> {
+abstract class Responsable<Data> {
   String status;
   String msg;
   @JsonKey(name: 'total_count')
   int totalCount;
   Data data;
 
-  BaseResponse();
+  Responsable();
 
   @override
   String toString() {
@@ -29,7 +29,7 @@ abstract class BaseResponse<Data> {
   }
 }
 
-abstract class BaseData extends Serializable {
+abstract class Decodable extends Serializable {
   @override
   String toString() {
     return jsonEncode(toJson());

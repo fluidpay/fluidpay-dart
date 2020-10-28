@@ -5,7 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'addon_response.g.dart';
 
 @JsonSerializable()
-class AddOnResponse extends BaseResponse<AddOnResponseData> {
+class AddOnResponse extends Responsable<AddOnResponseData> {
   AddOnResponse();
 
   factory AddOnResponse.fromJson(Map<String, dynamic> json) =>
@@ -15,7 +15,7 @@ class AddOnResponse extends BaseResponse<AddOnResponseData> {
 }
 
 @JsonSerializable()
-class AddOnSearchResponse extends BaseResponse<List<AddOnResponseData>> {
+class AddOnSearchResponse extends Responsable<List<AddOnResponseData>> {
 
   AddOnSearchResponse();
 
@@ -26,7 +26,7 @@ class AddOnSearchResponse extends BaseResponse<List<AddOnResponseData>> {
 }
 
 @JsonSerializable()
-class AddOnResponseData extends BaseData {
+class AddOnResponseData extends Decodable {
   String id;
   @JsonKey(name: 'created_at')
   String createdAt;

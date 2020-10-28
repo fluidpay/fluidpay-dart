@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'addon_request.g.dart';
 
 @JsonSerializable()
-class AddOnCreateRequest extends ForCreate<AddOnResponse> {
+class AddOnCreateRequest extends Creatable<AddOnResponse> {
   String name;
   String description;
   int amount;
@@ -33,7 +33,7 @@ class AddOnCreateRequest extends ForCreate<AddOnResponse> {
   }
 }
 
-class AddOnSearchRequest extends ForSearch<AddOnSearchResponse> {
+class AddOnSearchRequest extends Searchable<AddOnSearchResponse> {
   String id;
 
   @override
