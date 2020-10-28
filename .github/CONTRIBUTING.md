@@ -1,6 +1,6 @@
 ## Contribution Guides
 
-#### Some Ways to Contribute
+#### Some Ways to Contribute
 
 - Report potential bugs.
 - Suggest product enhancements.
