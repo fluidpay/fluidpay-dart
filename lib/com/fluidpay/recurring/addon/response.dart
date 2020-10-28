@@ -1,4 +1,4 @@
-import 'package:fluidpay_dart/src/com.fluidpay/common/base.dart';
+import 'package:fluidpay_dart/com/fluidpay/common/base.dart';
 
 class AddOnResponse extends BaseResponse {
   String id;

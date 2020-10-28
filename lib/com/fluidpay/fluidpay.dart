@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'dart:convert';
 import 'dart:mirrors';
 
@@ -6,7 +5,6 @@ import 'package:http/http.dart' as http;
 
 import 'common/actions.dart';
 import 'common/base.dart';
-import 'common/serialization.dart';
 
 class FluidPay {
   final String baseUrl;

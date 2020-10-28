@@ -1,4 +1,4 @@
-import 'package:fluidpay_dart/src/com.fluidpay/common/actions.dart';
+import 'package:fluidpay_dart/com/fluidpay/common/actions.dart';
 
 class AddOnRequest extends ForCreate {
   String name;
