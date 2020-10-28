@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:mirrors';
 
 import 'package:http/http.dart' as http;
 
@@ -12,26 +11,16 @@ class FluidPay {
 
   FluidPay(this.apiKey, {this.baseUrl = 'https://sandbox.fluidpay.com/api'});
 
-  Future<Response> create<Response extends BaseResponse>(ForCreate request) {
+  Future<BaseResponse> create(ForCreate request) {
     return _CommonClient(baseUrl, apiKey)
         .post(request)
-        .then((value) => parseResponse<Response>(value))
-        .catchError((err) => Future.error(err));
+        .then((value) => request.buildResponse(value));
   }
 
-  Future<Response> get<Response extends BaseResponse>(
-      ForSearch request) {
+  Future<BaseResponse> get(ForSearch request) {
     return _CommonClient(baseUrl, apiKey).get(request).then((value) {
-      return parseResponse<Response>(value);
+      return request.buildResponse(value);
     });
-  }
-
-  Response parseResponse<Response>(Map<String, dynamic> value) {
-    var typ = reflectType(Response);
-    if (typ is ClassMirror) {
-      return typ.newInstance(Symbol('fromJson'), [value]).reflectee as Response;
-    }
-    throw ArgumentError();
   }
 }
 

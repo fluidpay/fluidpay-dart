@@ -3,6 +3,8 @@ import 'serialization.dart';
 abstract class BaseRequest with Serializable {
   String getUrl();
 
+  BaseResponse buildResponse(Map<String, dynamic> json);
+
   @override
   String toString() {
     return toJson().toString();
