@@ -1,5 +1,4 @@
 import 'package:fluidpay/com/fluidpay/common/base.dart';
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'addon_response.g.dart';
@@ -16,7 +15,6 @@ class AddOnResponse extends Responsable<AddOnResponseData> {
 
 @JsonSerializable()
 class AddOnSearchResponse extends Responsable<List<AddOnResponseData>> {
-
   AddOnSearchResponse();
 
   factory AddOnSearchResponse.fromJson(Map<String, dynamic> json) =>
@@ -28,6 +26,11 @@ class AddOnSearchResponse extends Responsable<List<AddOnResponseData>> {
 @JsonSerializable()
 class AddOnResponseData extends Decodable {
   String id;
+  String name;
+  String description;
+  int amount;
+  int percentage;
+  int duration;
   @JsonKey(name: 'created_at')
   String createdAt;
   @JsonKey(name: 'updated_at')

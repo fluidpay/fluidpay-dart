@@ -10,7 +10,7 @@ class AddOnCreateRequest extends Creatable<AddOnResponse> {
   String description;
   int amount;
   int percentage;
-  String duration;
+  int duration;
 
   AddOnCreateRequest(
       {this.name,
@@ -35,12 +35,39 @@ class AddOnSearchRequest extends Searchable<AddOnSearchResponse> {
   String id;
 
   @override
-  String getUrl() => id?.isNotEmpty == true ? '/recurring/addon/$id' : '/recurring/addons';
+  String getUrl() =>
+      id?.isNotEmpty == true ? '/recurring/addon/$id' : '/recurring/addons';
 
   AddOnSearchRequest({this.id});
 
   @override
   AddOnSearchResponse buildResponse(Map<String, dynamic> json) {
     return AddOnSearchResponse.fromJson(json);
+  }
+}
+
+@JsonSerializable()
+class AddOnRequest extends Creatable<AddOnResponse> {
+  String id;
+  String description;
+  int amount;
+  int percentage;
+  int duration;
+
+  AddOnRequest(
+      {this.id, this.description, this.amount, this.percentage, this.duration});
+
+  @override
+  Map<String, dynamic> toJson() => _$AddOnRequestToJson(this);
+
+  factory AddOnRequest.fromJson(Map<String, dynamic> json) =>
+      _$AddOnRequestFromJson(json);
+
+  @override
+  String getUrl() => null;
+
+  @override
+  AddOnResponse buildResponse(Map<String, dynamic> json) {
+    return AddOnResponse.fromJson(json);
   }
 }
