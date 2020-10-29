@@ -31,7 +31,7 @@ class DiscountCreateRequest extends Creatable<DiscountResponse> {
   }
 }
 
-class AddOnSearchRequest extends Searchable<DiscountSearchResponse> {
+class DiscountSearchRequest extends Searchable<DiscountSearchResponse> {
   String id;
 
   @override
@@ -39,7 +39,7 @@ class AddOnSearchRequest extends Searchable<DiscountSearchResponse> {
       ? '/recurring/discount/$id'
       : '/recurring/discounts';
 
-  AddOnSearchRequest({this.id});
+  DiscountSearchRequest({this.id});
 
   @override
   DiscountSearchResponse buildResponse(Map<String, dynamic> json) {
