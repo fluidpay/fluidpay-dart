@@ -27,7 +27,7 @@ class SubscriptionCreateRequest extends Creatable<SubscriptionResponse> {
   @JsonKey(name: 'next_bill_date')
   String nextBillDate;
   @JsonKey(name: 'add_ons')
-  List<AddOnRequest> addons;
+  List<AddOnRequest> addOns;
   @JsonKey(name: 'discounts')
   List<DiscountRequest> discounts;
   @JsonKey(name: 'processor_id')
@@ -44,7 +44,7 @@ class SubscriptionCreateRequest extends Creatable<SubscriptionResponse> {
       this.billingDays,
       this.duration,
       this.nextBillDate,
-      this.addons,
+      this.addOns,
       this.discounts,
       this.processorId});
 

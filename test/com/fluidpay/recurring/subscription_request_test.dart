@@ -25,7 +25,7 @@ void testSubscriptionCreateRequest() {
       billingDays: '12',
       duration: 10,
       nextBillDate: '2020-01-01',
-      addons: [
+      addOns: [
         AddOnRequest(
             id: 'test addon id',
             description: 'test addon description',

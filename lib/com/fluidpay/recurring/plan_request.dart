@@ -20,7 +20,7 @@ class PlanCreateRequest extends Creatable<PlanResponse> {
   String billingDays;
   int duration;
   @JsonKey(name: 'add_ons')
-  List<AddOnRequest> addons;
+  List<AddOnRequest> addOns;
   @JsonKey(name: 'discounts')
   List<DiscountRequest> discounts;
   @JsonKey(name: 'update_subscriptions')
@@ -35,7 +35,7 @@ class PlanCreateRequest extends Creatable<PlanResponse> {
       this.billingFrequency,
       this.billingDays,
       this.duration,
-      this.addons,
+      this.addOns,
       this.discounts,
       this.updateSubscriptions});
 

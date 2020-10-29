@@ -49,7 +49,7 @@ class SubscriptionResponseData extends Decodable {
   @JsonKey(name: 'next_bill_date')
   String nextBillDate;
   @JsonKey(name: 'add_ons')
-  List<AddOnResponseData> addons;
+  List<AddOnResponseData> addOns;
   @JsonKey(name: 'discounts')
   List<DiscountResponseData> discounts;
   @JsonKey(name: 'processor_id')

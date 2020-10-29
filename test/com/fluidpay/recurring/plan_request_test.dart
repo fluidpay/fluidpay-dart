@@ -18,7 +18,7 @@ void testPlanCreateRequest() {
       billingFrequency: '3',
       billingDays: '12',
       duration: 10,
-      addons: [
+      addOns: [
         AddOnRequest(
             id: 'test addon id',
             description: 'test addon description',

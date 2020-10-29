@@ -40,9 +40,9 @@ class PlanResponseData extends Decodable {
   String billingDays;
   int duration;
   @JsonKey(name: 'add_ons')
-  List<AddOnResponseData> addons;
+  List<AddOnResponseData> addOns;
   @JsonKey(name: 'total_add_ons')
-  int totalAddons;
+  int totalAddOns;
   @JsonKey(name: 'total_discounts')
   int totalDiscounts;
   @JsonKey(name: 'discounts')
