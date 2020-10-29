@@ -154,12 +154,12 @@ void testSubscriptionSearchResponse() {
         '2020-01-01');
 
     // customer
-    expect(resp.data[0].subscriptionCustomerResponse.id, 'id');
-    expect(resp.data[0].subscriptionCustomerResponse.paymentMethodType, 'card');
-    expect(resp.data[0].subscriptionCustomerResponse.paymentMethodID, 'pmID');
-    expect(resp.data[0].subscriptionCustomerResponse.shippingAddressID,
+    expect(resp.data[0].customer.id, 'id');
+    expect(resp.data[0].customer.paymentMethodType, 'card');
+    expect(resp.data[0].customer.paymentMethodID, 'pmID');
+    expect(resp.data[0].customer.shippingAddressID,
         'addressID');
-    expect(resp.data[0].subscriptionCustomerResponse.billingAddressID,
+    expect(resp.data[0].customer.billingAddressID,
         'addressID');
   });
 }

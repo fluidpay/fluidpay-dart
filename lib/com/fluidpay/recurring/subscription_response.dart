@@ -3,7 +3,7 @@ import 'package:fluidpay/com/fluidpay/recurring/addon_response.dart';
 import 'package:fluidpay/com/fluidpay/recurring/discount_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'subscription_customer_response.dart';
+import 'customer_response.dart';
 
 part 'subscription_response.g.dart';
 
@@ -36,7 +36,7 @@ class SubscriptionResponseData extends Decodable {
   String status;
   String description;
   @JsonKey(name: 'customer')
-  SubscriptionCustomerResponseData subscriptionCustomerResponse;
+  CustomerResponseData customer;
   int amount;
   String currency;
   @JsonKey(name: 'billing_cycle_interval')

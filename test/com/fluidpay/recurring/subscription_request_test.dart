@@ -1,6 +1,6 @@
 import 'package:fluidpay/com/fluidpay/recurring/addon_request.dart';
 import 'package:fluidpay/com/fluidpay/recurring/discount_request.dart';
-import 'package:fluidpay/com/fluidpay/recurring/subscription_customer_request.dart';
+import 'package:fluidpay/com/fluidpay/recurring/customer_request.dart';
 import 'package:fluidpay/com/fluidpay/recurring/subscription_request.dart';
 import 'package:test/test.dart';
 
@@ -13,7 +13,7 @@ void testSubscriptionCreateRequest() {
     var req = SubscriptionCreateRequest(
       planId: 'test subscription',
       description: 'test subscription description',
-      subscriptionCustomerRequest: SubscriptionCustomerRequest(
+      customer: CustomerRequest(
           id: 'id',
           paymentMethodType: 'card',
           paymentMethodID: 'pmID',
@@ -108,12 +108,12 @@ void testSubscriptionCreateRequest() {
     expect((req['discounts'][1] as DiscountRequest).duration, 10);
 
     //customer
-    expect((req['customer'] as SubscriptionCustomerRequest).id, 'id');
-    expect((req['customer'] as SubscriptionCustomerRequest).paymentMethodType,
+    expect((req['customer'] as CustomerRequest).id, 'id');
+    expect((req['customer'] as CustomerRequest).paymentMethodType,
         'card');
-    expect((req['customer'] as SubscriptionCustomerRequest).paymentMethodID,
+    expect((req['customer'] as CustomerRequest).paymentMethodID,
         'pmID');
-    expect((req['customer'] as SubscriptionCustomerRequest).shippingAddressID,
+    expect((req['customer'] as CustomerRequest).shippingAddressID,
         'addressID');
   });
 }

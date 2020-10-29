@@ -4,7 +4,7 @@ import 'package:fluidpay/com/fluidpay/recurring/discount_request.dart';
 import 'package:fluidpay/com/fluidpay/recurring/subscription_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'subscription_customer_request.dart';
+import 'customer_request.dart';
 
 part 'subscription_request.g.dart';
 
@@ -14,7 +14,7 @@ class SubscriptionCreateRequest extends Creatable<SubscriptionResponse> {
   String planId;
   String description;
   @JsonKey(name: 'customer')
-  SubscriptionCustomerRequest subscriptionCustomerRequest;
+  CustomerRequest customer;
   int amount;
   String currency;
   @JsonKey(name: 'billing_cycle_interval')
@@ -36,7 +36,7 @@ class SubscriptionCreateRequest extends Creatable<SubscriptionResponse> {
   SubscriptionCreateRequest(
       {this.planId,
       this.description,
-      this.subscriptionCustomerRequest,
+      this.customer,
       this.amount,
       this.currency,
       this.billingCycleInterval,
