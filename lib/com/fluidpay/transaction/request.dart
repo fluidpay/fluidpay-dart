@@ -221,3 +221,29 @@ class DescriptorRequest {
 
   Map<String, dynamic> toJson() => _$DescriptorRequestToJson(this);
 }
+
+class TransactionSearchRequest extends Searchable<TransactionSearchResponse> {
+  final String merchantId;
+  final String transactionId;
+
+  TransactionSearchRequest(this.transactionId, {this.merchantId});
+
+
+  @override
+  TransactionSearchResponse buildResponse(Map<String, dynamic> json) =>
+      TransactionSearchResponse.fromJson(json);
+
+  @override
+  String getUrl() {
+    var result = '/transaction';
+
+    if (merchantId != null) {
+      result += '/$merchantId';
+    }
+
+    result += '/$transactionId';
+
+    return result;
+  }
+
+}

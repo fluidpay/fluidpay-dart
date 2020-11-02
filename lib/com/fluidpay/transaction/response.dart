@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'response.g.dart';
 
 @JsonSerializable()
-class TransactionCreateResponse extends Responsable<TransactionCreateResponseData> {
+class TransactionCreateResponse extends Responsable<TransactionResponseData> {
   TransactionCreateResponse();
 
   factory TransactionCreateResponse.fromJson(Map<String, dynamic> json) =>
@@ -16,7 +16,18 @@ class TransactionCreateResponse extends Responsable<TransactionCreateResponseDat
 }
 
 @JsonSerializable()
-class TransactionCreateResponseData extends Decodable {
+class TransactionSearchResponse extends Responsable<TransactionResponseData> {
+  TransactionSearchResponse();
+
+  factory TransactionSearchResponse.fromJson(Map<String, dynamic> json) =>
+    _$TransactionSearchResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TransactionSearchResponseToJson(this);
+}
+
+
+@JsonSerializable()
+class TransactionResponseData extends Decodable {
   String id;
   @JsonKey(name: 'user_id')
   String userId;
@@ -133,13 +144,13 @@ class TransactionCreateResponseData extends Decodable {
   DateTime settledAt;
 
 
-  TransactionCreateResponseData();
+  TransactionResponseData();
 
-  factory TransactionCreateResponseData.fromJson(Map<String, dynamic> json) =>
-      _$TransactionCreateResponseDataFromJson(json);
+  factory TransactionResponseData.fromJson(Map<String, dynamic> json) =>
+      _$TransactionResponseDataFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$TransactionCreateResponseDataToJson(this);
+  Map<String, dynamic> toJson() => _$TransactionResponseDataToJson(this);
 }
 
 @JsonSerializable()
