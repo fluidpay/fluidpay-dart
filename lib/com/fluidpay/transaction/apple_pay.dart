@@ -69,7 +69,8 @@ class Header {
   String ephemeralPublicKey;
   String wrappedKey;
   String publicKeyHash;
-  String transactionID;
+  @JsonKey(name: 'transactionID')
+  String transactionId;
 
   Header();
 

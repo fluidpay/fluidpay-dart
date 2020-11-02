@@ -221,16 +221,3 @@ class DescriptorRequest {
 
   Map<String, dynamic> toJson() => _$DescriptorRequestToJson(this);
 }
-
-@JsonSerializable()
-class LineItem {
-  // TODO: Robitól elkérni
-
-
-  LineItem();
-
-  factory LineItem.fromJson(Map<String, dynamic> json) =>
-      _$LineItemFromJson(json);
-
-  Map<String, dynamic> toJson() => _$LineItemToJson(this);
-}
