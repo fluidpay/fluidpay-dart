@@ -56,7 +56,7 @@ class CreditCardRequest extends Decodable {
   @JsonKey(name: 'encrypted_data')
   String encryptedData;
   @JsonKey(name: 'cardholder_authentication')
-  CardHolderAuthenticationRequest cardholderAuthentication;
+  CardholderAuthenticationRequest cardholderAuthentication;
   @JsonKey(name: 'card_present')
   String cardPresent;
 
@@ -70,7 +70,7 @@ class CreditCardRequest extends Decodable {
 }
 
 @JsonSerializable()
-class CardHolderAuthenticationRequest extends Decodable {
+class CardholderAuthenticationRequest extends Decodable {
   String eci;
   String cavv;
   String xid;
@@ -80,13 +80,13 @@ class CardHolderAuthenticationRequest extends Decodable {
   @JsonKey(name: 'acs_transaction_id')
   String acsTransactionId;
 
-  CardHolderAuthenticationRequest();
+  CardholderAuthenticationRequest();
 
-  factory CardHolderAuthenticationRequest.fromJson(Map<String, dynamic> json) =>
-      _$CardHolderAuthenticationRequestFromJson(json);
+  factory CardholderAuthenticationRequest.fromJson(Map<String, dynamic> json) =>
+      _$CardholderAuthenticationRequestFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$CardHolderAuthenticationRequestToJson(this);
+  Map<String, dynamic> toJson() => _$CardholderAuthenticationRequestToJson(this);
 }
 
 @JsonSerializable()

@@ -254,9 +254,9 @@ class TerminalResponse {
   @JsonKey(name: 'signature_data')
   String signatureData;
   @JsonKey(name: 'created_at')
-  String createdAt;
+  DateTime createdAt;
   @JsonKey(name: 'updated_at')
-  String updatedAt;
+  DateTime updatedAt;
 
   TerminalResponse();
 
