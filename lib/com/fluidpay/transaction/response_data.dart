@@ -244,11 +244,11 @@ class TerminalResponse extends Decodable {
   @JsonKey(name: 'auth_code')
   String authCode;
   @JsonKey(name: 'response_code')
-  String responseCode;
+  int responseCode;
   @JsonKey(name: 'processor_response_text')
   String processorResponseText;
   @JsonKey(name: 'processor_specific')
-  String processorSpecific;
+  Map processorSpecific;
   @JsonKey(name: 'emv_aid')
   String emvAid;
   @JsonKey(name: 'emv_app_name')

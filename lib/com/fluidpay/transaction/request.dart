@@ -257,14 +257,18 @@ enum TransactionActionRequestType {
 extension TranscationActionRequestTypeName on TransactionActionRequestType {
   String get name {
     switch (this) {
-      case TransactionActionRequestType.tipAdjust: return 'tipadjust';
-      case TransactionActionRequestType.voidAction: return 'void';
-      default: return toString().split('.').last;
+      case TransactionActionRequestType.tipAdjust:
+        return 'tipadjust';
+      case TransactionActionRequestType.voidAction:
+        return 'void';
+      default:
+        return toString().split('.').last;
     }
   }
 }
 
-abstract class TransactionActionRequest<Response extends Responsable> extends Updatable<Response> {
+abstract class TransactionActionRequest<Response extends Responsable>
+    extends Updatable<Response> {
   @JsonKey(ignore: true)
   final TransactionActionRequestType type;
 
@@ -278,7 +282,8 @@ abstract class TransactionActionRequest<Response extends Responsable> extends Up
 }
 
 @JsonSerializable()
-class TransactionCaptureRequest extends TransactionActionRequest<TransactionCaptureResponse> {
+class TransactionCaptureRequest
+    extends TransactionActionRequest<TransactionCaptureResponse> {
   int amount;
   @JsonKey(name: 'tax_amount')
   int taxAmount;
@@ -295,12 +300,11 @@ class TransactionCaptureRequest extends TransactionActionRequest<TransactionCapt
   @JsonKey(name: 'vendor_id')
   String vendorId;
 
-  TransactionCaptureRequest(String transactionId) :
-        super(transactionId, TransactionActionRequestType.capture);
+  TransactionCaptureRequest(String transactionId)
+      : super(transactionId, TransactionActionRequestType.capture);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$TransactionCaptureRequestToJson(this);
+  Map<String, dynamic> toJson() => _$TransactionCaptureRequestToJson(this);
 
   @override
   TransactionCaptureResponse buildResponse(Map<String, dynamic> json) =>
@@ -308,9 +312,10 @@ class TransactionCaptureRequest extends TransactionActionRequest<TransactionCapt
 }
 
 @JsonSerializable()
-class TransactionVoidRequest extends TransactionActionRequest<TransactionVoidResponse> {
-  TransactionVoidRequest(String transactionId) :
-        super(transactionId, TransactionActionRequestType.voidAction);
+class TransactionVoidRequest
+    extends TransactionActionRequest<TransactionVoidResponse> {
+  TransactionVoidRequest(String transactionId)
+      : super(transactionId, TransactionActionRequestType.voidAction);
 
   @override
   Map<String, dynamic> toJson() => _$TransactionVoidRequestToJson(this);
@@ -321,7 +326,8 @@ class TransactionVoidRequest extends TransactionActionRequest<TransactionVoidRes
 }
 
 @JsonSerializable()
-class TransactionRefundRequest extends TransactionActionRequest<TransactionRefundResponse> {
+class TransactionRefundRequest
+    extends TransactionActionRequest<TransactionRefundResponse> {
   int amount;
   @JsonKey(name: 'ip_address')
   String ipAddress;
@@ -334,28 +340,85 @@ class TransactionRefundRequest extends TransactionActionRequest<TransactionRefun
   @JsonKey(name: 'signature_required')
   String signatureRequired;
 
-  TransactionRefundRequest(String transactionId) :
-        super(transactionId, TransactionActionRequestType.refund);
+  TransactionRefundRequest(
+    String transactionId, {
+    this.amount,
+    this.ipAddress,
+    this.terminalId,
+    this.vendorId,
+    this.printReceipt,
+    this.signatureRequired,
+  }) : super(transactionId, TransactionActionRequestType.refund);
 
   @override
   TransactionRefundResponse buildResponse(Map<String, dynamic> json) =>
       TransactionRefundResponse.fromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$TransactionRefundRequestToJson(this);
+  Map<String, dynamic> toJson() => _$TransactionRefundRequestToJson(this);
 }
 
 @JsonSerializable()
-class TransactionCreateVaultRequest extends TransactionActionRequest<TransactionCreateVaultResponse> {
-  TransactionCreateVaultRequest(String transactionId) :
-        super(transactionId, TransactionActionRequestType.vault);
+class TransactionCreateVaultRequest
+    extends TransactionActionRequest<TransactionCreateVaultResponse> {
+  TransactionCreateVaultRequest(String transactionId)
+      : super(transactionId, TransactionActionRequestType.vault);
 
   @override
   TransactionCreateVaultResponse buildResponse(Map<String, dynamic> json) =>
       TransactionCreateVaultResponse.fromJson(json);
 
   @override
+  Map<String, dynamic> toJson() => _$TransactionCreateVaultRequestToJson(this);
+}
+
+@JsonSerializable()
+class TransactionEmailReceiptRequest
+    extends TransactionActionRequest<TransactionEmailReceiptResponse> {
+  @JsonKey(name: 'email_address')
+  final String emailAddress;
+
+  TransactionEmailReceiptRequest(this.emailAddress, String transactionId)
+      : super(transactionId, TransactionActionRequestType.email);
+
+  @override
+  TransactionEmailReceiptResponse buildResponse(Map<String, dynamic> json) =>
+      TransactionEmailReceiptResponse.fromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$TransactionEmailReceiptRequestToJson(this);
+}
+
+@JsonSerializable()
+class TransactionPrintReceiptRequest
+    extends TransactionActionRequest<TransactionPrintReceiptResponse> {
+  TransactionPrintReceiptRequest(String transactionId)
+      : super(transactionId, TransactionActionRequestType.print);
+
+  @override
+  TransactionPrintReceiptResponse buildResponse(Map<String, dynamic> json) =>
+      TransactionPrintReceiptResponse.fromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$TransactionPrintReceiptRequestToJson(this);
+}
+
+@JsonSerializable()
+class TransactionTipAdjustmentRequest
+    extends TransactionActionRequest<TransactionTipAdjustmentResponse> {
+  int tip;
+  @JsonKey(name: 'base_amount')
+  int baseAmount;
+
+  TransactionTipAdjustmentRequest(String transactionId,
+      {this.tip, this.baseAmount})
+      : super(transactionId, TransactionActionRequestType.tipAdjust);
+
+  @override
+  TransactionTipAdjustmentResponse buildResponse(Map<String, dynamic> json) =>
+      TransactionTipAdjustmentResponse.fromJson(json);
+
+  @override
   Map<String, dynamic> toJson() =>
-      _$TransactionCreateVaultRequestToJson(this);
+      _$TransactionTipAdjustmentRequestToJson(this);
 }

@@ -63,3 +63,33 @@ class TransactionCreateVaultResponse extends Responsable<TransactionCreateVaultR
 
   Map<String, dynamic> toJson() => _$TransactionCreateVaultResponseToJson(this);
 }
+
+@JsonSerializable()
+class TransactionEmailReceiptResponse extends Responsable<TransactionResponseData> {
+  TransactionEmailReceiptResponse();
+
+  factory TransactionEmailReceiptResponse.fromJson(Map<String, dynamic> json) =>
+      _$TransactionEmailReceiptResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TransactionEmailReceiptResponseToJson(this);
+}
+
+@JsonSerializable()
+class TransactionPrintReceiptResponse extends Responsable<String> {
+  TransactionPrintReceiptResponse();
+
+  factory TransactionPrintReceiptResponse.fromJson(Map<String, dynamic> json) =>
+      _$TransactionPrintReceiptResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TransactionPrintReceiptResponseToJson(this);
+}
+
+@JsonSerializable()
+class TransactionTipAdjustmentResponse extends Responsable {
+  TransactionTipAdjustmentResponse();
+
+  factory TransactionTipAdjustmentResponse.fromJson(Map<String, dynamic> json) =>
+      _$TransactionTipAdjustmentResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TransactionTipAdjustmentResponseToJson(this);
+}
