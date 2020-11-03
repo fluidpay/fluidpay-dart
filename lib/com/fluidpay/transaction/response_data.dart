@@ -311,7 +311,7 @@ class ACHResponse extends TokenACHResponse {
   String authCode;
   String response;
   @JsonKey(name: 'response_code')
-  String responseCode;
+  int responseCode;
   @JsonKey(name: 'processor_response_code')
   String processorResponseCode;
   @JsonKey(name: 'processor_response_text')
@@ -392,7 +392,7 @@ class TransactionVoidResponseData extends Decodable {
 class TransactionCreateVaultResponseData extends Decodable {
   String id;
   String description;
-  String flags;
+  List<String> flags;
   @JsonKey(name: 'payment_method')
   TokenPaymentMethodResponse paymentMethod;
   @JsonKey(name: 'payment_method_type')
