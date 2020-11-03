@@ -47,6 +47,27 @@ class InvoiceUpdateResponseData extends InvoiceResponseData {
 }
 
 @JsonSerializable()
+class InvoiceMarkAsPaidResponse extends Responsable<InvoiceMarkAsPaidResponseData> {
+  InvoiceMarkAsPaidResponse();
+
+  factory InvoiceMarkAsPaidResponse.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceMarkAsPaidResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$InvoiceMarkAsPaidResponseToJson(this);
+}
+
+@JsonSerializable()
+class InvoiceMarkAsPaidResponseData extends InvoiceResponseData {
+  InvoiceMarkAsPaidResponseData() : super();
+
+  factory InvoiceMarkAsPaidResponseData.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceMarkAsPaidResponseDataFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$InvoiceMarkAsPaidResponseDataToJson(this);
+}
+
+@JsonSerializable()
 class InvoiceResponseData extends Decodable {
   String id;
   String currency;
