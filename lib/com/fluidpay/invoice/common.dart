@@ -20,7 +20,7 @@ enum InvoiceStatus {
   pending,
   declined,
   failed,
-  rejected,
+  rejected
 }
 
 // TODO move this to different place
@@ -66,7 +66,31 @@ class LineItem extends Decodable {
   int subtotal;
   int amount;
 
-  LineItem();
+  LineItem(
+      {this.id,
+      this.status,
+      this.type,
+      this.name,
+      this.description,
+      this.quantity,
+      this.quantityShipped,
+      this.productCode,
+      this.commodityCode,
+      this.unitOfMeasure,
+      this.alternateTaxIdentifier,
+      this.taxable,
+      this.localTaxRate,
+      this.localTax,
+      this.nationalTaxRate,
+      this.nationalTax,
+      this.taxRate,
+      this.taxAmount,
+      this.discountAmount,
+      this.freightAmount,
+      this.unitPrice,
+      this.discountRate,
+      this.subtotal,
+      this.amount});
 
   factory LineItem.fromJson(Map<String, dynamic> json) =>
       _$LineItemFromJson(json);
@@ -102,7 +126,20 @@ class InvoiceBillTo extends Decodable {
   String fax;
   String email;
 
-  InvoiceBillTo();
+  InvoiceBillTo(
+      {this.id,
+      this.firstName,
+      this.lastName,
+      this.company,
+      this.addressLine1,
+      this.addressLine2,
+      this.city,
+      this.state,
+      this.postalCode,
+      this.country,
+      this.phone,
+      this.fax,
+      this.email});
 
   factory InvoiceBillTo.fromJson(Map<String, dynamic> json) =>
       _$InvoiceBillToFromJson(json);
@@ -132,7 +169,20 @@ class InvoicePayableTo extends Decodable {
   String fax;
   String email;
 
-  InvoicePayableTo();
+  InvoicePayableTo(
+      {this.id,
+      this.firstName,
+      this.lastName,
+      this.company,
+      this.addressLine1,
+      this.addressLine2,
+      this.city,
+      this.state,
+      this.postalCode,
+      this.country,
+      this.phone,
+      this.fax,
+      this.email});
 
   factory InvoicePayableTo.fromJson(Map<String, dynamic> json) =>
       _$InvoicePayableToFromJson(json);

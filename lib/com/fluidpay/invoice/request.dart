@@ -55,6 +55,34 @@ class InvoiceCreateRequest extends Creatable<InvoiceCreateResponse> {
   @JsonKey(name: 'email_to')
   String emailTo;
 
+  InvoiceCreateRequest(
+      {this.currency,
+      this.companyName,
+      this.customerNumber,
+      this.invoiceNumber,
+      this.customerId,
+      this.payableTo,
+      this.billTo,
+      this.dateDue,
+      this.items,
+      this.advancedFields,
+      this.enableTax,
+      this.enableShipping,
+      this.requireShippingDetails,
+      this.requireBillingDetailsOnPaymentOnly,
+      this.taxPercent,
+      this.shipping,
+      this.amountPaid,
+      this.adjustment,
+      this.allowPartialPayment,
+      this.transactionType,
+      this.paymentMethods,
+      this.cardProcessorId,
+      this.achProcessorId,
+      this.message,
+      this.sendVia,
+      this.emailTo});
+
   @override
   InvoiceCreateResponse buildResponse(Map<String, dynamic> json) =>
       InvoiceCreateResponse.fromJson(json);
