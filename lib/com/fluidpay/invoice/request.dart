@@ -148,9 +148,8 @@ class InvoiceUpdateRequest extends Updatable<InvoiceUpdateResponse> {
   bool markAsPaid;
   bool reactivate;
 
-  InvoiceUpdateRequest(
-      {this.id,
-      this.currency,
+  InvoiceUpdateRequest(this.id,
+      {this.currency,
       this.companyName,
       this.customerNumber,
       this.invoiceNumber,
@@ -188,4 +187,21 @@ class InvoiceUpdateRequest extends Updatable<InvoiceUpdateResponse> {
 
   @override
   Map<String, dynamic> toJson() => _$InvoiceUpdateRequestToJson(this);
+}
+
+@JsonSerializable()
+class InvoiceResendRequest extends Updatable<InvoiceResendResponse> {
+  String id;
+
+  InvoiceResendRequest(this.id);
+
+  @override
+  InvoiceResendResponse buildResponse(Map<String, dynamic> json) =>
+      InvoiceResendResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/invoice/${id}/resend';
+
+  @override
+  Map<String, dynamic> toJson() => _$InvoiceResendRequestToJson(this);
 }

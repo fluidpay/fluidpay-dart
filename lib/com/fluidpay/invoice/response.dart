@@ -8,38 +8,42 @@ part 'response.g.dart';
 class InvoiceCreateResponse extends Responsable<InvoiceCreateResponseData> {
   InvoiceCreateResponse();
 
-  factory InvoiceCreateResponse.fromJson(Map<String, dynamic> json) => _$InvoiceCreateResponseFromJson(json);
+  factory InvoiceCreateResponse.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceCreateResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$InvoiceCreateResponseToJson(this);
+}
+
+@JsonSerializable()
+class InvoiceCreateResponseData extends InvoiceResponseData {
+  InvoiceCreateResponseData() : super();
+
+  factory InvoiceCreateResponseData.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceCreateResponseDataFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$InvoiceCreateResponseDataToJson(this);
 }
 
 @JsonSerializable()
 class InvoiceUpdateResponse extends Responsable<InvoiceUpdateResponseData> {
   InvoiceUpdateResponse();
 
-  factory InvoiceUpdateResponse.fromJson(Map<String, dynamic> json) => _$InvoiceUpdateResponseFromJson(json);
+  factory InvoiceUpdateResponse.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceUpdateResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$InvoiceUpdateResponseToJson(this);
 }
 
 @JsonSerializable()
 class InvoiceUpdateResponseData extends InvoiceResponseData {
-  InvoiceUpdateResponseData(): super();
+  InvoiceUpdateResponseData() : super();
 
-  factory InvoiceUpdateResponseData.fromJson(Map<String, dynamic> json) => _$InvoiceUpdateResponseDataFromJson(json);
+  factory InvoiceUpdateResponseData.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceUpdateResponseDataFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$InvoiceUpdateResponseDataToJson(this);
-}
-
-@JsonSerializable()
-class InvoiceCreateResponseData extends InvoiceResponseData {
-  InvoiceCreateResponseData(): super();
-
-  factory InvoiceCreateResponseData.fromJson(Map<String, dynamic> json) => _$InvoiceCreateResponseDataFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$InvoiceCreateResponseDataToJson(this);
 }
 
 @JsonSerializable()
@@ -123,8 +127,19 @@ class InvoiceResponseData extends Decodable {
 
   InvoiceResponseData();
 
-  factory InvoiceResponseData.fromJson(Map<String, dynamic> json) => _$InvoiceResponseDataFromJson(json);
+  factory InvoiceResponseData.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceResponseDataFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$InvoiceResponseDataToJson(this);
+}
+
+@JsonSerializable()
+class InvoiceResendResponse extends Responsable<dynamic> {
+  InvoiceResendResponse();
+
+  factory InvoiceResendResponse.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceResendResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$InvoiceResendResponseToJson(this);
 }
