@@ -5,54 +5,33 @@ import 'common.dart';
 
 part 'request.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceCreateRequest extends Creatable<InvoiceCreateResponse> {
   String currency;
-  @JsonKey(name: 'company_name')
   String companyName;
-  @JsonKey(name: 'customer_number')
   String customerNumber;
-  @JsonKey(name: 'invoice_number')
   String invoiceNumber;
-  @JsonKey(name: 'customer_id')
   String customerId;
-  @JsonKey(name: 'payable_to')
   InvoicePayableTo payableTo;
-  @JsonKey(name: 'bill_to')
   InvoiceBillTo billTo;
-  @JsonKey(name: 'date_due')
   String dateDue;
   List<LineItem> items;
-  @JsonKey(name: 'advanced_fields')
   bool advancedFields;
-  @JsonKey(name: 'enable_tax')
   bool enableTax;
-  @JsonKey(name: 'enable_shipping')
   bool enableShipping;
-  @JsonKey(name: 'require_shipping_details')
   bool requireShippingDetails;
-  @JsonKey(name: 'require_billing_details_on_payment_only')
   bool requireBillingDetailsOnPaymentOnly;
-  @JsonKey(name: 'tax_percent')
   String taxPercent;
   int shipping;
-  @JsonKey(name: 'amount_paid')
   int amountPaid;
   int adjustment;
-  @JsonKey(name: 'allowPartial_payment')
   bool allowPartialPayment;
-  @JsonKey(name: 'transaction_type')
   String transactionType;
-  @JsonKey(name: 'payment_methods')
   List<String> paymentMethods;
-  @JsonKey(name: 'card_processor_id')
   String cardProcessorId;
-  @JsonKey(name: 'ach_processor_id')
   String achProcessorId;
   String message;
-  @JsonKey(name: 'send_via')
   SendVia sendVia;
-  @JsonKey(name: 'email_to')
   String emailTo;
 
   InvoiceCreateRequest(
@@ -94,57 +73,35 @@ class InvoiceCreateRequest extends Creatable<InvoiceCreateResponse> {
   Map<String, dynamic> toJson() => _$InvoiceCreateRequestToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceUpdateRequest extends Updatable<InvoiceUpdateResponse> {
   String id;
   String currency;
-  @JsonKey(name: 'company_name')
   String companyName;
-  @JsonKey(name: 'customer_number')
   String customerNumber;
-  @JsonKey(name: 'invoice_number')
   String invoiceNumber;
-  @JsonKey(name: 'customer_id')
   String customerId;
-  @JsonKey(name: 'payable_to')
   InvoicePayableTo payableTo;
-  @JsonKey(name: 'bill_to')
   InvoiceBillTo billTo;
-  @JsonKey(name: 'date_due')
   String dateDue;
   List<LineItem> items;
-  @JsonKey(name: 'advanced_fields')
   bool advancedFields;
-  @JsonKey(name: 'enable_tax')
   bool enableTax;
-  @JsonKey(name: 'enable_shipping')
   bool enableShipping;
-  @JsonKey(name: 'require_shipping_details')
   bool requireShippingDetails;
-  @JsonKey(name: 'require_billing_details_on_payment_only')
   bool requireBillingDetailsOnPaymentOnly;
-  @JsonKey(name: 'tax_percent')
   String taxPercent;
   int shipping;
-  @JsonKey(name: 'amount_paid')
   int amountPaid;
   int adjustment;
-  @JsonKey(name: 'allowPartial_payment')
   bool allowPartialPayment;
-  @JsonKey(name: 'transaction_type')
   String transactionType;
-  @JsonKey(name: 'payment_methods')
   List<String> paymentMethods;
-  @JsonKey(name: 'card_processor_id')
   String cardProcessorId;
-  @JsonKey(name: 'ach_processor_id')
   String achProcessorId;
   String message;
-  @JsonKey(name: 'send_via')
   SendVia sendVia;
-  @JsonKey(name: 'email_to')
   String emailTo;
-  @JsonKey(name: 'mark_as_paid')
   bool markAsPaid;
   bool reactivate;
 
