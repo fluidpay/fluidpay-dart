@@ -37,7 +37,79 @@ void main() {
   _transactionMultiVoidRequestToJsonTest();
 
   _transactionMultiRefundRequestToJsonTest();
+
+  _transactionSearchRequestToJsonTest();
+  _transactionSearchRequestGetUrlTest();
 }
+
+void _transactionSearchRequestGetUrlTest() {
+  test('transaction search request getUrl merchant passed', () {
+    expect('/transaction/search/testMerchantId', TransactionSearchRequest(merchantId: 'testMerchantId').getUrl());
+  });
+  test('transaction search request getUrl without merchant', () {
+    expect('/transaction/search', TransactionSearchRequest().getUrl());
+  });
+}
+
+void _transactionSearchRequestToJsonTest() {
+  test('transaction search request toJson', () {
+    final request = TransactionSearchRequest()
+    ..transactionOrOrderId = _createQSPS()
+    ..transactionId = _createQSPS()
+    ..userId = _createQSPS()
+    ..userName = _createQSPS()
+    ..type = _createQSPS()
+    ..transactionSource = _createQSPS()
+    ..ipAddress = _createQSPS()
+    ..amount = _createQSPI()
+    ..amountAuthorized = _createQSPI()
+    ..amountCaptured = _createQSPI()
+    ..amountSettled = _createQSPI()
+    ..taxAmount = _createQSPI()
+    ..poNumber = _createQSPS()
+    ..orderId = _createQSPS()
+    ..settlementBatchId = _createQSPS()
+    ..currencyIsoCode = _createQSPS()
+    ..paymentMethod = _createQSPS()
+    ..paymentType = _createQSPS()
+    ..status = _createQSPS()
+    ..state = _createQSPS()
+    ..processorId = _createQSPS()
+    ..processorName = _createQSPS()
+    ..terminalId = _createQSPS()
+    ..terminalDescription = _createQSPS()
+    ..subscriptionId = _createQSPS()
+    ..customerId = _createQSPS()
+    ..fullCCNumber = _createQSPS()
+    ..last4CCNumber = _createQSPS()
+    ..first6CCNumber = _createQSPS()
+    ..billingAddress = _createAddress()
+    ..shippingAddress = _createAddress()
+    ..customFields = {
+      'test key 1': _createQSPS(),
+      'test key 2': _createQSPS()
+    }
+    ..createdAt = _createSDR()
+    ..updatedAt = _createSDR()
+    ..capturedAt = _createSDR()
+    ..settledAt = _createSDR()
+    ..limit = _createQSPS()
+    ..offset = _createQSPS();
+
+    expect(_transactionSearchRequestJson, jsonEncode(request.toJson()));
+  });
+}
+final _transactionSearchRequestJson = '{"transaction_or_order_id":$_querySPStringJson,"transaction_id":$_querySPStringJson,"user_id":$_querySPStringJson,"user_name":$_querySPStringJson,"type":$_querySPStringJson,"transaction_source":$_querySPStringJson,"ip_address":$_querySPStringJson,"amount":$_querySPIntJson,"amount_authorized":$_querySPIntJson,"amount_captured":$_querySPIntJson,"amount_settled":$_querySPIntJson,"tax_amount":$_querySPIntJson,"po_number":$_querySPStringJson,"order_id":$_querySPStringJson,"settlement_batch_id":$_querySPStringJson,"currency_iso_code":$_querySPStringJson,"payment_method":$_querySPStringJson,"payment_type":$_querySPStringJson,"status":$_querySPStringJson,"state":$_querySPStringJson,"processor_id":$_querySPStringJson,"processor_name":$_querySPStringJson,"terminal_id":$_querySPStringJson,"terminal_description":$_querySPStringJson,"subscription_id":$_querySPStringJson,"customer_id":$_querySPStringJson,"full_cc_number":$_querySPStringJson,"cc_last_four":$_querySPStringJson,"cc_first_six":$_querySPStringJson,"billing_address":$_addressJson,"shipping_address":$_addressJson,"custom_fields":{"test key 1":$_querySPStringJson,"test key 2":$_querySPStringJson},"created_at":$_searchDateRangeJson,"updated_at":$_searchDateRangeJson,"captured_at":$_searchDateRangeJson,"settled_at":$_searchDateRangeJson,"limit":$_querySPStringJson,"offset":$_querySPStringJson}';
+final _querySPStringJson = '{"operator":"!=","value":"test value"}';
+final _querySPIntJson = '{"operator":"!=","value":100}';
+final _searchDateRangeJson = '{"start_date":"2020-02-01T00:00:00.000Z","end_date":"2020-03-01T00:00:00.000Z","duration":"this_month"}';
+
+QuerySearchParamString _createQSPS() => QuerySearchParamString(operator: '!=', value: 'test value');
+QuerySearchParamInt _createQSPI() => QuerySearchParamInt(operator: '!=', value: 100);
+SearchDateRange _createSDR() => SearchDateRange()
+    ..startDate = DateTime.utc(2020, 2)
+    ..endDate = DateTime.utc(2020, 3)
+    ..duration = SearchDateRangeDuration.thisMonth;
 
 void _transactionMultiRefundRequestToJsonTest() {
   test('transaction multi refund request toJson', () {
@@ -249,7 +321,7 @@ void _transactionGetRequestGetUrlTest() {
 
 void _transactionCreateRequestToJsonTest() {
   test('transaction create request toJson', () {
-    final request = _buildTransactionCreateRequest();
+    final request = _createTransactionCreateRequest();
 
     expect(jsonEncode(request.toJson()), _transactionCreateRequestJson);
   });
@@ -264,7 +336,7 @@ final _addressJson =
 final _lineItemJson =
     '{"id":"test id","status":"rejected","type":"test type","name":"test name","description":"test description","quantity":600.0,"quantity_shipped":601.0,"product_code":"test productCode","commodity_code":"test commodityCode","unit_of_measure":"test unitOfMeasure","alternate_tax_identifier":"test alternateTaxIdentifier","taxable":true,"local_tax_rate":"test localTaxRate","local_tax":602,"national_tax_rate":"test nationalTaxRate","national_tax":603,"tax_rate":"test taxRate","tax_amount":604,"discount_amount":605,"freight_amount":606,"unit_price":607,"discount_rate":"test discountRate","subtotal":608,"amount":609}';
 
-TransactionCreateRequest _buildTransactionCreateRequest() {
+TransactionCreateRequest _createTransactionCreateRequest() {
   final request = TransactionCreateRequest();
 
   request
