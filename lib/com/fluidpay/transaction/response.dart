@@ -93,3 +93,35 @@ class TransactionTipAdjustmentResponse extends Responsable {
 
   Map<String, dynamic> toJson() => _$TransactionTipAdjustmentResponseToJson(this);
 }
+
+@JsonSerializable()
+class TransactionMultiResponse extends Responsable<TransactionResponseData> {
+  TransactionMultiResponse();
+
+  factory TransactionMultiResponse.fromJson(Map<String, dynamic> json) =>
+      _$TransactionMultiResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TransactionMultiResponseToJson(this);
+}
+
+@JsonSerializable()
+class TransactionMultiVoidResponse extends Responsable<List<TransactionMultiVoidResponseData>> {
+
+  TransactionMultiVoidResponse();
+
+  factory TransactionMultiVoidResponse.fromJson(Map<String, dynamic> json) =>
+      _$TransactionMultiVoidResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TransactionMultiVoidResponseToJson(this);
+}
+
+@JsonSerializable()
+class TransactionMultiRefundResponse extends Responsable<TransactionResponseData> {
+
+  TransactionMultiRefundResponse();
+
+  factory TransactionMultiRefundResponse.fromJson(Map<String, dynamic> json) =>
+      _$TransactionMultiRefundResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TransactionMultiRefundResponseToJson(this);
+}

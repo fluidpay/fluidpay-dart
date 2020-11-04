@@ -455,3 +455,22 @@ class TokenAddressResponse extends Address {
   Map<String, dynamic> toJson() =>
       _$TokenAddressResponseToJson(this);
 }
+
+@JsonSerializable()
+class TransactionMultiVoidResponseData extends Decodable {
+  @JsonKey(name: 'transaction_id')
+  String transactionId;
+  String status;
+  @JsonKey(name: 'order_id')
+  String orderId;
+  @JsonKey(name: 'msg')
+  String msg;
+
+
+  TransactionMultiVoidResponseData();
+  factory TransactionMultiVoidResponseData.fromJson(Map<String, dynamic> json) =>
+      _$TransactionMultiVoidResponseDataFromJson(json);
+  @override
+  Map<String, dynamic> toJson() =>
+      _$TransactionMultiVoidResponseDataToJson(this);
+}
