@@ -240,3 +240,21 @@ class InvoiceReactivateRequest extends Updatable<InvoiceReactivateResponse> {
   Map<String, dynamic> toJson()  => _$InvoiceReactivateRequestToJson(this);
 
 }
+
+@JsonSerializable()
+class InvoiceDeleteRequest extends Deletable<InvoiceDeleteResponse> {
+  String id;
+
+  InvoiceDeleteRequest(this.id);
+
+  @override
+  InvoiceDeleteResponse buildResponse(Map<String, dynamic> json) =>
+      InvoiceDeleteResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/invoice/${id}';
+
+  @override
+  Map<String, dynamic> toJson()  => _$InvoiceDeleteRequestToJson(this);
+
+}

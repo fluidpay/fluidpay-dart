@@ -185,3 +185,13 @@ class InvoiceResendResponse extends Responsable<dynamic> {
 
   Map<String, dynamic> toJson() => _$InvoiceResendResponseToJson(this);
 }
+
+@JsonSerializable()
+class InvoiceDeleteResponse extends Responsable<dynamic> {
+  InvoiceDeleteResponse();
+
+  factory InvoiceDeleteResponse.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceDeleteResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$InvoiceDeleteResponseToJson(this);
+}
