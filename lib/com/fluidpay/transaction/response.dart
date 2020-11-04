@@ -15,13 +15,13 @@ class TransactionCreateResponse extends Responsable<TransactionResponseData> {
 }
 
 @JsonSerializable()
-class TransactionSearchResponse extends Responsable<TransactionResponseData> {
-  TransactionSearchResponse();
+class TransactionGetResponse extends Responsable<TransactionResponseData> {
+  TransactionGetResponse();
 
-  factory TransactionSearchResponse.fromJson(Map<String, dynamic> json) =>
-    _$TransactionSearchResponseFromJson(json);
+  factory TransactionGetResponse.fromJson(Map<String, dynamic> json) =>
+    _$TransactionGetResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$TransactionSearchResponseToJson(this);
+  Map<String, dynamic> toJson() => _$TransactionGetResponseToJson(this);
 }
 
 @JsonSerializable()
@@ -106,7 +106,6 @@ class TransactionMultiResponse extends Responsable<TransactionResponseData> {
 
 @JsonSerializable()
 class TransactionMultiVoidResponse extends Responsable<List<TransactionMultiVoidResponseData>> {
-
   TransactionMultiVoidResponse();
 
   factory TransactionMultiVoidResponse.fromJson(Map<String, dynamic> json) =>
@@ -117,11 +116,20 @@ class TransactionMultiVoidResponse extends Responsable<List<TransactionMultiVoid
 
 @JsonSerializable()
 class TransactionMultiRefundResponse extends Responsable<TransactionResponseData> {
-
   TransactionMultiRefundResponse();
 
   factory TransactionMultiRefundResponse.fromJson(Map<String, dynamic> json) =>
       _$TransactionMultiRefundResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$TransactionMultiRefundResponseToJson(this);
+}
+
+@JsonSerializable()
+class TransactionSearchResponse extends Responsable<List<TransactionResponseData>> {
+  TransactionSearchResponse();
+
+  factory TransactionSearchResponse.fromJson(Map<String, dynamic> json) =>
+      _$TransactionSearchResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TransactionSearchResponseToJson(this);
 }

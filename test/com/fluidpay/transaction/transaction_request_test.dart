@@ -9,7 +9,7 @@ import 'package:test/test.dart';
 void main() {
   _transactionCreateRequestToJsonTest();
 
-  _transactionSearchRequestGetUrlTest();
+  _transactionGetRequestGetUrlTest();
 
   _transactionCaptureRequestToJsonTest();
   _transactionCaptureRequestGetUrlTest();
@@ -43,7 +43,7 @@ void _transactionMultiRefundRequestToJsonTest() {
   test('transaction multi refund request toJson', () {
     final request = TransactionMultiRefundRequest()
         ..transactions = [
-          RefundTransaction()
+          RefundTransactionData()
           ..id = 'test id'
           ..amount = 100
         ];
@@ -57,7 +57,7 @@ void _transactionMultiVoidRequestToJsonTest() {
   test('transaction multi void request toJson', () {
     final request = TransactionMultiVoidRequest()
         ..transactions = [
-          VoidTransaction()
+          VoidTransactionData()
           ..id = 'test id'
         ];
 
@@ -234,14 +234,14 @@ void _transactionCaptureRequestToJsonTest() {
 final _transactionCaptureRequestJson =
     '{"transaction_id":"test_transaction_id","amount":1000,"tax_amount":1001,"tax_exempt":true,"shipping_amount":1002,"order_id":"test orderId","po_number":"test poNumber","ip_address":"test ipAddress","vendor_id":"test vendorId"}';
 
-void _transactionSearchRequestGetUrlTest() {
-  test('transaction search request getUrl only transactionId passed', () {
-    final request = TransactionSearchRequest('testTransactionId');
+void _transactionGetRequestGetUrlTest() {
+  test('transaction get request getUrl only transactionId passed', () {
+    final request = TransactionGetRequest('testTransactionId');
 
     expect('/transaction/testTransactionId', request.getUrl());
   });
-  test('transaction search request getUrl both merchantId and transactionId passed', () {
-    final request = TransactionSearchRequest('testTransactionId', merchantId: 'testMerchantId');
+  test('transaction get request getUrl both merchantId and transactionId passed', () {
+    final request = TransactionGetRequest('testTransactionId', merchantId: 'testMerchantId');
 
     expect('/transaction/testMerchantId/testTransactionId', request.getUrl());
   });
