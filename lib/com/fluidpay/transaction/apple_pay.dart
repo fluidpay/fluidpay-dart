@@ -11,7 +11,11 @@ class ApplePayTokenRequest {
   @JsonKey(name: 'pkpaymenttoken')
   PKPaymentToken pkPaymentToken;
 
-  ApplePayTokenRequest();
+  ApplePayTokenRequest({
+    this.keyId,
+    this.processorId,
+    this.pkPaymentToken,
+});
 
   factory ApplePayTokenRequest.fromJson(Map<String, dynamic> json) =>
       _$ApplePayTokenRequestFromJson(json);
@@ -26,7 +30,12 @@ class PKPaymentToken {
   PaymentMethod paymentMethod;
   PaymentData paymentData;
 
-  PKPaymentToken();
+  PKPaymentToken({
+    this.transactionTime,
+    this.transactionIdentifier,
+    this.paymentMethod,
+    this.paymentData,
+});
 
   factory PKPaymentToken.fromJson(Map<String, dynamic> json) =>
       _$PKPaymentTokenFromJson(json);
@@ -40,7 +49,11 @@ class PaymentMethod {
   String network;
   String displayName;
 
-  PaymentMethod();
+  PaymentMethod({
+    this.type,
+    this.network,
+    this.displayName,
+});
 
   factory PaymentMethod.fromJson(Map<String, dynamic> json) =>
       _$PaymentMethodFromJson(json);
@@ -55,7 +68,12 @@ class PaymentData {
   Header header;
   String data;
 
-  PaymentData();
+  PaymentData({
+    this.version,
+    this.signature,
+    this.header,
+    this.data
+});
 
   factory PaymentData.fromJson(Map<String, dynamic> json) =>
       _$PaymentDataFromJson(json);
@@ -72,7 +90,13 @@ class Header {
   @JsonKey(name: 'transactionID')
   String transactionId;
 
-  Header();
+  Header({
+    this.applicationData,
+    this.ephemeralPublicKey,
+    this.wrappedKey,
+    this.publicKeyHash,
+    this.transactionId
+});
 
   factory Header.fromJson(Map<String, dynamic> json) =>
       _$HeaderFromJson(json);

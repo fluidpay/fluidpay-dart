@@ -71,8 +71,66 @@ class TransactionResponseData extends Decodable {
   DateTime capturedAt;
   DateTime settledAt;
 
-
-  TransactionResponseData();
+  TransactionResponseData(
+      {this.id,
+      this.userId,
+      this.userName,
+      this.merchantId,
+      this.merchantName,
+      this.idempotencyKey,
+      this.idempotencyTime,
+      this.type,
+      this.amount,
+      this.baseAmount,
+      this.amountAuthorized,
+      this.amountCaptured,
+      this.amountSettled,
+      this.amountRefunded,
+      this.paymentAdjustment,
+      this.tipAmount,
+      this.settlementBatchId,
+      this.processorId,
+      this.processorType,
+      this.processorName,
+      this.paymentMethod,
+      this.paymentType,
+      this.features,
+      this.nationalTaxAmount,
+      this.dutyAmount,
+      this.shipFromPostalCode,
+      this.summaryCommodityCode,
+      this.merchantVatRegistrationNumber,
+      this.customerVatRegistrationNumber,
+      this.taxAmount,
+      this.taxExempt,
+      this.shippingAmount,
+      this.surcharge,
+      this.discountAmount,
+      this.currency,
+      this.description,
+      this.orderId,
+      this.poNumber,
+      this.ipAddress,
+      this.transactionSource,
+      this.emailReceipt,
+      this.emailAddress,
+      this.customerId,
+      this.customerPaymentType,
+      this.customerPaymentId,
+      this.subscriptionId,
+      this.referencedTransactionId,
+      this.responseBody,
+      this.customFields,
+      this.lineItems,
+      this.status,
+      this.response,
+      this.responseCode,
+      this.billingAddress,
+      this.shippingAddress,
+      this.createdAt,
+      this.updatedAt,
+      this.capturedAt,
+      this.settledAt});
 
   factory TransactionResponseData.fromJson(Map<String, dynamic> json) =>
       _$TransactionResponseDataFromJson(json);
@@ -89,7 +147,7 @@ class TransactionResponseBody extends Decodable {
   APMResponse apm;
   CashResponse cash;
 
-  TransactionResponseBody();
+  TransactionResponseBody({this.card, this.terminal, this.ach, this.apm, this.cash});
 
   factory TransactionResponseBody.fromJson(Map<String, dynamic> json) =>
       _$TransactionResponseBodyFromJson(json);
@@ -97,7 +155,6 @@ class TransactionResponseBody extends Decodable {
   @override
   Map<String, dynamic> toJson() => _$TransactionResponseBodyToJson(this);
 }
-
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TokenCardResponse extends Decodable {
@@ -113,14 +170,23 @@ class TokenCardResponse extends Decodable {
   DateTime createdAt;
   DateTime updatedAt;
 
-  TokenCardResponse();
+  TokenCardResponse(
+      {this.id,
+      this.cardType,
+      this.firstSix,
+      this.lastFour,
+      this.maskedCard,
+      this.expirationDate,
+      this.flags,
+      this.processorId,
+      this.createdAt,
+      this.updatedAt});
 
   factory TokenCardResponse.fromJson(Map<String, dynamic> json) =>
       _$TokenCardResponseFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$TokenCardResponseToJson(this);
+  Map<String, dynamic> toJson() => _$TokenCardResponseToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -142,8 +208,42 @@ class CreditCardResponse extends TokenCardResponse {
 
   dynamic processorSpecific;
 
-
-  CreditCardResponse();
+  CreditCardResponse({
+    this.response,
+    this.responseCode,
+    this.authCode,
+    this.processorResponseCode,
+    this.processorResponseText,
+    this.processorTransactionId,
+    this.processorType,
+    this.bin_type,
+    this.brandReference,
+    this.type,
+    this.avsResponseCode,
+    this.cvvResponseCode,
+    this.processorSpecific,
+    String id,
+    String cardType,
+    String firstSix,
+    String lastFour,
+    String maskedCard,
+    String expirationDate,
+    List<String> flags,
+    String processorId,
+    DateTime createdAt,
+    DateTime updatedAt,
+  }) : super(
+          id: id,
+          cardType: cardType,
+          firstSix: firstSix,
+          lastFour: lastFour,
+          maskedCard: maskedCard,
+          expirationDate: expirationDate,
+          flags: flags,
+          processorId: processorId,
+          createdAt: createdAt,
+          updatedAt: updatedAt,
+        );
 
   factory CreditCardResponse.fromJson(Map<String, dynamic> json) =>
       _$CreditCardResponseFromJson(json);
@@ -176,7 +276,28 @@ class TerminalResponse extends Decodable {
   DateTime createdAt;
   DateTime updatedAt;
 
-  TerminalResponse();
+  TerminalResponse(
+      {this.id,
+      this.terminalId,
+      this.terminalDescription,
+      this.cardType,
+      this.paymentType,
+      this.entryType,
+      this.firstFour,
+      this.lastFour,
+      this.maskedCard,
+      this.cardholderName,
+      this.authCode,
+      this.responseCode,
+      this.processorResponseText,
+      this.processorSpecific,
+      this.emvAid,
+      this.emvAppName,
+      this.emvTvr,
+      this.emvTsi,
+      this.signatureData,
+      this.createdAt,
+      this.updatedAt});
 
   factory TerminalResponse.fromJson(Map<String, dynamic> json) =>
       _$TerminalResponseFromJson(json);
@@ -198,19 +319,26 @@ class TokenACHResponse extends Decodable {
   DateTime createdAt;
   DateTime updatedAt;
 
-  TokenACHResponse();
+  TokenACHResponse(
+      {this.id,
+      this.maskedAccountNumber,
+      this.routingNumber,
+      this.accountType,
+      this.secCode,
+      this.flags,
+      this.processorId,
+      this.createdAt,
+      this.updatedAt});
 
   factory TokenACHResponse.fromJson(Map<String, dynamic> json) =>
       _$TokenACHResponseFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$TokenACHResponseToJson(this);
+  Map<String, dynamic> toJson() => _$TokenACHResponseToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ACHResponse extends TokenACHResponse {
-  String accountType;
   String authCode;
   String response;
   int responseCode;
@@ -220,10 +348,36 @@ class ACHResponse extends TokenACHResponse {
 
   dynamic processorSpecific;
 
-  ACHResponse();
+  ACHResponse(
+      {this.authCode,
+      this.response,
+      this.responseCode,
+      this.processorResponseCode,
+      this.processorResponseText,
+      this.processorType,
+      this.processorSpecific,
+      String id,
+      String maskedAccountNumber,
+      String routingNumber,
+      String accountType,
+      String secCode,
+      List<String> flags,
+      String processorId,
+      DateTime createdAt,
+      DateTime updatedAt})
+      : super(
+          id: id,
+          maskedAccountNumber: maskedAccountNumber,
+          routingNumber: routingNumber,
+          accountType: accountType,
+          secCode: secCode,
+          flags: flags,
+          processorId: processorId,
+          createdAt: createdAt,
+          updatedAt: updatedAt,
+        );
 
-  factory ACHResponse.fromJson(Map<String, dynamic> json) =>
-      _$ACHResponseFromJson(json);
+  factory ACHResponse.fromJson(Map<String, dynamic> json) => _$ACHResponseFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ACHResponseToJson(this);
@@ -245,10 +399,21 @@ class APMResponse extends Decodable {
   String tag;
   String documentCode;
 
-  APMResponse();
+  APMResponse(
+      {this.status,
+      this.processorTransactionId,
+      this.transactionId,
+      this.fundingStatus,
+      this.flags,
+      this.errorMsg,
+      this.redirectUrl,
+      this.redirectSecret,
+      this.failReason,
+      this.channel,
+      this.tag,
+      this.documentCode});
 
-  factory APMResponse.fromJson(Map<String, dynamic> json) =>
-      _$APMResponseFromJson(json);
+  factory APMResponse.fromJson(Map<String, dynamic> json) => _$APMResponseFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$APMResponseToJson(this);
@@ -270,7 +435,7 @@ class TransactionVoidResponseData extends Decodable {
   String id;
   String type;
 
-  TransactionVoidResponseData();
+  TransactionVoidResponseData({this.id, this.type});
 
   factory TransactionVoidResponseData.fromJson(Map<String, dynamic> json) =>
       _$TransactionVoidResponseDataFromJson(json);
@@ -292,15 +457,22 @@ class TransactionCreateVaultResponseData extends Decodable {
   DateTime createdAt;
   DateTime updatedAt;
 
-
-  TransactionCreateVaultResponseData();
+  TransactionCreateVaultResponseData(
+      {this.id,
+      this.description,
+      this.flags,
+      this.paymentMethod,
+      this.paymentMethodType,
+      this.billingAddress,
+      this.shippingAddress,
+      this.createdAt,
+      this.updatedAt});
 
   factory TransactionCreateVaultResponseData.fromJson(Map<String, dynamic> json) =>
       _$TransactionCreateVaultResponseDataFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$TransactionCreateVaultResponseDataToJson(this);
-
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -310,14 +482,13 @@ class TokenPaymentMethodResponse extends Decodable {
   @JsonKey(name: 'ach')
   TokenACHResponse achToken;
 
-  TokenPaymentMethodResponse();
+  TokenPaymentMethodResponse({this.cardToken, this.achToken});
 
   factory TokenPaymentMethodResponse.fromJson(Map<String, dynamic> json) =>
       _$TokenPaymentMethodResponseFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$TokenPaymentMethodResponseToJson(this);
+  Map<String, dynamic> toJson() => _$TokenPaymentMethodResponseToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -328,14 +499,13 @@ class TokenAddressResponse extends Address {
   DateTime createdAt;
   DateTime updatedAt;
 
-  TokenAddressResponse();
+  TokenAddressResponse({this.id, this.customerId, this.createdAt, this.updatedAt});
 
   factory TokenAddressResponse.fromJson(Map<String, dynamic> json) =>
       _$TokenAddressResponseFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$TokenAddressResponseToJson(this);
+  Map<String, dynamic> toJson() => _$TokenAddressResponseToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -345,11 +515,12 @@ class TransactionMultiVoidResponseData extends Decodable {
   String orderId;
   String msg;
 
+  TransactionMultiVoidResponseData(
+      {this.transactionId, this.status, this.orderId, this.msg});
 
-  TransactionMultiVoidResponseData();
   factory TransactionMultiVoidResponseData.fromJson(Map<String, dynamic> json) =>
       _$TransactionMultiVoidResponseDataFromJson(json);
+
   @override
-  Map<String, dynamic> toJson() =>
-      _$TransactionMultiVoidResponseDataToJson(this);
+  Map<String, dynamic> toJson() => _$TransactionMultiVoidResponseDataToJson(this);
 }
