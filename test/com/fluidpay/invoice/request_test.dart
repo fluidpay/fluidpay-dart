@@ -12,6 +12,7 @@ void main() {
   test('InvoiceReactivateRequest getUrl', testInvoiceReactivateRequestGetUrl);
   test('InvoiceDeleteRequest getUrl', testInvoiceDeleteRequestGetUrl);
   test('InvoiceGetRequest getUrl', testInvoiceGetRequestGetUrl);
+  test('InvoiceSearchRequest toJson', testInvoiceSearchRequestGetUrl);
 }
 
 void testInvoiceCreateRequestToJson() {
@@ -172,4 +173,39 @@ void testInvoiceDeleteRequestGetUrl() {
 void testInvoiceGetRequestGetUrl() {
   var req = InvoiceGetRequest('some_id');
   expect(req.getUrl(), '/invoice/some_id');
+}
+
+void testInvoiceSearchRequestGetUrl() {
+  var startDate = DateTime.now().subtract(Duration(hours: 48));
+  var endDate = DateTime.now().add(Duration(hours: 48));
+  var req = InvoiceSearchRequest(
+    id: QuerySearchParamString(
+      operator: SearchOperator.equals,
+      value: '',
+    ),
+    customerId: QuerySearchParamString(
+      operator: SearchOperator.equals,
+      value: '',
+    ),
+    invoiceNumber: QuerySearchParamString(
+      operator: SearchOperator.equals,
+      value: '',
+    ),
+    dateDue: QuerySearchParamDateRange(
+      startDate: startDate,
+      endDate: endDate,
+    ),
+    amountDue: QuerySearchParamInt(
+      operator: SearchOperator.equals,
+      value: 10,
+    ),
+    status: QuerySearchParamString(
+      operator: SearchOperator.equals,
+      value: '',
+    ),
+    offset: 0,
+    limit: 100,
+  );
+
+  expect(jsonEncode(req.toJson()), '{"id":{"operator":"=","value":""},"customer_id":{"operator":"=","value":""},"invoice_number":{"operator":"=","value":""},"date_due":{"start_date":"${startDate.toIso8601String()}","end_date":"${endDate.toIso8601String()}"},"amount_due":{"operator":"=","value":10},"status":{"operator":"=","value":""},"offset":0,"limit":100}');
 }

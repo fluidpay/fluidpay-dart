@@ -190,3 +190,61 @@ class InvoicePayableTo extends Decodable {
   @override
   Map<String, dynamic> toJson() => _$InvoicePayableToToJson(this);
 }
+
+abstract class QuerySearchParam<Value> extends Decodable {
+  SearchOperator operator;
+  Value value;
+
+  QuerySearchParam(this.operator, this.value);
+}
+
+@JsonSerializable()
+class QuerySearchParamString extends QuerySearchParam<String> {
+  QuerySearchParamString({SearchOperator operator, String value})
+      : super(operator, value);
+
+  @override
+  Map<String, dynamic> toJson() => _$QuerySearchParamStringToJson(this);
+
+  factory QuerySearchParamString.fromJson(Map<String, dynamic> json) =>
+      _$QuerySearchParamStringFromJson(json);
+}
+
+@JsonSerializable()
+class QuerySearchParamInt extends QuerySearchParam<int> {
+  QuerySearchParamInt({SearchOperator operator, int value})
+      : super(operator, value);
+
+  @override
+  Map<String, dynamic> toJson() => _$QuerySearchParamIntToJson(this);
+
+  factory QuerySearchParamInt.fromJson(Map<String, dynamic> json) =>
+      _$QuerySearchParamIntFromJson(json);
+}
+
+enum SearchOperator {
+  @JsonValue('=')
+  equals,
+  @JsonValue('!=')
+  notEquals,
+  @JsonValue('%')
+  like,
+  @JsonValue('>')
+  greaterThan,
+  @JsonValue('<')
+  lessThan,
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class QuerySearchParamDateRange extends Decodable {
+  DateTime startDate;
+  DateTime endDate;
+
+  QuerySearchParamDateRange({this.startDate, this.endDate});
+
+  factory QuerySearchParamDateRange.fromJson(Map<String, dynamic> json) =>
+      _$QuerySearchParamDateRangeFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$QuerySearchParamDateRangeToJson(this);
+}

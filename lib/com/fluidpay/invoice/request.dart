@@ -258,3 +258,35 @@ class InvoiceGetRequest extends Searchable<InvoiceGetResponse> {
   @override
   String getUrl() => '/invoice/${id}';
 }
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class InvoiceSearchRequest extends Searchable<InvoiceSearchResponse> {
+  QuerySearchParamString id;
+  QuerySearchParamString customerId;
+  QuerySearchParamString invoiceNumber;
+  QuerySearchParamDateRange dateDue;
+  QuerySearchParamInt amountDue;
+  QuerySearchParamString status;
+  int offset;
+  int limit;
+
+  InvoiceSearchRequest(
+      {this.id,
+      this.customerId,
+      this.invoiceNumber,
+      this.dateDue,
+      this.amountDue,
+      this.status,
+      this.offset,
+      this.limit});
+
+  @override
+  InvoiceSearchResponse buildResponse(Map<String, dynamic> json) =>
+      InvoiceSearchResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/invoices/search';
+
+  @override
+  Map<String, dynamic> toJson() => _$InvoiceSearchRequestToJson(this);
+}

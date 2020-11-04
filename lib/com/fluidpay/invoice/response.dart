@@ -110,6 +110,16 @@ class InvoiceGetResponseData extends InvoiceResponseData {
 }
 
 @JsonSerializable()
+class InvoiceSearchResponse extends Responsable<List<InvoiceResponseData>> {
+  InvoiceSearchResponse();
+
+  factory InvoiceSearchResponse.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceSearchResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$InvoiceSearchResponseToJson(this);
+}
+
+@JsonSerializable()
 class InvoiceResponseData extends Decodable {
   String id;
   String currency;
