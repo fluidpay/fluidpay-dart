@@ -422,3 +422,119 @@ class TransactionTipAdjustmentRequest
   Map<String, dynamic> toJson() =>
       _$TransactionTipAdjustmentRequestToJson(this);
 }
+
+@JsonSerializable()
+class TransactionMultiRequest extends Creatable<TransactionMultiResponse> {
+  @JsonKey(name: 'create_vault_record')
+  bool createVaultRecord;
+  @JsonKey(name: 'create_vault_record_merchant_id')
+  String createVaultRecordMerchantId;
+
+  @JsonKey(name: 'payment_method')
+  PaymentMethodRequest paymentMethod;
+
+  @JsonKey(name: 'billing_address')
+  Address billingAddress;
+  @JsonKey(name: 'shipping_address')
+  Address shippingAddress;
+
+  List<TransactionMultiRequestData> transactions;
+
+
+  @override
+  TransactionMultiResponse buildResponse(Map<String, dynamic> json) =>
+      TransactionMultiResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/transaction/multi';
+
+  @override
+  Map<String, dynamic> toJson() => _$TransactionMultiRequestToJson(this);
+}
+
+@JsonSerializable()
+class TransactionMultiRequestData extends Decodable {
+  @JsonKey(name: 'merchant_id')
+  String merchantId;
+  @JsonKey(name: 'processor_id')
+  String processorId;
+  TransactionType type;
+
+  int amount;
+  @JsonKey(name: 'tax_amount')
+  int taxAmount;
+  @JsonKey(name: 'shipping_amount')
+  int shippingAmount;
+
+  String currency;
+  String description;
+  @JsonKey(name: 'order_id')
+  String orderId;
+  @JsonKey(name: 'po_number')
+  String poNumber;
+  @JsonKey(name: 'ip_address')
+  String ipAddress;
+
+  @JsonKey(name: 'line_items')
+  List<LineItem> lineItems;
+
+  TransactionMultiRequestData();
+  factory TransactionMultiRequestData.fromJson(Map<String, dynamic> json) =>
+      _$TransactionMultiRequestDataFromJson(json);
+  @override
+  Map<String, dynamic> toJson() => _$TransactionMultiRequestDataToJson(this);
+}
+
+@JsonSerializable()
+class TransactionMultiVoidRequest extends Creatable<TransactionMultiVoidResponse> {
+  List<VoidTransaction> transactions;
+
+  @override
+  TransactionMultiVoidResponse buildResponse(Map<String, dynamic> json) =>
+      TransactionMultiVoidResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/transaction/multi/void';
+
+  @override
+  Map<String, dynamic> toJson() => _$TransactionMultiVoidRequestToJson(this);
+}
+
+@JsonSerializable()
+class VoidTransaction extends Decodable {
+  String id;
+
+  VoidTransaction();
+  factory VoidTransaction.fromJson(Map<String, dynamic> json) =>
+      _$VoidTransactionFromJson(json);
+  @override
+  Map<String, dynamic> toJson() => _$VoidTransactionToJson(this);
+}
+
+@JsonSerializable()
+class TransactionMultiRefundRequest extends Creatable<TransactionMultiRefundResponse> {
+  List<RefundTransaction> transactions;
+
+  @override
+  TransactionMultiRefundResponse buildResponse(Map<String, dynamic> json) =>
+      TransactionMultiRefundResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/transaction/multi/void';
+
+  @override
+  Map<String, dynamic> toJson() => _$TransactionMultiRefundRequestToJson(this);
+}
+
+@JsonSerializable()
+class RefundTransaction extends Decodable {
+  String id;
+  int amount;
+
+  RefundTransaction();
+  factory RefundTransaction.fromJson(Map<String, dynamic> json) =>
+      _$RefundTransactionFromJson(json);
+  @override
+  Map<String, dynamic> toJson() => _$RefundTransactionToJson(this);
+}
+
