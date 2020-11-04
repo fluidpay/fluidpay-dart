@@ -90,10 +90,16 @@ class ACHRequest extends Decodable {
   @JsonKey(name: 'accountholder_authentication')
   ACHAuthenticationRequest accountHolderAuthentication;
 
-  ACHRequest();
+  ACHRequest({
+    this.routingNumber,
+    this.accountNumber,
+    this.accountType,
+    this.secCode,
+    this.checkNumber,
+    this.accountHolderAuthentication,
+  });
 
-  factory ACHRequest.fromJson(Map<String, dynamic> json) =>
-      _$ACHRequestFromJson(json);
+  factory ACHRequest.fromJson(Map<String, dynamic> json) => _$ACHRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ACHRequestToJson(this);
@@ -106,7 +112,12 @@ class ACHAuthenticationRequest extends Decodable {
   String ssn4;
   String dobYear;
 
-  ACHAuthenticationRequest();
+  ACHAuthenticationRequest({
+    this.dlState,
+    this.dlNumber,
+    this.ssn4,
+    this.dobYear,
+  });
 
   factory ACHAuthenticationRequest.fromJson(Map<String, dynamic> json) =>
       _$ACHAuthenticationRequestFromJson(json);
@@ -125,7 +136,15 @@ class CustomerTransactionRequest extends Decodable {
   String shippingAddressId;
   String cvc;
 
-  CustomerTransactionRequest();
+  CustomerTransactionRequest({
+    this.id,
+    this.sourceMerchantId,
+    this.paymentMethodType,
+    this.paymentMethodId,
+    this.billingAddressId,
+    this.shippingAddressId,
+    this.cvc,
+  });
 
   factory CustomerTransactionRequest.fromJson(Map<String, dynamic> json) =>
       _$CustomerTransactionRequestFromJson(json);
@@ -144,7 +163,16 @@ class TerminalTransactionRequest extends Decodable {
   bool debit;
   String ebt;
 
-  TerminalTransactionRequest();
+  TerminalTransactionRequest({
+    this.id,
+    this.expirationDate,
+    this.cvc,
+    this.printReceipt,
+    this.signatureRequired,
+    this.clerkId,
+    this.debit,
+    this.ebt,
+  });
 
   factory TerminalTransactionRequest.fromJson(Map<String, dynamic> json) =>
       _$TerminalTransactionRequestFromJson(json);
@@ -167,10 +195,21 @@ class APMRequest extends Decodable {
   String hppTitle;
   String preferredLanguage;
 
-  APMRequest();
+  APMRequest({
+    this.type,
+    this.sellingPoint,
+    this.soldService,
+    this.merchantRedirectUrl,
+    this.locale,
+    this.mobileView,
+    this.nationalId,
+    this.consumerRef,
+    this.logoUrl,
+    this.hppTitle,
+    this.preferredLanguage,
+  });
 
-  factory APMRequest.fromJson(Map<String, dynamic> json) =>
-      _$APMRequestFromJson(json);
+  factory APMRequest.fromJson(Map<String, dynamic> json) => _$APMRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$APMRequestToJson(this);
@@ -181,7 +220,7 @@ class PlaidRequest extends Decodable {
   String refId;
   String accountId;
 
-  PlaidRequest();
+  PlaidRequest({this.refId, this.accountId});
 
   factory PlaidRequest.fromJson(Map<String, dynamic> json) =>
       _$PlaidRequestFromJson(json);
@@ -194,8 +233,7 @@ class PlaidRequest extends Decodable {
 class CashRequest extends Decodable {
   CashRequest();
 
-  factory CashRequest.fromJson(Map<String, dynamic> json) =>
-      _$CashRequestFromJson(json);
+  factory CashRequest.fromJson(Map<String, dynamic> json) => _$CashRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CashRequestToJson(this);

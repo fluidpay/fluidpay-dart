@@ -70,6 +70,54 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
   String billingMethod;
   String mcc;
 
+  TransactionCreateRequest(
+      {this.idempotencyKey,
+      this.idempotencyTime,
+      this.type,
+      this.taxExempt,
+      this.currency,
+      this.description,
+      this.orderId,
+      this.poNumber,
+      this.ipAddress,
+      this.emailReceipt,
+      this.emailAddress,
+      this.processorId,
+      this.allowPartialPayment,
+      this.createVaultRecord,
+      this.vaultRecordIdFormat,
+      this.vendorId,
+      this.amount,
+      this.taxAmount,
+      this.shippingAmount,
+      this.surcharge,
+      this.discountAmount,
+      this.nationalTaxAmount,
+      this.dutyAmount,
+      this.shipFromPostalCode,
+      this.summaryCommodityCode,
+      this.merchantVatRegistrationNumber,
+      this.customerVatRegistrationNumber,
+      this.paymentAdjustment,
+      this.additionalAmounts,
+      this.paymentMethod,
+      this.cardOnFileIndicator,
+      this.initiatedBy,
+      this.initialTransactionId,
+      this.storedCredentialIndicator,
+      this.billingAddress,
+      this.shippingAddress,
+      this.processorSpecific,
+      this.customFields,
+      this.groupName,
+      this.descriptor,
+      this.lineItems,
+      this.fingerprint,
+      this.bypassRuleEngine,
+      this.voidOnSuccess,
+      this.billingMethod,
+      this.mcc});
+
   @override
   TransactionCreateResponse buildResponse(Map<String, dynamic> json) =>
       TransactionCreateResponse.fromJson(json);
@@ -86,7 +134,7 @@ class PaymentAdjustmentRequest extends Decodable {
   int value;
   String type;
 
-  PaymentAdjustmentRequest();
+  PaymentAdjustmentRequest({this.value, this.type});
 
   factory PaymentAdjustmentRequest.fromJson(Map<String, dynamic> json) =>
       _$PaymentAdjustmentRequestFromJson(json);
@@ -99,7 +147,7 @@ class PaymentAdjustmentRequest extends Decodable {
 class AdditionalAmountsRequest extends Decodable {
   HSAAmountsRequest hsa;
 
-  AdditionalAmountsRequest();
+  AdditionalAmountsRequest({this.hsa});
 
   factory AdditionalAmountsRequest.fromJson(Map<String, dynamic> json) =>
       _$AdditionalAmountsRequestFromJson(json);
@@ -117,7 +165,14 @@ class HSAAmountsRequest extends Decodable {
   int dentalAmount;
   String sku;
 
-  HSAAmountsRequest();
+  HSAAmountsRequest({
+    this.total,
+    this.rxAmount,
+    this.visionAmount,
+    this.clinicAmount,
+    this.dentalAmount,
+    this.sku,
+  });
 
   factory HSAAmountsRequest.fromJson(Map<String, dynamic> json) =>
       _$HSAAmountsRequestFromJson(json);
@@ -130,7 +185,7 @@ class HSAAmountsRequest extends Decodable {
 class ProcessorSpecificRequest {
   BoltPay boltPay;
 
-  ProcessorSpecificRequest();
+  ProcessorSpecificRequest({this.boltPay});
 
   factory ProcessorSpecificRequest.fromJson(Map<String, dynamic> json) =>
       _$ProcessorSpecificRequestFromJson(json);
@@ -142,7 +197,7 @@ class ProcessorSpecificRequest {
 class BoltPay {
   String recurringCycle;
 
-  BoltPay();
+  BoltPay({this.recurringCycle});
 
   factory BoltPay.fromJson(Map<String, dynamic> json) => _$BoltPayFromJson(json);
 
@@ -159,7 +214,15 @@ class DescriptorRequest {
   String email;
   String phone;
 
-  DescriptorRequest();
+  DescriptorRequest({
+    this.name,
+    this.address,
+    this.city,
+    this.state,
+    this.postalCode,
+    this.email,
+    this.phone,
+  });
 
   factory DescriptorRequest.fromJson(Map<String, dynamic> json) =>
       _$DescriptorRequestFromJson(json);
@@ -239,8 +302,17 @@ class TransactionCaptureRequest
   String ipAddress;
   String vendorId;
 
-  TransactionCaptureRequest(String transactionId)
-      : super(transactionId, TransactionActionRequestType.capture);
+  TransactionCaptureRequest(
+    String transactionId, {
+    this.amount,
+    this.taxAmount,
+    this.taxExempt,
+    this.shippingAmount,
+    this.orderId,
+    this.poNumber,
+    this.ipAddress,
+    this.vendorId,
+  }) : super(transactionId, TransactionActionRequestType.capture);
 
   @override
   Map<String, dynamic> toJson() => _$TransactionCaptureRequestToJson(this);
@@ -364,6 +436,14 @@ class TransactionMultiRequest extends Creatable<TransactionMultiResponse> {
 
   List<TransactionMultiRequestData> transactions;
 
+  TransactionMultiRequest(
+      {this.createVaultRecord,
+      this.createVaultRecordMerchantId,
+      this.paymentMethod,
+      this.billingAddress,
+      this.shippingAddress,
+      this.transactions});
+
   @override
   TransactionMultiResponse buildResponse(Map<String, dynamic> json) =>
       TransactionMultiResponse.fromJson(json);
@@ -393,7 +473,20 @@ class TransactionMultiRequestData extends Decodable {
 
   List<LineItem> lineItems;
 
-  TransactionMultiRequestData();
+  TransactionMultiRequestData({
+    this.merchantId,
+    this.processorId,
+    this.type,
+    this.amount,
+    this.taxAmount,
+    this.shippingAmount,
+    this.currency,
+    this.description,
+    this.orderId,
+    this.poNumber,
+    this.ipAddress,
+    this.lineItems,
+  });
 
   factory TransactionMultiRequestData.fromJson(Map<String, dynamic> json) =>
       _$TransactionMultiRequestDataFromJson(json);
@@ -405,6 +498,8 @@ class TransactionMultiRequestData extends Decodable {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionMultiVoidRequest extends Creatable<TransactionMultiVoidResponse> {
   List<VoidTransactionData> transactions;
+
+  TransactionMultiVoidRequest({this.transactions});
 
   @override
   TransactionMultiVoidResponse buildResponse(Map<String, dynamic> json) =>
@@ -421,7 +516,7 @@ class TransactionMultiVoidRequest extends Creatable<TransactionMultiVoidResponse
 class VoidTransactionData extends Decodable {
   String id;
 
-  VoidTransactionData();
+  VoidTransactionData({this.id});
 
   factory VoidTransactionData.fromJson(Map<String, dynamic> json) =>
       _$VoidTransactionDataFromJson(json);
@@ -433,6 +528,8 @@ class VoidTransactionData extends Decodable {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionMultiRefundRequest extends Creatable<TransactionMultiRefundResponse> {
   List<RefundTransactionData> transactions;
+
+  TransactionMultiRefundRequest({this.transactions});
 
   @override
   TransactionMultiRefundResponse buildResponse(Map<String, dynamic> json) =>
@@ -450,7 +547,7 @@ class RefundTransactionData extends Decodable {
   String id;
   int amount;
 
-  RefundTransactionData();
+  RefundTransactionData({this.id, this.amount});
 
   factory RefundTransactionData.fromJson(Map<String, dynamic> json) =>
       _$RefundTransactionDataFromJson(json);
@@ -518,7 +615,46 @@ class TransactionSearchRequest extends Searchable<TransactionSearchResponse> {
   QuerySearchParamString limit;
   QuerySearchParamString offset;
 
-  TransactionSearchRequest({this.merchantId});
+  TransactionSearchRequest(
+      {this.merchantId,
+      this.transactionOrOrderId,
+      this.transactionId,
+      this.userId,
+      this.userName,
+      this.type,
+      this.transactionSource,
+      this.ipAddress,
+      this.amount,
+      this.amountAuthorized,
+      this.amountCaptured,
+      this.amountSettled,
+      this.taxAmount,
+      this.poNumber,
+      this.orderId,
+      this.settlementBatchId,
+      this.currencyIsoCode,
+      this.paymentMethod,
+      this.paymentType,
+      this.status,
+      this.state,
+      this.processorId,
+      this.processorName,
+      this.terminalId,
+      this.terminalDescription,
+      this.subscriptionId,
+      this.customerId,
+      this.fullCCNumber,
+      this.last4CCNumber,
+      this.first6CCNumber,
+      this.billingAddress,
+      this.shippingAddress,
+      this.customFields,
+      this.createdAt,
+      this.updatedAt,
+      this.capturedAt,
+      this.settledAt,
+      this.limit,
+      this.offset});
 
   @override
   TransactionSearchResponse buildResponse(Map<String, dynamic> json) =>
@@ -528,8 +664,7 @@ class TransactionSearchRequest extends Searchable<TransactionSearchResponse> {
   String getUrl() => '/transaction/search${merchantId != null ? '/$merchantId' : ''}';
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$TransactionSearchRequestToJson(this);
+  Map<String, dynamic> toJson() => _$TransactionSearchRequestToJson(this);
 }
 
 abstract class QuerySearchParam<Value> extends Decodable {
@@ -603,16 +738,15 @@ class SearchDateRange extends Decodable {
         startDate = DateTime(now.year, now.month);
 
         final nextMonth = now.month + 1;
-        endDate =
-            DateTime(
-                now.year + nextMonth ~/ DateTime.monthsPerYear,
+        endDate = DateTime(now.year + nextMonth ~/ DateTime.monthsPerYear,
                 nextMonth % DateTime.monthsPerYear)
-                .subtract(Duration(microseconds: 1));
+            .subtract(Duration(microseconds: 1));
         break;
       case SearchDateRangeDuration.lastMonth:
         if (now.month == DateTime.january) {
           startDate = DateTime(now.year - 1, DateTime.december);
-          endDate = DateTime(now.year, DateTime.january).subtract(Duration(microseconds: 1));
+          endDate =
+              DateTime(now.year, DateTime.january).subtract(Duration(microseconds: 1));
         } else {
           startDate = DateTime(now.year, now.month - 1);
           endDate = DateTime(now.year, now.month).subtract(Duration(microseconds: 1));

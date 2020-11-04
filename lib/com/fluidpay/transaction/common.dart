@@ -20,20 +20,28 @@ class Address extends Decodable {
   String fax;
   String email;
 
-  Address();
+  Address({
+    this.firstName,
+    this.lastName,
+    this.company,
+    this.addressLine1,
+    this.addressLine2,
+    this.city,
+    this.state,
+    this.postalCode,
+    this.country,
+    this.phone,
+    this.fax,
+    this.email,
+  });
 
-  factory Address.fromJson(Map<String, dynamic> json) =>
-      _$AddressFromJson(json);
+  factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 }
 
-enum LineItemStatus {
-  paid,
-  pending,
-  rejected
-}
+enum LineItemStatus { paid, pending, rejected }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class LineItem extends Decodable {
@@ -62,10 +70,35 @@ class LineItem extends Decodable {
   int subtotal;
   int amount;
 
-  LineItem();
+  LineItem({
+    this.id,
+    this.status,
+    this.type,
+    this.name,
+    this.description,
+    this.quantity,
+    this.quantityShipped,
+    this.productCode,
+    this.commodityCode,
+    this.unitOfMeasure,
+    this.alternateTaxIdentifier,
+    this.taxable,
+    this.localTaxRate,
+    this.localTax,
+    this.nationalTaxRate,
+    this.nationalTax,
+    this.taxRate,
+    this.taxAmount,
+    this.discountAmount,
+    this.freightAmount,
+    this.unitPrice,
+    this.discountRate,
+    this.subtotal,
+    this.amount,
+});
 
-  factory LineItem.fromJson(Map<String, dynamic> json) =>
-      _$LineItemFromJson(json);
+  factory LineItem.fromJson(Map<String, dynamic> json) => _$LineItemFromJson(json);
+
   @override
   Map<String, dynamic> toJson() => _$LineItemToJson(this);
 }
