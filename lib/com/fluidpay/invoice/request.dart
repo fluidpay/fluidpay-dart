@@ -222,3 +222,21 @@ class InvoiceMarkAsPaidRequest extends Updatable<InvoiceMarkAsPaidResponse> {
   @override
   Map<String, dynamic> toJson() => _$InvoiceMarkAsPaidRequestToJson(this);
 }
+
+@JsonSerializable()
+class InvoiceReactivateRequest extends Updatable<InvoiceReactivateResponse> {
+  String id;
+
+  InvoiceReactivateRequest(this.id);
+
+  @override
+  InvoiceReactivateResponse buildResponse(Map<String, dynamic> json) =>
+      InvoiceReactivateResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/invoice/${id}/reactivate';
+
+  @override
+  Map<String, dynamic> toJson()  => _$InvoiceReactivateRequestToJson(this);
+
+}
