@@ -259,7 +259,7 @@ void _transactionCreateResponseFromJsonTest() {
     expect(transactionCreateResponse.data.emailAddress, 'test emailAddress');
     expect(transactionCreateResponse.data.customerId, 'test customerId');
     expect(transactionCreateResponse.data.customerPaymentType, 'test customerPaymentType');
-    expect(transactionCreateResponse.data.customerPaymentID, 'test customerPaymentID');
+    expect(transactionCreateResponse.data.customerPaymentId, 'test customerPaymentID');
     expect(transactionCreateResponse.data.subscriptionId, 'test subscriptionId');
     expect(transactionCreateResponse.data.referencedTransactionId, 'test referencedTransactionId');
 
@@ -448,7 +448,7 @@ final transactionCreateResponseMap = <String, dynamic>{
     'email_address': 'test emailAddress',
     'customer_id': 'test customerId',
     'customer_payment_type': 'test customerPaymentType',
-    'customer_payment_ID': 'test customerPaymentID',
+    'customer_payment_id': 'test customerPaymentID',
     'subscription_id': 'test subscriptionId',
     'referenced_transaction_id': 'test referencedTransactionId',
     'response_body': <String, dynamic>{
