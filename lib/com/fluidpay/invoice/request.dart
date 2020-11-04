@@ -201,9 +201,6 @@ class InvoiceResendRequest extends Updatable<InvoiceResendResponse> {
 
   @override
   String getUrl() => '/invoice/${id}/resend';
-
-  @override
-  Map<String, dynamic> toJson() => _$InvoiceResendRequestToJson(this);
 }
 
 @JsonSerializable()
@@ -218,9 +215,6 @@ class InvoiceMarkAsPaidRequest extends Updatable<InvoiceMarkAsPaidResponse> {
 
   @override
   String getUrl() => '/invoice/${id}/mark-as-paid';
-
-  @override
-  Map<String, dynamic> toJson() => _$InvoiceMarkAsPaidRequestToJson(this);
 }
 
 @JsonSerializable()
@@ -235,10 +229,6 @@ class InvoiceReactivateRequest extends Updatable<InvoiceReactivateResponse> {
 
   @override
   String getUrl() => '/invoice/${id}/reactivate';
-
-  @override
-  Map<String, dynamic> toJson()  => _$InvoiceReactivateRequestToJson(this);
-
 }
 
 @JsonSerializable()
@@ -253,8 +243,4 @@ class InvoiceDeleteRequest extends Deletable<InvoiceDeleteResponse> {
 
   @override
   String getUrl() => '/invoice/${id}';
-
-  @override
-  Map<String, dynamic> toJson()  => _$InvoiceDeleteRequestToJson(this);
-
 }

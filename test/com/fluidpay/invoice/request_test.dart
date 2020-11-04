@@ -79,6 +79,7 @@ void testInvoiceCreateRequestToJson() {
   expect(jsonEncode(req.toJson()),
       '{"currency":"USD","company_name":"Random Corp","customer_number":"John Doe","invoice_number":"12345","customer_id":"987654321","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Mark","last_name":"Marius","company":"A third inc","address_line_1":"bsdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60129","country":"US","phone":"","fax":"","email":"markmarius@spam4.me"},"date_due":"2020-12-11","items":[{"id":null,"status":"pending","type":null,"name":"Something","description":null,"quantity":8.0,"quantity_shipped":null,"product_code":null,"commodity_code":null,"unit_of_measure":null,"alternate_tax_identifier":null,"taxable":null,"local_tax_rate":null,"local_tax":null,"national_tax_rate":null,"national_tax":null,"tax_rate":null,"tax_amount":null,"discount_amount":null,"freight_amount":null,"unit_price":100,"discount_rate":null,"subtotal":null,"amount":800}],"advanced_fields":true,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":false,"tax_percent":"","shipping":100,"amount_paid":1000,"adjustment":100,"allowPartial_payment":false,"transaction_type":"sale","payment_methods":["card"],"card_processor_id":"1289451298571","ach_processor_id":null,"message":"Hello there!","send_via":"none","email_to":null}');
 }
+
 void testInvoiceUpdateRequestToJson() {
   var req = InvoiceUpdateRequest(
     'random_id',
@@ -146,18 +147,22 @@ void testInvoiceUpdateRequestToJson() {
   expect(jsonEncode(req.toJson()),
       '{"id":"random_id","currency":"USD","company_name":"Random Corp","customer_number":"John Doe","invoice_number":"12345","customer_id":"987654321","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Mark","last_name":"Marius","company":"A third inc","address_line_1":"bsdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60129","country":"US","phone":"","fax":"","email":"markmarius@spam4.me"},"date_due":"2020-12-11","items":[{"id":null,"status":"pending","type":null,"name":"Something","description":null,"quantity":8.0,"quantity_shipped":null,"product_code":null,"commodity_code":null,"unit_of_measure":null,"alternate_tax_identifier":null,"taxable":null,"local_tax_rate":null,"local_tax":null,"national_tax_rate":null,"national_tax":null,"tax_rate":null,"tax_amount":null,"discount_amount":null,"freight_amount":null,"unit_price":100,"discount_rate":null,"subtotal":null,"amount":800}],"advanced_fields":true,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":false,"tax_percent":"","shipping":100,"amount_paid":1000,"adjustment":100,"allowPartial_payment":false,"transaction_type":"sale","payment_methods":["card"],"card_processor_id":"1289451298571","ach_processor_id":null,"message":"Hello there!","send_via":"none","email_to":null,"mark_as_paid":null,"reactivate":null}');
 }
+
 void testInvoiceResendRequestGetUrl() {
   var req = InvoiceResendRequest('some_id');
   expect(req.getUrl(), '/invoice/some_id/resend');
 }
+
 void testInvoiceMarkAsPaidRequestGetUrl() {
   var req = InvoiceMarkAsPaidRequest('some_id');
   expect(req.getUrl(), '/invoice/some_id/mark-as-paid');
 }
+
 void testInvoiceReactivateRequestGetUrl() {
   var req = InvoiceReactivateRequest('some_id');
   expect(req.getUrl(), '/invoice/some_id/reactivate');
 }
+
 void testInvoiceDeleteRequestGetUrl() {
   var req = InvoiceDeleteRequest('some_id');
   expect(req.getUrl(), '/invoice/some_id');
