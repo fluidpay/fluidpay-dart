@@ -86,8 +86,8 @@ class RecurringStatsResponseData extends Decodable {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class NewsResponseData extends Decodable {
   String id;
-  String accountTypeID;
-  String partnerID;
+  String accountTypeId;
+  String partnerId;
   String title;
   String authorName;
   String message;
@@ -140,6 +140,7 @@ class InvoiceStatsResponseData extends Decodable {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class OutstandingResponse extends Decodable {
   CntAmtResponse total;
+  @JsonKey(name: 'next_30_days')
   CntAmtResponse next30days;
   CntAmtResponse pastDue;
 
@@ -155,6 +156,7 @@ class OutstandingResponse extends Decodable {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class FailedResponse extends Decodable {
   CntAmtResponse total;
+  @JsonKey(name: 'last_30_days')
   CntAmtResponse last30days;
   CntAmtResponse pastDue;
 
@@ -170,6 +172,7 @@ class FailedResponse extends Decodable {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class PaidResponse extends Decodable {
   CntAmtResponse total;
+  @JsonKey(name: 'last_30_days')
   CntAmtResponse last30days;
 
   PaidResponse();

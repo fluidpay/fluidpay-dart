@@ -33,8 +33,8 @@ void testNewsSearchResponse() {
     expect(resp.msg, 'success');
 
     expect(resp.data[0].id, 'testId');
-    expect(resp.data[0].accountTypeID, 'testAccountTypeId');
-    expect(resp.data[0].partnerID, 'testPartnerId');
+    expect(resp.data[0].accountTypeId, 'testAccountTypeId');
+    expect(resp.data[0].partnerId, 'testPartnerId');
     expect(resp.data[0].title, 'test title');
     expect(resp.data[0].authorName, 'test author');
     expect(resp.data[0].message, 'test message');
