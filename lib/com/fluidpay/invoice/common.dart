@@ -96,7 +96,9 @@ class InvoiceBillTo extends Decodable {
   String firstName;
   String lastName;
   String company;
+  @JsonKey(name: 'address_line_1')
   String addressLine1;
+  @JsonKey(name: 'address_line_2')
   String addressLine2;
   String city;
   String state;
@@ -134,7 +136,9 @@ class InvoicePayableTo extends Decodable {
   String firstName;
   String lastName;
   String company;
+  @JsonKey(name: 'address_line_1')
   String addressLine1;
+  @JsonKey(name: 'address_line_2')
   String addressLine2;
   String city;
   String state;

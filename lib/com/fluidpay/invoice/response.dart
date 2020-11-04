@@ -4,7 +4,7 @@ import 'common.dart';
 
 part 'response.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceCreateResponse extends Responsable<InvoiceCreateResponseData> {
   InvoiceCreateResponse();
 
@@ -14,7 +14,7 @@ class InvoiceCreateResponse extends Responsable<InvoiceCreateResponseData> {
   Map<String, dynamic> toJson() => _$InvoiceCreateResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceCreateResponseData extends InvoiceResponseData {
   InvoiceCreateResponseData() : super();
 
@@ -25,7 +25,7 @@ class InvoiceCreateResponseData extends InvoiceResponseData {
   Map<String, dynamic> toJson() => _$InvoiceCreateResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceUpdateResponse extends Responsable<InvoiceUpdateResponseData> {
   InvoiceUpdateResponse();
 
@@ -35,7 +35,7 @@ class InvoiceUpdateResponse extends Responsable<InvoiceUpdateResponseData> {
   Map<String, dynamic> toJson() => _$InvoiceUpdateResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceUpdateResponseData extends InvoiceResponseData {
   InvoiceUpdateResponseData() : super();
 
@@ -46,7 +46,7 @@ class InvoiceUpdateResponseData extends InvoiceResponseData {
   Map<String, dynamic> toJson() => _$InvoiceUpdateResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceMarkAsPaidResponse extends Responsable<InvoiceMarkAsPaidResponseData> {
   InvoiceMarkAsPaidResponse();
 
@@ -56,7 +56,7 @@ class InvoiceMarkAsPaidResponse extends Responsable<InvoiceMarkAsPaidResponseDat
   Map<String, dynamic> toJson() => _$InvoiceMarkAsPaidResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceMarkAsPaidResponseData extends InvoiceResponseData {
   InvoiceMarkAsPaidResponseData() : super();
 
@@ -67,7 +67,7 @@ class InvoiceMarkAsPaidResponseData extends InvoiceResponseData {
   Map<String, dynamic> toJson() => _$InvoiceMarkAsPaidResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceReactivateResponse extends Responsable<InvoiceResponseData> {
   InvoiceReactivateResponse();
 
@@ -77,7 +77,7 @@ class InvoiceReactivateResponse extends Responsable<InvoiceResponseData> {
   Map<String, dynamic> toJson() => _$InvoiceReactivateResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceReactivateResponseData extends InvoiceResponseData {
   InvoiceReactivateResponseData() : super();
 
@@ -88,7 +88,7 @@ class InvoiceReactivateResponseData extends InvoiceResponseData {
   Map<String, dynamic> toJson() => _$InvoiceReactivateResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceGetResponse extends Responsable<InvoiceGetResponseData> {
   InvoiceGetResponse();
 
@@ -98,7 +98,7 @@ class InvoiceGetResponse extends Responsable<InvoiceGetResponseData> {
   Map<String, dynamic> toJson() => _$InvoiceGetResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceGetResponseData extends InvoiceResponseData {
   InvoiceGetResponseData() : super();
 
@@ -109,7 +109,7 @@ class InvoiceGetResponseData extends InvoiceResponseData {
   Map<String, dynamic> toJson() => _$InvoiceGetResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceSearchResponse extends Responsable<List<InvoiceResponseData>> {
   InvoiceSearchResponse();
 
@@ -174,7 +174,7 @@ class InvoiceResponseData extends Decodable {
   Map<String, dynamic> toJson() => _$InvoiceResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceResendResponse extends Responsable<dynamic> {
   InvoiceResendResponse();
 
@@ -184,7 +184,7 @@ class InvoiceResendResponse extends Responsable<dynamic> {
   Map<String, dynamic> toJson() => _$InvoiceResendResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceDeleteResponse extends Responsable<dynamic> {
   InvoiceDeleteResponse();
 
