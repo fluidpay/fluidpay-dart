@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'response.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class NewsSearchResponse extends Responsable<List<NewsResponseData>> {
   NewsSearchResponse();
 
@@ -13,7 +13,7 @@ class NewsSearchResponse extends Responsable<List<NewsResponseData>> {
   Map<String, dynamic> toJson() => _$NewsSearchResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class RecurringStatsSearchResponse
     extends Responsable<RecurringStatsResponseData> {
   RecurringStatsSearchResponse();
@@ -24,7 +24,7 @@ class RecurringStatsSearchResponse
   Map<String, dynamic> toJson() => _$RecurringStatsSearchResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class SettlementStatsSearchResponse
     extends Responsable<SettlementStatsResponseData> {
   SettlementStatsSearchResponse();
@@ -35,7 +35,7 @@ class SettlementStatsSearchResponse
   Map<String, dynamic> toJson() => _$SettlementStatsSearchResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionStatsSearchResponse
     extends Responsable<TransactionStatsResponseData> {
   TransactionStatsSearchResponse();
@@ -46,7 +46,7 @@ class TransactionStatsSearchResponse
   Map<String, dynamic> toJson() => _$TransactionStatsSearchResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceStatsSearchResponse extends Responsable<InvoiceStatsResponseData> {
   InvoiceStatsSearchResponse();
 
@@ -56,7 +56,7 @@ class InvoiceStatsSearchResponse extends Responsable<InvoiceStatsResponseData> {
   Map<String, dynamic> toJson() => _$InvoiceStatsSearchResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class SettlementStatsResponseData extends Decodable {
   List<XYResponse> captured;
   List<XYResponse> refunded;
@@ -70,11 +70,9 @@ class SettlementStatsResponseData extends Decodable {
   Map<String, dynamic> toJson() => _$SettlementStatsResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class RecurringStatsResponseData extends Decodable {
-  @JsonKey(name: 'customer_count')
   int customerCount;
-  @JsonKey(name: 'subscription_count')
   int subscriptionCount;
   RecurringStatsResponseData();
 
@@ -85,21 +83,16 @@ class RecurringStatsResponseData extends Decodable {
   Map<String, dynamic> toJson() => _$RecurringStatsResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class NewsResponseData extends Decodable {
   String id;
-  @JsonKey(name: 'account_type_id')
   String accountTypeID;
-  @JsonKey(name: 'partner_id')
   String partnerID;
   String title;
-  @JsonKey(name: 'author_name')
   String authorName;
   String message;
   String visibility;
-  @JsonKey(name: 'created_at')
   String createdAt;
-  @JsonKey(name: 'updated_at')
   String updatedAt;
 
   NewsResponseData();
@@ -111,19 +104,13 @@ class NewsResponseData extends Decodable {
   Map<String, dynamic> toJson() => _$NewsResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionStatsResponseData extends Decodable {
-  @JsonKey(name: 'transaction_count')
   List<XYResponse> transactionCount;
-  @JsonKey(name: 'sale_count')
   List<XYResponse> saleCount;
-  @JsonKey(name: 'refund_count')
   List<XYResponse> refundCount;
-  @JsonKey(name: 'authorize_count')
   List<XYResponse> authorizeCount;
-  @JsonKey(name: 'avg_authorized_ticket')
   List<XYResponse> avgAuthorizedTicket;
-  @JsonKey(name: 'avg_refund_ticket')
   List<XYResponse> avgRefundTicket;
 
   TransactionStatsResponseData();
@@ -135,13 +122,10 @@ class TransactionStatsResponseData extends Decodable {
   Map<String, dynamic> toJson() => _$TransactionStatsResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceStatsResponseData extends Decodable {
-  @JsonKey(name: 'outstanding')
   OutstandingResponse outstanding;
-  @JsonKey(name: 'failed')
   FailedResponse failed;
-  @JsonKey(name: 'paid')
   PaidResponse paid;
 
   InvoiceStatsResponseData();
@@ -153,13 +137,10 @@ class InvoiceStatsResponseData extends Decodable {
   Map<String, dynamic> toJson() => _$InvoiceStatsResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class OutstandingResponse extends Decodable {
-  @JsonKey(name: 'total')
   CntAmtResponse total;
-  @JsonKey(name: 'next_30_days')
   CntAmtResponse next30days;
-  @JsonKey(name: 'past_due')
   CntAmtResponse pastDue;
 
   OutstandingResponse();
@@ -171,13 +152,10 @@ class OutstandingResponse extends Decodable {
   Map<String, dynamic> toJson() => _$OutstandingResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class FailedResponse extends Decodable {
-  @JsonKey(name: 'total')
   CntAmtResponse total;
-  @JsonKey(name: 'last_30_days')
   CntAmtResponse last30days;
-  @JsonKey(name: 'past_due')
   CntAmtResponse pastDue;
 
   FailedResponse();
@@ -189,11 +167,9 @@ class FailedResponse extends Decodable {
   Map<String, dynamic> toJson() => _$FailedResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class PaidResponse extends Decodable {
-  @JsonKey(name: 'total')
   CntAmtResponse total;
-  @JsonKey(name: 'last_30_days')
   CntAmtResponse last30days;
 
   PaidResponse();
@@ -205,7 +181,7 @@ class PaidResponse extends Decodable {
   Map<String, dynamic> toJson() => _$PaidResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CntAmtResponse {
   int count;
   int amount;
@@ -219,7 +195,7 @@ class CntAmtResponse {
   Map<String, dynamic> toJson() => _$CntAmtResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class XYResponse {
   int x;
   int y;
