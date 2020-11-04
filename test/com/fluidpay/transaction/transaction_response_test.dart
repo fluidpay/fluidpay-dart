@@ -4,9 +4,40 @@ import 'package:test/test.dart';
 
 void main() {
   _transactionCreateResponseFromJsonTest();
+
   _transactionVoidResponseFromJsonTest();
+
   _transactionCreateVaultResponseFromJsonTest();
+
+  _transactionMultiVoidResponseFromJsonTest();
 }
+
+void _transactionMultiVoidResponseFromJsonTest() {
+  test('transaction multi void response fromJson', () {
+    final transactionMultiVoidResponse = TransactionMultiVoidResponse.fromJson(_transactionMultiVoidResponseJson);
+
+    expect(transactionMultiVoidResponse.status, 'test status');
+    expect(transactionMultiVoidResponse.msg, 'test msg');
+    expect(transactionMultiVoidResponse.totalCount, 1);
+    expect(transactionMultiVoidResponse.data[0].transactionId, 'test transactionId');
+    expect(transactionMultiVoidResponse.data[0].status, 'test status');
+    expect(transactionMultiVoidResponse.data[0].orderId, 'test orderId');
+    expect(transactionMultiVoidResponse.data[0].msg, 'test msg');
+  });
+}
+final _transactionMultiVoidResponseJson = <String, dynamic> {
+  'status': 'test status',
+  'msg': 'test msg',
+  'total_count': 1,
+  'data': [
+    {
+      'transaction_id': 'test transactionId',
+      'status': 'test status',
+      'order_id': 'test orderId',
+      'msg': 'test msg'
+    }
+  ]
+};
 
 void _transactionCreateVaultResponseFromJsonTest() {
   test('transaction create vault response fromJson', () {
