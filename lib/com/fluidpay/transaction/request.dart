@@ -498,8 +498,11 @@ class TransactionSearchRequest extends Searchable<TransactionSearchResponse> {
 
   QuerySearchParamString customerId;
 
+  @JsonKey(name: 'full_cc_number')
   QuerySearchParamString fullCCNumber;
+  @JsonKey(name: 'cc_last_four')
   QuerySearchParamString last4CCNumber;
+  @JsonKey(name: 'cc_first_six')
   QuerySearchParamString first6CCNumber;
 
   Address billingAddress;
@@ -507,10 +510,10 @@ class TransactionSearchRequest extends Searchable<TransactionSearchResponse> {
 
   Map<String, QuerySearchParamString> customFields;
 
-  SearchDateRange createdDate;
-  SearchDateRange updatedDate;
-  SearchDateRange capturedDate;
-  SearchDateRange settledDate;
+  SearchDateRange createdAt;
+  SearchDateRange updatedAt;
+  SearchDateRange capturedAt;
+  SearchDateRange settledAt;
 
   QuerySearchParamString limit;
   QuerySearchParamString offset;
@@ -523,6 +526,10 @@ class TransactionSearchRequest extends Searchable<TransactionSearchResponse> {
 
   @override
   String getUrl() => '/transaction/search${merchantId != null ? '/$merchantId' : ''}';
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$TransactionSearchRequestToJson(this);
 }
 
 abstract class QuerySearchParam<Value> extends Decodable {
