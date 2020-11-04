@@ -244,3 +244,17 @@ class InvoiceDeleteRequest extends Deletable<InvoiceDeleteResponse> {
   @override
   String getUrl() => '/invoice/${id}';
 }
+
+@JsonSerializable()
+class InvoiceGetRequest extends Searchable<InvoiceGetResponse> {
+  String id;
+
+  InvoiceGetRequest(this.id);
+
+  @override
+  InvoiceGetResponse buildResponse(Map<String, dynamic> json) =>
+      InvoiceGetResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/invoice/${id}';
+}

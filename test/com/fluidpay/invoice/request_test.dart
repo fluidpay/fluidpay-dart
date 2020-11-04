@@ -11,6 +11,7 @@ void main() {
   test('InvoiceMarkAsPaidRequest getUrl', testInvoiceMarkAsPaidRequestGetUrl);
   test('InvoiceReactivateRequest getUrl', testInvoiceReactivateRequestGetUrl);
   test('InvoiceDeleteRequest getUrl', testInvoiceDeleteRequestGetUrl);
+  test('InvoiceGetRequest getUrl', testInvoiceGetRequestGetUrl);
 }
 
 void testInvoiceCreateRequestToJson() {
@@ -165,5 +166,10 @@ void testInvoiceReactivateRequestGetUrl() {
 
 void testInvoiceDeleteRequestGetUrl() {
   var req = InvoiceDeleteRequest('some_id');
+  expect(req.getUrl(), '/invoice/some_id');
+}
+
+void testInvoiceGetRequestGetUrl() {
+  var req = InvoiceGetRequest('some_id');
   expect(req.getUrl(), '/invoice/some_id');
 }

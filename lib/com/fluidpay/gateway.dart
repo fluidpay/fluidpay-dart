@@ -25,6 +25,13 @@ class Gateway {
     });
   }
 
+  Future<Response> search<Response extends Responsable>(
+      Searchable<Response> request) {
+    return _CommonClient(baseUrl, apiKey).post(request).then((value) {
+      return request.buildResponse(value);
+    });
+  }
+
   Future<Response> update<Response extends Responsable>(
       Updatable<Response> request) {
     return _CommonClient(baseUrl, apiKey)
