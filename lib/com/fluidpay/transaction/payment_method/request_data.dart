@@ -25,10 +25,18 @@ class PaymentMethodRequest extends Decodable {
   PlaidRequest plaid;
   CashRequest cash;
 
-  PaymentMethodRequest();
+  PaymentMethodRequest(
+      {this.card,
+        this.ach,
+        this.customer,
+        this.terminal,
+        this.token,
+        this.applePayToken,
+        this.apm,
+        this.plaid,
+        this.cash});
 
-  factory PaymentMethodRequest.fromJson(Map<String, dynamic> json) =>
-      _$PaymentMethodRequestFromJson(json);
+  factory PaymentMethodRequest.fromJson(Map<String, dynamic> json) => _$PaymentMethodRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$PaymentMethodRequestToJson(this);
@@ -53,10 +61,21 @@ class CreditCardRequest extends Decodable {
   CardholderAuthenticationRequest cardholderAuthentication;
   String cardPresent;
 
-  CreditCardRequest();
+  CreditCardRequest(
+      {this.entryType,
+      this.number,
+      this.expirationDate,
+      this.cvc,
+      this.track1,
+      this.track2,
+      this.encryptedTrack1,
+      this.encryptedTrack2,
+      this.ksn,
+      this.encryptedData,
+      this.cardholderAuthentication,
+      this.cardPresent});
 
-  factory CreditCardRequest.fromJson(Map<String, dynamic> json) =>
-      _$CreditCardRequestFromJson(json);
+  factory CreditCardRequest.fromJson(Map<String, dynamic> json) => _$CreditCardRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CreditCardRequestToJson(this);
@@ -71,10 +90,9 @@ class CardholderAuthenticationRequest extends Decodable {
   String dsTransactionId;
   String acsTransactionId;
 
-  CardholderAuthenticationRequest();
+  CardholderAuthenticationRequest({this.eci, this.cavv, this.xid, this.version, this.dsTransactionId, this.acsTransactionId});
 
-  factory CardholderAuthenticationRequest.fromJson(Map<String, dynamic> json) =>
-      _$CardholderAuthenticationRequestFromJson(json);
+  factory CardholderAuthenticationRequest.fromJson(Map<String, dynamic> json) => _$CardholderAuthenticationRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CardholderAuthenticationRequestToJson(this);
@@ -119,8 +137,7 @@ class ACHAuthenticationRequest extends Decodable {
     this.dobYear,
   });
 
-  factory ACHAuthenticationRequest.fromJson(Map<String, dynamic> json) =>
-      _$ACHAuthenticationRequestFromJson(json);
+  factory ACHAuthenticationRequest.fromJson(Map<String, dynamic> json) => _$ACHAuthenticationRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ACHAuthenticationRequestToJson(this);
@@ -146,8 +163,7 @@ class CustomerTransactionRequest extends Decodable {
     this.cvc,
   });
 
-  factory CustomerTransactionRequest.fromJson(Map<String, dynamic> json) =>
-      _$CustomerTransactionRequestFromJson(json);
+  factory CustomerTransactionRequest.fromJson(Map<String, dynamic> json) => _$CustomerTransactionRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$CustomerTransactionRequestToJson(this);
 }
@@ -174,8 +190,7 @@ class TerminalTransactionRequest extends Decodable {
     this.ebt,
   });
 
-  factory TerminalTransactionRequest.fromJson(Map<String, dynamic> json) =>
-      _$TerminalTransactionRequestFromJson(json);
+  factory TerminalTransactionRequest.fromJson(Map<String, dynamic> json) => _$TerminalTransactionRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$TerminalTransactionRequestToJson(this);
@@ -222,8 +237,7 @@ class PlaidRequest extends Decodable {
 
   PlaidRequest({this.refId, this.accountId});
 
-  factory PlaidRequest.fromJson(Map<String, dynamic> json) =>
-      _$PlaidRequestFromJson(json);
+  factory PlaidRequest.fromJson(Map<String, dynamic> json) => _$PlaidRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$PlaidRequestToJson(this);

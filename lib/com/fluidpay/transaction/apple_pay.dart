@@ -2,11 +2,9 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'apple_pay.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class ApplePayTokenRequest {
-  @JsonKey(name: 'key_id')
   String keyId;
-  @JsonKey(name: 'processor_id')
   String processorId;
   @JsonKey(name: 'pkpaymenttoken')
   PKPaymentToken pkPaymentToken;
