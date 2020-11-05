@@ -46,8 +46,14 @@ class CustomerAddress extends Decodable {
       _$CustomerAddressFromJson(json);
 }
 
+abstract class CustomerPaymentMethod extends Decodable {
+  CustomerPaymentMethod.fromJson(Map<String, dynamic> json);
+
+  CustomerPaymentMethod();
+}
+
 @JsonSerializable(fieldRename: FieldRename.snake)
-class CustomerCard extends Decodable {
+class CustomerCard extends CustomerPaymentMethod {
   String id;
   String number;
   String maskedNumber;
@@ -78,17 +84,18 @@ class CustomerCard extends Decodable {
     this.initialTransactionId,
     this.instrumentType,
     this.genericCardLevel,
-  });
+  }) : super();
 
   @override
   Map<String, dynamic> toJson() => _$CustomerCardToJson(this);
 
+  @override
   factory CustomerCard.fromJson(Map<String, dynamic> json) =>
       _$CustomerCardFromJson(json);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class CustomerACH extends Decodable {
+class CustomerACH extends CustomerPaymentMethod {
   String id;
   String accountNumber;
   String maskedAccountNumber;
@@ -113,11 +120,12 @@ class CustomerACH extends Decodable {
     this.processorId,
     this.flags,
     this.lockValue,
-  });
+  }) : super();
 
   @override
   Map<String, dynamic> toJson() => _$CustomerACHToJson(this);
 
+  @override
   factory CustomerACH.fromJson(Map<String, dynamic> json) =>
       _$CustomerACHFromJson(json);
 }

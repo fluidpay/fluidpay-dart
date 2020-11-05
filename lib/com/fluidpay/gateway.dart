@@ -55,19 +55,31 @@ class _CommonClient {
 
   Future<Map<String, dynamic>> post(Requestable baseRequest) => http
       .post(
-        baseUrl + baseRequest.getUrl(),
+        baseUrl +
+            Uri(
+              path: baseRequest.getUrl(),
+              queryParameters: baseRequest.getQueryParams(),
+            ).toString(),
         headers: {'Authorization': apiKey, 'Content-Type': 'application/json'},
         body: jsonEncode(baseRequest.toJson()),
       )
       .then((value) => jsonDecode(value.body));
 
   Future<Map<String, dynamic>> get(Requestable baseRequest) => http.get(
-        baseUrl + baseRequest.getUrl(),
+    baseUrl +
+        Uri(
+          path: baseRequest.getUrl(),
+          queryParameters: baseRequest.getQueryParams(),
+        ).toString(),
         headers: {'Authorization': apiKey, 'Content-Type': 'application/json'},
       ).then((value) => jsonDecode(value.body));
 
   Future<Map<String, dynamic>> delete(Requestable baseRequest) => http.delete(
-        baseUrl + baseRequest.getUrl(),
+    baseUrl +
+        Uri(
+          path: baseRequest.getUrl(),
+          queryParameters: baseRequest.getQueryParams(),
+        ).toString(),
         headers: {'Authorization': apiKey, 'Content-Type': 'application/json'},
       ).then((value) => jsonDecode(value.body));
 }

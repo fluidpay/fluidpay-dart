@@ -18,8 +18,9 @@ void main() {
       testCustomerAddressCreateGetUrlAndToJson);
   test('CustomerAddressUpdateRequest getUrl and toJson',
       testCustomerAddressUpdateGetUrlAndToJson);
-  test('CustomerAddressDeleteRequest getUrl',
-      testCustomerAddressDeleteGetUrl);
+  test('CustomerAddressDeleteRequest getUrl', testCustomerAddressDeleteGetUrl);
+  test('CustomerPaymentTypeCreateRequest toJson getUrl getQueryParams',
+      testCustomerPaymentTypeCreateRequest);
 }
 
 void testCustomerCreateRequestToJson() {
@@ -159,11 +160,12 @@ void testCustomerAddressCreateGetUrlAndToJson() {
       ));
 
   expect(req.getUrl(), '/vault/customer/some_id/address');
-  expect(jsonEncode((req.toJson())), '{"id":"some_addr_id","first_name":"Jane","last_name":"Doe","company":"Jane Doe Corp","line_1":"2nd street","line_2":"124124","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"5145125125","fax":"5145125125","email":"jane@doe.asd","hash":"hashhashhash"}');
+  expect(jsonEncode((req.toJson())),
+      '{"id":"some_addr_id","first_name":"Jane","last_name":"Doe","company":"Jane Doe Corp","line_1":"2nd street","line_2":"124124","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"5145125125","fax":"5145125125","email":"jane@doe.asd","hash":"hashhashhash"}');
 }
 
 void testCustomerAddressUpdateGetUrlAndToJson() {
-  var req = CustomerAddressUpdateRequest('some_id','some_addr_id',
+  var req = CustomerAddressUpdateRequest('some_id', 'some_addr_id',
       address: CustomerAddress(
         id: 'some_addr_id',
         firstName: 'Jane',
@@ -182,11 +184,31 @@ void testCustomerAddressUpdateGetUrlAndToJson() {
       ));
 
   expect(req.getUrl(), '/vault/customer/some_id/address/some_addr_id');
-  expect(jsonEncode((req.toJson())), '{"id":"some_addr_id","first_name":"Jane","last_name":"Doe","company":"Jane Doe Corp","line_1":"2nd street","line_2":"124124","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"5145125125","fax":"5145125125","email":"jane@doe.asd","hash":"hashhashhash"}');
+  expect(jsonEncode((req.toJson())),
+      '{"id":"some_addr_id","first_name":"Jane","last_name":"Doe","company":"Jane Doe Corp","line_1":"2nd street","line_2":"124124","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"5145125125","fax":"5145125125","email":"jane@doe.asd","hash":"hashhashhash"}');
 }
 
 void testCustomerAddressDeleteGetUrl() {
-  var req = CustomerAddressDeleteRequest('some_id','some_addr_id');
+  var req = CustomerAddressDeleteRequest('some_id', 'some_addr_id');
 
   expect(req.getUrl(), '/vault/customer/some_id/address/some_addr_id');
+}
+
+void testCustomerPaymentTypeCreateRequest() {
+  var req =
+      CustomerPaymentTypeCreateRequest('customer_id', CustomerPaymentType.card,
+          data: CustomerCard(
+            number: '4111111111111111',
+            cvc: '999',
+            expirationDate: '11/22',
+            cardType: 'visa',
+          ));
+
+  expect(req.getUrl(), '/vault/customer/customer_id/card');
+  expect(req.getQueryParams(), {
+    'validate': 'false',
+    'currency': 'USD',
+  });
+  expect(jsonEncode(req.toJson()),
+      '{"id":null,"number":"4111111111111111","masked_number":null,"encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":null,"flags":null,"lock_value":null,"cvc":"999","initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}');
 }

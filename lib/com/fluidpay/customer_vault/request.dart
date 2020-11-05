@@ -225,3 +225,38 @@ class CustomerAddressDeleteRequest
   @override
   String getUrl() => '/vault/customer/${customerId}/address/${addressId}';
 }
+
+@JsonSerializable(fieldRename: FieldRename.snake, createFactory: false)
+class CustomerPaymentTypeCreateRequest
+    extends Creatable<CustomerPaymentTypeCreateResponse> {
+  @JsonKey(ignore: true)
+  String customerId;
+  CustomerPaymentType paymentType;
+  @JsonKey(ignore: true)
+  String currency;
+  @JsonKey(ignore: true)
+  bool validate;
+  CustomerPaymentMethod data;
+
+  CustomerPaymentTypeCreateRequest(this.customerId, this.paymentType,
+      {this.currency = 'USD', this.validate = false, this.data});
+
+  @override
+  CustomerPaymentTypeCreateResponse buildResponse(Map<String, dynamic> json) =>
+      CustomerPaymentTypeCreateResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}';
+
+  @override
+  Map<String, dynamic> toJson() => data.toJson();
+
+  @override
+  Map<String, String> getQueryParams() => {
+        'validate': validate.toString(),
+        'currency': currency,
+      };
+}
+
+enum CustomerPaymentType { card, ach }
+

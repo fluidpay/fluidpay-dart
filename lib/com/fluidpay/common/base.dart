@@ -4,6 +4,8 @@ import 'package:json_annotation/json_annotation.dart';
 import 'serialization.dart';
 
 abstract class Requestable<Response extends Responsable> with Serializable {
+  Map<String, String> getQueryParams() => null;
+
   String getUrl();
 
   Response buildResponse(Map<String, dynamic> json);

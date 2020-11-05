@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'response.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerCreateResponse extends Responsable<CustomerCreateResponseData> {
   CustomerCreateResponse();
 
@@ -14,7 +14,7 @@ class CustomerCreateResponse extends Responsable<CustomerCreateResponseData> {
   Map<String, dynamic> toJson() => _$CustomerCreateResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerCreateResponseData extends CustomerResponseData {
   CustomerCreateResponseData() : super();
 
@@ -25,7 +25,7 @@ class CustomerCreateResponseData extends CustomerResponseData {
   Map<String, dynamic> toJson() => _$CustomerCreateResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerGetResponse extends Responsable<CustomerGetResponseData> {
   CustomerGetResponse();
 
@@ -35,7 +35,7 @@ class CustomerGetResponse extends Responsable<CustomerGetResponseData> {
   Map<String, dynamic> toJson() => _$CustomerGetResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerGetResponseData extends CustomerResponseData {
   CustomerGetResponseData() : super();
 
@@ -46,7 +46,7 @@ class CustomerGetResponseData extends CustomerResponseData {
   Map<String, dynamic> toJson() => _$CustomerGetResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerSearchResponse extends Responsable<List<CustomerResponseData>> {
   CustomerSearchResponse();
 
@@ -56,7 +56,7 @@ class CustomerSearchResponse extends Responsable<List<CustomerResponseData>> {
   Map<String, dynamic> toJson() => _$CustomerSearchResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerAddressCreateResponse extends Responsable<CustomerAddressCreateResponseData> {
   CustomerAddressCreateResponse();
 
@@ -66,7 +66,7 @@ class CustomerAddressCreateResponse extends Responsable<CustomerAddressCreateRes
   Map<String, dynamic> toJson() => _$CustomerAddressCreateResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerAddressCreateResponseData extends CustomerResponseData {
   CustomerAddressCreateResponseData() : super();
 
@@ -77,7 +77,7 @@ class CustomerAddressCreateResponseData extends CustomerResponseData {
   Map<String, dynamic> toJson() => _$CustomerAddressCreateResponseDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerAddressUpdateResponse extends Responsable<CustomerAddressUpdateResponseData> {
   CustomerAddressUpdateResponse();
 
@@ -87,7 +87,7 @@ class CustomerAddressUpdateResponse extends Responsable<CustomerAddressUpdateRes
   Map<String, dynamic> toJson() => _$CustomerAddressUpdateResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerAddressUpdateResponseData extends CustomerResponseData {
   CustomerAddressUpdateResponseData() : super();
 
@@ -96,6 +96,27 @@ class CustomerAddressUpdateResponseData extends CustomerResponseData {
 
   @override
   Map<String, dynamic> toJson() => _$CustomerAddressUpdateResponseDataToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerPaymentTypeCreateResponse extends Responsable<CustomerPaymentTypeCreateResponseData> {
+  CustomerPaymentTypeCreateResponse();
+
+  factory CustomerPaymentTypeCreateResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerPaymentTypeCreateResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerPaymentTypeCreateResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerPaymentTypeCreateResponseData extends CustomerResponseData {
+  CustomerPaymentTypeCreateResponseData() : super();
+
+  factory CustomerPaymentTypeCreateResponseData.fromJson(Map<String, dynamic> json) =>
+      _$CustomerPaymentTypeCreateResponseDataFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CustomerPaymentTypeCreateResponseDataToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
