@@ -77,6 +77,27 @@ class CustomerAddressCreateResponseData extends CustomerResponseData {
   Map<String, dynamic> toJson() => _$CustomerAddressCreateResponseDataToJson(this);
 }
 
+@JsonSerializable()
+class CustomerAddressUpdateResponse extends Responsable<CustomerAddressUpdateResponseData> {
+  CustomerAddressUpdateResponse();
+
+  factory CustomerAddressUpdateResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerAddressUpdateResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerAddressUpdateResponseToJson(this);
+}
+
+@JsonSerializable()
+class CustomerAddressUpdateResponseData extends CustomerResponseData {
+  CustomerAddressUpdateResponseData() : super();
+
+  factory CustomerAddressUpdateResponseData.fromJson(Map<String, dynamic> json) =>
+      _$CustomerAddressUpdateResponseDataFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CustomerAddressUpdateResponseDataToJson(this);
+}
+
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerDeleteResponse extends Responsable<dynamic> {
   CustomerDeleteResponse();

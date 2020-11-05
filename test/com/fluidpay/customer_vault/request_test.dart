@@ -16,6 +16,8 @@ void main() {
       testCustomerSearchRequestGetUrlAndToJson);
   test('CustomerAddressCreateRequest getUrl and toJson',
       testCustomerAddressCreateGetUrlAndToJson);
+  test('CustomerAddressUpdateRequest getUrl and toJson',
+      testCustomerAddressUpdateGetUrlAndToJson);
 }
 
 void testCustomerCreateRequestToJson() {
@@ -155,5 +157,28 @@ void testCustomerAddressCreateGetUrlAndToJson() {
       ));
 
   expect(req.getUrl(), '/vault/customer/some_id/address');
+  expect(jsonEncode((req.toJson())), '{"id":"some_addr_id","first_name":"Jane","last_name":"Doe","company":"Jane Doe Corp","line_1":"2nd street","line_2":"124124","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"5145125125","fax":"5145125125","email":"jane@doe.asd","hash":"hashhashhash"}');
+}
+
+void testCustomerAddressUpdateGetUrlAndToJson() {
+  var req = CustomerAddressUpdateRequest('some_id','some_addr_id',
+      address: CustomerAddress(
+        id: 'some_addr_id',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        company: 'Jane Doe Corp',
+        line1: '2nd street',
+        line2: '124124',
+        city: 'Chicago',
+        state: 'IL',
+        postalCode: '60123',
+        country: 'US',
+        phone: '5145125125',
+        fax: '5145125125',
+        email: 'jane@doe.asd',
+        hash: 'hashhashhash',
+      ));
+
+  expect(req.getUrl(), '/vault/customer/some_id/address/some_addr_id');
   expect(jsonEncode((req.toJson())), '{"id":"some_addr_id","first_name":"Jane","last_name":"Doe","company":"Jane Doe Corp","line_1":"2nd street","line_2":"124124","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"5145125125","fax":"5145125125","email":"jane@doe.asd","hash":"hashhashhash"}');
 }

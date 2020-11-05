@@ -190,3 +190,24 @@ class CustomerAddressCreateRequest
   @override
   Map<String, dynamic> toJson() => address.toJson();
 }
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerAddressUpdateRequest
+    extends Updatable<CustomerAddressUpdateResponse> {
+
+  String customerId;
+  String addressId;
+  CustomerAddress address;
+
+  CustomerAddressUpdateRequest(this.customerId, this.addressId, {this.address});
+
+  @override
+  CustomerAddressUpdateResponse buildResponse(Map<String, dynamic> json) =>
+      CustomerAddressUpdateResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/vault/customer/${customerId}/address/${addressId}';
+
+  @override
+  Map<String, dynamic> toJson() => address.toJson();
+}
