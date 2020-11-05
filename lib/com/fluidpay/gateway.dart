@@ -65,21 +65,29 @@ class _CommonClient {
     }
   }
 
+  Map<String, dynamic> _createJsonFromResponse(http.Response resp) {
+    final result = jsonDecode(resp.body);
+
+    result['status_code'] = resp.statusCode;
+
+    return result;
+  }
+
   Future<Map<String, dynamic>> post(Requestable baseRequest) => http
       .post(
         baseUrl + baseRequest.getUrl(),
         headers: headers,
         body: jsonEncode(baseRequest.toJson()),
       )
-      .then((value) => jsonDecode(value.body));
+      .then(_createJsonFromResponse);
 
   Future<Map<String, dynamic>> get(Requestable baseRequest) => http.get(
         baseUrl + baseRequest.getUrl(),
         headers: headers
-      ).then((value) => jsonDecode(value.body));
+      ).then(_createJsonFromResponse);
 
   Future<Map<String, dynamic>> delete(Requestable baseRequest) => http.delete(
         baseUrl + baseRequest.getUrl(),
         headers: headers
-      ).then((value) => jsonDecode(value.body));
+      ).then(_createJsonFromResponse);
 }
