@@ -51,3 +51,17 @@ class CustomerPaymentCreate extends Decodable {
   factory CustomerPaymentCreate.fromJson(Map<String, dynamic> json) =>
       _$CustomerPaymentCreateFromJson(json);
 }
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerGetRequest extends Searchable<CustomerGetResponse> {
+  String id;
+
+  CustomerGetRequest({this.id});
+
+  @override
+  CustomerGetResponse buildResponse(Map<String, dynamic> json) =>
+      CustomerGetResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/vault/${id}';
+}

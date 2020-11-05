@@ -121,4 +121,3 @@ class CustomerACH extends Decodable {
   factory CustomerACH.fromJson(Map<String, dynamic> json) =>
       _$CustomerACHFromJson(json);
 }
-

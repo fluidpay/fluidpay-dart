@@ -1,4 +1,3 @@
-
 import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/customer_vault/common.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -16,24 +15,35 @@ class CustomerCreateResponse extends Responsable<CustomerCreateResponseData> {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class CustomerCreateResponseData extends Decodable {
-  String id;
-  CustomerDataContainer data;
-  DateTime createAt;
-  DateTime updateAt;
-
-  CustomerCreateResponseData({
-    this.id,
-    this.data,
-    this.createAt,
-    this.updateAt,
-  });
+class CustomerCreateResponseData extends CustomerResponseData {
+  CustomerCreateResponseData() : super();
 
   factory CustomerCreateResponseData.fromJson(Map<String, dynamic> json) =>
       _$CustomerCreateResponseDataFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CustomerCreateResponseDataToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerResponseData extends Decodable {
+  String id;
+  CustomerDataContainer data;
+  DateTime createAt;
+  DateTime updateAt;
+
+  CustomerResponseData({
+    this.id,
+    this.data,
+    this.createAt,
+    this.updateAt,
+  });
+
+  factory CustomerResponseData.fromJson(Map<String, dynamic> json) =>
+      _$CustomerResponseDataFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CustomerResponseDataToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -49,7 +59,7 @@ class CustomerDataContainer extends Decodable {
       _$CustomerDataContainerFromJson(json);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable(fieldRename: FieldRename.snake)
 class Customer extends Decodable {
   String description;
   CustomerDefaults defaults;
@@ -107,4 +117,25 @@ class CustomerDefaults extends Decodable {
 
   factory CustomerDefaults.fromJson(Map<String, dynamic> json) =>
       _$CustomerDefaultsFromJson(json);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerGetResponse extends Responsable<CustomerGetResponseData> {
+  CustomerGetResponse();
+
+  factory CustomerGetResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerGetResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerGetResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerGetResponseData extends CustomerResponseData {
+  CustomerGetResponseData() : super();
+
+  factory CustomerGetResponseData.fromJson(Map<String, dynamic> json) =>
+      _$CustomerGetResponseDataFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CustomerGetResponseDataToJson(this);
 }
