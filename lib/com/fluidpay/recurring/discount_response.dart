@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'discount_response.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class DiscountResponse extends Responsable<DiscountResponseData> {
   DiscountResponse();
 
@@ -13,7 +13,7 @@ class DiscountResponse extends Responsable<DiscountResponseData> {
   Map<String, dynamic> toJson() => _$DiscountResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class DiscountSearchResponse extends Responsable<List<DiscountResponseData>> {
   DiscountSearchResponse();
 

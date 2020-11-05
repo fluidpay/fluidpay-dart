@@ -18,6 +18,7 @@ void main() {
 void testInvoiceCreateResponseToJson() {
   var req = InvoiceCreateResponse.fromJson({
     'status': 'success',
+    'status_code':200,
     'data': {
       'id': '12345',
       'currency': 'USD',
@@ -93,6 +94,7 @@ void testInvoiceCreateResponseToJson() {
   });
 
   expect(req.status, 'success');
+  expect(req.statusCode, 200);
   expect(req.data.id, '12345');
   expect(req.data.currency, 'USD');
   expect(req.data.companyName, 'Random corp');
@@ -170,12 +172,13 @@ void testInvoiceCreateResponseToJson() {
   expect(req.data.customerId, '987654321');
 
   expect(jsonEncode(req.toJson()),
-      '{"status":"success","msg":null,"total_count":null,"data":{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"pending","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}}');
+      '{"status":"success","msg":null,"status_code":200,"total_count":null,"data":{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"pending","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}}');
 }
 
 void testInvoiceUpdateResponseToJson() {
   var req = InvoiceUpdateResponse.fromJson({
     'status': 'success',
+    'status_code': 200,
     'data': {
       'id': '12345',
       'currency': 'USD',
@@ -251,6 +254,7 @@ void testInvoiceUpdateResponseToJson() {
   });
 
   expect(req.status, 'success');
+  expect(req.statusCode, 200);
   expect(req.data.id, '12345');
   expect(req.data.currency, 'USD');
   expect(req.data.companyName, 'Random corp');
@@ -328,12 +332,13 @@ void testInvoiceUpdateResponseToJson() {
   expect(req.data.customerId, '987654321');
 
   expect(jsonEncode(req.toJson()),
-      '{"status":"success","msg":null,"total_count":null,"data":{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"pending","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}}');
+      '{"status":"success","msg":null,"status_code":200,"total_count":null,"data":{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"pending","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}}');
 }
 
 void testInvoiceMarkAsPaidResponseToJson() {
   var req = InvoiceMarkAsPaidResponse.fromJson({
     'status': 'success',
+    'status_code':200,
     'data': {
       'id': '12345',
       'currency': 'USD',
@@ -409,6 +414,7 @@ void testInvoiceMarkAsPaidResponseToJson() {
   });
 
   expect(req.status, 'success');
+  expect(req.statusCode, 200);
   expect(req.data.id, '12345');
   expect(req.data.currency, 'USD');
   expect(req.data.companyName, 'Random corp');
@@ -486,12 +492,13 @@ void testInvoiceMarkAsPaidResponseToJson() {
   expect(req.data.customerId, '987654321');
 
   expect(jsonEncode(req.toJson()),
-      '{"status":"success","msg":null,"total_count":null,"data":{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"paid","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}}');
+      '{"status":"success","msg":null,"status_code":200,"total_count":null,"data":{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"paid","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}}');
 }
 
 void testInvoiceReactivateResponseToJson() {
   var req = InvoiceReactivateResponse.fromJson({
     'status': 'success',
+    'status_code':200,
     'data': {
       'id': '12345',
       'currency': 'USD',
@@ -567,6 +574,7 @@ void testInvoiceReactivateResponseToJson() {
   });
 
   expect(req.status, 'success');
+  expect(req.statusCode, 200);
   expect(req.data.id, '12345');
   expect(req.data.currency, 'USD');
   expect(req.data.companyName, 'Random corp');
@@ -644,38 +652,43 @@ void testInvoiceReactivateResponseToJson() {
   expect(req.data.customerId, '987654321');
 
   expect(jsonEncode(req.toJson()),
-      '{"status":"success","msg":null,"total_count":null,"data":{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"pending","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}}');
+      '{"status":"success","msg":null,"status_code":200,"total_count":null,"data":{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"pending","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}}');
 }
 
 void testInvoiceResendResponseToJson() {
   var req = InvoiceResendResponse.fromJson({
     'status': 'success',
+    'status_code':200,
     'data': null,
   });
 
   expect(req.status, 'success');
+  expect(req.statusCode, 200);
   expect(req.data, null);
 
   expect(jsonEncode(req.toJson()),
-      '{"status":"success","msg":null,"total_count":null,"data":null}');
+      '{"status":"success","msg":null,"status_code":200,"total_count":null,"data":null}');
 }
 
 void testInvoiceDeleteResponseToJson() {
   var req = InvoiceDeleteResponse.fromJson({
     'status': 'success',
+    'status_code':200,
     'data': null,
   });
 
   expect(req.status, 'success');
+  expect(req.statusCode, 200);
   expect(req.data, null);
 
   expect(jsonEncode(req.toJson()),
-      '{"status":"success","msg":null,"total_count":null,"data":null}');
+      '{"status":"success","msg":null,"status_code":200,"total_count":null,"data":null}');
 }
 
 void testInvoiceGetResponseToJson() {
   var req = InvoiceGetResponse.fromJson({
     'status': 'success',
+    'status_code':200,
     'data': {
       'id': '12345',
       'currency': 'USD',
@@ -751,6 +764,7 @@ void testInvoiceGetResponseToJson() {
   });
 
   expect(req.status, 'success');
+  expect(req.statusCode, 200);
   expect(req.data.id, '12345');
   expect(req.data.currency, 'USD');
   expect(req.data.companyName, 'Random corp');
@@ -828,12 +842,13 @@ void testInvoiceGetResponseToJson() {
   expect(req.data.customerId, '987654321');
 
   expect(jsonEncode(req.toJson()),
-      '{"status":"success","msg":null,"total_count":null,"data":{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"pending","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}}');
+      '{"status":"success","msg":null,"status_code":200,"total_count":null,"data":{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"pending","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}}');
 }
 
 void testInvoiceSearchResponseToJson() {
   var req = InvoiceSearchResponse.fromJson({
     'status': 'success',
+    'status_code':200,
     'data': [
       {
         'id': '12345',
@@ -911,6 +926,7 @@ void testInvoiceSearchResponseToJson() {
   });
 
   expect(req.status, 'success');
+  expect(req.statusCode, 200);
   expect(req.data[0].id, '12345');
   expect(req.data[0].currency, 'USD');
   expect(req.data[0].companyName, 'Random corp');
@@ -988,5 +1004,5 @@ void testInvoiceSearchResponseToJson() {
   expect(req.data[0].customerId, '987654321');
 
   expect(jsonEncode(req.toJson()),
-      '{"status":"success","msg":null,"total_count":null,"data":[{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"pending","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}]}');
+      '{"status":"success","msg":null,"status_code":200,"total_count":null,"data":[{"id":"12345","currency":"USD","company_name":"Random corp","company_logo_url":null,"customer_number":"1234","invoice_number":"5555","payable_to":{"id":"999","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"bill_to":{"id":"888","first_name":"Jane","last_name":"Doe","company":"Another inc","address_line_1":"asdf","address_line_2":"","city":"Chicago","state":"Illinois","postal_code":"60123","country":"US","phone":"","fax":"","email":"janedoe@spam4.me"},"created_at":"2020-09-05","date_due":"2020-12-12","items":null,"advanced_fields":true,"subtotal":null,"enable_tax":true,"enable_shipping":true,"require_shipping_details":true,"require_billing_details_on_payment_only":true,"tax_percent":"","tax":100,"shipping":100,"total":1000,"amount_paid":1000,"service_fees_paid":null,"surcharge_paid":null,"discount_credited":null,"adjustment":null,"amount_due":null,"allow_partial_payment":null,"transaction_type":null,"payment_methods":null,"card_processor_id":"61872fhiuqw1092123","ach_processor_id":null,"status":"pending","message":"Hello there!","reject_message":"bye bye","send_via":null,"email_to":null,"last_sent_at":null,"updated_at":"2020-09-08","public_hash":null,"hosted_url":null,"merchant_id":"maskldf2187934","customer_id":"987654321"}]}');
 }

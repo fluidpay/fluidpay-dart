@@ -12,6 +12,7 @@ void testAddOnSearchResponse() {
   test('AddOnResponse fromJson to Json', () {
     var resp = AddOnSearchResponse.fromJson({
       'status': 'success',
+      'status_code':200,
       'msg': 'success',
       'data': [
         {
@@ -36,6 +37,7 @@ void testAddOnSearchResponse() {
       'total_count': 2,
     });
     expect(resp.status, 'success');
+    expect(resp.statusCode, 200);
     expect(resp.totalCount, 2);
 
     expect(resp.data[0].id, '132');
@@ -57,7 +59,7 @@ void testAddOnSearchResponse() {
     expect(jsonEncode(resp.data),
         '[{"id":"132","name":"test addon","description":"test addon description","amount":200,"percentage":null,"duration":0,"created_at":"2020-01-01","updated_at":"2020-01-01"},{"id":"999","name":"test addon","description":"test addon description","amount":null,"percentage":10,"duration":0,"created_at":"2020-01-01","updated_at":"2020-01-01"}]');
     expect(jsonEncode(resp.toJson()),
-        '{"status":"success","msg":"success","total_count":2,"data":[{"id":"132","name":"test addon","description":"test addon description","amount":200,"percentage":null,"duration":0,"created_at":"2020-01-01","updated_at":"2020-01-01"},{"id":"999","name":"test addon","description":"test addon description","amount":null,"percentage":10,"duration":0,"created_at":"2020-01-01","updated_at":"2020-01-01"}]}');
+        '{"status":"success","msg":"success","status_code":200,"total_count":2,"data":[{"id":"132","name":"test addon","description":"test addon description","amount":200,"percentage":null,"duration":0,"created_at":"2020-01-01","updated_at":"2020-01-01"},{"id":"999","name":"test addon","description":"test addon description","amount":null,"percentage":10,"duration":0,"created_at":"2020-01-01","updated_at":"2020-01-01"}]}');
   });
 }
 
@@ -65,6 +67,7 @@ void testAddOnResponse() {
   test('AddOnResponse fromJson to Json', () {
     var resp = AddOnResponse.fromJson({
       'status': 'success',
+      'status_code':200,
       'msg': 'success',
       'data': {
         'id': '132',
@@ -79,6 +82,6 @@ void testAddOnResponse() {
     expect(jsonEncode(resp.data.toJson()),
         '{"id":"132","name":"test addon","description":"test addon description","amount":200,"percentage":null,"duration":0,"created_at":"2020-01-01","updated_at":"2020-01-01"}');
     expect(jsonEncode(resp.toJson()),
-        '{"status":"success","msg":"success","total_count":null,"data":{"id":"132","name":"test addon","description":"test addon description","amount":200,"percentage":null,"duration":0,"created_at":"2020-01-01","updated_at":"2020-01-01"}}');
+        '{"status":"success","msg":"success","status_code":200,"total_count":null,"data":{"id":"132","name":"test addon","description":"test addon description","amount":200,"percentage":null,"duration":0,"created_at":"2020-01-01","updated_at":"2020-01-01"}}');
   });
 }
