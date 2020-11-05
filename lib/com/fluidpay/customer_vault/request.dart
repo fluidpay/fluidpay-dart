@@ -174,7 +174,6 @@ class CustomerSearchRequest extends Searchable<CustomerSearchResponse> {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerAddressCreateRequest
     extends Creatable<CustomerAddressCreateResponse> {
-
   String customerId;
   CustomerAddress address;
 
@@ -194,7 +193,6 @@ class CustomerAddressCreateRequest
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerAddressUpdateRequest
     extends Updatable<CustomerAddressUpdateResponse> {
-
   String customerId;
   String addressId;
   CustomerAddress address;
@@ -210,4 +208,20 @@ class CustomerAddressUpdateRequest
 
   @override
   Map<String, dynamic> toJson() => address.toJson();
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerAddressDeleteRequest
+    extends Deletable<CustomerAddressDeleteResponse> {
+  String customerId;
+  String addressId;
+
+  CustomerAddressDeleteRequest(this.customerId, this.addressId);
+
+  @override
+  CustomerAddressDeleteResponse buildResponse(Map<String, dynamic> json) =>
+      CustomerAddressDeleteResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/vault/customer/${customerId}/address/${addressId}';
 }

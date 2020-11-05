@@ -18,6 +18,8 @@ void main() {
       testCustomerAddressCreateGetUrlAndToJson);
   test('CustomerAddressUpdateRequest getUrl and toJson',
       testCustomerAddressUpdateGetUrlAndToJson);
+  test('CustomerAddressDeleteRequest getUrl',
+      testCustomerAddressDeleteGetUrl);
 }
 
 void testCustomerCreateRequestToJson() {
@@ -181,4 +183,10 @@ void testCustomerAddressUpdateGetUrlAndToJson() {
 
   expect(req.getUrl(), '/vault/customer/some_id/address/some_addr_id');
   expect(jsonEncode((req.toJson())), '{"id":"some_addr_id","first_name":"Jane","last_name":"Doe","company":"Jane Doe Corp","line_1":"2nd street","line_2":"124124","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"5145125125","fax":"5145125125","email":"jane@doe.asd","hash":"hashhashhash"}');
+}
+
+void testCustomerAddressDeleteGetUrl() {
+  var req = CustomerAddressDeleteRequest('some_id','some_addr_id');
+
+  expect(req.getUrl(), '/vault/customer/some_id/address/some_addr_id');
 }
