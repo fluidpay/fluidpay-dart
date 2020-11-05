@@ -170,3 +170,23 @@ class CustomerSearchRequest extends Searchable<CustomerSearchResponse> {
   @override
   Map<String, dynamic> toJson() => _$CustomerSearchRequestToJson(this);
 }
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerAddressCreateRequest
+    extends Creatable<CustomerAddressCreateResponse> {
+
+  String customerId;
+  CustomerAddress address;
+
+  CustomerAddressCreateRequest(this.customerId, {this.address});
+
+  @override
+  CustomerAddressCreateResponse buildResponse(Map<String, dynamic> json) =>
+      CustomerAddressCreateResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/vault/customer/${customerId}/address';
+
+  @override
+  Map<String, dynamic> toJson() => address.toJson();
+}

@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'response.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class CustomerCreateResponse extends Responsable<CustomerCreateResponseData> {
   CustomerCreateResponse();
 
@@ -14,7 +14,7 @@ class CustomerCreateResponse extends Responsable<CustomerCreateResponseData> {
   Map<String, dynamic> toJson() => _$CustomerCreateResponseToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class CustomerCreateResponseData extends CustomerResponseData {
   CustomerCreateResponseData() : super();
 
@@ -23,6 +23,78 @@ class CustomerCreateResponseData extends CustomerResponseData {
 
   @override
   Map<String, dynamic> toJson() => _$CustomerCreateResponseDataToJson(this);
+}
+
+@JsonSerializable()
+class CustomerGetResponse extends Responsable<CustomerGetResponseData> {
+  CustomerGetResponse();
+
+  factory CustomerGetResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerGetResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerGetResponseToJson(this);
+}
+
+@JsonSerializable()
+class CustomerGetResponseData extends CustomerResponseData {
+  CustomerGetResponseData() : super();
+
+  factory CustomerGetResponseData.fromJson(Map<String, dynamic> json) =>
+      _$CustomerGetResponseDataFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CustomerGetResponseDataToJson(this);
+}
+
+@JsonSerializable()
+class CustomerSearchResponse extends Responsable<List<CustomerResponseData>> {
+  CustomerSearchResponse();
+
+  factory CustomerSearchResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerSearchResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerSearchResponseToJson(this);
+}
+
+@JsonSerializable()
+class CustomerAddressCreateResponse extends Responsable<CustomerAddressCreateResponseData> {
+  CustomerAddressCreateResponse();
+
+  factory CustomerAddressCreateResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerAddressCreateResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerAddressCreateResponseToJson(this);
+}
+
+@JsonSerializable()
+class CustomerAddressCreateResponseData extends CustomerResponseData {
+  CustomerAddressCreateResponseData() : super();
+
+  factory CustomerAddressCreateResponseData.fromJson(Map<String, dynamic> json) =>
+      _$CustomerAddressCreateResponseDataFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CustomerAddressCreateResponseDataToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerDeleteResponse extends Responsable<dynamic> {
+  CustomerDeleteResponse();
+
+  factory CustomerDeleteResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerDeleteResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerDeleteResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerUpdateResponse extends Responsable<dynamic> {
+  CustomerUpdateResponse();
+
+  factory CustomerUpdateResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerUpdateResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerUpdateResponseToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -118,55 +190,3 @@ class CustomerDefaults extends Decodable {
   factory CustomerDefaults.fromJson(Map<String, dynamic> json) =>
       _$CustomerDefaultsFromJson(json);
 }
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class CustomerGetResponse extends Responsable<CustomerGetResponseData> {
-  CustomerGetResponse();
-
-  factory CustomerGetResponse.fromJson(Map<String, dynamic> json) =>
-      _$CustomerGetResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CustomerGetResponseToJson(this);
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class CustomerGetResponseData extends CustomerResponseData {
-  CustomerGetResponseData() : super();
-
-  factory CustomerGetResponseData.fromJson(Map<String, dynamic> json) =>
-      _$CustomerGetResponseDataFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$CustomerGetResponseDataToJson(this);
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class CustomerSearchResponse extends Responsable<List<CustomerResponseData>> {
-  CustomerSearchResponse();
-
-  factory CustomerSearchResponse.fromJson(Map<String, dynamic> json) =>
-      _$CustomerSearchResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CustomerSearchResponseToJson(this);
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class CustomerDeleteResponse extends Responsable<dynamic> {
-  CustomerDeleteResponse();
-
-  factory CustomerDeleteResponse.fromJson(Map<String, dynamic> json) =>
-      _$CustomerDeleteResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CustomerDeleteResponseToJson(this);
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class CustomerUpdateResponse extends Responsable<dynamic> {
-  CustomerUpdateResponse();
-
-  factory CustomerUpdateResponse.fromJson(Map<String, dynamic> json) =>
-      _$CustomerUpdateResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CustomerUpdateResponseToJson(this);
-}
-

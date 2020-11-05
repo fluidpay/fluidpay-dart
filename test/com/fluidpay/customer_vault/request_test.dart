@@ -4,27 +4,6 @@ import 'package:fluidpay/com/fluidpay/customer_vault/common.dart';
 import 'package:fluidpay/com/fluidpay/customer_vault/request.dart';
 import 'package:fluidpay/com/fluidpay/customer_vault/response.dart';
 import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -35,6 +14,8 @@ void main() {
       testCustomerUpdateRequestGetUrlAndToJson);
   test('CustomerSearchRequest getUrl and toJson',
       testCustomerSearchRequestGetUrlAndToJson);
+  test('CustomerAddressCreateRequest getUrl and toJson',
+      testCustomerAddressCreateGetUrlAndToJson);
 }
 
 void testCustomerCreateRequestToJson() {
@@ -150,5 +131,29 @@ void testCustomerSearchRequestGetUrlAndToJson() {
   );
 
   expect(req.getUrl(), '/vault/customer/search');
-  expect(jsonEncode((req.toJson())), '{"id":{"operator":"=","value":"asfgwrgj"},"payment_method_type":{"operator":"=","value":"waddafawfa"},"payment_method_id":{"operator":"=","value":"awfafafaf"},"billing_address_id":{"operator":"=","value":"afwafa"},"shipping_address_id":{"operator":"=","value":"awfafaaf"},"address_id":{"operator":"=","value":"awfafwaf"},"first_name":{"operator":"=","value":"john"},"last_name":{"operator":"=","value":"doe"},"company":{"operator":"=","value":"john doe inc"},"address_line_1":{"operator":"=","value":"2nd street"},"address_line_2":{"operator":"=","value":"2123"},"city":{"operator":"=","value":"Chicago"},"state":{"operator":"=","value":"IL"},"postal_code":{"operator":"=","value":"60123"},"country":{"operator":"=","value":"US"},"email":{"operator":"=","value":"johndoe@johndoe.com"},"phone":{"operator":"=","value":"1231512525"},"fax":{"operator":"=","value":"1231512525"},"created_at":{"start_date":"${startDate.toIso8601String()}","end_date":"${now.toIso8601String()}"},"updated_at":{"start_date":"${startDate.toIso8601String()}","end_date":"${now.toIso8601String()}"},"limit":10,"offset":0}');
+  expect(jsonEncode((req.toJson())),
+      '{"id":{"operator":"=","value":"asfgwrgj"},"payment_method_type":{"operator":"=","value":"waddafawfa"},"payment_method_id":{"operator":"=","value":"awfafafaf"},"billing_address_id":{"operator":"=","value":"afwafa"},"shipping_address_id":{"operator":"=","value":"awfafaaf"},"address_id":{"operator":"=","value":"awfafwaf"},"first_name":{"operator":"=","value":"john"},"last_name":{"operator":"=","value":"doe"},"company":{"operator":"=","value":"john doe inc"},"address_line_1":{"operator":"=","value":"2nd street"},"address_line_2":{"operator":"=","value":"2123"},"city":{"operator":"=","value":"Chicago"},"state":{"operator":"=","value":"IL"},"postal_code":{"operator":"=","value":"60123"},"country":{"operator":"=","value":"US"},"email":{"operator":"=","value":"johndoe@johndoe.com"},"phone":{"operator":"=","value":"1231512525"},"fax":{"operator":"=","value":"1231512525"},"created_at":{"start_date":"${startDate.toIso8601String()}","end_date":"${now.toIso8601String()}"},"updated_at":{"start_date":"${startDate.toIso8601String()}","end_date":"${now.toIso8601String()}"},"limit":10,"offset":0}');
+}
+
+void testCustomerAddressCreateGetUrlAndToJson() {
+  var req = CustomerAddressCreateRequest('some_id',
+      address: CustomerAddress(
+        id: 'some_addr_id',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        company: 'Jane Doe Corp',
+        line1: '2nd street',
+        line2: '124124',
+        city: 'Chicago',
+        state: 'IL',
+        postalCode: '60123',
+        country: 'US',
+        phone: '5145125125',
+        fax: '5145125125',
+        email: 'jane@doe.asd',
+        hash: 'hashhashhash',
+      ));
+
+  expect(req.getUrl(), '/vault/customer/some_id/address');
+  expect(jsonEncode((req.toJson())), '{"id":"some_addr_id","first_name":"Jane","last_name":"Doe","company":"Jane Doe Corp","line_1":"2nd street","line_2":"124124","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"5145125125","fax":"5145125125","email":"jane@doe.asd","hash":"hashhashhash"}');
 }
