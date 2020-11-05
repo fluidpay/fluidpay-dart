@@ -65,3 +65,17 @@ class CustomerGetRequest extends Searchable<CustomerGetResponse> {
   @override
   String getUrl() => '/vault/${id}';
 }
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerDeleteRequest extends Deletable<CustomerDeleteResponse> {
+  String id;
+
+  CustomerDeleteRequest({this.id});
+
+  @override
+  CustomerDeleteResponse buildResponse(Map<String, dynamic> json) =>
+      CustomerDeleteResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/vault/${id}';
+}

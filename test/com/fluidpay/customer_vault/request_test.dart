@@ -7,6 +7,7 @@ import 'package:test/test.dart';
 void main() {
   test('CustomerCreateRequest toJson', testCustomerCreateRequestToJson);
   test('CustomerGetRequest getUrl', testCustomerGetRequestGetUrl);
+  test('CustomerDeleteRequest getUrl', testCustomerDeleteRequestGetUrl);
 }
 void testCustomerCreateRequestToJson() {
   var req = CustomerCreateRequest(
@@ -46,6 +47,11 @@ void testCustomerCreateRequestToJson() {
 }
 void testCustomerGetRequestGetUrl() {
   var req = CustomerGetRequest(id: 'asanfqi123owjfqid12qw');
+
+  expect(req.getUrl(), '/vault/asanfqi123owjfqid12qw');
+}
+void testCustomerDeleteRequestGetUrl() {
+  var req = CustomerDeleteRequest(id: 'asanfqi123owjfqid12qw');
 
   expect(req.getUrl(), '/vault/asanfqi123owjfqid12qw');
 }
