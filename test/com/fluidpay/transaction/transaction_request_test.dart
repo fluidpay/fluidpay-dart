@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/transaction/apple_pay.dart';
-import 'package:fluidpay/com/fluidpay/transaction/common.dart';
 import 'package:fluidpay/com/fluidpay/transaction/payment_method/request_data.dart';
 import 'package:fluidpay/com/fluidpay/transaction/request.dart';
 import 'package:test/test.dart';
@@ -103,9 +103,9 @@ final _querySPIntJson = '{"operator":"!=","value":100}';
 final _searchDateRangeJson =
     '{"start_date":"2020-02-01T00:00:00.000Z","end_date":"2020-03-01T00:00:00.000Z","duration":"this_month"}';
 
-QuerySearchParamString _createQSPS() => QuerySearchParamString(operator: '!=', value: 'test value');
+QuerySearchParamString _createQSPS() => QuerySearchParamString(operator: SearchOperator.notEquals, value: 'test value');
 
-QuerySearchParamInt _createQSPI() => QuerySearchParamInt(operator: '!=', value: 100);
+QuerySearchParamInt _createQSPI() => QuerySearchParamInt(operator: SearchOperator.notEquals, value: 100);
 
 SearchDateRange _createSDR() => SearchDateRange()
   ..startDate = DateTime.utc(2020, 2)

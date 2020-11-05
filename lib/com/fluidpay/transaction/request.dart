@@ -1,6 +1,6 @@
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
 import 'package:fluidpay/com/fluidpay/common/base.dart';
-import 'package:fluidpay/com/fluidpay/transaction/common.dart';
+import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/transaction/payment_method/request_data.dart';
 import 'package:fluidpay/com/fluidpay/transaction/response.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -119,8 +119,7 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
       this.mcc});
 
   @override
-  TransactionCreateResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionCreateResponse.fromJson(json);
+  TransactionCreateResponse buildResponse(Map<String, dynamic> json) => TransactionCreateResponse.fromJson(json);
 
   @override
   String getUrl() => '/transaction';
@@ -136,8 +135,7 @@ class PaymentAdjustmentRequest extends Decodable {
 
   PaymentAdjustmentRequest({this.value, this.type});
 
-  factory PaymentAdjustmentRequest.fromJson(Map<String, dynamic> json) =>
-      _$PaymentAdjustmentRequestFromJson(json);
+  factory PaymentAdjustmentRequest.fromJson(Map<String, dynamic> json) => _$PaymentAdjustmentRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$PaymentAdjustmentRequestToJson(this);
@@ -149,8 +147,7 @@ class AdditionalAmountsRequest extends Decodable {
 
   AdditionalAmountsRequest({this.hsa});
 
-  factory AdditionalAmountsRequest.fromJson(Map<String, dynamic> json) =>
-      _$AdditionalAmountsRequestFromJson(json);
+  factory AdditionalAmountsRequest.fromJson(Map<String, dynamic> json) => _$AdditionalAmountsRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$AdditionalAmountsRequestToJson(this);
@@ -174,8 +171,7 @@ class HSAAmountsRequest extends Decodable {
     this.sku,
   });
 
-  factory HSAAmountsRequest.fromJson(Map<String, dynamic> json) =>
-      _$HSAAmountsRequestFromJson(json);
+  factory HSAAmountsRequest.fromJson(Map<String, dynamic> json) => _$HSAAmountsRequestFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$HSAAmountsRequestToJson(this);
@@ -187,8 +183,7 @@ class ProcessorSpecificRequest {
 
   ProcessorSpecificRequest({this.boltPay});
 
-  factory ProcessorSpecificRequest.fromJson(Map<String, dynamic> json) =>
-      _$ProcessorSpecificRequestFromJson(json);
+  factory ProcessorSpecificRequest.fromJson(Map<String, dynamic> json) => _$ProcessorSpecificRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProcessorSpecificRequestToJson(this);
 }
@@ -224,8 +219,7 @@ class DescriptorRequest {
     this.phone,
   });
 
-  factory DescriptorRequest.fromJson(Map<String, dynamic> json) =>
-      _$DescriptorRequestFromJson(json);
+  factory DescriptorRequest.fromJson(Map<String, dynamic> json) => _$DescriptorRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$DescriptorRequestToJson(this);
 }
@@ -237,8 +231,7 @@ class TransactionGetRequest extends Searchable<TransactionGetResponse> {
   TransactionGetRequest(this.transactionId, {this.merchantId});
 
   @override
-  TransactionGetResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionGetResponse.fromJson(json);
+  TransactionGetResponse buildResponse(Map<String, dynamic> json) => TransactionGetResponse.fromJson(json);
 
   @override
   String getUrl() {
@@ -277,8 +270,7 @@ extension TranscationActionRequestTypeName on TransactionActionRequestType {
   }
 }
 
-abstract class TransactionActionRequest<Response extends Responsable>
-    extends Updatable<Response> {
+abstract class TransactionActionRequest<Response extends Responsable> extends Updatable<Response> {
   @JsonKey(ignore: true)
   final TransactionActionRequestType type;
 
@@ -291,8 +283,7 @@ abstract class TransactionActionRequest<Response extends Responsable>
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TransactionCaptureRequest
-    extends TransactionActionRequest<TransactionCaptureResponse> {
+class TransactionCaptureRequest extends TransactionActionRequest<TransactionCaptureResponse> {
   int amount;
   int taxAmount;
   bool taxExempt;
@@ -318,26 +309,22 @@ class TransactionCaptureRequest
   Map<String, dynamic> toJson() => _$TransactionCaptureRequestToJson(this);
 
   @override
-  TransactionCaptureResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionCaptureResponse.fromJson(json);
+  TransactionCaptureResponse buildResponse(Map<String, dynamic> json) => TransactionCaptureResponse.fromJson(json);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionVoidRequest extends TransactionActionRequest<TransactionVoidResponse> {
-  TransactionVoidRequest(String transactionId)
-      : super(transactionId, TransactionActionRequestType.voidAction);
+  TransactionVoidRequest(String transactionId) : super(transactionId, TransactionActionRequestType.voidAction);
 
   @override
   Map<String, dynamic> toJson() => _$TransactionVoidRequestToJson(this);
 
   @override
-  TransactionVoidResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionVoidResponse.fromJson(json);
+  TransactionVoidResponse buildResponse(Map<String, dynamic> json) => TransactionVoidResponse.fromJson(json);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TransactionRefundRequest
-    extends TransactionActionRequest<TransactionRefundResponse> {
+class TransactionRefundRequest extends TransactionActionRequest<TransactionRefundResponse> {
   int amount;
   String ipAddress;
   String terminalId;
@@ -356,60 +343,50 @@ class TransactionRefundRequest
   }) : super(transactionId, TransactionActionRequestType.refund);
 
   @override
-  TransactionRefundResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionRefundResponse.fromJson(json);
+  TransactionRefundResponse buildResponse(Map<String, dynamic> json) => TransactionRefundResponse.fromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$TransactionRefundRequestToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TransactionCreateVaultRequest
-    extends TransactionActionRequest<TransactionCreateVaultResponse> {
-  TransactionCreateVaultRequest(String transactionId)
-      : super(transactionId, TransactionActionRequestType.vault);
+class TransactionCreateVaultRequest extends TransactionActionRequest<TransactionCreateVaultResponse> {
+  TransactionCreateVaultRequest(String transactionId) : super(transactionId, TransactionActionRequestType.vault);
 
   @override
-  TransactionCreateVaultResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionCreateVaultResponse.fromJson(json);
+  TransactionCreateVaultResponse buildResponse(Map<String, dynamic> json) => TransactionCreateVaultResponse.fromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$TransactionCreateVaultRequestToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TransactionEmailReceiptRequest
-    extends TransactionActionRequest<TransactionEmailReceiptResponse> {
+class TransactionEmailReceiptRequest extends TransactionActionRequest<TransactionEmailReceiptResponse> {
   final String emailAddress;
 
   TransactionEmailReceiptRequest(this.emailAddress, String transactionId)
       : super(transactionId, TransactionActionRequestType.email);
 
   @override
-  TransactionEmailReceiptResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionEmailReceiptResponse.fromJson(json);
+  TransactionEmailReceiptResponse buildResponse(Map<String, dynamic> json) => TransactionEmailReceiptResponse.fromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$TransactionEmailReceiptRequestToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TransactionPrintReceiptRequest
-    extends TransactionActionRequest<TransactionPrintReceiptResponse> {
-  TransactionPrintReceiptRequest(String transactionId)
-      : super(transactionId, TransactionActionRequestType.print);
+class TransactionPrintReceiptRequest extends TransactionActionRequest<TransactionPrintReceiptResponse> {
+  TransactionPrintReceiptRequest(String transactionId) : super(transactionId, TransactionActionRequestType.print);
 
   @override
-  TransactionPrintReceiptResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionPrintReceiptResponse.fromJson(json);
+  TransactionPrintReceiptResponse buildResponse(Map<String, dynamic> json) => TransactionPrintReceiptResponse.fromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$TransactionPrintReceiptRequestToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TransactionTipAdjustmentRequest
-    extends TransactionActionRequest<TransactionTipAdjustmentResponse> {
+class TransactionTipAdjustmentRequest extends TransactionActionRequest<TransactionTipAdjustmentResponse> {
   int tip;
   int baseAmount;
 
@@ -417,8 +394,7 @@ class TransactionTipAdjustmentRequest
       : super(transactionId, TransactionActionRequestType.tipAdjust);
 
   @override
-  TransactionTipAdjustmentResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionTipAdjustmentResponse.fromJson(json);
+  TransactionTipAdjustmentResponse buildResponse(Map<String, dynamic> json) => TransactionTipAdjustmentResponse.fromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$TransactionTipAdjustmentRequestToJson(this);
@@ -445,8 +421,7 @@ class TransactionMultiRequest extends Creatable<TransactionMultiResponse> {
       this.transactions});
 
   @override
-  TransactionMultiResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionMultiResponse.fromJson(json);
+  TransactionMultiResponse buildResponse(Map<String, dynamic> json) => TransactionMultiResponse.fromJson(json);
 
   @override
   String getUrl() => '/transaction/multi';
@@ -488,8 +463,7 @@ class TransactionMultiRequestData extends Decodable {
     this.lineItems,
   });
 
-  factory TransactionMultiRequestData.fromJson(Map<String, dynamic> json) =>
-      _$TransactionMultiRequestDataFromJson(json);
+  factory TransactionMultiRequestData.fromJson(Map<String, dynamic> json) => _$TransactionMultiRequestDataFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$TransactionMultiRequestDataToJson(this);
@@ -502,8 +476,7 @@ class TransactionMultiVoidRequest extends Creatable<TransactionMultiVoidResponse
   TransactionMultiVoidRequest({this.transactions});
 
   @override
-  TransactionMultiVoidResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionMultiVoidResponse.fromJson(json);
+  TransactionMultiVoidResponse buildResponse(Map<String, dynamic> json) => TransactionMultiVoidResponse.fromJson(json);
 
   @override
   String getUrl() => '/transaction/multi/void';
@@ -518,8 +491,7 @@ class VoidTransactionData extends Decodable {
 
   VoidTransactionData({this.id});
 
-  factory VoidTransactionData.fromJson(Map<String, dynamic> json) =>
-      _$VoidTransactionDataFromJson(json);
+  factory VoidTransactionData.fromJson(Map<String, dynamic> json) => _$VoidTransactionDataFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$VoidTransactionDataToJson(this);
@@ -532,8 +504,7 @@ class TransactionMultiRefundRequest extends Creatable<TransactionMultiRefundResp
   TransactionMultiRefundRequest({this.transactions});
 
   @override
-  TransactionMultiRefundResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionMultiRefundResponse.fromJson(json);
+  TransactionMultiRefundResponse buildResponse(Map<String, dynamic> json) => TransactionMultiRefundResponse.fromJson(json);
 
   @override
   String getUrl() => '/transaction/multi/void';
@@ -549,8 +520,7 @@ class RefundTransactionData extends Decodable {
 
   RefundTransactionData({this.id, this.amount});
 
-  factory RefundTransactionData.fromJson(Map<String, dynamic> json) =>
-      _$RefundTransactionDataFromJson(json);
+  factory RefundTransactionData.fromJson(Map<String, dynamic> json) => _$RefundTransactionDataFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$RefundTransactionDataToJson(this);
@@ -657,45 +627,13 @@ class TransactionSearchRequest extends Searchable<TransactionSearchResponse> {
       this.offset});
 
   @override
-  TransactionSearchResponse buildResponse(Map<String, dynamic> json) =>
-      TransactionSearchResponse.fromJson(json);
+  TransactionSearchResponse buildResponse(Map<String, dynamic> json) => TransactionSearchResponse.fromJson(json);
 
   @override
   String getUrl() => '/transaction/search${merchantId != null ? '/$merchantId' : ''}';
 
   @override
   Map<String, dynamic> toJson() => _$TransactionSearchRequestToJson(this);
-}
-
-abstract class QuerySearchParam<Value> extends Decodable {
-  String operator;
-  Value value;
-
-  QuerySearchParam({this.operator, this.value});
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class QuerySearchParamString extends QuerySearchParam<String> {
-  QuerySearchParamString({String operator, String value})
-      : super(operator: operator, value: value);
-
-  factory QuerySearchParamString.fromJson(Map<String, dynamic> json) =>
-      _$QuerySearchParamStringFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$QuerySearchParamStringToJson(this);
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class QuerySearchParamInt extends QuerySearchParam<int> {
-  QuerySearchParamInt({String operator, int value})
-      : super(operator: operator, value: value);
-
-  factory QuerySearchParamInt.fromJson(Map<String, dynamic> json) =>
-      _$QuerySearchParamIntFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$QuerySearchParamIntToJson(this);
 }
 
 enum SearchDateRangeDuration {
@@ -712,12 +650,10 @@ enum SearchDateRangeDuration {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class SearchDateRange extends Decodable {
-  DateTime startDate;
-  DateTime endDate;
+class SearchDateRange extends QuerySearchParamDateRange {
   SearchDateRangeDuration duration;
 
-  SearchDateRange({this.startDate, this.endDate, this.duration});
+  SearchDateRange({DateTime startDate, DateTime endDate, this.duration}) : super(startDate: startDate, endDate: endDate);
 
   SearchDateRange.fromDuration(SearchDateRangeDuration duration) {
     final now = DateTime.now();
@@ -725,28 +661,23 @@ class SearchDateRange extends Decodable {
     switch (duration) {
       case SearchDateRangeDuration.today:
         startDate = DateTime(now.year, now.month, now.day);
-        endDate = DateTime(now.year, now.month, now.day)
-            .add(Duration(days: 1))
-            .subtract(Duration(microseconds: 1));
+        endDate = DateTime(now.year, now.month, now.day).add(Duration(days: 1)).subtract(Duration(microseconds: 1));
         break;
       case SearchDateRangeDuration.yesterday:
         startDate = DateTime(now.year, now.month, now.day).subtract(Duration(days: 1));
-        endDate =
-            DateTime(now.year, now.month, now.day).subtract(Duration(microseconds: 1));
+        endDate = DateTime(now.year, now.month, now.day).subtract(Duration(microseconds: 1));
         break;
       case SearchDateRangeDuration.thisMonth:
         startDate = DateTime(now.year, now.month);
 
         final nextMonth = now.month + 1;
-        endDate = DateTime(now.year + nextMonth ~/ DateTime.monthsPerYear,
-                nextMonth % DateTime.monthsPerYear)
+        endDate = DateTime(now.year + nextMonth ~/ DateTime.monthsPerYear, nextMonth % DateTime.monthsPerYear)
             .subtract(Duration(microseconds: 1));
         break;
       case SearchDateRangeDuration.lastMonth:
         if (now.month == DateTime.january) {
           startDate = DateTime(now.year - 1, DateTime.december);
-          endDate =
-              DateTime(now.year, DateTime.january).subtract(Duration(microseconds: 1));
+          endDate = DateTime(now.year, DateTime.january).subtract(Duration(microseconds: 1));
         } else {
           startDate = DateTime(now.year, now.month - 1);
           endDate = DateTime(now.year, now.month).subtract(Duration(microseconds: 1));
@@ -763,8 +694,7 @@ class SearchDateRange extends Decodable {
     }
   }
 
-  factory SearchDateRange.fromJson(Map<String, dynamic> json) =>
-      _$SearchDateRangeFromJson(json);
+  factory SearchDateRange.fromJson(Map<String, dynamic> json) => _$SearchDateRangeFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$SearchDateRangeToJson(this);

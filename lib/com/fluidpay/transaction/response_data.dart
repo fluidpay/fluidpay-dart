@@ -1,5 +1,5 @@
 import 'package:fluidpay/com/fluidpay/common/base.dart';
-import 'package:fluidpay/com/fluidpay/transaction/common.dart';
+import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'response_data.g.dart';

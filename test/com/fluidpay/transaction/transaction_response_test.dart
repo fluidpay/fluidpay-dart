@@ -1,4 +1,4 @@
-import 'package:fluidpay/com/fluidpay/transaction/common.dart';
+import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/transaction/response.dart';
 import 'package:test/test.dart';
 
