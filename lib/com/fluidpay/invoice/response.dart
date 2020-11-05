@@ -6,16 +6,6 @@ import 'common.dart';
 part 'response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class InvoiceCreateResponse extends Responsable<InvoiceCreateResponseData> {
-  InvoiceCreateResponse();
-
-  factory InvoiceCreateResponse.fromJson(Map<String, dynamic> json) =>
-      _$InvoiceCreateResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$InvoiceCreateResponseToJson(this);
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceCreateResponseData extends InvoiceResponseData {
   InvoiceCreateResponseData() : super();
 
@@ -24,6 +14,16 @@ class InvoiceCreateResponseData extends InvoiceResponseData {
 
   @override
   Map<String, dynamic> toJson() => _$InvoiceCreateResponseDataToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class InvoiceCreateResponse extends Responsable<InvoiceCreateResponseData> {
+  InvoiceCreateResponse();
+
+  factory InvoiceCreateResponse.fromJson(Map<String, dynamic> json) =>
+      _$InvoiceCreateResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$InvoiceCreateResponseToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)

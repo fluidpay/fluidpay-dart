@@ -79,3 +79,30 @@ class CustomerDeleteRequest extends Deletable<CustomerDeleteResponse> {
   @override
   String getUrl() => '/vault/${id}';
 }
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerUpdateRequest extends Updatable<CustomerUpdateResponse> {
+  String id;
+  String description;
+  String notes;
+  CustomerDefaults defaults;
+  List<String> flags;
+
+  CustomerUpdateRequest(
+    this.id, {
+    this.description,
+    this.notes,
+    this.defaults,
+    this.flags,
+  });
+
+  @override
+  CustomerUpdateResponse buildResponse(Map<String, dynamic> json) =>
+      CustomerUpdateResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/vault/customer/${id}';
+
+  @override
+  Map<String, dynamic> toJson() => _$CustomerUpdateRequestToJson(this);
+}

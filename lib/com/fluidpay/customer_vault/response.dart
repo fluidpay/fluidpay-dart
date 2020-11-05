@@ -149,3 +149,14 @@ class CustomerDeleteResponse extends Responsable<dynamic> {
 
   Map<String, dynamic> toJson() => _$CustomerDeleteResponseToJson(this);
 }
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerUpdateResponse extends Responsable<dynamic> {
+  CustomerUpdateResponse();
+
+  factory CustomerUpdateResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerUpdateResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerUpdateResponseToJson(this);
+}
+
