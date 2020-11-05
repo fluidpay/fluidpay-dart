@@ -2,6 +2,7 @@ import 'package:fluidpay/com/fluidpay/common/actions.dart';
 import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/customer_vault/common.dart';
 import 'package:fluidpay/com/fluidpay/customer_vault/response.dart';
+import 'package:fluidpay/com/fluidpay/invoice/common.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'request.g.dart';
@@ -105,4 +106,67 @@ class CustomerUpdateRequest extends Updatable<CustomerUpdateResponse> {
 
   @override
   Map<String, dynamic> toJson() => _$CustomerUpdateRequestToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerSearchRequest extends Searchable<CustomerSearchResponse> {
+  QuerySearchParamString id;
+  QuerySearchParamString paymentMethodType;
+  QuerySearchParamString paymentMethodId;
+  QuerySearchParamString billingAddressId;
+  QuerySearchParamString shippingAddressId;
+  QuerySearchParamString addressId;
+  QuerySearchParamString firstName;
+  QuerySearchParamString lastName;
+  QuerySearchParamString company;
+  @JsonKey(name: 'address_line_1')
+  QuerySearchParamString addressLine1;
+  @JsonKey(name: 'address_line_2')
+  QuerySearchParamString addressLine2;
+  QuerySearchParamString city;
+  QuerySearchParamString state;
+  QuerySearchParamString postalCode;
+  QuerySearchParamString country;
+  QuerySearchParamString email;
+  QuerySearchParamString phone;
+  QuerySearchParamString fax;
+  QuerySearchParamDateRange createdAt;
+  QuerySearchParamDateRange updatedAt;
+  int limit;
+  int offset;
+
+  CustomerSearchRequest({
+    this.id,
+    this.paymentMethodType,
+    this.paymentMethodId,
+    this.billingAddressId,
+    this.shippingAddressId,
+    this.addressId,
+    this.firstName,
+    this.lastName,
+    this.company,
+    this.addressLine1,
+    this.addressLine2,
+    this.city,
+    this.state,
+    this.postalCode,
+    this.country,
+    this.email,
+    this.phone,
+    this.fax,
+    this.createdAt,
+    this.updatedAt,
+    this.limit,
+    this.offset,
+  });
+
+  @override
+  CustomerSearchResponse buildResponse(Map<String, dynamic> json) =>
+      CustomerSearchResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/vault/customer/search';
+
+  @override
+  Map<String, dynamic> toJson() => _$CustomerSearchRequestToJson(this);
 }

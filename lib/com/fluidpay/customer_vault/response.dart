@@ -141,6 +141,16 @@ class CustomerGetResponseData extends CustomerResponseData {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerSearchResponse extends Responsable<List<CustomerResponseData>> {
+  CustomerSearchResponse();
+
+  factory CustomerSearchResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerSearchResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerSearchResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerDeleteResponse extends Responsable<dynamic> {
   CustomerDeleteResponse();
 
