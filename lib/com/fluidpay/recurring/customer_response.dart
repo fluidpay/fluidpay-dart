@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'customer_response.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerResponse
     extends Responsable<CustomerResponseData> {
   CustomerResponse();

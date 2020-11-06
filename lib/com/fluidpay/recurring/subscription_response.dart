@@ -7,7 +7,7 @@ import 'customer_response.dart';
 
 part 'subscription_response.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class SubscriptionResponse extends Responsable<SubscriptionResponseData> {
   SubscriptionResponse();
 
@@ -17,7 +17,7 @@ class SubscriptionResponse extends Responsable<SubscriptionResponseData> {
   Map<String, dynamic> toJson() => _$SubscriptionResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class SubscriptionSearchResponse
     extends Responsable<List<SubscriptionResponseData>> {
   SubscriptionSearchResponse();

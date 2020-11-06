@@ -17,6 +17,7 @@ abstract class Requestable<Response extends Responsable> with Serializable {
 abstract class Responsable<Data> {
   String status;
   String msg;
+  int statusCode;
   @JsonKey(name: 'total_count')
   int totalCount;
   Data data;
@@ -25,7 +26,7 @@ abstract class Responsable<Data> {
 
   @override
   String toString() {
-    return 'BaseResponse{status: $status, msg: $msg, totalCount: $totalCount, data: $data}';
+    return 'BaseResponse{status: $status, statusCode: $statusCode, msg: $msg, totalCount: $totalCount, data: $data}';
   }
 }
 

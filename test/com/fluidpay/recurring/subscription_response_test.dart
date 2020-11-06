@@ -11,6 +11,7 @@ void testSubscriptionSearchResponse() {
   test('SubscriptionResponse fromJson to Json', () {
     var resp = SubscriptionSearchResponse.fromJson({
       'status': 'success',
+      'status_code':200,
       'msg': 'success',
       'data': [
         {
@@ -83,6 +84,7 @@ void testSubscriptionSearchResponse() {
       'total_count': 1,
     });
     expect(resp.status, 'success');
+    expect(resp.statusCode, 200);
     expect(resp.msg, 'success');
     expect(resp.totalCount, 1);
 
