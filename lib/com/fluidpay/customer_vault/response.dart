@@ -120,6 +120,27 @@ class CustomerPaymentTypeCreateResponseData extends CustomerResponseData {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerPaymentTypeUpdateResponse extends Responsable<CustomerPaymentTypeUpdateResponseData> {
+  CustomerPaymentTypeUpdateResponse();
+
+  factory CustomerPaymentTypeUpdateResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerPaymentTypeUpdateResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerPaymentTypeUpdateResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerPaymentTypeUpdateResponseData extends CustomerResponseData {
+  CustomerPaymentTypeUpdateResponseData() : super();
+
+  factory CustomerPaymentTypeUpdateResponseData.fromJson(Map<String, dynamic> json) =>
+      _$CustomerPaymentTypeUpdateResponseDataFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CustomerPaymentTypeUpdateResponseDataToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerDeleteResponse extends Responsable<dynamic> {
   CustomerDeleteResponse();
 

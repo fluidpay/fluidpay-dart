@@ -246,7 +246,8 @@ class CustomerPaymentTypeCreateRequest
       CustomerPaymentTypeCreateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}';
+  String getUrl() =>
+      '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}';
 
   @override
   Map<String, dynamic> toJson() => data.toJson();
@@ -258,5 +259,30 @@ class CustomerPaymentTypeCreateRequest
       };
 }
 
-enum CustomerPaymentType { card, ach }
+@JsonSerializable(fieldRename: FieldRename.snake, createFactory: false)
+class CustomerPaymentTypeUpdateRequest
+    extends Updatable<CustomerPaymentTypeUpdateResponse> {
+  @JsonKey(ignore: true)
+  String customerId;
+  @JsonKey(ignore: true)
+  String paymentTypeId;
+  CustomerPaymentType paymentType;
+  CustomerPaymentMethod data;
 
+  CustomerPaymentTypeUpdateRequest(
+      this.customerId, this.paymentType, this.paymentTypeId,
+      {this.data});
+
+  @override
+  CustomerPaymentTypeUpdateResponse buildResponse(Map<String, dynamic> json) =>
+      CustomerPaymentTypeUpdateResponse.fromJson(json);
+
+  @override
+  String getUrl() =>
+      '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}}/${paymentTypeId}';
+
+  @override
+  Map<String, dynamic> toJson() => data.toJson();
+}
+
+enum CustomerPaymentType { card, ach, token }
