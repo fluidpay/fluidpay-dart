@@ -10,7 +10,11 @@ class Gateway {
   String apiKey;
   String authToken;
 
-  Gateway({this.baseUrl = 'https://fluidpay.com/api', this.apiKey, this.authToken});
+  Gateway(this.baseUrl, {this.apiKey, this.authToken}) {
+    if (baseUrl?.isEmpty != false) {
+      throw ArgumentError('baseUrl must not be null or empty');
+    }
+  }
 
   Future<Response> create<Response extends Responsable>(
       Creatable<Response> request) {
