@@ -1,8 +1,8 @@
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
 import 'package:fluidpay/com/fluidpay/common/base.dart';
+import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/customer_vault/common.dart';
 import 'package:fluidpay/com/fluidpay/customer_vault/response.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'request.g.dart';

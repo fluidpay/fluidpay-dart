@@ -1,9 +1,9 @@
 import 'dart:convert';
 
+import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/customer_vault/common.dart';
 import 'package:fluidpay/com/fluidpay/customer_vault/request.dart';
 import 'package:fluidpay/com/fluidpay/customer_vault/response.dart';
-import 'package:fluidpay/com/fluidpay/invoice/common.dart';
 import 'package:test/test.dart';
 
 void main() {
