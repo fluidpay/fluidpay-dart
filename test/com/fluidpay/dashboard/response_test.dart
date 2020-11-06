@@ -13,6 +13,7 @@ void testNewsSearchResponse() {
   test('testNewsSearchResponse fromJson', () {
     var resp = NewsSearchResponse.fromJson({
       'status': 'success',
+      'status_code': 200,
       'msg': 'success',
       'data': [
         {
@@ -30,6 +31,7 @@ void testNewsSearchResponse() {
       'total_count': 1,
     });
     expect(resp.status, 'success');
+    expect(resp.statusCode, 200);
     expect(resp.msg, 'success');
 
     expect(resp.data[0].id, 'testId');
@@ -50,6 +52,7 @@ void testRecurringStatsSearchResponse() {
   test('testRecurringStatsSearchResponse fromJson', () {
     var resp = RecurringStatsSearchResponse.fromJson({
       'status': 'success',
+      'status_code': 200,
       'msg': 'success',
       'data': {
         'customer_count': 55,
@@ -58,6 +61,7 @@ void testRecurringStatsSearchResponse() {
     });
 
     expect(resp.status, 'success');
+    expect(resp.statusCode, 200);
     expect(resp.msg, 'success');
 
     expect(resp.data.customerCount, 55);
@@ -69,6 +73,7 @@ void testSettlementStatsSearchResponse() {
   test('testSettlementStatsSearchResponse fromJson', () {
     var resp = SettlementStatsSearchResponse.fromJson({
       'status': 'success',
+      'status_code': 200,
       'msg': 'success',
       'data': {
         'captured': [
@@ -81,6 +86,7 @@ void testSettlementStatsSearchResponse() {
     });
 
     expect(resp.status, 'success');
+    expect(resp.statusCode, 200);
     expect(resp.msg, 'success');
 
     expect(resp.data.captured[0].x, 12);
@@ -94,6 +100,7 @@ void testTransactionStatsSearchResponse() {
   test('testTransactionStatsSearchResponse fromJson', () {
     var resp = TransactionStatsSearchResponse.fromJson({
       'status': 'success',
+      'status_code': 200,
       'msg': 'success',
       'data': {
         'transaction_count': [
@@ -118,6 +125,7 @@ void testTransactionStatsSearchResponse() {
     });
 
     expect(resp.status, 'success');
+    expect(resp.statusCode, 200);
     expect(resp.msg, 'success');
 
     expect(resp.data.transactionCount[0].x, 12);
@@ -139,6 +147,7 @@ void testInvoiceStatsSearchResponse() {
   test('testInvoiceStatsSearchResponse fromJson', () {
     var resp = InvoiceStatsSearchResponse.fromJson({
       'status': 'success',
+      'status_code': 200,
       'msg': 'success',
       'data': {
         'outstanding': {
@@ -159,6 +168,7 @@ void testInvoiceStatsSearchResponse() {
     });
 
     expect(resp.status, 'success');
+    expect(resp.statusCode, 200);
     expect(resp.msg, 'success');
 
     expect(resp.data.outstanding.total.count, 1);

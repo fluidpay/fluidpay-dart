@@ -5,7 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'plan_response.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class PlanResponse extends Responsable<PlanResponseData> {
   PlanResponse();
 
@@ -15,7 +15,7 @@ class PlanResponse extends Responsable<PlanResponseData> {
   Map<String, dynamic> toJson() => _$PlanResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class PlanSearchResponse extends Responsable<List<PlanResponseData>> {
   PlanSearchResponse();
 
