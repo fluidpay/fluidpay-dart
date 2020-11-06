@@ -279,10 +279,34 @@ class CustomerPaymentTypeUpdateRequest
 
   @override
   String getUrl() =>
-      '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}}/${paymentTypeId}';
+      '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}/${paymentTypeId}';
 
   @override
   Map<String, dynamic> toJson() => data.toJson();
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake, createFactory: false)
+class CustomerPaymentTypeDeleteRequest
+    extends Deletable<CustomerPaymentTypeDeleteResponse> {
+  @JsonKey(ignore: true)
+  String customerId;
+  @JsonKey(ignore: true)
+  String paymentTypeId;
+  CustomerPaymentType paymentType;
+
+  CustomerPaymentTypeDeleteRequest(
+    this.customerId,
+    this.paymentType,
+    this.paymentTypeId,
+  );
+
+  @override
+  CustomerPaymentTypeDeleteResponse buildResponse(Map<String, dynamic> json) =>
+      CustomerPaymentTypeDeleteResponse.fromJson(json);
+
+  @override
+  String getUrl() =>
+      '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}/${paymentTypeId}';
 }
 
 enum CustomerPaymentType { card, ach, token }

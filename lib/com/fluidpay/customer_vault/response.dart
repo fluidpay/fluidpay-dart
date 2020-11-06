@@ -171,6 +171,16 @@ class CustomerUpdateResponse extends Responsable<dynamic> {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
+class CustomerPaymentTypeDeleteResponse extends Responsable<dynamic> {
+  CustomerPaymentTypeDeleteResponse();
+
+  factory CustomerPaymentTypeDeleteResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerPaymentTypeDeleteResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerPaymentTypeDeleteResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerResponseData extends Decodable {
   String id;
   CustomerDataContainer data;

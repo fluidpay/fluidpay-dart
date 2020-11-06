@@ -23,6 +23,8 @@ void main() {
       testCustomerPaymentTypeCreateRequest);
   test('CustomerPaymentTypeUpdateRequest getUrl and toJson',
       testCustomerPaymentTypeUpdateRequest);
+  test('CustomerPaymentTypeDeleteRequest getUrl',
+      testCustomerPaymentTypeDeleteRequestGetUrl);
 }
 
 void testCustomerCreateRequestToJson() {
@@ -225,7 +227,17 @@ void testCustomerPaymentTypeUpdateRequest() {
         cardType: 'visa',
       ));
 
-  expect(req.getUrl(), '/vault/customer/customer_id/card}/payment_type_id');
+  expect(req.getUrl(), '/vault/customer/customer_id/card/payment_type_id');
   expect(jsonEncode(req.toJson()),
       '{"id":null,"number":"4111111111111111","masked_number":null,"encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":null,"flags":null,"lock_value":null,"cvc":"999","initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}');
+}
+
+void testCustomerPaymentTypeDeleteRequestGetUrl() {
+  var req = CustomerPaymentTypeDeleteRequest(
+    'customer_id',
+    CustomerPaymentType.card,
+    'payment_type_id',
+  );
+
+  expect(req.getUrl(), '/vault/customer/customer_id/card/payment_type_id');
 }
