@@ -298,8 +298,8 @@ void _testInputData(CustomerResponseData data) {
   expect(data.data.customer.addresses[0].firstName, 'John');
   expect(data.data.customer.addresses[0].lastName, 'Doe');
   expect(data.data.customer.addresses[0].company, 'John Doe Corp');
-  expect(data.data.customer.addresses[0].line1, '2nd street');
-  expect(data.data.customer.addresses[0].line2, '123');
+  expect(data.data.customer.addresses[0].addressLine1, '2nd street');
+  expect(data.data.customer.addresses[0].addressLine2, '123');
   expect(data.data.customer.addresses[0].city, 'Chicago');
   expect(data.data.customer.addresses[0].state, 'IL');
   expect(data.data.customer.addresses[0].postalCode, '60123');

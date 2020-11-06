@@ -10,9 +10,9 @@ class CustomerAddress extends Decodable {
   String lastName;
   String company;
   @JsonKey(name: 'line_1')
-  String line1;
+  String addressLine1;
   @JsonKey(name: 'line_2')
-  String line2;
+  String addressLine2;
   String city;
   String state;
   String postalCode;
@@ -27,8 +27,8 @@ class CustomerAddress extends Decodable {
     this.firstName,
     this.lastName,
     this.company,
-    this.line1,
-    this.line2,
+    this.addressLine1,
+    this.addressLine2,
     this.city,
     this.state,
     this.postalCode,
