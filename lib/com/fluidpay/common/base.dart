@@ -19,6 +19,7 @@ abstract class Requestable<Response extends Responsable> with Serializable {
 abstract class Responsable<Data> {
   String status;
   String msg;
+  @JsonKey(name: 'status_code')
   int statusCode;
   @JsonKey(name: 'total_count')
   int totalCount;
