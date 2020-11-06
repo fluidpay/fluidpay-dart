@@ -1,8 +1,8 @@
 import 'dart:convert';
 
+import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/invoice/common.dart';
 import 'package:fluidpay/com/fluidpay/invoice/request.dart';
-import 'package:fluidpay/com/fluidpay/line_item/line_item.dart';
 import 'package:test/test.dart';
 
 void main() {

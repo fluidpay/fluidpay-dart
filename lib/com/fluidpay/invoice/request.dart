@@ -1,6 +1,6 @@
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
+import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/invoice/response.dart';
-import 'package:fluidpay/com/fluidpay/line_item/line_item.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'common.dart';
 
