@@ -1,43 +1,47 @@
 import 'package:fluidpay/com/fluidpay/common/base.dart';
+import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'common.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class CustomerAddress extends Decodable {
+class CustomerAddress extends Address {
   String id;
-  String firstName;
-  String lastName;
-  String company;
+  @override
   @JsonKey(name: 'line_1')
   String addressLine1;
+  @override
   @JsonKey(name: 'line_2')
   String addressLine2;
-  String city;
-  String state;
-  String postalCode;
-  String country;
-  String phone;
-  String fax;
-  String email;
   String hash;
 
   CustomerAddress({
     this.id,
-    this.firstName,
-    this.lastName,
-    this.company,
+    firstName,
+    lastName,
+    company,
     this.addressLine1,
     this.addressLine2,
-    this.city,
-    this.state,
-    this.postalCode,
-    this.country,
-    this.phone,
-    this.fax,
-    this.email,
+    city,
+    state,
+    postalCode,
+    country,
+    phone,
+    fax,
+    email,
     this.hash,
-  });
+  }) : super(
+          firstName: firstName,
+          lastName: lastName,
+          company: company,
+          city: city,
+          state: state,
+          postalCode: postalCode,
+          country: country,
+          phone: phone,
+          fax: fax,
+          email: email,
+        );
 
   @override
   Map<String, dynamic> toJson() => _$CustomerAddressToJson(this);
