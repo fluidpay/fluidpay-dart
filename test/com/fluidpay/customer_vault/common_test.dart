@@ -28,7 +28,7 @@ void testCustomerAddressToJson() {
   );
 
   expect(jsonEncode(req.toJson()),
-      '{"id":"some_id","first_name":"John","last_name":"Doe","company":"John Doe Corp","line_1":"2nd street","line_2":"123","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"55555555","fax":"55555555","email":"johndoe@testemail.asd","hash":"hashdata"}');
+      '{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"55555555","fax":"55555555","email":"johndoe@testemail.asd","id":"some_id","line_1":"2nd street","line_2":"123","hash":"hashdata"}');
 }
 
 void testCustomerCardToJson() {
