@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:fluidpay/com/fluidpay/authentication/request.dart';
+import 'package:fluidpay/com/fluidpay/authentication/response.dart';
 import 'package:http/http.dart' as http;
 
 import 'common/actions.dart';
@@ -10,28 +12,36 @@ class Gateway {
 
   String _baseUrl;
   String apiKey;
-  String authToken;
+  AuthLoginResponseData _authData;
 
   Gateway._internal();
 
-  void init(String baseUrl, {String apiKey, String authToken}) {
+  void init(String baseUrl, {String apiKey}) {
     _baseUrl = baseUrl;
     this.apiKey = apiKey;
-    this.authToken = authToken;
   }
 
   _CommonClient get _client {
     if (_baseUrl?.isEmpty != false) {
-      throw ArgumentError('\'baseUrl\' must not be null or empty. Use init method to set it properly.');
+      throw ArgumentError(
+          '\'baseUrl\' must not be null or empty. Use init method to set it properly.');
     }
-    return _CommonClient(_baseUrl, apiKey, authToken);
+    return _CommonClient(_baseUrl, apiKey, _authData);
+  }
+
+  Future<AuthLoginResponse> login(AuthLoginRequest loginRequest) async {
+    final authResponse = await search(loginRequest);
+
+    if (authResponse.statusCode == 200) {
+      _authData = authResponse.data;
+    }
+
+    return authResponse;
   }
 
   Future<Response> create<Response extends Responsable>(
       Creatable<Response> request) {
-    return _client
-        .post(request)
-        .then((value) => request.buildResponse(value));
+    return _client.post(request).then((value) => request.buildResponse(value));
   }
 
   Future<Response> get<Response extends Responsable>(
@@ -43,18 +53,14 @@ class Gateway {
 
   Future<Response> search<Response extends Responsable>(
       Searchable<Response> request) {
-    return _client
-        .post(request)
-        .then((value) {
+    return _client.post(request).then((value) {
       return request.buildResponse(value);
     });
   }
 
   Future<Response> update<Response extends Responsable>(
       Updatable<Response> request) {
-    return _client
-        .post(request)
-        .then((value) => request.buildResponse(value));
+    return _client.post(request).then((value) => request.buildResponse(value));
   }
 
   Future<Response> delete<Response extends Responsable>(
@@ -68,13 +74,14 @@ class Gateway {
 class _CommonClient {
   final String baseUrl;
   final String apiKey;
-  final String authToken;
+  final AuthLoginResponseData authData;
 
   final headers = {'Content-Type': 'application/json'};
 
-  _CommonClient(this.baseUrl, this.apiKey, this.authToken) {
-    if (authToken != null) {
-      headers['Authorization'] = 'Bearer $authToken';
+  _CommonClient(this.baseUrl, this.apiKey, this.authData) {
+    if (authData != null) {
+      headers['Authorization'] = 'Bearer ${authData.token}';
+      headers['Cookie'] = 'sid=${authData.sid}';
     } else if (apiKey != null) {
       headers['Authorization'] = apiKey;
     }

@@ -90,14 +90,14 @@ void _transactionSearchRequestToJsonTest() {
     ..updatedAt = _createSDR()
     ..capturedAt = _createSDR()
     ..settledAt = _createSDR()
-    ..limit = _createQSPS()
-    ..offset = _createQSPS();
+    ..limit = 300
+    ..offset = 400;
 
   expect(_transactionSearchRequestJson, jsonEncode(request.toJson()));
 }
 
 final _transactionSearchRequestJson =
-    '{"transaction_or_order_id":$_querySPStringJson,"transaction_id":$_querySPStringJson,"user_id":$_querySPStringJson,"user_name":$_querySPStringJson,"type":$_querySPStringJson,"transaction_source":$_querySPStringJson,"ip_address":$_querySPStringJson,"amount":$_querySPIntJson,"amount_authorized":$_querySPIntJson,"amount_captured":$_querySPIntJson,"amount_settled":$_querySPIntJson,"tax_amount":$_querySPIntJson,"po_number":$_querySPStringJson,"order_id":$_querySPStringJson,"settlement_batch_id":$_querySPStringJson,"currency_iso_code":$_querySPStringJson,"payment_method":$_querySPStringJson,"payment_type":$_querySPStringJson,"status":$_querySPStringJson,"state":$_querySPStringJson,"processor_id":$_querySPStringJson,"processor_name":$_querySPStringJson,"terminal_id":$_querySPStringJson,"terminal_description":$_querySPStringJson,"subscription_id":$_querySPStringJson,"customer_id":$_querySPStringJson,"full_cc_number":$_querySPStringJson,"cc_last_four":$_querySPStringJson,"cc_first_six":$_querySPStringJson,"billing_address":$_addressJson,"shipping_address":$_addressJson,"custom_fields":{"test key 1":$_querySPStringJson,"test key 2":$_querySPStringJson},"created_at":$_searchDateRangeJson,"updated_at":$_searchDateRangeJson,"captured_at":$_searchDateRangeJson,"settled_at":$_searchDateRangeJson,"limit":$_querySPStringJson,"offset":$_querySPStringJson}';
+    '{"transaction_or_order_id":$_querySPStringJson,"transaction_id":$_querySPStringJson,"user_id":$_querySPStringJson,"user_name":$_querySPStringJson,"type":$_querySPStringJson,"transaction_source":$_querySPStringJson,"ip_address":$_querySPStringJson,"amount":$_querySPIntJson,"amount_authorized":$_querySPIntJson,"amount_captured":$_querySPIntJson,"amount_settled":$_querySPIntJson,"tax_amount":$_querySPIntJson,"po_number":$_querySPStringJson,"order_id":$_querySPStringJson,"settlement_batch_id":$_querySPStringJson,"currency_iso_code":$_querySPStringJson,"payment_method":$_querySPStringJson,"payment_type":$_querySPStringJson,"status":$_querySPStringJson,"state":$_querySPStringJson,"processor_id":$_querySPStringJson,"processor_name":$_querySPStringJson,"terminal_id":$_querySPStringJson,"terminal_description":$_querySPStringJson,"subscription_id":$_querySPStringJson,"customer_id":$_querySPStringJson,"full_cc_number":$_querySPStringJson,"cc_last_four":$_querySPStringJson,"cc_first_six":$_querySPStringJson,"billing_address":$_addressJson,"shipping_address":$_addressJson,"custom_fields":{"test key 1":$_querySPStringJson,"test key 2":$_querySPStringJson},"created_at":$_searchDateRangeJson,"updated_at":$_searchDateRangeJson,"captured_at":$_searchDateRangeJson,"settled_at":$_searchDateRangeJson,"limit":300,"offset":400}';
 final _querySPStringJson = '{"operator":"!=","value":"test value"}';
 final _querySPIntJson = '{"operator":"!=","value":100}';
 final _searchDateRangeJson =
