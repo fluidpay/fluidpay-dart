@@ -582,8 +582,8 @@ class TransactionSearchRequest extends Searchable<TransactionSearchResponse> {
   SearchDateRange capturedAt;
   SearchDateRange settledAt;
 
-  QuerySearchParamString limit;
-  QuerySearchParamString offset;
+  int limit;
+  int offset;
 
   TransactionSearchRequest(
       {this.merchantId,
