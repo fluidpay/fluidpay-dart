@@ -13,7 +13,7 @@ void testNewsSearchResponse() {
   test('testNewsSearchResponse fromJson', () {
     var resp = NewsSearchResponse.fromJson({
       'status': 'success',
-      'status_code':200,
+      'status_code': 200,
       'msg': 'success',
       'data': [
         {
@@ -52,7 +52,7 @@ void testRecurringStatsSearchResponse() {
   test('testRecurringStatsSearchResponse fromJson', () {
     var resp = RecurringStatsSearchResponse.fromJson({
       'status': 'success',
-      'status_code':200,
+      'status_code': 200,
       'msg': 'success',
       'data': {
         'customer_count': 55,
@@ -73,7 +73,7 @@ void testSettlementStatsSearchResponse() {
   test('testSettlementStatsSearchResponse fromJson', () {
     var resp = SettlementStatsSearchResponse.fromJson({
       'status': 'success',
-      'status_code':200,
+      'status_code': 200,
       'msg': 'success',
       'data': {
         'captured': [
@@ -100,7 +100,7 @@ void testTransactionStatsSearchResponse() {
   test('testTransactionStatsSearchResponse fromJson', () {
     var resp = TransactionStatsSearchResponse.fromJson({
       'status': 'success',
-      'status_code':200,
+      'status_code': 200,
       'msg': 'success',
       'data': {
         'transaction_count': [
@@ -147,7 +147,7 @@ void testInvoiceStatsSearchResponse() {
   test('testInvoiceStatsSearchResponse fromJson', () {
     var resp = InvoiceStatsSearchResponse.fromJson({
       'status': 'success',
-      'status_code':200,
+      'status_code': 200,
       'msg': 'success',
       'data': {
         'outstanding': {
