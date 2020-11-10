@@ -6,29 +6,6 @@ part of 'response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-InvoiceCreateResponse _$InvoiceCreateResponseFromJson(
-    Map<String, dynamic> json) {
-  return InvoiceCreateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = json['data'] == null
-        ? null
-        : InvoiceCreateResponseData.fromJson(
-            json['data'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$InvoiceCreateResponseToJson(
-        InvoiceCreateResponse instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'msg': instance.msg,
-      'status_code': instance.statusCode,
-      'total_count': instance.totalCount,
-      'data': instance.data,
-    };
-
 InvoiceCreateResponseData _$InvoiceCreateResponseDataFromJson(
     Map<String, dynamic> json) {
   return InvoiceCreateResponseData()
@@ -184,6 +161,29 @@ const _$SendViaEnumMap = {
   SendVia.email: 'email',
   SendVia.both: 'both',
 };
+
+InvoiceCreateResponse _$InvoiceCreateResponseFromJson(
+    Map<String, dynamic> json) {
+  return InvoiceCreateResponse()
+    ..status = json['status'] as String
+    ..msg = json['msg'] as String
+    ..statusCode = json['status_code'] as int
+    ..totalCount = json['total_count'] as int
+    ..data = json['data'] == null
+        ? null
+        : InvoiceCreateResponseData.fromJson(
+            json['data'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$InvoiceCreateResponseToJson(
+        InvoiceCreateResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'msg': instance.msg,
+      'status_code': instance.statusCode,
+      'total_count': instance.totalCount,
+      'data': instance.data,
+    };
 
 InvoiceUpdateResponse _$InvoiceUpdateResponseFromJson(
     Map<String, dynamic> json) {
