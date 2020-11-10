@@ -32,7 +32,9 @@ class Gateway {
 
   Future<Response> search<Response extends Responsable>(
       Searchable<Response> request) {
-    return _CommonClient(baseUrl, apiKey, authToken).post(request).then((value) {
+    return _CommonClient(baseUrl, apiKey, authToken)
+        .post(request)
+        .then((value) {
       return request.buildResponse(value);
     });
   }
@@ -57,9 +59,7 @@ class _CommonClient {
   final String apiKey;
   final String authToken;
 
-  final headers = {
-    'Content-Type': 'application/json'
-  };
+  final headers = {'Content-Type': 'application/json'};
 
   _CommonClient(this.baseUrl, this.apiKey, this.authToken) {
     if (authToken != null) {
@@ -79,19 +79,35 @@ class _CommonClient {
 
   Future<Map<String, dynamic>> post(Requestable baseRequest) => http
       .post(
-        baseUrl + baseRequest.getUrl(),
+        baseUrl +
+            Uri(
+              path: baseRequest.getUrl(),
+              queryParameters: baseRequest.getQueryParams(),
+            ).toString(),
         headers: headers,
         body: jsonEncode(baseRequest.toJson()),
       )
       .then(_createJsonFromResponse);
 
-  Future<Map<String, dynamic>> get(Requestable baseRequest) => http.get(
-        baseUrl + baseRequest.getUrl(),
-        headers: headers
-      ).then(_createJsonFromResponse);
+  Future<Map<String, dynamic>> get(Requestable baseRequest) => http
+      .get(
+        baseUrl +
+            Uri(
+              path: baseRequest.getUrl(),
+              queryParameters: baseRequest.getQueryParams(),
+            ).toString(),
+        headers: headers,
+      )
+      .then((value) => jsonDecode(value.body));
 
-  Future<Map<String, dynamic>> delete(Requestable baseRequest) => http.delete(
-        baseUrl + baseRequest.getUrl(),
-        headers: headers
-      ).then(_createJsonFromResponse);
+  Future<Map<String, dynamic>> delete(Requestable baseRequest) => http
+      .delete(
+        baseUrl +
+            Uri(
+              path: baseRequest.getUrl(),
+              queryParameters: baseRequest.getQueryParams(),
+            ).toString(),
+        headers: headers,
+      )
+      .then((value) => jsonDecode(value.body));
 }
