@@ -678,14 +678,8 @@ TransactionSearchRequest _$TransactionSearchRequestFromJson(
     settledAt: json['settled_at'] == null
         ? null
         : SearchDateRange.fromJson(json['settled_at'] as Map<String, dynamic>),
-    limit: json['limit'] == null
-        ? null
-        : QuerySearchParamString.fromJson(
-            json['limit'] as Map<String, dynamic>),
-    offset: json['offset'] == null
-        ? null
-        : QuerySearchParamString.fromJson(
-            json['offset'] as Map<String, dynamic>),
+    limit: json['limit'] as int,
+    offset: json['offset'] as int,
   );
 }
 
