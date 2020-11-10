@@ -89,7 +89,8 @@ void testProductSearchRequestGetUrl() {
     offset: 0,
     limit: 100,
   );
+  print(jsonEncode(req));
 
   expect(jsonEncode(req.toJson()),
-      '{"merchant_id":null,"id":{"operator":"=","value":""},"name":{"operator":"=","value":""},"price":{"operator":"=","value":10},"created_at":{"start_date":"2020-11-10T08:49:22.508761","end_date":"2020-11-10T08:49:22.508761"},"updated_at":{"start_date":"2020-11-10T08:49:22.508761","end_date":"2020-11-10T08:49:22.508761"},"deleted_at":{"start_date":"2020-11-10T08:49:22.508761","end_date":"2020-11-10T08:49:22.508761"},"offset":0,"limit":100}');
+      '{"id":{"operator":"=","value":""},"name":{"operator":"=","value":""},"price":{"operator":"=","value":10},"created_at":{"start_date":"2020-11-10T08:49:22.508761","end_date":"2020-11-10T08:49:22.508761"},"updated_at":{"start_date":"2020-11-10T08:49:22.508761","end_date":"2020-11-10T08:49:22.508761"},"deleted_at":{"start_date":"2020-11-10T08:49:22.508761","end_date":"2020-11-10T08:49:22.508761"},"offset":0,"limit":100}');
 }
