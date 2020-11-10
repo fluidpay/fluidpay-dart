@@ -59,8 +59,8 @@ void testProductGetRequestGetUrl() {
 }
 
 void testProductSearchRequestGetUrl() {
-  var startDate = DateTime.fromMicrosecondsSinceEpoch(1604994562508761);
-  var endDate = DateTime.fromMicrosecondsSinceEpoch(1604994562508761);
+  var startDate = DateTime.parse('2020-11-10T08:49:22,508761');
+  var endDate = DateTime.parse('2020-11-10T08:49:22,508761');
   var req = ProductSearchRequest(
     id: QuerySearchParamString(
       operator: SearchOperator.equals,
@@ -89,7 +89,6 @@ void testProductSearchRequestGetUrl() {
     offset: 0,
     limit: 100,
   );
-
   expect(jsonEncode(req.toJson()),
       '{"id":{"operator":"=","value":""},"name":{"operator":"=","value":""},"price":{"operator":"=","value":10},"created_at":{"start_date":"2020-11-10T08:49:22.508761","end_date":"2020-11-10T08:49:22.508761"},"updated_at":{"start_date":"2020-11-10T08:49:22.508761","end_date":"2020-11-10T08:49:22.508761"},"deleted_at":{"start_date":"2020-11-10T08:49:22.508761","end_date":"2020-11-10T08:49:22.508761"},"offset":0,"limit":100}');
 }
