@@ -12,7 +12,7 @@ class Gateway {
 
   String _baseUrl;
   String apiKey;
-  AuthLoginResponseData _authData;
+  AuthLoginResponseData authData;
 
   Gateway._internal();
 
@@ -26,14 +26,14 @@ class Gateway {
       throw ArgumentError(
           '\'baseUrl\' must not be null or empty. Use init method to set it properly.');
     }
-    return _CommonClient(_baseUrl, apiKey, _authData);
+    return _CommonClient(_baseUrl, apiKey, authData);
   }
 
   Future<AuthLoginResponse> login(AuthLoginRequest loginRequest) async {
     final authResponse = await search(loginRequest);
 
     if (authResponse.statusCode == 200) {
-      _authData = authResponse.data;
+      authData = authResponse.data;
     }
 
     return authResponse;
