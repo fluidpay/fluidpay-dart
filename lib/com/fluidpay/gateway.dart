@@ -116,7 +116,7 @@ class _CommonClient {
             ).toString(),
         headers: headers,
       )
-      .then((value) => jsonDecode(value.body));
+      .then(_createJsonFromResponse);
 
   Future<Map<String, dynamic>> delete(Requestable baseRequest) => http
       .delete(
@@ -127,5 +127,5 @@ class _CommonClient {
             ).toString(),
         headers: headers,
       )
-      .then((value) => jsonDecode(value.body));
+      .then(_createJsonFromResponse);
 }
