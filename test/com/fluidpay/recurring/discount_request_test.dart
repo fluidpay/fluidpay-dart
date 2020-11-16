@@ -1,4 +1,3 @@
-import 'package:fluidpay/com/fluidpay/recurring/addon_request.dart';
 import 'package:fluidpay/com/fluidpay/recurring/discount_request.dart';
 import 'package:test/test.dart';
 
@@ -10,7 +9,7 @@ void main() {
 
 void testDiscountCreateRequest() {
   test('DiscountCreateRequest to Json', () {
-    var req = AddOnCreateRequest(
+    var req = DiscountCreateRequest(
             name: 'test discount',
             description: 'test discount description',
             amount: 200,
@@ -34,7 +33,7 @@ void testDiscountCreateRequest() {
 
 void testDiscountUpdateRequest() {
   test('testDiscountUpdateRequest to Json', () {
-    var addonReq = DiscountUpdateRequest(
+    var discountReq = DiscountUpdateRequest(
         id: 'test_id',
         name: 'test discount',
         description: 'test discount description',
@@ -42,7 +41,7 @@ void testDiscountUpdateRequest() {
         percentage: 10,
         duration: 10);
 
-    var req = addonReq.toJson();
+    var req = discountReq.toJson();
     var expected = {
       'name': 'test discount',
       'description': 'test discount description',
@@ -55,7 +54,7 @@ void testDiscountUpdateRequest() {
     expect(req['amount'], expected['amount']);
     expect(req['percentage'], expected['percentage']);
     expect(req['duration'], expected['duration']);
-    expect(addonReq.getUrl(), '/recurring/discount/test_id');
+    expect(discountReq.getUrl(), '/recurring/discount/test_id');
   });
 }
 
@@ -86,11 +85,11 @@ void testDiscountRequest() {
 
 void testDiscountDeleteRequest() {
   test('testDiscountDeleteRequest to Json', () {
-    var addonReq = DiscountDeleteRequest('test_id');
+    var discountReq = DiscountDeleteRequest('test_id');
 
-    var req = addonReq.toJson();
+    var req = discountReq.toJson();
     var expected = {};
     expect(req, expected);
-    expect(addonReq.getUrl(), '/recurring/discount/test_id');
+    expect(discountReq.getUrl(), '/recurring/discount/test_id');
   });
 }
