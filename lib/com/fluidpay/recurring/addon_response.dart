@@ -43,7 +43,6 @@ class AddOnDeleteResponse extends Responsable<dynamic> {
   Map<String, dynamic> toJson() => _$AddOnDeleteResponseToJson(this);
 }
 
-
 @JsonSerializable()
 class AddOnResponseData extends Decodable {
   String id;

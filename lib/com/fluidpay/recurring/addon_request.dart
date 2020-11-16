@@ -31,7 +31,7 @@ class AddOnCreateRequest extends Creatable<AddOnResponse> {
   }
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class AddOnUpdateRequest extends Updatable<AddOnUpdateResponse> {
   @JsonKey(ignore: true)
   String id;
@@ -43,11 +43,11 @@ class AddOnUpdateRequest extends Updatable<AddOnUpdateResponse> {
 
   AddOnUpdateRequest(
       {this.id,
-        this.name,
-        this.description,
-        this.amount,
-        this.percentage,
-        this.duration});
+      this.name,
+      this.description,
+      this.amount,
+      this.percentage,
+      this.duration});
 
   @override
   AddOnUpdateResponse buildResponse(Map<String, dynamic> json) =>
@@ -75,7 +75,7 @@ class AddOnSearchRequest extends Searchable<AddOnSearchResponse> {
   }
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake, createFactory: false)
+@JsonSerializable(createFactory: false)
 class AddOnDeleteRequest extends Deletable<AddOnDeleteResponse> {
   @JsonKey(ignore: true)
   String id;

@@ -31,7 +31,7 @@ class DiscountCreateRequest extends Creatable<DiscountResponse> {
   }
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class DiscountUpdateRequest extends Updatable<DiscountUpdateResponse> {
   @JsonKey(ignore: true)
   String id;
@@ -76,7 +76,7 @@ class DiscountSearchRequest extends Searchable<DiscountSearchResponse> {
   }
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake, createFactory: false)
+@JsonSerializable(createFactory: false)
 class DiscountDeleteRequest extends Deletable<DiscountDeleteResponse> {
   @JsonKey(ignore: true)
   String id;
