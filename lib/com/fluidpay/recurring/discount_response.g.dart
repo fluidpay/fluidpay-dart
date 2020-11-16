@@ -26,6 +26,26 @@ Map<String, dynamic> _$DiscountResponseToJson(DiscountResponse instance) =>
       'data': instance.data,
     };
 
+DiscountUpdateResponse _$DiscountUpdateResponseFromJson(
+    Map<String, dynamic> json) {
+  return DiscountUpdateResponse()
+    ..status = json['status'] as String
+    ..msg = json['msg'] as String
+    ..statusCode = json['status_code'] as int
+    ..totalCount = json['total_count'] as int
+    ..data = json['data'];
+}
+
+Map<String, dynamic> _$DiscountUpdateResponseToJson(
+        DiscountUpdateResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'msg': instance.msg,
+      'status_code': instance.statusCode,
+      'total_count': instance.totalCount,
+      'data': instance.data,
+    };
+
 DiscountSearchResponse _$DiscountSearchResponseFromJson(
     Map<String, dynamic> json) {
   return DiscountSearchResponse()
@@ -42,6 +62,26 @@ DiscountSearchResponse _$DiscountSearchResponseFromJson(
 
 Map<String, dynamic> _$DiscountSearchResponseToJson(
         DiscountSearchResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'msg': instance.msg,
+      'status_code': instance.statusCode,
+      'total_count': instance.totalCount,
+      'data': instance.data,
+    };
+
+DiscountDeleteResponse _$DiscountDeleteResponseFromJson(
+    Map<String, dynamic> json) {
+  return DiscountDeleteResponse()
+    ..status = json['status'] as String
+    ..msg = json['msg'] as String
+    ..statusCode = json['status_code'] as int
+    ..totalCount = json['total_count'] as int
+    ..data = json['data'];
+}
+
+Map<String, dynamic> _$DiscountDeleteResponseToJson(
+        DiscountDeleteResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,

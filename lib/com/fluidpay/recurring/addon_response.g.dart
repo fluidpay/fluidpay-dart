@@ -26,6 +26,25 @@ Map<String, dynamic> _$AddOnResponseToJson(AddOnResponse instance) =>
       'data': instance.data,
     };
 
+AddOnUpdateResponse _$AddOnUpdateResponseFromJson(Map<String, dynamic> json) {
+  return AddOnUpdateResponse()
+    ..status = json['status'] as String
+    ..msg = json['msg'] as String
+    ..statusCode = json['status_code'] as int
+    ..totalCount = json['total_count'] as int
+    ..data = json['data'];
+}
+
+Map<String, dynamic> _$AddOnUpdateResponseToJson(
+        AddOnUpdateResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'msg': instance.msg,
+      'status_code': instance.statusCode,
+      'total_count': instance.totalCount,
+      'data': instance.data,
+    };
+
 AddOnSearchResponse _$AddOnSearchResponseFromJson(Map<String, dynamic> json) {
   return AddOnSearchResponse()
     ..status = json['status'] as String
@@ -41,6 +60,25 @@ AddOnSearchResponse _$AddOnSearchResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AddOnSearchResponseToJson(
         AddOnSearchResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'msg': instance.msg,
+      'status_code': instance.statusCode,
+      'total_count': instance.totalCount,
+      'data': instance.data,
+    };
+
+AddOnDeleteResponse _$AddOnDeleteResponseFromJson(Map<String, dynamic> json) {
+  return AddOnDeleteResponse()
+    ..status = json['status'] as String
+    ..msg = json['msg'] as String
+    ..statusCode = json['status_code'] as int
+    ..totalCount = json['total_count'] as int
+    ..data = json['data'];
+}
+
+Map<String, dynamic> _$AddOnDeleteResponseToJson(
+        AddOnDeleteResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
