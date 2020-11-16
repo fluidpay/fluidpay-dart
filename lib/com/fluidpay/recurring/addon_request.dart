@@ -31,6 +31,35 @@ class AddOnCreateRequest extends Creatable<AddOnResponse> {
   }
 }
 
+@JsonSerializable(fieldRename: FieldRename.snake)
+class AddOnUpdateRequest extends Updatable<AddOnUpdateResponse> {
+  @JsonKey(ignore: true)
+  String id;
+  String name;
+  String description;
+  int amount;
+  int percentage;
+  int duration;
+
+  AddOnUpdateRequest(
+      {this.id,
+        this.name,
+        this.description,
+        this.amount,
+        this.percentage,
+        this.duration});
+
+  @override
+  AddOnUpdateResponse buildResponse(Map<String, dynamic> json) =>
+      AddOnUpdateResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/recurring/addon/${id}';
+
+  @override
+  Map<String, dynamic> toJson() => _$AddOnUpdateRequestToJson(this);
+}
+
 class AddOnSearchRequest extends Searchable<AddOnSearchResponse> {
   String id;
 
@@ -44,6 +73,21 @@ class AddOnSearchRequest extends Searchable<AddOnSearchResponse> {
   AddOnSearchResponse buildResponse(Map<String, dynamic> json) {
     return AddOnSearchResponse.fromJson(json);
   }
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake, createFactory: false)
+class AddOnDeleteRequest extends Deletable<AddOnDeleteResponse> {
+  @JsonKey(ignore: true)
+  String id;
+
+  AddOnDeleteRequest(this.id);
+
+  @override
+  AddOnDeleteResponse buildResponse(Map<String, dynamic> json) =>
+      AddOnDeleteResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/recurring/addon/$id';
 }
 
 @JsonSerializable()

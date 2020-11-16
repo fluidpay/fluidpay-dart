@@ -14,6 +14,16 @@ class DiscountResponse extends Responsable<DiscountResponseData> {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
+class DiscountUpdateResponse extends Responsable<dynamic> {
+  DiscountUpdateResponse();
+
+  factory DiscountUpdateResponse.fromJson(Map<String, dynamic> json) =>
+      _$DiscountUpdateResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DiscountUpdateResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class DiscountSearchResponse extends Responsable<List<DiscountResponseData>> {
   DiscountSearchResponse();
 
@@ -21,6 +31,16 @@ class DiscountSearchResponse extends Responsable<List<DiscountResponseData>> {
       _$DiscountSearchResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$DiscountSearchResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class DiscountDeleteResponse extends Responsable<dynamic> {
+  DiscountDeleteResponse();
+
+  factory DiscountDeleteResponse.fromJson(Map<String, dynamic> json) =>
+      _$DiscountDeleteResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DiscountDeleteResponseToJson(this);
 }
 
 @JsonSerializable()

@@ -31,6 +31,35 @@ class DiscountCreateRequest extends Creatable<DiscountResponse> {
   }
 }
 
+@JsonSerializable(fieldRename: FieldRename.snake)
+class DiscountUpdateRequest extends Updatable<DiscountUpdateResponse> {
+  @JsonKey(ignore: true)
+  String id;
+  String name;
+  String description;
+  int amount;
+  int percentage;
+  int duration;
+
+  DiscountUpdateRequest(
+      {this.id,
+      this.name,
+      this.description,
+      this.amount,
+      this.percentage,
+      this.duration});
+
+  @override
+  DiscountUpdateResponse buildResponse(Map<String, dynamic> json) =>
+      DiscountUpdateResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/recurring/discount/${id}';
+
+  @override
+  Map<String, dynamic> toJson() => _$DiscountUpdateRequestToJson(this);
+}
+
 class DiscountSearchRequest extends Searchable<DiscountSearchResponse> {
   String id;
 
@@ -45,6 +74,21 @@ class DiscountSearchRequest extends Searchable<DiscountSearchResponse> {
   DiscountSearchResponse buildResponse(Map<String, dynamic> json) {
     return DiscountSearchResponse.fromJson(json);
   }
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake, createFactory: false)
+class DiscountDeleteRequest extends Deletable<DiscountDeleteResponse> {
+  @JsonKey(ignore: true)
+  String id;
+
+  DiscountDeleteRequest(this.id);
+
+  @override
+  DiscountDeleteResponse buildResponse(Map<String, dynamic> json) =>
+      DiscountDeleteResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/recurring/discount/$id';
 }
 
 @JsonSerializable()
