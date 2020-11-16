@@ -14,6 +14,16 @@ class AddOnResponse extends Responsable<AddOnResponseData> {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
+class AddOnUpdateResponse extends Responsable<dynamic> {
+  AddOnUpdateResponse();
+
+  factory AddOnUpdateResponse.fromJson(Map<String, dynamic> json) =>
+      _$AddOnUpdateResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AddOnUpdateResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class AddOnSearchResponse extends Responsable<List<AddOnResponseData>> {
   AddOnSearchResponse();
 
@@ -21,6 +31,16 @@ class AddOnSearchResponse extends Responsable<List<AddOnResponseData>> {
       _$AddOnSearchResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$AddOnSearchResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class AddOnDeleteResponse extends Responsable<dynamic> {
+  AddOnDeleteResponse();
+
+  factory AddOnDeleteResponse.fromJson(Map<String, dynamic> json) =>
+      _$AddOnDeleteResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AddOnDeleteResponseToJson(this);
 }
 
 @JsonSerializable()
