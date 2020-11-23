@@ -1,4 +1,5 @@
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
+import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/recurring/discount_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -67,6 +68,9 @@ class DiscountSearchRequest extends Searchable<DiscountSearchResponse> {
   String getUrl() => id?.isNotEmpty == true
       ? '/recurring/discount/$id'
       : '/recurring/discounts';
+
+  @override
+  Method getRequestMethod() => Method.GET;
 
   DiscountSearchRequest({this.id});
 
