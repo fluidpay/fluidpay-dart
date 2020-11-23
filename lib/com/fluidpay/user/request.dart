@@ -72,6 +72,9 @@ class UserGetRequest extends Searchable<UserGetResponse> {
 
   @override
   String getUrl() => '/user${userId != null ? '/$userId' : ''}';
+
+  @override
+  Method getRequestMethod() => Method.GET;
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -226,6 +229,9 @@ class UsersRequest extends Searchable<UsersResponse> {
   }
 
   @override
+  Method getRequestMethod() => Method.GET;
+
+  @override
   Map<String, dynamic> toJson() => _$UsersRequestToJson(this);
 }
 
@@ -246,6 +252,9 @@ class UserLoginAsRequest extends Searchable<UserLoginAsResponse> {
 
   @override
   String getUrl() => '/user/loginas/$userId';
+
+  @override
+  Method getRequestMethod() => Method.GET;
 }
 
 @JsonSerializable()

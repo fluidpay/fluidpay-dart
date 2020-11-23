@@ -1,4 +1,5 @@
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
+import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/recurring/addon_request.dart';
 import 'package:fluidpay/com/fluidpay/recurring/discount_request.dart';
 import 'package:fluidpay/com/fluidpay/recurring/subscription_response.dart';
@@ -66,7 +67,10 @@ class SubscriptionSearchRequest extends Searchable<SubscriptionSearchResponse> {
   @override
   String getUrl() => id?.isNotEmpty == true
       ? '/recurring/subscription/$id'
-      : '/recurring/subscriptions';
+      : '/recurring/subscription/search';
+
+  @override
+  Method getRequestMethod() => id?.isNotEmpty == true ? Method.GET : Method.POST;
 
   SubscriptionSearchRequest({this.id});
 

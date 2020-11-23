@@ -1,4 +1,5 @@
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
+import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/merchant/products/response.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -119,6 +120,9 @@ class ProductGetRequest extends Searchable<ProductGetResponse> {
 
   @override
   String getUrl() => '/merchant/$merchantId/product/$productId';
+
+  @override
+  Method getRequestMethod() => Method.GET;
 }
 
 @JsonSerializable()
@@ -139,6 +143,9 @@ class ProductGetAllRequest extends Searchable<ProductGetAllResponse> {
 
   @override
   String getUrl() => '/merchant/$merchantId/product';
+
+  @override
+  Method getRequestMethod() => Method.GET;
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
