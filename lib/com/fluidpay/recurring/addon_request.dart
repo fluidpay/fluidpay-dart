@@ -1,4 +1,5 @@
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
+import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/recurring/addon_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -66,6 +67,9 @@ class AddOnSearchRequest extends Searchable<AddOnSearchResponse> {
   @override
   String getUrl() =>
       id?.isNotEmpty == true ? '/recurring/addon/$id' : '/recurring/addons';
+
+  @override
+  Method getRequestMethod() => Method.GET;
 
   AddOnSearchRequest({this.id});
 

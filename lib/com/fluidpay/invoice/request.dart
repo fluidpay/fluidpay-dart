@@ -1,4 +1,5 @@
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
+import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/invoice/response.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -215,6 +216,9 @@ class InvoiceGetRequest extends Searchable<InvoiceGetResponse> {
 
   @override
   String getUrl() => '/invoice/${id}';
+
+  @override
+  Method getRequestMethod() => Method.GET;
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)

@@ -65,6 +65,9 @@ class CustomerGetRequest extends Searchable<CustomerGetResponse> {
 
   @override
   String getUrl() => '/vault/${id}';
+
+  @override
+  Method getRequestMethod() => Method.GET;
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)

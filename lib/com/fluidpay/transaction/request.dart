@@ -245,6 +245,9 @@ class TransactionGetRequest extends Searchable<TransactionGetResponse> {
 
     return result;
   }
+
+  @override
+  Method getRequestMethod() => Method.GET;
 }
 
 enum TransactionActionRequestType {

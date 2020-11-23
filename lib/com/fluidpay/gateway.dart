@@ -30,7 +30,7 @@ class Gateway {
   }
 
   Future<AuthLoginResponse> login(AuthLoginRequest loginRequest) async {
-    final authResponse = await search(loginRequest);
+    final authResponse = await execute(loginRequest);
 
     if (authResponse.statusCode == 200) {
       authData = authResponse.data;
@@ -39,35 +39,23 @@ class Gateway {
     return authResponse;
   }
 
-  Future<Response> create<Response extends Responsable>(
-      Creatable<Response> request) {
-    return _client.post(request).then((value) => request.buildResponse(value));
-  }
 
-  Future<Response> get<Response extends Responsable>(
-      Searchable<Response> request) {
-    return _client.get(request).then((value) {
-      return request.buildResponse(value);
-    });
-  }
+  Future<Response> execute<Response extends Responsable>(Requestable<Response> request) {
+    Future<Map<String, dynamic>> result;
 
-  Future<Response> search<Response extends Responsable>(
-      Searchable<Response> request) {
-    return _client.post(request).then((value) {
-      return request.buildResponse(value);
-    });
-  }
+    switch(request.getRequestMethod()) {
+      case Method.GET:
+        result = _client.get(request);
+        break;
+      case Method.POST:
+        result = _client.post(request);
+        break;
+      case Method.DELETE:
+        result = _client.delete(request);
+        break;
+    }
 
-  Future<Response> update<Response extends Responsable>(
-      Updatable<Response> request) {
-    return _client.post(request).then((value) => request.buildResponse(value));
-  }
-
-  Future<Response> delete<Response extends Responsable>(
-      Deletable<Response> request) {
-    return _client
-        .delete(request)
-        .then((value) => request.buildResponse(value));
+    return result.then((value) => request.buildResponse(value));
   }
 }
 

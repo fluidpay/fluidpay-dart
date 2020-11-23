@@ -3,10 +3,18 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'serialization.dart';
 
+enum Method {
+  GET,
+  POST,
+  DELETE
+}
+
 abstract class Requestable<Response extends Responsable> with Serializable {
   Map<String, String> getQueryParams() => null;
 
   String getUrl();
+
+  Method getRequestMethod();
 
   Response buildResponse(Map<String, dynamic> json);
 

@@ -1,4 +1,5 @@
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
+import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/recurring/addon_request.dart';
 import 'package:fluidpay/com/fluidpay/recurring/discount_request.dart';
 import 'package:fluidpay/com/fluidpay/recurring/plan_response.dart';
@@ -57,6 +58,9 @@ class PlanSearchRequest extends Searchable<PlanSearchResponse> {
   @override
   String getUrl() =>
       id?.isNotEmpty == true ? '/recurring/plan/$id' : '/recurring/plans';
+
+  @override
+  Method getRequestMethod() => Method.GET;
 
   PlanSearchRequest({this.id});
 
