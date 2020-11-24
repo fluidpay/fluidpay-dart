@@ -1,10 +1,11 @@
 import 'package:fluidpay/com/fluidpay/common/base.dart';
+import 'package:fluidpay/com/fluidpay/merchant/common.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class ProductCreateResponse extends Responsable<ProductResponseData> {
+class ProductCreateResponse extends Responsable<ProductData> {
   factory ProductCreateResponse.fromJson(Map<String, dynamic> json) =>
       _$ProductCreateResponseFromJson(json);
 
@@ -14,7 +15,7 @@ class ProductCreateResponse extends Responsable<ProductResponseData> {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class ProductUpdateResponse extends Responsable<ProductResponseData> {
+class ProductUpdateResponse extends Responsable<ProductData> {
   factory ProductUpdateResponse.fromJson(Map<String, dynamic> json) =>
       _$ProductUpdateResponseFromJson(json);
 
@@ -24,7 +25,7 @@ class ProductUpdateResponse extends Responsable<ProductResponseData> {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class ProductGetResponse extends Responsable<ProductResponseData> {
+class ProductGetResponse extends Responsable<ProductData> {
   factory ProductGetResponse.fromJson(Map<String, dynamic> json) =>
       _$ProductGetResponseFromJson(json);
 
@@ -34,7 +35,7 @@ class ProductGetResponse extends Responsable<ProductResponseData> {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class ProductGetAllResponse extends Responsable<List<ProductResponseData>> {
+class ProductGetAllResponse extends Responsable<List<ProductData>> {
   factory ProductGetAllResponse.fromJson(Map<String, dynamic> json) =>
       _$ProductGetAllResponseFromJson(json);
 
@@ -44,7 +45,7 @@ class ProductGetAllResponse extends Responsable<List<ProductResponseData>> {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class ProductSearchResponse extends Responsable<List<ProductResponseData>> {
+class ProductSearchResponse extends Responsable<List<ProductData>> {
   factory ProductSearchResponse.fromJson(Map<String, dynamic> json) =>
       _$ProductSearchResponseFromJson(json);
 
@@ -61,31 +62,4 @@ class ProductDeleteResponse extends Responsable<dynamic> {
   Map<String, dynamic> toJson() => _$ProductDeleteResponseToJson(this);
 
   ProductDeleteResponse();
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class ProductResponseData extends Decodable {
-  @JsonKey(name: 'id')
-  String productId;
-  String publicHash;
-  String merchantId;
-  String name;
-  String img;
-  int price;
-  int localTax;
-  int nationalTax;
-  bool fixedAmount;
-  bool fixedQty;
-  String description;
-  String createdAt;
-  String updatedAt;
-  String deletedAt;
-
-  factory ProductResponseData.fromJson(Map<String, dynamic> json) =>
-      _$ProductResponseDataFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$ProductResponseDataToJson(this);
-
-  ProductResponseData();
 }
