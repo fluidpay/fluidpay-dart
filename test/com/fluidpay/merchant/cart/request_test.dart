@@ -68,6 +68,7 @@ void _testCartCreateRequestToJson() {
       merchantId: 'merchantId',
       cart: CartData(
         id: 'test id',
+        publicHash: 'test publicHash',
         merchantId: 'test merchantId',
         cardProcessorId: 'test cardProcessorId',
         achProcessorId: 'test achProcessorId',
@@ -107,7 +108,7 @@ void _testCartCreateRequestToJson() {
 }
 
 final _cartJson =
-    '{"id":"test id","merchant_id":"test merchantId","card_processor_id":"test cardProcessorId","ach_processor_id":"test achProcessorId","name":"test name","description":"test description","type":"test type","custom_fields_group":"test customFieldsGroup","products":[$_productJson],"show_available_products":true,"require_shipping_details":true,"email_receipt":true,"payments":["test value 1","test value 2"],"shopify_hash":"test shopifyHash","created_at":"2017-10-19T20:15:19.560708Z","updated_at":"2017-10-19T20:15:19.560708Z","deleted_at":"2017-10-19T20:15:19.560708Z"}';
+    '{"id":"test id","public_hash":"test publicHash","merchant_id":"test merchantId","card_processor_id":"test cardProcessorId","ach_processor_id":"test achProcessorId","name":"test name","description":"test description","type":"test type","custom_fields_group":"test customFieldsGroup","products":[$_productJson],"show_available_products":true,"require_shipping_details":true,"email_receipt":true,"payments":["test value 1","test value 2"],"shopify_hash":"test shopifyHash","created_at":"2017-10-19T20:15:19.560708Z","updated_at":"2017-10-19T20:15:19.560708Z","deleted_at":"2017-10-19T20:15:19.560708Z"}';
 final _productJson =
     '{"id":"test productId","public_hash":"test publicHash","merchant_id":"test merchantId","name":"test name","img":"test img","price":100,"local_tax":100,"national_tax":100,"fixed_amount":true,"fixed_qty":true,"description":"test description","created_at":"2017-10-19T20:15:19.560708Z","updated_at":"2017-10-19T20:15:19.560708Z","deleted_at":"2017-10-19T20:15:19.560708Z"}';
 
@@ -124,6 +125,7 @@ void _testCartUpdateRequestToJson() {
       cartId: 'cartId',
       cart: CartData(
         id: 'test id',
+        publicHash: 'test publicHash',
         merchantId: 'test merchantId',
         cardProcessorId: 'test cardProcessorId',
         achProcessorId: 'test achProcessorId',

@@ -6,6 +6,7 @@ part 'common.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CartData extends Decodable {
   String id;
+  String publicHash;
   String merchantId;
   String cardProcessorId;
   String achProcessorId;
@@ -25,6 +26,7 @@ class CartData extends Decodable {
 
   CartData({
     this.id,
+    this.publicHash,
     this.merchantId,
     this.cardProcessorId,
     this.achProcessorId,

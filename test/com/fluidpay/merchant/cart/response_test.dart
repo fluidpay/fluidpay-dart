@@ -62,6 +62,7 @@ void _testResponsable(Responsable responsable) {
 }
 void _testCartData(CartData cartData) {
   expect(cartData.id, 'test id');
+  expect(cartData.publicHash, 'test publicHash');
   expect(cartData.merchantId, 'test merchantId');
   expect(cartData.cardProcessorId, 'test cardProcessorId');
   expect(cartData.achProcessorId, 'test achProcessorId');
@@ -104,6 +105,7 @@ Map<String, dynamic> _wrapResponseData(dynamic data) =>
 final _dateTime = DateTime.parse('2017-10-19T20:15:19.560708Z');
 final _cartMap = <String, dynamic>{
   'id': 'test id',
+  'public_hash': 'test publicHash',
   'merchant_id': 'test merchantId',
   'card_processor_id': 'test cardProcessorId',
   'ach_processor_id': 'test achProcessorId',
