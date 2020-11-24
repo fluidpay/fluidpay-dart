@@ -30,7 +30,7 @@ class CartData extends Decodable {
     this.achProcessorId,
     this.name,
     this.description,
-    this.type,
+    this.type = 'normal',
     this.customFieldsGroup,
     this.products,
     this.showAvailableProducts,

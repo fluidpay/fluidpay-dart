@@ -29,7 +29,7 @@ class CartGetAllResponse extends Responsable<List<CartData>> {
 }
 
 @JsonSerializable()
-class CartCreateResponse extends Responsable {
+class CartCreateResponse extends Responsable<CartData> {
   CartCreateResponse();
   factory CartCreateResponse.fromJson(Map<String, dynamic> map) =>
       _$CartCreateResponseFromJson(map);
@@ -37,7 +37,7 @@ class CartCreateResponse extends Responsable {
 }
 
 @JsonSerializable()
-class CartUpdateResponse extends Responsable {
+class CartUpdateResponse extends Responsable<CartData> {
   CartUpdateResponse();
   factory CartUpdateResponse.fromJson(Map<String, dynamic> map) =>
       _$CartUpdateResponseFromJson(map);
@@ -45,7 +45,7 @@ class CartUpdateResponse extends Responsable {
 }
 
 @JsonSerializable()
-class CartDeleteResponse extends Responsable {
+class CartDeleteResponse extends Responsable<String> {
   CartDeleteResponse();
   factory CartDeleteResponse.fromJson(Map<String, dynamic> map) =>
       _$CartDeleteResponseFromJson(map);
