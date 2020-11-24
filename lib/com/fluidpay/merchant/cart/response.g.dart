@@ -6,20 +6,18 @@ part of 'response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductCreateResponse _$ProductCreateResponseFromJson(
-    Map<String, dynamic> json) {
-  return ProductCreateResponse()
+CartGetResponse _$CartGetResponseFromJson(Map<String, dynamic> json) {
+  return CartGetResponse()
     ..status = json['status'] as String
     ..msg = json['msg'] as String
     ..statusCode = json['status_code'] as int
     ..totalCount = json['total_count'] as int
     ..data = json['data'] == null
         ? null
-        : ProductData.fromJson(json['data'] as Map<String, dynamic>);
+        : CartDataFullProduct.fromJson(json['data'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$ProductCreateResponseToJson(
-        ProductCreateResponse instance) =>
+Map<String, dynamic> _$CartGetResponseToJson(CartGetResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
@@ -28,63 +26,20 @@ Map<String, dynamic> _$ProductCreateResponseToJson(
       'data': instance.data,
     };
 
-ProductUpdateResponse _$ProductUpdateResponseFromJson(
-    Map<String, dynamic> json) {
-  return ProductUpdateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = json['data'] == null
-        ? null
-        : ProductData.fromJson(json['data'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$ProductUpdateResponseToJson(
-        ProductUpdateResponse instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'msg': instance.msg,
-      'status_code': instance.statusCode,
-      'total_count': instance.totalCount,
-      'data': instance.data,
-    };
-
-ProductGetResponse _$ProductGetResponseFromJson(Map<String, dynamic> json) {
-  return ProductGetResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = json['data'] == null
-        ? null
-        : ProductData.fromJson(json['data'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$ProductGetResponseToJson(ProductGetResponse instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'msg': instance.msg,
-      'status_code': instance.statusCode,
-      'total_count': instance.totalCount,
-      'data': instance.data,
-    };
-
-ProductGetAllResponse _$ProductGetAllResponseFromJson(
-    Map<String, dynamic> json) {
-  return ProductGetAllResponse()
+CartSearchResponse _$CartSearchResponseFromJson(Map<String, dynamic> json) {
+  return CartSearchResponse()
     ..status = json['status'] as String
     ..msg = json['msg'] as String
     ..statusCode = json['status_code'] as int
     ..totalCount = json['total_count'] as int
     ..data = (json['data'] as List)
-        ?.map((e) =>
-            e == null ? null : ProductData.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : CartDataStringProduct.fromJson(e as Map<String, dynamic>))
         ?.toList();
 }
 
-Map<String, dynamic> _$ProductGetAllResponseToJson(
-        ProductGetAllResponse instance) =>
+Map<String, dynamic> _$CartSearchResponseToJson(CartSearchResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
@@ -93,21 +48,20 @@ Map<String, dynamic> _$ProductGetAllResponseToJson(
       'data': instance.data,
     };
 
-ProductSearchResponse _$ProductSearchResponseFromJson(
-    Map<String, dynamic> json) {
-  return ProductSearchResponse()
+CartGetAllResponse _$CartGetAllResponseFromJson(Map<String, dynamic> json) {
+  return CartGetAllResponse()
     ..status = json['status'] as String
     ..msg = json['msg'] as String
     ..statusCode = json['status_code'] as int
     ..totalCount = json['total_count'] as int
     ..data = (json['data'] as List)
-        ?.map((e) =>
-            e == null ? null : ProductData.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : CartDataStringProduct.fromJson(e as Map<String, dynamic>))
         ?.toList();
 }
 
-Map<String, dynamic> _$ProductSearchResponseToJson(
-        ProductSearchResponse instance) =>
+Map<String, dynamic> _$CartGetAllResponseToJson(CartGetAllResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
@@ -116,18 +70,56 @@ Map<String, dynamic> _$ProductSearchResponseToJson(
       'data': instance.data,
     };
 
-ProductDeleteResponse _$ProductDeleteResponseFromJson(
-    Map<String, dynamic> json) {
-  return ProductDeleteResponse()
+CartCreateResponse _$CartCreateResponseFromJson(Map<String, dynamic> json) {
+  return CartCreateResponse()
     ..status = json['status'] as String
     ..msg = json['msg'] as String
     ..statusCode = json['status_code'] as int
     ..totalCount = json['total_count'] as int
-    ..data = json['data'];
+    ..data = json['data'] == null
+        ? null
+        : CartDataStringProduct.fromJson(json['data'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$ProductDeleteResponseToJson(
-        ProductDeleteResponse instance) =>
+Map<String, dynamic> _$CartCreateResponseToJson(CartCreateResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'msg': instance.msg,
+      'status_code': instance.statusCode,
+      'total_count': instance.totalCount,
+      'data': instance.data,
+    };
+
+CartUpdateResponse _$CartUpdateResponseFromJson(Map<String, dynamic> json) {
+  return CartUpdateResponse()
+    ..status = json['status'] as String
+    ..msg = json['msg'] as String
+    ..statusCode = json['status_code'] as int
+    ..totalCount = json['total_count'] as int
+    ..data = json['data'] == null
+        ? null
+        : CartDataStringProduct.fromJson(json['data'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$CartUpdateResponseToJson(CartUpdateResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'msg': instance.msg,
+      'status_code': instance.statusCode,
+      'total_count': instance.totalCount,
+      'data': instance.data,
+    };
+
+CartDeleteResponse _$CartDeleteResponseFromJson(Map<String, dynamic> json) {
+  return CartDeleteResponse()
+    ..status = json['status'] as String
+    ..msg = json['msg'] as String
+    ..statusCode = json['status_code'] as int
+    ..totalCount = json['total_count'] as int
+    ..data = json['data'] as String;
+}
+
+Map<String, dynamic> _$CartDeleteResponseToJson(CartDeleteResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
