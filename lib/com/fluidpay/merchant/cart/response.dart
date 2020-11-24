@@ -5,7 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'response.g.dart';
 
 @JsonSerializable()
-class CartGetResponse extends Responsable<CartData> {
+class CartGetResponse extends Responsable<CartDataFullProduct> {
   CartGetResponse();
   factory CartGetResponse.fromJson(Map<String, dynamic> map) =>
       _$CartGetResponseFromJson(map);
@@ -13,7 +13,7 @@ class CartGetResponse extends Responsable<CartData> {
 }
 
 @JsonSerializable()
-class CartSearchResponse extends Responsable<List<CartData>> {
+class CartSearchResponse extends Responsable<List<CartDataStringProduct>> {
   CartSearchResponse();
   factory CartSearchResponse.fromJson(Map<String, dynamic> map) =>
       _$CartSearchResponseFromJson(map);
@@ -21,7 +21,7 @@ class CartSearchResponse extends Responsable<List<CartData>> {
 }
 
 @JsonSerializable()
-class CartGetAllResponse extends Responsable<List<CartData>> {
+class CartGetAllResponse extends Responsable<List<CartDataStringProduct>> {
   CartGetAllResponse();
   factory CartGetAllResponse.fromJson(Map<String, dynamic> map) =>
       _$CartGetAllResponseFromJson(map);
@@ -29,7 +29,7 @@ class CartGetAllResponse extends Responsable<List<CartData>> {
 }
 
 @JsonSerializable()
-class CartCreateResponse extends Responsable<CartData> {
+class CartCreateResponse extends Responsable<CartDataStringProduct> {
   CartCreateResponse();
   factory CartCreateResponse.fromJson(Map<String, dynamic> map) =>
       _$CartCreateResponseFromJson(map);
@@ -37,7 +37,7 @@ class CartCreateResponse extends Responsable<CartData> {
 }
 
 @JsonSerializable()
-class CartUpdateResponse extends Responsable<CartData> {
+class CartUpdateResponse extends Responsable<CartDataStringProduct> {
   CartUpdateResponse();
   factory CartUpdateResponse.fromJson(Map<String, dynamic> map) =>
       _$CartUpdateResponseFromJson(map);

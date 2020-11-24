@@ -98,7 +98,7 @@ class CartGetAllRequest extends Searchable<CartGetAllResponse> {
 
 class CartCreateRequest extends Creatable<CartCreateResponse> {
   final String merchantId;
-  CartData cart;
+  CartDataStringProduct cart;
 
   CartCreateRequest({this.merchantId, this.cart}) {
     if (merchantId?.isNotEmpty != true) {
@@ -123,7 +123,7 @@ class CartCreateRequest extends Creatable<CartCreateResponse> {
 class CartUpdateRequest extends Updatable<CartUpdateResponse> {
   final String merchantId;
   final String cartId;
-  final CartData cart;
+  final CartDataStringProduct cart;
 
   CartUpdateRequest({this.merchantId, this.cartId, this.cart}) {
     if (merchantId?.isNotEmpty != true) {

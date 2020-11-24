@@ -13,7 +13,26 @@ void main() {
 }
 
 void _testCartGetResponseFromJson() {
-  final response = CartGetResponse.fromJson(_wrapResponseData(_cartMap));
+  final map = <String, dynamic>{};
+  map.addAll(_cartMap);
+  map['products'] = [{
+    'id': 'test productId',
+    'public_hash': 'test publicHash',
+    'merchant_id': 'test merchantId',
+    'name': 'test name',
+    'img': 'test img',
+    'price': 100,
+    'local_tax': 100,
+    'national_tax': 100,
+    'fixed_amount': true,
+    'fixed_qty': true,
+    'description': 'test description',
+    'created_at': '2017-10-19T20:15:19.560708Z',
+    'updated_at': '2017-10-19T20:15:19.560708Z',
+    'deleted_at': '2017-10-19T20:15:19.560708Z',
+  }];
+
+  final response = CartGetResponse.fromJson(_wrapResponseData(map));
 
   _testResponsable(response);
   _testCartData(response.data);
@@ -70,16 +89,20 @@ void _testCartData(CartData cartData) {
   expect(cartData.description, 'test description');
   expect(cartData.type, 'test type');
   expect(cartData.customFieldsGroup, 'test customFieldsGroup');
-  expect(cartData.products[0].productId, 'test productId');
-  expect(cartData.products[0].publicHash, 'test publicHash');
-  expect(cartData.products[0].merchantId, 'test merchantId');
-  expect(cartData.products[0].name, 'test name');
-  expect(cartData.products[0].img, 'test img');
-  expect(cartData.products[0].price, 100);
-  expect(cartData.products[0].localTax, 100);
-  expect(cartData.products[0].nationalTax, 100);
-  expect(cartData.products[0].fixedAmount, true);
-  expect(cartData.products[0].fixedQty, true);
+  if (cartData is CartDataStringProduct) {
+    expect(cartData.products[0], 'test productId');
+  } else {
+    expect(cartData.products[0].productId, 'test productId');
+    expect(cartData.products[0].publicHash, 'test publicHash');
+    expect(cartData.products[0].merchantId, 'test merchantId');
+    expect(cartData.products[0].name, 'test name');
+    expect(cartData.products[0].img, 'test img');
+    expect(cartData.products[0].price, 100);
+    expect(cartData.products[0].localTax, 100);
+    expect(cartData.products[0].nationalTax, 100);
+    expect(cartData.products[0].fixedAmount, true);
+    expect(cartData.products[0].fixedQty, true);
+  }
   expect(cartData.description, 'test description');
   expect(cartData.createdAt, _dateTime);
   expect(cartData.updatedAt, _dateTime);
@@ -87,7 +110,7 @@ void _testCartData(CartData cartData) {
   expect(cartData.showAvailableProducts, true);
   expect(cartData.requireShippingDetails, true);
   expect(cartData.emailReceipt, true);
-  expect(cartData.payments, ['test value 1', 'test value 2']);
+  expect(cartData.payments, true);
   expect(cartData.shopifyHash, 'test shopifyHash');
   expect(cartData.createdAt, _dateTime);
   expect(cartData.updatedAt, _dateTime);
@@ -113,28 +136,11 @@ final _cartMap = <String, dynamic>{
   'description': 'test description',
   'type': 'test type',
   'custom_fields_group': 'test customFieldsGroup',
-  'products': [
-    {
-      'id': 'test productId',
-      'public_hash': 'test publicHash',
-      'merchant_id': 'test merchantId',
-      'name': 'test name',
-      'img': 'test img',
-      'price': 100,
-      'local_tax': 100,
-      'national_tax': 100,
-      'fixed_amount': true,
-      'fixed_qty': true,
-      'description': 'test description',
-      'created_at': '2017-10-19T20:15:19.560708Z',
-      'updated_at': '2017-10-19T20:15:19.560708Z',
-      'deleted_at': '2017-10-19T20:15:19.560708Z',
-    }
-  ],
+  'products': ['test productId'],
   'show_available_products': true,
   'require_shipping_details': true,
   'email_receipt': true,
-  'payments': ['test value 1', 'test value 2'],
+  'payments': true,
   'shopify_hash': 'test shopifyHash',
   'created_at': '2017-10-19T20:15:19.560708Z',
   'updated_at': '2017-10-19T20:15:19.560708Z',

@@ -66,7 +66,7 @@ void _testCartCreateRequestToJson() {
   final dateTime = DateTime.parse('2017-10-19T20:15:19.560708Z');
   final request = CartCreateRequest(
       merchantId: 'merchantId',
-      cart: CartData(
+      cart: CartDataStringProduct(
         id: 'test id',
         publicHash: 'test publicHash',
         merchantId: 'test merchantId',
@@ -77,27 +77,12 @@ void _testCartCreateRequestToJson() {
         type: 'test type',
         customFieldsGroup: 'test customFieldsGroup',
         products: [
-          ProductData(
-            productId: 'test productId',
-            publicHash: 'test publicHash',
-            merchantId: 'test merchantId',
-            name: 'test name',
-            img: 'test img',
-            price: 100,
-            localTax: 100,
-            nationalTax: 100,
-            fixedAmount: true,
-            fixedQty: true,
-            description: 'test description',
-            createdAt: dateTime,
-            updatedAt: dateTime,
-            deletedAt: dateTime,
-          )
+          'test productId'
         ],
         showAvailableProducts: true,
         requireShippingDetails: true,
         emailReceipt: true,
-        payments: ['test value 1', 'test value 2'],
+        payments: true,
         shopifyHash: 'test shopifyHash',
         createdAt: dateTime,
         updatedAt: dateTime,
@@ -108,12 +93,10 @@ void _testCartCreateRequestToJson() {
 }
 
 final _cartJson =
-    '{"id":"test id","public_hash":"test publicHash","merchant_id":"test merchantId","card_processor_id":"test cardProcessorId","ach_processor_id":"test achProcessorId","name":"test name","description":"test description","type":"test type","custom_fields_group":"test customFieldsGroup","products":[$_productJson],"show_available_products":true,"require_shipping_details":true,"email_receipt":true,"payments":["test value 1","test value 2"],"shopify_hash":"test shopifyHash","created_at":"2017-10-19T20:15:19.560708Z","updated_at":"2017-10-19T20:15:19.560708Z","deleted_at":"2017-10-19T20:15:19.560708Z"}';
-final _productJson =
-    '{"id":"test productId","public_hash":"test publicHash","merchant_id":"test merchantId","name":"test name","img":"test img","price":100,"local_tax":100,"national_tax":100,"fixed_amount":true,"fixed_qty":true,"description":"test description","created_at":"2017-10-19T20:15:19.560708Z","updated_at":"2017-10-19T20:15:19.560708Z","deleted_at":"2017-10-19T20:15:19.560708Z"}';
+    '{"id":"test id","public_hash":"test publicHash","merchant_id":"test merchantId","card_processor_id":"test cardProcessorId","ach_processor_id":"test achProcessorId","name":"test name","description":"test description","type":"test type","custom_fields_group":"test customFieldsGroup","products":["test productId"],"show_available_products":true,"require_shipping_details":true,"email_receipt":true,"payments":true,"shopify_hash":"test shopifyHash","created_at":"2017-10-19T20:15:19.560708Z","updated_at":"2017-10-19T20:15:19.560708Z","deleted_at":"2017-10-19T20:15:19.560708Z"}';
 
 void _testCartCreateRequestGetUrl() {
-  final request = CartCreateRequest(merchantId: 'merchantId', cart: CartData());
+  final request = CartCreateRequest(merchantId: 'merchantId', cart: CartDataStringProduct());
 
   expect('/merchant/merchantId/cart', request.getUrl());
 }
@@ -123,7 +106,7 @@ void _testCartUpdateRequestToJson() {
   final request = CartUpdateRequest(
       merchantId: 'merchantId',
       cartId: 'cartId',
-      cart: CartData(
+      cart: CartDataStringProduct(
         id: 'test id',
         publicHash: 'test publicHash',
         merchantId: 'test merchantId',
@@ -134,27 +117,12 @@ void _testCartUpdateRequestToJson() {
         type: 'test type',
         customFieldsGroup: 'test customFieldsGroup',
         products: [
-          ProductData(
-            productId: 'test productId',
-            publicHash: 'test publicHash',
-            merchantId: 'test merchantId',
-            name: 'test name',
-            img: 'test img',
-            price: 100,
-            localTax: 100,
-            nationalTax: 100,
-            fixedAmount: true,
-            fixedQty: true,
-            description: 'test description',
-            createdAt: dateTime,
-            updatedAt: dateTime,
-            deletedAt: dateTime,
-          )
+          'test productId'
         ],
         showAvailableProducts: true,
         requireShippingDetails: true,
         emailReceipt: true,
-        payments: ['test value 1', 'test value 2'],
+        payments: true,
         shopifyHash: 'test shopifyHash',
         createdAt: dateTime,
         updatedAt: dateTime,
@@ -165,7 +133,7 @@ void _testCartUpdateRequestToJson() {
 }
 
 void _testCartUpdateRequestGetUrl() {
-  final request = CartUpdateRequest(merchantId: 'merchantId', cartId: 'cartId', cart: CartData());
+  final request = CartUpdateRequest(merchantId: 'merchantId', cartId: 'cartId', cart: CartDataStringProduct());
 
   expect('/merchant/merchantId/cart/cartId', request.getUrl());
 }

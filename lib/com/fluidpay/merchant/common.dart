@@ -4,7 +4,105 @@ import 'package:json_annotation/json_annotation.dart';
 part 'common.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class CartData extends Decodable {
+class CartDataFullProduct extends CartData<ProductData> {
+  CartDataFullProduct({
+    String id,
+    String publicHash,
+    String merchantId,
+    String cardProcessorId,
+    String achProcessorId,
+    String name,
+    String description,
+    String type = 'normal',
+    String customFieldsGroup,
+    List<ProductData> products,
+    bool showAvailableProducts,
+    bool requireShippingDetails,
+    bool emailReceipt,
+    bool payments,
+    String shopifyHash,
+    DateTime createdAt,
+    DateTime updatedAt,
+    DateTime deletedAt,
+  }) : super(
+    id: id,
+    publicHash: publicHash,
+    merchantId: merchantId,
+    cardProcessorId: cardProcessorId,
+    achProcessorId: achProcessorId,
+    name: name,
+    description: description,
+    type: type,
+    customFieldsGroup: customFieldsGroup,
+    products: products,
+    showAvailableProducts: showAvailableProducts,
+    requireShippingDetails: requireShippingDetails,
+    emailReceipt: emailReceipt,
+    payments: payments,
+    shopifyHash: shopifyHash,
+    createdAt: createdAt,
+    updatedAt: updatedAt,
+    deletedAt: deletedAt,
+  );
+
+  factory CartDataFullProduct.fromJson(Map<String, dynamic> json) =>
+      _$CartDataFullProductFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CartDataFullProductToJson(this);
+}
+
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CartDataStringProduct extends CartData<String> {
+  CartDataStringProduct({
+    String id,
+    String publicHash,
+    String merchantId,
+    String cardProcessorId,
+    String achProcessorId,
+    String name,
+    String description,
+    String type = 'normal',
+    String customFieldsGroup,
+    List<String> products,
+    bool showAvailableProducts,
+    bool requireShippingDetails,
+    bool emailReceipt,
+    bool payments,
+    String shopifyHash,
+    DateTime createdAt,
+    DateTime updatedAt,
+    DateTime deletedAt,
+  }) : super(
+    id: id,
+    publicHash: publicHash,
+    merchantId: merchantId,
+    cardProcessorId: cardProcessorId,
+    achProcessorId: achProcessorId,
+    name: name,
+    description: description,
+    type: type,
+    customFieldsGroup: customFieldsGroup,
+    products: products,
+    showAvailableProducts: showAvailableProducts,
+    requireShippingDetails: requireShippingDetails,
+    emailReceipt: emailReceipt,
+    payments: payments,
+    shopifyHash: shopifyHash,
+    createdAt: createdAt,
+    updatedAt: updatedAt,
+    deletedAt: deletedAt,
+  );
+
+  factory CartDataStringProduct.fromJson(Map<String, dynamic> json) =>
+      _$CartDataStringProductFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CartDataStringProductToJson(this);
+}
+
+abstract class CartData<ProductType> extends Decodable {
   String id;
   String publicHash;
   String merchantId;
@@ -14,11 +112,11 @@ class CartData extends Decodable {
   String description;
   String type;
   String customFieldsGroup;
-  List<ProductData> products;
+  List<ProductType> products;
   bool showAvailableProducts;
   bool requireShippingDetails;
   bool emailReceipt;
-  List<String> payments;
+  bool payments;
   String shopifyHash;
   DateTime createdAt;
   DateTime updatedAt;
@@ -44,12 +142,6 @@ class CartData extends Decodable {
     this.updatedAt,
     this.deletedAt,
   });
-
-  factory CartData.fromJson(Map<String, dynamic> json) =>
-      _$CartDataFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$CartDataToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
