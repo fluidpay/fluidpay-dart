@@ -12,7 +12,8 @@ void main() {
 }
 
 void testProductCreateResponseToJson() {
-  var req = ProductCreateResponse.fromJson({
+  final dateTime = DateTime(2020, 9, 5);
+  final req = ProductCreateResponse.fromJson({
     'status': 'success',
     'status_code': 200,
     'data': {
@@ -46,13 +47,14 @@ void testProductCreateResponseToJson() {
   expect(req.data.fixedAmount, true);
   expect(req.data.fixedQty, true);
   expect(req.data.description, 'test description');
-  expect(req.data.createdAt, '2020-09-05');
-  expect(req.data.updatedAt, '2020-09-05');
-  expect(req.data.deletedAt, '2020-09-05');
+  expect(req.data.createdAt, dateTime);
+  expect(req.data.updatedAt, dateTime);
+  expect(req.data.deletedAt, dateTime);
 }
 
 void testProductUpdateResponseToJson() {
-  var req = ProductUpdateResponse.fromJson({
+  final dateTime = DateTime(2020, 9, 5);
+  final req = ProductUpdateResponse.fromJson({
     'status': 'success',
     'status_code': 200,
     'data': {
@@ -86,9 +88,9 @@ void testProductUpdateResponseToJson() {
   expect(req.data.fixedAmount, true);
   expect(req.data.fixedQty, true);
   expect(req.data.description, 'test description');
-  expect(req.data.createdAt, '2020-09-05');
-  expect(req.data.updatedAt, '2020-09-05');
-  expect(req.data.deletedAt, '2020-09-05');
+  expect(req.data.createdAt, dateTime);
+  expect(req.data.updatedAt, dateTime);
+  expect(req.data.deletedAt, dateTime);
 }
 
 void testProductDeleteResponseToJson() {
@@ -107,7 +109,8 @@ void testProductDeleteResponseToJson() {
 }
 
 void testProductGetResponseToJson() {
-  var req = ProductGetResponse.fromJson({
+  final dateTime = DateTime(2020, 9, 5);
+  final req = ProductGetResponse.fromJson({
     'status': 'success',
     'status_code': 200,
     'data': {
@@ -141,13 +144,14 @@ void testProductGetResponseToJson() {
   expect(req.data.fixedAmount, true);
   expect(req.data.fixedQty, true);
   expect(req.data.description, 'test description');
-  expect(req.data.createdAt, '2020-09-05');
-  expect(req.data.updatedAt, '2020-09-05');
-  expect(req.data.deletedAt, '2020-09-05');
+  expect(req.data.createdAt, dateTime);
+  expect(req.data.updatedAt, dateTime);
+  expect(req.data.deletedAt, dateTime);
 }
 
 void testProductSearchResponseToJson() {
-  var req = ProductSearchResponse.fromJson({
+  final dateTime = DateTime(2020, 9, 5);
+  final req = ProductSearchResponse.fromJson({
     'status': 'success',
     'status_code': 200,
     'data': [
@@ -183,7 +187,7 @@ void testProductSearchResponseToJson() {
   expect(req.data[0].fixedAmount, true);
   expect(req.data[0].fixedQty, true);
   expect(req.data[0].description, 'test description');
-  expect(req.data[0].createdAt, '2020-09-05');
-  expect(req.data[0].updatedAt, '2020-09-05');
-  expect(req.data[0].deletedAt, '2020-09-05');
+  expect(req.data[0].createdAt, dateTime);
+  expect(req.data[0].updatedAt, dateTime);
+  expect(req.data[0].deletedAt, dateTime);
 }

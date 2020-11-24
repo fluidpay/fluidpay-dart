@@ -129,12 +129,9 @@ class ProductGetRequest extends Searchable<ProductGetResponse> {
 class ProductGetAllRequest extends Searchable<ProductGetAllResponse> {
   @JsonKey(ignore: true)
   String merchantId;
-  @JsonKey(ignore: true)
-  String productId;
 
   ProductGetAllRequest({
-    this.merchantId,
-    this.productId,
+    this.merchantId
   });
 
   @override
