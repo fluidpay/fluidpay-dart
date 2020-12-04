@@ -43,7 +43,18 @@ class Address extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class LineItem extends Decodable {
+  static LineItemStatus lineItemStatusFromJson(String value) {
+    switch (value) {
+      case 'paid': return LineItemStatus.paid;
+      case 'pending': return LineItemStatus.pending;
+      case 'rejected': return LineItemStatus.rejected;
+    }
+
+    return null;
+  }
+
   String id;
+  @JsonKey(fromJson: lineItemStatusFromJson)
   LineItemStatus status;
   String type;
   String name;
