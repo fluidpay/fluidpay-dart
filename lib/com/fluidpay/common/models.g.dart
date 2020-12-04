@@ -41,7 +41,7 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
 LineItem _$LineItemFromJson(Map<String, dynamic> json) {
   return LineItem(
     id: json['id'] as String,
-    status: _$enumDecodeNullable(_$LineItemStatusEnumMap, json['status']),
+    status: LineItem.lineItemStatusFromJson(json['status'] as String),
     type: json['type'] as String,
     name: json['name'] as String,
     description: json['description'] as String,
@@ -94,6 +94,27 @@ Map<String, dynamic> _$LineItemToJson(LineItem instance) => <String, dynamic>{
       'amount': instance.amount,
     };
 
+const _$LineItemStatusEnumMap = {
+  LineItemStatus.paid: 'paid',
+  LineItemStatus.pending: 'pending',
+  LineItemStatus.rejected: 'rejected',
+};
+
+QuerySearchParamString _$QuerySearchParamStringFromJson(
+    Map<String, dynamic> json) {
+  return QuerySearchParamString(
+    operator: _$enumDecodeNullable(_$SearchOperatorEnumMap, json['operator']),
+    value: json['value'] as String,
+  );
+}
+
+Map<String, dynamic> _$QuerySearchParamStringToJson(
+        QuerySearchParamString instance) =>
+    <String, dynamic>{
+      'operator': _$SearchOperatorEnumMap[instance.operator],
+      'value': instance.value,
+    };
+
 T _$enumDecode<T>(
   Map<T, dynamic> enumValues,
   dynamic source, {
@@ -125,27 +146,6 @@ T _$enumDecodeNullable<T>(
   }
   return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
 }
-
-const _$LineItemStatusEnumMap = {
-  LineItemStatus.paid: 'paid',
-  LineItemStatus.pending: 'pending',
-  LineItemStatus.rejected: 'rejected',
-};
-
-QuerySearchParamString _$QuerySearchParamStringFromJson(
-    Map<String, dynamic> json) {
-  return QuerySearchParamString(
-    operator: _$enumDecodeNullable(_$SearchOperatorEnumMap, json['operator']),
-    value: json['value'] as String,
-  );
-}
-
-Map<String, dynamic> _$QuerySearchParamStringToJson(
-        QuerySearchParamString instance) =>
-    <String, dynamic>{
-      'operator': _$SearchOperatorEnumMap[instance.operator],
-      'value': instance.value,
-    };
 
 const _$SearchOperatorEnumMap = {
   SearchOperator.equals: '=',
