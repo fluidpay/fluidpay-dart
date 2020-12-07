@@ -48,6 +48,7 @@ class LineItem extends Decodable {
       case 'paid': return LineItemStatus.paid;
       case 'pending': return LineItemStatus.pending;
       case 'rejected': return LineItemStatus.rejected;
+      case '': return LineItemStatus.empty;
     }
 
     return null;
@@ -111,7 +112,7 @@ class LineItem extends Decodable {
   Map<String, dynamic> toJson() => _$LineItemToJson(this);
 }
 
-enum LineItemStatus { paid, pending, rejected }
+enum LineItemStatus { paid, pending, rejected, empty }
 
 abstract class QuerySearchParam<Value> extends Decodable {
   SearchOperator operator;
