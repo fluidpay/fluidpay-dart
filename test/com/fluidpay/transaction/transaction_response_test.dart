@@ -3,7 +3,7 @@ import 'package:fluidpay/com/fluidpay/transaction/response.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('transaction create response fromJson', _transactionCreateResponseFromJsonEmptyLineItemStatusTest);
+  test('transaction create response fromJson', _transactionCreateResponseFromJsonTest);
 
   test('transaction void response fromJson', _transactionVoidResponseFromJsonTest);
 
