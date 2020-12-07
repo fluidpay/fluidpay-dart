@@ -10,6 +10,8 @@ void main() {
   test('transaction create vault response fromJson', _transactionCreateVaultResponseFromJsonTest);
 
   test('transaction multi void response fromJson', _transactionMultiVoidResponseFromJsonTest);
+
+  test('transaction create response fromJson lineItem status empty', _transactionCreateResponseFromJsonEmptyLineItemStatusTest);
 }
 
 void _transactionMultiVoidResponseFromJsonTest() {
@@ -592,3 +594,37 @@ final transactionCreateResponseMap = <String, dynamic>{
     'settled_at': '2017-10-19T20:15:19.560708Z',
   }
 };
+
+void _transactionCreateResponseFromJsonEmptyLineItemStatusTest() {
+  final dateTime = DateTime.parse('2017-10-19T20:15:19.560708Z');
+
+  transactionCreateResponseMap['data']['line_items'][0]['status'] = '';
+  final transactionCreateResponse = TransactionCreateResponse.fromJson(transactionCreateResponseMap);
+  
+  expect(transactionCreateResponse.data.lineItems.length, 1);
+  expect(transactionCreateResponse.data.lineItems[0].id, 'test id');
+  expect(transactionCreateResponse.data.lineItems[0].status, LineItemStatus.empty);
+  expect(transactionCreateResponse.data.lineItems[0].type, 'test type');
+  expect(transactionCreateResponse.data.lineItems[0].name, 'test name');
+  expect(transactionCreateResponse.data.lineItems[0].description, 'test description');
+  expect(transactionCreateResponse.data.lineItems[0].quantity, 600);
+  expect(transactionCreateResponse.data.lineItems[0].quantityShipped, 601.999);
+  expect(transactionCreateResponse.data.lineItems[0].productCode, 'test productCode');
+  expect(transactionCreateResponse.data.lineItems[0].commodityCode, 'test commodityCode');
+  expect(transactionCreateResponse.data.lineItems[0].unitOfMeasure, 'test unitOfMeasure');
+  expect(transactionCreateResponse.data.lineItems[0].alternateTaxIdentifier, 'test alternateTaxIdentifier');
+  expect(transactionCreateResponse.data.lineItems[0].taxable, true);
+  expect(transactionCreateResponse.data.lineItems[0].localTaxRate, 'test localTaxRate');
+  expect(transactionCreateResponse.data.lineItems[0].localTax, 602);
+  expect(transactionCreateResponse.data.lineItems[0].nationalTaxRate, 'test nationalTaxRate');
+  expect(transactionCreateResponse.data.lineItems[0].nationalTax, 603);
+  expect(transactionCreateResponse.data.lineItems[0].taxRate, 'test taxRate');
+  expect(transactionCreateResponse.data.lineItems[0].taxAmount, 604);
+  expect(transactionCreateResponse.data.lineItems[0].discountAmount, 605);
+  expect(transactionCreateResponse.data.lineItems[0].freightAmount, 606);
+  expect(transactionCreateResponse.data.lineItems[0].unitPrice, 607);
+  expect(transactionCreateResponse.data.lineItems[0].discountRate, 'test discountRate');
+  expect(transactionCreateResponse.data.lineItems[0].subtotal, 608);
+  expect(transactionCreateResponse.data.lineItems[0].amount, 609);
+
+}
