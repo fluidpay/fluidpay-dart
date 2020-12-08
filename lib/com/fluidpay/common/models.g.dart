@@ -98,6 +98,7 @@ const _$LineItemStatusEnumMap = {
   LineItemStatus.paid: 'paid',
   LineItemStatus.pending: 'pending',
   LineItemStatus.rejected: 'rejected',
+  LineItemStatus.empty: 'empty',
 };
 
 QuerySearchParamString _$QuerySearchParamStringFromJson(
