@@ -10,6 +10,7 @@ void main() {
   test('cart create response fromJson', _testCartCreateResponseFromJson);
   test('cart update response fromJson', _testCartUpdateResponseFromJson);
   test('cart delete response fromJson', _testCartDeleteResponseFromJson);
+  test('cart checkout response fromJson', _testCheckoutResponseFromJson);
 }
 
 void _testCartGetResponseFromJson() {
@@ -146,3 +147,9 @@ final _cartMap = <String, dynamic>{
   'updated_at': '2017-10-19T20:15:19.560708Z',
   'deleted_at': '2017-10-19T20:15:19.560708Z',
 };
+
+void _testCheckoutResponseFromJson() {
+  final response = CartCheckoutResponse.fromJson(_wrapResponseData(null /* TransactionResponseData is already tested */));
+
+  _testResponsable(response);
+}
