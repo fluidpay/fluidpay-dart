@@ -79,9 +79,7 @@ void _testCartCreateRequestToJson() {
         description: 'test description',
         type: 'test type',
         customFieldsGroup: 'test customFieldsGroup',
-        products: [
-          'test productId'
-        ],
+        products: ['test productId'],
         showAvailableProducts: true,
         requireShippingDetails: true,
         emailReceipt: true,
@@ -99,7 +97,8 @@ final _cartJson =
     '{"id":"test id","public_hash":"test publicHash","merchant_id":"test merchantId","card_processor_id":"test cardProcessorId","ach_processor_id":"test achProcessorId","name":"test name","description":"test description","type":"test type","custom_fields_group":"test customFieldsGroup","products":["test productId"],"show_available_products":true,"require_shipping_details":true,"email_receipt":true,"payments":true,"shopify_hash":"test shopifyHash","created_at":"2017-10-19T20:15:19.560708Z","updated_at":"2017-10-19T20:15:19.560708Z","deleted_at":"2017-10-19T20:15:19.560708Z"}';
 
 void _testCartCreateRequestGetUrl() {
-  final request = CartCreateRequest(merchantId: 'merchantId', cart: CartDataStringProduct());
+  final request = CartCreateRequest(
+      merchantId: 'merchantId', cart: CartDataStringProduct());
 
   expect('/merchant/merchantId/cart', request.getUrl());
 }
@@ -119,9 +118,7 @@ void _testCartUpdateRequestToJson() {
         description: 'test description',
         type: 'test type',
         customFieldsGroup: 'test customFieldsGroup',
-        products: [
-          'test productId'
-        ],
+        products: ['test productId'],
         showAvailableProducts: true,
         requireShippingDetails: true,
         emailReceipt: true,
@@ -136,7 +133,10 @@ void _testCartUpdateRequestToJson() {
 }
 
 void _testCartUpdateRequestGetUrl() {
-  final request = CartUpdateRequest(merchantId: 'merchantId', cartId: 'cartId', cart: CartDataStringProduct());
+  final request = CartUpdateRequest(
+      merchantId: 'merchantId',
+      cartId: 'cartId',
+      cart: CartDataStringProduct());
 
   expect('/merchant/merchantId/cart/cartId', request.getUrl());
 }
@@ -149,13 +149,15 @@ void _testCartDeleteRequestGetUrl() {
 
 void _testCartCheckoutRequestToJson() {
   final request = CartCheckoutRequest(
-    cartSessionId: 'test cartSessionId',
-    cardProcessorId: 'test cardProcessorId',
-    achProcessorId: 'test achProcessorId',
-    paymentMethod: _createPaymentMethodRequest(),
-    billingAddress: _createAddress(),
-    shippingAddress: _createAddress()
-  );
+      cartSessionId: 'test cartSessionId',
+      cardProcessorId: 'test cardProcessorId',
+      achProcessorId: 'test achProcessorId',
+      customFields: {
+        'custom_key_1': ['customValue1', 'customValue2']
+      },
+      paymentMethod: _createPaymentMethodRequest(),
+      billingAddress: _createAddress(),
+      shippingAddress: _createAddress());
 
   expect(_cartCheckoutJson, jsonEncode(request.toJson()));
 }
@@ -260,7 +262,8 @@ PaymentMethodRequest _createPaymentMethodRequest() => PaymentMethodRequest()
     ..accountId = 'test account id')
   ..cash = CashRequest();
 
-final _cartCheckoutJson = '{"cart_session_id":"test cartSessionId","card_processor_id":"test cardProcessorId","ach_processor_id":"test achProcessorId","payment_method":$_paymentMethodJson,"billing_address":$_addressJson,"shipping_address":$_addressJson}';
+final _cartCheckoutJson =
+    '{"cart_session_id":"test cartSessionId","card_processor_id":"test cardProcessorId","ach_processor_id":"test achProcessorId","custom_fields":{"custom_key_1":["customValue1","customValue2"]},"payment_method":$_paymentMethodJson,"billing_address":$_addressJson,"shipping_address":$_addressJson}';
 final _paymentMethodJson =
     '{"card":{"entry_type":"test entry type","number":"test number","expiration_date":"10/20","cvc":"123","track_1":"test track 1","track_2":"test track 2","encrypted_track_1":"test encrypted track 1","encrypted_track_2":"test encrypted track 2","ksn":"test ksn","encrypted_data":"test encrypted data","cardholder_authentication":{"eci":"test eci","cavv":"test cavv","xid":"test xid","version":"test version","ds_transaction_id":"test ds transaction id","acs_transaction_id":"test acs transaction id"},"card_present":"test card present"},"ach":{"routing_number":"test routing number","account_number":"test account number","account_type":"text account type","sec_code":"test sec code","check_number":"test check number","accountholder_authentication":{"dl_state":"test dl state","dl_number":"test dl number","ssn4":"test ssn4","dob_year":"test dob year"}},"customer":{"id":"test id","source_merchant_id":"test source merchant id","payment_method_type":"test payment method type","payment_method_id":"test payment method id","billing_address_id":"test billing address id","shipping_address_id":"test shipping address id","cvc":"test cvc"},"terminal":{"id":"test id","expiration_date":"test expiration date","cvc":"test cvc","print_receipt":"test print receipt","signature_required":true,"clerk_id":999,"debit":true,"ebt":"test ebt"},"token":"test token","apple_pay_token":{"key_id":"test key id","processor_id":"test processor id","pkpaymenttoken":{"transactionTime":"2020-02-01T00:00:00.000Z","transactionIdentifier":"test transaction id","paymentMethod":{"type":"test type","network":"test network","displayName":"test display name"},"paymentData":{"version":"test version","signature":"test signature","header":{"applicationData":"test application data","ephemeralPublicKey":"test ephemeral public key","wrappedKey":"test wrapped key","publicKeyHash":"test public key hash","transactionID":"test transaction id"},"data":"test data"}}},"apm":{"type":"test type","selling_point":"test selling point","sold_service":"test sold service","merchant_redirect_url":"test merchant redirect url","locale":"test locale","mobile_view":true,"national_id":"test national id","consumer_ref":"test consumer ref","logo_url":"test logo url","hpp_title":"test hpp title","preferred_language":"test preferred language"},"plaid":{"ref_id":"test ref id","account_id":"test account id"},"cash":{}}';
 final _addressJson =

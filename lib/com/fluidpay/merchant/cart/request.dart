@@ -178,6 +178,7 @@ class CartCheckoutRequest extends Creatable {
   final String cartSessionId;
   final String cardProcessorId;
   final String achProcessorId;
+  final Map<String, List<String>> customFields;
   final PaymentMethodRequest paymentMethod;
   final Address billingAddress;
   final Address shippingAddress;
@@ -186,6 +187,7 @@ class CartCheckoutRequest extends Creatable {
       {this.cartSessionId,
       this.cardProcessorId,
       this.achProcessorId,
+      this.customFields,
       this.paymentMethod,
       this.billingAddress,
       this.shippingAddress});
