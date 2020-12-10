@@ -7,6 +7,7 @@ part 'request.g.dart';
 
 @JsonSerializable()
 class BrandingGetRequest extends Searchable<BrandingGetResponse> {
+  @JsonKey(ignore: true)
   String merchantId;
 
   @override
