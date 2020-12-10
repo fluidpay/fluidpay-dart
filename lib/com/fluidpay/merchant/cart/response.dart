@@ -54,6 +54,14 @@ class CartDeleteResponse extends Responsable<String> {
 }
 
 @JsonSerializable()
+class CartSessionCreateResponse extends Responsable<CartSession> {
+  CartSessionCreateResponse();
+  factory CartSessionCreateResponse.fromJson(Map<String, dynamic> map) =>
+      _$CartSessionCreateResponseFromJson(map);
+  Map<String, dynamic> toJson() => _$CartSessionCreateResponseToJson(this);
+}
+
+@JsonSerializable()
 class CartCheckoutResponse extends Responsable<TransactionResponseData> {
   CartCheckoutResponse();
   factory CartCheckoutResponse.fromJson(Map<String, dynamic> map) =>

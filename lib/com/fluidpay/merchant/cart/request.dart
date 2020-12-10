@@ -174,7 +174,29 @@ class CartDeleteRequest extends Deletable<CartDeleteResponse> {
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class CartCheckoutRequest extends Creatable {
+class CartSessionCreateRequest extends Creatable<CartSessionCreateResponse> {
+  @JsonKey(ignore: true)
+  final String cartPublicHash;
+  final String checkoutUrl;
+  final String cancelUrl;
+  final String successUrl;
+
+  CartSessionCreateRequest(
+      {this.cartPublicHash, this.checkoutUrl, this.cancelUrl, this.successUrl});
+
+  @override
+  CartSessionCreateResponse buildResponse(Map<String, dynamic> json) =>
+      CartSessionCreateResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/cart/$cartPublicHash/session';
+
+  @override
+  Map<String, dynamic> toJson() => _$CartSessionCreateRequestToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CartCheckoutRequest extends Creatable<CartCheckoutResponse> {
   final String cartSessionId;
   final String cardProcessorId;
   final String achProcessorId;
@@ -193,7 +215,7 @@ class CartCheckoutRequest extends Creatable {
       this.shippingAddress});
 
   @override
-  Responsable buildResponse(Map<String, dynamic> json) =>
+  CartCheckoutResponse buildResponse(Map<String, dynamic> json) =>
       CartCheckoutResponse.fromJson(json);
 
   @override
