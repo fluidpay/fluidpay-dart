@@ -17,6 +17,9 @@ void main() {
   test('cart update request toJson', _testCartUpdateRequestToJson);
   test('cart update request getUrl', _testCartUpdateRequestGetUrl);
   test('cart delete request getUrl', _testCartDeleteRequestGetUrl);
+  test('cart session create request toJson',
+      _testCartSessionCreateRequestToJson);
+  test('cart session create request getUrl', _testCartSessionCreateRequestGetUrl);
   test('cart checkout request toJson', _testCartCheckoutRequestToJson);
 }
 
@@ -147,6 +150,21 @@ void _testCartDeleteRequestGetUrl() {
   expect('/merchant/merchantId/cart/cartId', request.getUrl());
 }
 
+void _testCartSessionCreateRequestToJson() {
+  final request = CartSessionCreateRequest(cartPublicHash: '',
+      checkoutUrl: 'test checkoutUrl',
+      cancelUrl: 'test cancelUrl',
+      successUrl: 'test successUrl');
+
+  expect('{"checkout_url":"test checkoutUrl","cancel_url":"test cancelUrl","success_url":"test successUrl"}', jsonEncode(request.toJson()));
+}
+
+void _testCartSessionCreateRequestGetUrl() {
+  final request = CartSessionCreateRequest(cartPublicHash: 'testPublicHash');
+
+  expect('/cart/testPublicHash/session', request.getUrl());
+}
+
 void _testCartCheckoutRequestToJson() {
   final request = CartCheckoutRequest(
       cartSessionId: 'test cartSessionId',
@@ -162,105 +180,107 @@ void _testCartCheckoutRequestToJson() {
   expect(_cartCheckoutJson, jsonEncode(request.toJson()));
 }
 
-Address _createAddress() => Address()
-  ..firstName = 'test firstName'
-  ..lastName = 'test lastName'
-  ..company = 'test company'
-  ..addressLine1 = 'test addressLine1'
-  ..addressLine2 = 'test addressLine2'
-  ..city = 'test city'
-  ..state = 'test state'
-  ..postalCode = 'test postalCode'
-  ..country = 'test country'
-  ..phone = 'test phone'
-  ..fax = 'test fax'
-  ..email = 'test email';
+Address _createAddress() =>
+    Address()
+      ..firstName = 'test firstName'
+      ..lastName = 'test lastName'
+      ..company = 'test company'
+      ..addressLine1 = 'test addressLine1'
+      ..addressLine2 = 'test addressLine2'
+      ..city = 'test city'
+      ..state = 'test state'
+      ..postalCode = 'test postalCode'
+      ..country = 'test country'
+      ..phone = 'test phone'
+      ..fax = 'test fax'
+      ..email = 'test email';
 
-PaymentMethodRequest _createPaymentMethodRequest() => PaymentMethodRequest()
-  ..card = (CreditCardRequest()
-    ..entryType = 'test entry type'
-    ..number = 'test number'
-    ..expirationDate = '10/20'
-    ..cvc = '123'
-    ..track1 = 'test track 1'
-    ..track2 = 'test track 2'
-    ..encryptedTrack1 = 'test encrypted track 1'
-    ..encryptedTrack2 = 'test encrypted track 2'
-    ..ksn = 'test ksn'
-    ..encryptedData = 'test encrypted data'
-    ..cardholderAuthentication = (CardholderAuthenticationRequest()
-      ..eci = 'test eci'
-      ..cavv = 'test cavv'
-      ..xid = 'test xid'
-      ..version = 'test version'
-      ..dsTransactionId = 'test ds transaction id'
-      ..acsTransactionId = 'test acs transaction id')
-    ..cardPresent = 'test card present')
-  ..ach = (ACHRequest()
-    ..routingNumber = 'test routing number'
-    ..accountNumber = 'test account number'
-    ..accountType = 'text account type'
-    ..secCode = 'test sec code'
-    ..checkNumber = 'test check number'
-    ..accountHolderAuthentication = (ACHAuthenticationRequest()
-      ..dlState = 'test dl state'
-      ..dlNumber = 'test dl number'
-      ..ssn4 = 'test ssn4'
-      ..dobYear = 'test dob year'))
-  ..customer = (CustomerTransactionRequest()
-    ..id = 'test id'
-    ..sourceMerchantId = 'test source merchant id'
-    ..paymentMethodType = 'test payment method type'
-    ..paymentMethodId = 'test payment method id'
-    ..billingAddressId = 'test billing address id'
-    ..shippingAddressId = 'test shipping address id'
-    ..cvc = 'test cvc')
-  ..terminal = (TerminalTransactionRequest()
-    ..id = 'test id'
-    ..expirationDate = 'test expiration date'
-    ..cvc = 'test cvc'
-    ..printReceipt = 'test print receipt'
-    ..signatureRequired = true
-    ..clerkId = 999
-    ..debit = true
-    ..ebt = 'test ebt')
-  ..token = 'test token'
-  ..applePayToken = (ApplePayTokenRequest()
-    ..keyId = 'test key id'
-    ..processorId = 'test processor id'
-    ..pkPaymentToken = (PKPaymentToken()
-      ..transactionTime = DateTime.utc(2020, 2)
-      ..transactionIdentifier = 'test transaction id'
-      ..paymentMethod = (PaymentMethod()
+PaymentMethodRequest _createPaymentMethodRequest() =>
+    PaymentMethodRequest()
+      ..card = (CreditCardRequest()
+        ..entryType = 'test entry type'
+        ..number = 'test number'
+        ..expirationDate = '10/20'
+        ..cvc = '123'
+        ..track1 = 'test track 1'
+        ..track2 = 'test track 2'
+        ..encryptedTrack1 = 'test encrypted track 1'
+        ..encryptedTrack2 = 'test encrypted track 2'
+        ..ksn = 'test ksn'
+        ..encryptedData = 'test encrypted data'
+        ..cardholderAuthentication = (CardholderAuthenticationRequest()
+          ..eci = 'test eci'
+          ..cavv = 'test cavv'
+          ..xid = 'test xid'
+          ..version = 'test version'
+          ..dsTransactionId = 'test ds transaction id'
+          ..acsTransactionId = 'test acs transaction id')
+        ..cardPresent = 'test card present')
+      ..ach = (ACHRequest()
+        ..routingNumber = 'test routing number'
+        ..accountNumber = 'test account number'
+        ..accountType = 'text account type'
+        ..secCode = 'test sec code'
+        ..checkNumber = 'test check number'
+        ..accountHolderAuthentication = (ACHAuthenticationRequest()
+          ..dlState = 'test dl state'
+          ..dlNumber = 'test dl number'
+          ..ssn4 = 'test ssn4'
+          ..dobYear = 'test dob year'))
+      ..customer = (CustomerTransactionRequest()
+        ..id = 'test id'
+        ..sourceMerchantId = 'test source merchant id'
+        ..paymentMethodType = 'test payment method type'
+        ..paymentMethodId = 'test payment method id'
+        ..billingAddressId = 'test billing address id'
+        ..shippingAddressId = 'test shipping address id'
+        ..cvc = 'test cvc')
+      ..terminal = (TerminalTransactionRequest()
+        ..id = 'test id'
+        ..expirationDate = 'test expiration date'
+        ..cvc = 'test cvc'
+        ..printReceipt = 'test print receipt'
+        ..signatureRequired = true
+        ..clerkId = 999
+        ..debit = true
+        ..ebt = 'test ebt')
+      ..token = 'test token'
+      ..applePayToken = (ApplePayTokenRequest()
+        ..keyId = 'test key id'
+        ..processorId = 'test processor id'
+        ..pkPaymentToken = (PKPaymentToken()
+          ..transactionTime = DateTime.utc(2020, 2)
+          ..transactionIdentifier = 'test transaction id'
+          ..paymentMethod = (PaymentMethod()
+            ..type = 'test type'
+            ..network = 'test network'
+            ..displayName = 'test display name')
+          ..paymentData = (PaymentData()
+            ..version = 'test version'
+            ..signature = 'test signature'
+            ..header = (Header()
+              ..applicationData = 'test application data'
+              ..ephemeralPublicKey = 'test ephemeral public key'
+              ..wrappedKey = 'test wrapped key'
+              ..publicKeyHash = 'test public key hash'
+              ..transactionId = 'test transaction id')
+            ..data = 'test data')))
+      ..apm = (APMRequest()
         ..type = 'test type'
-        ..network = 'test network'
-        ..displayName = 'test display name')
-      ..paymentData = (PaymentData()
-        ..version = 'test version'
-        ..signature = 'test signature'
-        ..header = (Header()
-          ..applicationData = 'test application data'
-          ..ephemeralPublicKey = 'test ephemeral public key'
-          ..wrappedKey = 'test wrapped key'
-          ..publicKeyHash = 'test public key hash'
-          ..transactionId = 'test transaction id')
-        ..data = 'test data')))
-  ..apm = (APMRequest()
-    ..type = 'test type'
-    ..sellingPoint = 'test selling point'
-    ..soldService = 'test sold service'
-    ..merchantRedirectUrl = 'test merchant redirect url'
-    ..locale = 'test locale'
-    ..mobileView = true
-    ..nationalId = 'test national id'
-    ..consumerRef = 'test consumer ref'
-    ..logoUrl = 'test logo url'
-    ..hppTitle = 'test hpp title'
-    ..preferredLanguage = 'test preferred language')
-  ..plaid = (PlaidRequest()
-    ..refId = 'test ref id'
-    ..accountId = 'test account id')
-  ..cash = CashRequest();
+        ..sellingPoint = 'test selling point'
+        ..soldService = 'test sold service'
+        ..merchantRedirectUrl = 'test merchant redirect url'
+        ..locale = 'test locale'
+        ..mobileView = true
+        ..nationalId = 'test national id'
+        ..consumerRef = 'test consumer ref'
+        ..logoUrl = 'test logo url'
+        ..hppTitle = 'test hpp title'
+        ..preferredLanguage = 'test preferred language')
+      ..plaid = (PlaidRequest()
+        ..refId = 'test ref id'
+        ..accountId = 'test account id')
+      ..cash = CashRequest();
 
 final _cartCheckoutJson =
     '{"cart_session_id":"test cartSessionId","card_processor_id":"test cardProcessorId","ach_processor_id":"test achProcessorId","custom_fields":{"custom_key_1":["customValue1","customValue2"]},"payment_method":$_paymentMethodJson,"billing_address":$_addressJson,"shipping_address":$_addressJson}';
