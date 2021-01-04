@@ -1,5 +1,6 @@
 import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/merchant/common.dart';
+import 'package:fluidpay/com/fluidpay/transaction/response_data.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'response.g.dart';
@@ -50,4 +51,20 @@ class CartDeleteResponse extends Responsable<String> {
   factory CartDeleteResponse.fromJson(Map<String, dynamic> map) =>
       _$CartDeleteResponseFromJson(map);
   Map<String, dynamic> toJson() => _$CartDeleteResponseToJson(this);
+}
+
+@JsonSerializable()
+class CartSessionCreateResponse extends Responsable<CartSession> {
+  CartSessionCreateResponse();
+  factory CartSessionCreateResponse.fromJson(Map<String, dynamic> map) =>
+      _$CartSessionCreateResponseFromJson(map);
+  Map<String, dynamic> toJson() => _$CartSessionCreateResponseToJson(this);
+}
+
+@JsonSerializable()
+class CartCheckoutResponse extends Responsable<TransactionResponseData> {
+  CartCheckoutResponse();
+  factory CartCheckoutResponse.fromJson(Map<String, dynamic> map) =>
+      _$CartCheckoutResponseFromJson(map);
+  Map<String, dynamic> toJson() => _$CartCheckoutResponseToJson(this);
 }

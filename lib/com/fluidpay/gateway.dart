@@ -13,6 +13,7 @@ class Gateway {
   String _baseUrl;
   String apiKey;
   AuthLoginResponseData authData;
+  Map<String, String> Function() _createAuthHeader;
 
   Gateway._internal();
 
@@ -26,7 +27,8 @@ class Gateway {
       throw ArgumentError(
           '\'baseUrl\' must not be null or empty. Use init method to set it properly.');
     }
-    return _CommonClient(_baseUrl, apiKey, authData);
+    return _CommonClient(
+        _baseUrl, apiKey, _createAuthHeader ?? _defaultAuthHeaderCreator);
   }
 
   Future<AuthLoginResponse> login(AuthLoginRequest loginRequest) async {
@@ -39,11 +41,11 @@ class Gateway {
     return authResponse;
   }
 
-
-  Future<Response> execute<Response extends Responsable>(Requestable<Response> request) {
+  Future<Response> execute<Response extends Responsable>(
+      Requestable<Response> request) {
     Future<Map<String, dynamic>> result;
 
-    switch(request.getRequestMethod()) {
+    switch (request.getRequestMethod()) {
       case Method.GET:
         result = _client.get(request);
         break;
@@ -57,21 +59,35 @@ class Gateway {
 
     return result.then((value) => request.buildResponse(value));
   }
+
+  void setAuthHeaderCreator(Map<String, String> Function() authHeaderCreator) {
+    _createAuthHeader = authHeaderCreator;
+  }
+
+  Map<String, String> _defaultAuthHeaderCreator() {
+    final result = <String, String>{};
+
+    if (authData != null) {
+      result['Authorization'] = 'Bearer ${authData.token}';
+      result['Cookie'] = 'sid=${authData.sid}';
+    }
+
+    return result;
+  }
 }
 
 class _CommonClient {
   final String baseUrl;
   final String apiKey;
-  final AuthLoginResponseData authData;
 
   final headers = {'Content-Type': 'application/json'};
 
-  _CommonClient(this.baseUrl, this.apiKey, this.authData) {
-    if (authData != null) {
-      headers['Authorization'] = 'Bearer ${authData.token}';
-      headers['Cookie'] = 'sid=${authData.sid}';
-    } else if (apiKey != null) {
+  _CommonClient(this.baseUrl, this.apiKey,
+      Map<String, String> Function() createAuthHeader) {
+    if (apiKey != null) {
       headers['Authorization'] = apiKey;
+    } else {
+      headers.addAll(createAuthHeader());
     }
   }
 

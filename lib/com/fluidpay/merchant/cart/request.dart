@@ -3,6 +3,7 @@ import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/merchant/cart/response.dart';
 import 'package:fluidpay/com/fluidpay/merchant/common.dart';
+import 'package:fluidpay/com/fluidpay/transaction/payment_method/request_data.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'request.g.dart';
@@ -170,4 +171,56 @@ class CartDeleteRequest extends Deletable<CartDeleteResponse> {
 
   @override
   String getUrl() => '/merchant/$merchantId/cart/$cartId';
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CartSessionCreateRequest extends Creatable<CartSessionCreateResponse> {
+  @JsonKey(ignore: true)
+  final String cartPublicHash;
+  final String checkoutUrl;
+  final String cancelUrl;
+  final String successUrl;
+
+  CartSessionCreateRequest(
+      {this.cartPublicHash, this.checkoutUrl, this.cancelUrl, this.successUrl});
+
+  @override
+  CartSessionCreateResponse buildResponse(Map<String, dynamic> json) =>
+      CartSessionCreateResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/cart/$cartPublicHash/session';
+
+  @override
+  Map<String, dynamic> toJson() => _$CartSessionCreateRequestToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CartCheckoutRequest extends Creatable<CartCheckoutResponse> {
+  final String cartSessionId;
+  final String cardProcessorId;
+  final String achProcessorId;
+  final Map<String, List<String>> customFields;
+  final PaymentMethodRequest paymentMethod;
+  final Address billingAddress;
+  final Address shippingAddress;
+
+  CartCheckoutRequest(
+      {this.cartSessionId,
+      this.cardProcessorId,
+      this.achProcessorId,
+      this.customFields,
+      this.paymentMethod,
+      this.billingAddress,
+      this.shippingAddress});
+
+  @override
+  CartCheckoutResponse buildResponse(Map<String, dynamic> json) =>
+      CartCheckoutResponse.fromJson(json);
+
+  @override
+  String getUrl() => '/cart/checkout';
+
+  @override
+  Map<String, dynamic> toJson() => _$CartCheckoutRequestToJson(this);
 }
