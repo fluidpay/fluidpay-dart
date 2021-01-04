@@ -156,3 +156,37 @@ Map<String, dynamic> _$ProductDataToJson(ProductData instance) =>
       'updated_at': instance.updatedAt?.toIso8601String(),
       'deleted_at': instance.deletedAt?.toIso8601String(),
     };
+
+CartSessionProduct _$CartSessionProductFromJson(Map<String, dynamic> json) {
+  return CartSessionProduct(
+    publicHash: json['public_hash'] as String,
+    qty: json['qty'] as int,
+    price: json['price'] as int,
+  );
+}
+
+Map<String, dynamic> _$CartSessionProductToJson(CartSessionProduct instance) =>
+    <String, dynamic>{
+      'public_hash': instance.publicHash,
+      'qty': instance.qty,
+      'price': instance.price,
+    };
+
+CartSession _$CartSessionFromJson(Map<String, dynamic> json) {
+  return CartSession(
+    id: json['id'] as String,
+    cartPublicHash: json['cart_public_hash'] as String,
+    checkoutUrl: json['checkout_url'] as String,
+    cancelUrl: json['cancel_url'] as String,
+    successUrl: json['success_url'] as String,
+  );
+}
+
+Map<String, dynamic> _$CartSessionToJson(CartSession instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'cart_public_hash': instance.cartPublicHash,
+      'checkout_url': instance.checkoutUrl,
+      'cancel_url': instance.cancelUrl,
+      'success_url': instance.successUrl,
+    };

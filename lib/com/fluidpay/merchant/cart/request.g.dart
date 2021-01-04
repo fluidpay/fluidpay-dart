@@ -67,3 +67,53 @@ CartDeleteRequest _$CartDeleteRequestFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CartDeleteRequestToJson(CartDeleteRequest instance) =>
     <String, dynamic>{};
+
+CartSessionCreateRequest _$CartSessionCreateRequestFromJson(
+    Map<String, dynamic> json) {
+  return CartSessionCreateRequest(
+    checkoutUrl: json['checkout_url'] as String,
+    cancelUrl: json['cancel_url'] as String,
+    successUrl: json['success_url'] as String,
+  );
+}
+
+Map<String, dynamic> _$CartSessionCreateRequestToJson(
+        CartSessionCreateRequest instance) =>
+    <String, dynamic>{
+      'checkout_url': instance.checkoutUrl,
+      'cancel_url': instance.cancelUrl,
+      'success_url': instance.successUrl,
+    };
+
+CartCheckoutRequest _$CartCheckoutRequestFromJson(Map<String, dynamic> json) {
+  return CartCheckoutRequest(
+    cartSessionId: json['cart_session_id'] as String,
+    cardProcessorId: json['card_processor_id'] as String,
+    achProcessorId: json['ach_processor_id'] as String,
+    customFields: (json['custom_fields'] as Map<String, dynamic>)?.map(
+      (k, e) => MapEntry(k, (e as List)?.map((e) => e as String)?.toList()),
+    ),
+    paymentMethod: json['payment_method'] == null
+        ? null
+        : PaymentMethodRequest.fromJson(
+            json['payment_method'] as Map<String, dynamic>),
+    billingAddress: json['billing_address'] == null
+        ? null
+        : Address.fromJson(json['billing_address'] as Map<String, dynamic>),
+    shippingAddress: json['shipping_address'] == null
+        ? null
+        : Address.fromJson(json['shipping_address'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$CartCheckoutRequestToJson(
+        CartCheckoutRequest instance) =>
+    <String, dynamic>{
+      'cart_session_id': instance.cartSessionId,
+      'card_processor_id': instance.cardProcessorId,
+      'ach_processor_id': instance.achProcessorId,
+      'custom_fields': instance.customFields,
+      'payment_method': instance.paymentMethod,
+      'billing_address': instance.billingAddress,
+      'shipping_address': instance.shippingAddress,
+    };
