@@ -10,27 +10,32 @@ void main() {
   test('cart create response fromJson', _testCartCreateResponseFromJson);
   test('cart update response fromJson', _testCartUpdateResponseFromJson);
   test('cart delete response fromJson', _testCartDeleteResponseFromJson);
+  test('cart session create response fromJson',
+      _testCartSessionCreateResponseFromJson);
+  test('cart checkout response fromJson', _testCartCheckoutResponseFromJson);
 }
 
 void _testCartGetResponseFromJson() {
   final map = <String, dynamic>{};
   map.addAll(_cartMap);
-  map['products'] = [{
-    'id': 'test productId',
-    'public_hash': 'test publicHash',
-    'merchant_id': 'test merchantId',
-    'name': 'test name',
-    'img': 'test img',
-    'price': 100,
-    'local_tax': 100,
-    'national_tax': 100,
-    'fixed_amount': true,
-    'fixed_qty': true,
-    'description': 'test description',
-    'created_at': '2017-10-19T20:15:19.560708Z',
-    'updated_at': '2017-10-19T20:15:19.560708Z',
-    'deleted_at': '2017-10-19T20:15:19.560708Z',
-  }];
+  map['products'] = [
+    {
+      'id': 'test productId',
+      'public_hash': 'test publicHash',
+      'merchant_id': 'test merchantId',
+      'name': 'test name',
+      'img': 'test img',
+      'price': 100,
+      'local_tax': 100,
+      'national_tax': 100,
+      'fixed_amount': true,
+      'fixed_qty': true,
+      'description': 'test description',
+      'created_at': '2017-10-19T20:15:19.560708Z',
+      'updated_at': '2017-10-19T20:15:19.560708Z',
+      'deleted_at': '2017-10-19T20:15:19.560708Z',
+    }
+  ];
 
   final response = CartGetResponse.fromJson(_wrapResponseData(map));
 
@@ -79,6 +84,7 @@ void _testResponsable(Responsable responsable) {
   expect(responsable.statusCode, 200);
   expect(responsable.totalCount, 100);
 }
+
 void _testCartData(CartData cartData) {
   expect(cartData.id, 'test id');
   expect(cartData.publicHash, 'test publicHash');
@@ -117,8 +123,7 @@ void _testCartData(CartData cartData) {
   expect(cartData.deletedAt, _dateTime);
 }
 
-Map<String, dynamic> _wrapResponseData(dynamic data) =>
-    {
+Map<String, dynamic> _wrapResponseData(dynamic data) => {
       'status': 'test status',
       'msg': 'test msg',
       'status_code': 200,
@@ -146,3 +151,29 @@ final _cartMap = <String, dynamic>{
   'updated_at': '2017-10-19T20:15:19.560708Z',
   'deleted_at': '2017-10-19T20:15:19.560708Z',
 };
+
+void _testCartSessionCreateResponseFromJson() {
+  final response = CartSessionCreateResponse.fromJson(
+      _wrapResponseData(_cartSessionCreateDataMap));
+
+  _testResponsable(response);
+
+  expect(response.data.id, 'test id');
+  expect(response.data.checkoutUrl, 'test checkoutUrl');
+  expect(response.data.cancelUrl, 'test cancelUrl');
+  expect(response.data.successUrl, 'test successUrl');
+}
+
+final _cartSessionCreateDataMap = {
+  'id': 'test id',
+  'checkout_url': 'test checkoutUrl',
+  'cancel_url': 'test cancelUrl',
+  'success_url': 'test successUrl',
+};
+
+void _testCartCheckoutResponseFromJson() {
+  final response = CartCheckoutResponse.fromJson(
+      _wrapResponseData(null /* TransactionResponseData is already tested */));
+
+  _testResponsable(response);
+}

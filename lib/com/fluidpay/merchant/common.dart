@@ -25,25 +25,25 @@ class CartDataFullProduct extends CartData<ProductData> {
     DateTime updatedAt,
     DateTime deletedAt,
   }) : super(
-    id: id,
-    publicHash: publicHash,
-    merchantId: merchantId,
-    cardProcessorId: cardProcessorId,
-    achProcessorId: achProcessorId,
-    name: name,
-    description: description,
-    type: type,
-    customFieldsGroup: customFieldsGroup,
-    products: products,
-    showAvailableProducts: showAvailableProducts,
-    requireShippingDetails: requireShippingDetails,
-    emailReceipt: emailReceipt,
-    payments: payments,
-    shopifyHash: shopifyHash,
-    createdAt: createdAt,
-    updatedAt: updatedAt,
-    deletedAt: deletedAt,
-  );
+          id: id,
+          publicHash: publicHash,
+          merchantId: merchantId,
+          cardProcessorId: cardProcessorId,
+          achProcessorId: achProcessorId,
+          name: name,
+          description: description,
+          type: type,
+          customFieldsGroup: customFieldsGroup,
+          products: products,
+          showAvailableProducts: showAvailableProducts,
+          requireShippingDetails: requireShippingDetails,
+          emailReceipt: emailReceipt,
+          payments: payments,
+          shopifyHash: shopifyHash,
+          createdAt: createdAt,
+          updatedAt: updatedAt,
+          deletedAt: deletedAt,
+        );
 
   factory CartDataFullProduct.fromJson(Map<String, dynamic> json) =>
       _$CartDataFullProductFromJson(json);
@@ -51,7 +51,6 @@ class CartDataFullProduct extends CartData<ProductData> {
   @override
   Map<String, dynamic> toJson() => _$CartDataFullProductToJson(this);
 }
-
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CartDataStringProduct extends CartData<String> {
@@ -75,25 +74,25 @@ class CartDataStringProduct extends CartData<String> {
     DateTime updatedAt,
     DateTime deletedAt,
   }) : super(
-    id: id,
-    publicHash: publicHash,
-    merchantId: merchantId,
-    cardProcessorId: cardProcessorId,
-    achProcessorId: achProcessorId,
-    name: name,
-    description: description,
-    type: type,
-    customFieldsGroup: customFieldsGroup,
-    products: products,
-    showAvailableProducts: showAvailableProducts,
-    requireShippingDetails: requireShippingDetails,
-    emailReceipt: emailReceipt,
-    payments: payments,
-    shopifyHash: shopifyHash,
-    createdAt: createdAt,
-    updatedAt: updatedAt,
-    deletedAt: deletedAt,
-  );
+          id: id,
+          publicHash: publicHash,
+          merchantId: merchantId,
+          cardProcessorId: cardProcessorId,
+          achProcessorId: achProcessorId,
+          name: name,
+          description: description,
+          type: type,
+          customFieldsGroup: customFieldsGroup,
+          products: products,
+          showAvailableProducts: showAvailableProducts,
+          requireShippingDetails: requireShippingDetails,
+          emailReceipt: emailReceipt,
+          payments: payments,
+          shopifyHash: shopifyHash,
+          createdAt: createdAt,
+          updatedAt: updatedAt,
+          deletedAt: deletedAt,
+        );
 
   factory CartDataStringProduct.fromJson(Map<String, dynamic> json) =>
       _$CartDataStringProductFromJson(json);
@@ -184,4 +183,42 @@ class ProductData extends Decodable {
 
   @override
   Map<String, dynamic> toJson() => _$ProductDataToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CartSessionProduct extends Decodable {
+  String publicHash;
+  int qty;
+  int price;
+
+  CartSessionProduct({this.publicHash, this.qty, this.price});
+
+  factory CartSessionProduct.fromJson(Map<String, dynamic> json) =>
+      _$CartSessionProductFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CartSessionProductToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class CartSession extends Decodable {
+  String id;
+  String cartPublicHash;
+  String checkoutUrl;
+  String cancelUrl;
+  String successUrl;
+
+  CartSession({
+    this.id,
+    this.cartPublicHash,
+    this.checkoutUrl,
+    this.cancelUrl,
+    this.successUrl,
+  });
+
+  factory CartSession.fromJson(Map<String, dynamic> json) =>
+      _$CartSessionFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CartSessionToJson(this);
 }
