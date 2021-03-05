@@ -1,4 +1,4 @@
-Dart package for [FluidPay API](https://sandbox.fluidpay.com/docs/api/).
+Dart package for [Fluid Pay API](https://sandbox.fluidpay.com/docs/api/).
 
 ## How to use
 
