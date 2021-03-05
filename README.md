@@ -8,7 +8,7 @@ First you have to initalize and set your base url
 Gateway.instance.init(baseUrl);
 ```
 
-To execute requests declared in [FluidPay API](https://sandbox.fluidpay.com/docs/api/)
+To execute requests declared in [Fluid Pay API](https://sandbox.fluidpay.com/docs/api/)
 
 Every request has its own response type which the execute method returns with.
 
@@ -41,6 +41,6 @@ Before start, generate the request/response serialize support files with:
 pub run build_runner build
 ```
 
-##Contribution
+## Contribution
 
 This is an actively developed library. We will check the new issues soon. But if you wanted to help us with your code, feel free to make a pull request.
