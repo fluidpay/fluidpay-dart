@@ -9,32 +9,32 @@ part 'request.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceCreateRequest extends Creatable<InvoiceCreateResponse> {
-  String currency;
-  String companyName;
-  String customerNumber;
-  String invoiceNumber;
-  String customerId;
-  InvoicePayableTo payableTo;
-  InvoiceBillTo billTo;
-  String dateDue;
-  List<LineItem> items;
-  bool advancedFields;
-  bool enableTax;
-  bool enableShipping;
-  bool requireShippingDetails;
-  bool requireBillingDetailsOnPaymentOnly;
-  String taxPercent;
-  int shipping;
-  int amountPaid;
-  int adjustment;
-  bool allowPartialPayment;
-  String transactionType;
-  List<String> paymentMethods;
-  String cardProcessorId;
-  String achProcessorId;
-  String message;
-  SendVia sendVia;
-  String emailTo;
+  String? currency;
+  String? companyName;
+  String? customerNumber;
+  String? invoiceNumber;
+  String? customerId;
+  InvoicePayableTo? payableTo;
+  InvoiceBillTo? billTo;
+  String? dateDue;
+  List<LineItem>? items;
+  bool? advancedFields;
+  bool? enableTax;
+  bool? enableShipping;
+  bool? requireShippingDetails;
+  bool? requireBillingDetailsOnPaymentOnly;
+  String? taxPercent;
+  int? shipping;
+  int? amountPaid;
+  int? adjustment;
+  bool? allowPartialPayment;
+  String? transactionType;
+  List<String>? paymentMethods;
+  String? cardProcessorId;
+  String? achProcessorId;
+  String? message;
+  SendVia? sendVia;
+  String? emailTo;
 
   InvoiceCreateRequest(
       {this.currency,
@@ -69,7 +69,7 @@ class InvoiceCreateRequest extends Creatable<InvoiceCreateResponse> {
       InvoiceCreateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/invoice';
+  String getPath() => '/invoice';
 
   @override
   Map<String, dynamic> toJson() => _$InvoiceCreateRequestToJson(this);
@@ -77,35 +77,35 @@ class InvoiceCreateRequest extends Creatable<InvoiceCreateResponse> {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceUpdateRequest extends Updatable<InvoiceUpdateResponse> {
-  String id;
-  String currency;
-  String companyName;
-  String customerNumber;
-  String invoiceNumber;
-  String customerId;
-  InvoicePayableTo payableTo;
-  InvoiceBillTo billTo;
-  String dateDue;
-  List<LineItem> items;
-  bool advancedFields;
-  bool enableTax;
-  bool enableShipping;
-  bool requireShippingDetails;
-  bool requireBillingDetailsOnPaymentOnly;
-  String taxPercent;
-  int shipping;
-  int amountPaid;
-  int adjustment;
-  bool allowPartialPayment;
-  String transactionType;
-  List<String> paymentMethods;
-  String cardProcessorId;
-  String achProcessorId;
-  String message;
-  SendVia sendVia;
-  String emailTo;
-  bool markAsPaid;
-  bool reactivate;
+  String? id;
+  String? currency;
+  String? companyName;
+  String? customerNumber;
+  String? invoiceNumber;
+  String? customerId;
+  InvoicePayableTo? payableTo;
+  InvoiceBillTo? billTo;
+  String? dateDue;
+  List<LineItem>? items;
+  bool? advancedFields;
+  bool? enableTax;
+  bool? enableShipping;
+  bool? requireShippingDetails;
+  bool? requireBillingDetailsOnPaymentOnly;
+  String? taxPercent;
+  int? shipping;
+  int? amountPaid;
+  int? adjustment;
+  bool? allowPartialPayment;
+  String? transactionType;
+  List<String>? paymentMethods;
+  String? cardProcessorId;
+  String? achProcessorId;
+  String? message;
+  SendVia? sendVia;
+  String? emailTo;
+  bool? markAsPaid;
+  bool? reactivate;
 
   InvoiceUpdateRequest(this.id,
       {this.currency,
@@ -142,7 +142,7 @@ class InvoiceUpdateRequest extends Updatable<InvoiceUpdateResponse> {
       InvoiceUpdateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/invoice/${id}';
+  String getPath() => '/invoice/${id}';
 
   @override
   Map<String, dynamic> toJson() => _$InvoiceUpdateRequestToJson(this);
@@ -159,7 +159,7 @@ class InvoiceResendRequest extends Updatable<InvoiceResendResponse> {
       InvoiceResendResponse.fromJson(json);
 
   @override
-  String getUrl() => '/invoice/${id}/resend';
+  String getPath() => '/invoice/${id}/resend';
 }
 
 @JsonSerializable()
@@ -173,7 +173,7 @@ class InvoiceMarkAsPaidRequest extends Updatable<InvoiceMarkAsPaidResponse> {
       InvoiceMarkAsPaidResponse.fromJson(json);
 
   @override
-  String getUrl() => '/invoice/${id}/mark-as-paid';
+  String getPath() => '/invoice/${id}/mark-as-paid';
 }
 
 @JsonSerializable()
@@ -187,7 +187,7 @@ class InvoiceReactivateRequest extends Updatable<InvoiceReactivateResponse> {
       InvoiceReactivateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/invoice/${id}/reactivate';
+  String getPath() => '/invoice/${id}/reactivate';
 }
 
 @JsonSerializable()
@@ -201,7 +201,7 @@ class InvoiceDeleteRequest extends Deletable<InvoiceDeleteResponse> {
       InvoiceDeleteResponse.fromJson(json);
 
   @override
-  String getUrl() => '/invoice/${id}';
+  String getPath() => '/invoice/${id}';
 }
 
 @JsonSerializable()
@@ -215,7 +215,7 @@ class InvoiceGetRequest extends Searchable<InvoiceGetResponse> {
       InvoiceGetResponse.fromJson(json);
 
   @override
-  String getUrl() => '/invoice/${id}';
+  String getPath() => '/invoice/${id}';
 
   @override
   Method getRequestMethod() => Method.GET;
@@ -223,14 +223,14 @@ class InvoiceGetRequest extends Searchable<InvoiceGetResponse> {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceSearchRequest extends Searchable<InvoiceSearchResponse> {
-  QuerySearchParamString id;
-  QuerySearchParamString customerId;
-  QuerySearchParamString invoiceNumber;
-  QuerySearchParamDateRange dateDue;
-  QuerySearchParamInt amountDue;
-  QuerySearchParamString status;
-  int offset;
-  int limit;
+  QuerySearchParamString? id;
+  QuerySearchParamString? customerId;
+  QuerySearchParamString? invoiceNumber;
+  QuerySearchParamDateRange? dateDue;
+  QuerySearchParamInt? amountDue;
+  QuerySearchParamString? status;
+  int? offset;
+  int? limit;
 
   InvoiceSearchRequest(
       {this.id,
@@ -247,7 +247,7 @@ class InvoiceSearchRequest extends Searchable<InvoiceSearchResponse> {
       InvoiceSearchResponse.fromJson(json);
 
   @override
-  String getUrl() => '/invoices/search';
+  String getPath() => '/invoices/search';
 
   @override
   Map<String, dynamic> toJson() => _$InvoiceSearchRequestToJson(this);

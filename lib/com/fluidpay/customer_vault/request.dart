@@ -9,13 +9,13 @@ part 'request.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerCreateRequest extends Creatable<CustomerCreateResponse> {
-  String id;
-  String idFormat;
-  String description;
-  CustomerAddress defaultBillingAddress;
-  CustomerAddress defaultShippingAddress;
-  CustomerPaymentCreate defaultPayment;
-  List<String> flags;
+  String? id;
+  String? idFormat;
+  String? description;
+  CustomerAddress? defaultBillingAddress;
+  CustomerAddress? defaultShippingAddress;
+  CustomerPaymentCreate? defaultPayment;
+  List<String>? flags;
 
   CustomerCreateRequest({
     this.id,
@@ -32,7 +32,7 @@ class CustomerCreateRequest extends Creatable<CustomerCreateResponse> {
       CustomerCreateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/vault/customer';
+  String getPath() => '/vault/customer';
 
   @override
   Map<String, dynamic> toJson() => _$CustomerCreateRequestToJson(this);
@@ -40,9 +40,9 @@ class CustomerCreateRequest extends Creatable<CustomerCreateResponse> {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerPaymentCreate extends Decodable {
-  CustomerCard card;
-  CustomerACH ach;
-  String token;
+  CustomerCard? card;
+  CustomerACH? ach;
+  String? token;
 
   CustomerPaymentCreate({this.card, this.ach, this.token});
 
@@ -55,7 +55,7 @@ class CustomerPaymentCreate extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerGetRequest extends Searchable<CustomerGetResponse> {
-  String id;
+  String? id;
 
   CustomerGetRequest({this.id});
 
@@ -64,7 +64,7 @@ class CustomerGetRequest extends Searchable<CustomerGetResponse> {
       CustomerGetResponse.fromJson(json);
 
   @override
-  String getUrl() => '/vault/${id}';
+  String getPath() => '/vault/$id';
 
   @override
   Method getRequestMethod() => Method.GET;
@@ -72,7 +72,7 @@ class CustomerGetRequest extends Searchable<CustomerGetResponse> {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerDeleteRequest extends Deletable<CustomerDeleteResponse> {
-  String id;
+  String? id;
 
   CustomerDeleteRequest({this.id});
 
@@ -81,16 +81,16 @@ class CustomerDeleteRequest extends Deletable<CustomerDeleteResponse> {
       CustomerDeleteResponse.fromJson(json);
 
   @override
-  String getUrl() => '/vault/${id}';
+  String getPath() => '/vault/$id';
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerUpdateRequest extends Updatable<CustomerUpdateResponse> {
   String id;
-  String description;
-  String notes;
-  CustomerDefaults defaults;
-  List<String> flags;
+  String? description;
+  String? notes;
+  CustomerDefaults? defaults;
+  List<String>? flags;
 
   CustomerUpdateRequest(
     this.id, {
@@ -105,7 +105,7 @@ class CustomerUpdateRequest extends Updatable<CustomerUpdateResponse> {
       CustomerUpdateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/vault/customer/${id}';
+  String getPath() => '/vault/customer/$id';
 
   @override
   Map<String, dynamic> toJson() => _$CustomerUpdateRequestToJson(this);
@@ -113,30 +113,30 @@ class CustomerUpdateRequest extends Updatable<CustomerUpdateResponse> {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerSearchRequest extends Searchable<CustomerSearchResponse> {
-  QuerySearchParamString id;
-  QuerySearchParamString paymentMethodType;
-  QuerySearchParamString paymentMethodId;
-  QuerySearchParamString billingAddressId;
-  QuerySearchParamString shippingAddressId;
-  QuerySearchParamString addressId;
-  QuerySearchParamString firstName;
-  QuerySearchParamString lastName;
-  QuerySearchParamString company;
+  QuerySearchParamString? id;
+  QuerySearchParamString? paymentMethodType;
+  QuerySearchParamString? paymentMethodId;
+  QuerySearchParamString? billingAddressId;
+  QuerySearchParamString? shippingAddressId;
+  QuerySearchParamString? addressId;
+  QuerySearchParamString? firstName;
+  QuerySearchParamString? lastName;
+  QuerySearchParamString? company;
   @JsonKey(name: 'address_line_1')
-  QuerySearchParamString addressLine1;
+  QuerySearchParamString? addressLine1;
   @JsonKey(name: 'address_line_2')
-  QuerySearchParamString addressLine2;
-  QuerySearchParamString city;
-  QuerySearchParamString state;
-  QuerySearchParamString postalCode;
-  QuerySearchParamString country;
-  QuerySearchParamString email;
-  QuerySearchParamString phone;
-  QuerySearchParamString fax;
-  QuerySearchParamDateRange createdAt;
-  QuerySearchParamDateRange updatedAt;
-  int limit;
-  int offset;
+  QuerySearchParamString? addressLine2;
+  QuerySearchParamString? city;
+  QuerySearchParamString? state;
+  QuerySearchParamString? postalCode;
+  QuerySearchParamString? country;
+  QuerySearchParamString? email;
+  QuerySearchParamString? phone;
+  QuerySearchParamString? fax;
+  QuerySearchParamDateRange? createdAt;
+  QuerySearchParamDateRange? updatedAt;
+  int? limit;
+  int? offset;
 
   CustomerSearchRequest({
     this.id,
@@ -168,7 +168,7 @@ class CustomerSearchRequest extends Searchable<CustomerSearchResponse> {
       CustomerSearchResponse.fromJson(json);
 
   @override
-  String getUrl() => '/vault/customer/search';
+  String getPath() => '/vault/customer/search';
 
   @override
   Map<String, dynamic> toJson() => _$CustomerSearchRequestToJson(this);
@@ -178,7 +178,7 @@ class CustomerSearchRequest extends Searchable<CustomerSearchResponse> {
 class CustomerAddressCreateRequest
     extends Creatable<CustomerAddressCreateResponse> {
   String customerId;
-  CustomerAddress address;
+  CustomerAddress? address;
 
   CustomerAddressCreateRequest(this.customerId, {this.address});
 
@@ -187,10 +187,10 @@ class CustomerAddressCreateRequest
       CustomerAddressCreateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/vault/customer/${customerId}/address';
+  String getPath() => '/vault/customer/$customerId/address';
 
   @override
-  Map<String, dynamic> toJson() => address.toJson();
+  Map<String, dynamic>? toJson() => address?.toJson();
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -198,7 +198,7 @@ class CustomerAddressUpdateRequest
     extends Updatable<CustomerAddressUpdateResponse> {
   String customerId;
   String addressId;
-  CustomerAddress address;
+  CustomerAddress? address;
 
   CustomerAddressUpdateRequest(this.customerId, this.addressId, {this.address});
 
@@ -207,10 +207,10 @@ class CustomerAddressUpdateRequest
       CustomerAddressUpdateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/vault/customer/${customerId}/address/${addressId}';
+  String getPath() => '/vault/customer/${customerId}/address/${addressId}';
 
   @override
-  Map<String, dynamic> toJson() => address.toJson();
+  Map<String, dynamic> toJson() => address?.toJson() ?? {};
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -226,7 +226,7 @@ class CustomerAddressDeleteRequest
       CustomerAddressDeleteResponse.fromJson(json);
 
   @override
-  String getUrl() => '/vault/customer/${customerId}/address/${addressId}';
+  String getPath() => '/vault/customer/$customerId/address/$addressId';
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake, createFactory: false)
@@ -239,7 +239,7 @@ class CustomerPaymentTypeCreateRequest
   String currency;
   @JsonKey(ignore: true)
   bool validate;
-  CustomerPaymentMethod data;
+  CustomerPaymentMethod? data;
 
   CustomerPaymentTypeCreateRequest(this.customerId, this.paymentType,
       {this.currency = 'USD', this.validate = false, this.data});
@@ -249,11 +249,11 @@ class CustomerPaymentTypeCreateRequest
       CustomerPaymentTypeCreateResponse.fromJson(json);
 
   @override
-  String getUrl() =>
-      '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}';
+  String getPath() =>
+      '/vault/customer/$customerId/${_$CustomerPaymentTypeEnumMap[paymentType]}';
 
   @override
-  Map<String, dynamic> toJson() => data.toJson();
+  Map<String, dynamic> toJson() => data?.toJson() ?? {};
 
   @override
   Map<String, String> getQueryParams() => {
@@ -270,7 +270,7 @@ class CustomerPaymentTypeUpdateRequest
   @JsonKey(ignore: true)
   String paymentTypeId;
   CustomerPaymentType paymentType;
-  CustomerPaymentMethod data;
+  CustomerPaymentMethod? data;
 
   CustomerPaymentTypeUpdateRequest(
       this.customerId, this.paymentType, this.paymentTypeId,
@@ -281,11 +281,11 @@ class CustomerPaymentTypeUpdateRequest
       CustomerPaymentTypeUpdateResponse.fromJson(json);
 
   @override
-  String getUrl() =>
-      '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}/${paymentTypeId}';
+  String getPath() =>
+      '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}/$paymentTypeId';
 
   @override
-  Map<String, dynamic> toJson() => data.toJson();
+  Map<String, dynamic> toJson() => data?.toJson() ?? {};
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake, createFactory: false)
@@ -308,7 +308,7 @@ class CustomerPaymentTypeDeleteRequest
       CustomerPaymentTypeDeleteResponse.fromJson(json);
 
   @override
-  String getUrl() =>
+  String getPath() =>
       '/vault/customer/${customerId}/${_$CustomerPaymentTypeEnumMap[paymentType]}/${paymentTypeId}';
 }
 

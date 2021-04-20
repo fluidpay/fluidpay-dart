@@ -10,8 +10,8 @@ void _authLoginResponseFromJson() {
   expect(response.status, 'test status');
   expect(response.statusCode, 200);
   expect(response.msg, 'test msg');
-  expect(response.data.token, 'test token');
-  expect(response.data.sid, 'test sid');
+  expect(response.data?.token, 'test token');
+  expect(response.data?.sid, 'test sid');
 }
 final _authLoginResponseMap = <String, dynamic> {
   'status': 'test status',

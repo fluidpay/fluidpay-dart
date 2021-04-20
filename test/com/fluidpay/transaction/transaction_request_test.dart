@@ -45,11 +45,11 @@ void main() {
 }
 
 void _transactionSearchRequestGetUrlTest_withoutMerchant() {
-  expect('/transaction/search', TransactionSearchRequest().getUrl());
+  expect('/transaction/search', TransactionSearchRequest().getPath());
 }
 
 void _transactionSearchRequestGetUrlTest_merchantPassed() {
-  expect('/transaction/search/testMerchantId', TransactionSearchRequest(merchantId: 'testMerchantId').getUrl());
+  expect('/transaction/search/testMerchantId', TransactionSearchRequest(merchantId: 'testMerchantId').getPath());
 }
 
 void _transactionSearchRequestToJsonTest() {
@@ -175,7 +175,7 @@ void _transactionTipAdjustmentRequestToJsonTest() {
 final _transactionTipAdjustmentRequestJson = '{"transaction_id":"","tip":1000,"base_amount":2000}';
 
 void _transactionTipAdjustmentRequestGetUrlTest() {
-  expect('/transaction/test_id/tipadjust', TransactionTipAdjustmentRequest('test_id').getUrl());
+  expect('/transaction/test_id/tipadjust', TransactionTipAdjustmentRequest('test_id').getPath());
 }
 
 void _transactionPrintReceiptRequestToJsonTest() {
@@ -187,7 +187,7 @@ void _transactionPrintReceiptRequestToJsonTest() {
 final _transactionPrintReceiptRequestJson = '{"transaction_id":""}';
 
 void _transactionPrintReceiptRequestGetUrlTest() {
-  expect('/transaction/test_id/print', TransactionPrintReceiptRequest('test_id').getUrl());
+  expect('/transaction/test_id/print', TransactionPrintReceiptRequest('test_id').getPath());
 }
 
 void _transactionEmailReceiptRequestToJsonTest() {
@@ -199,7 +199,7 @@ void _transactionEmailReceiptRequestToJsonTest() {
 final _transactionEmailReceiptRequestJson = '{"transaction_id":"","email_address":"test email address"}';
 
 void _transactionEmailReceiptRequestGetUrlTest() {
-  expect('/transaction/test_id/email', TransactionEmailReceiptRequest('', 'test_id').getUrl());
+  expect('/transaction/test_id/email', TransactionEmailReceiptRequest('', 'test_id').getPath());
 }
 
 void _transactionCreateVaultRequestToJsonTest() {
@@ -211,7 +211,7 @@ void _transactionCreateVaultRequestToJsonTest() {
 final _transactionCreateVaultRequestJson = '{"transaction_id":""}';
 
 void _transactionCreateVaultRequestGetUrlTest() {
-  expect('/transaction/test_id/vault', TransactionCreateVaultRequest('test_id').getUrl());
+  expect('/transaction/test_id/vault', TransactionCreateVaultRequest('test_id').getPath());
 }
 
 void _transactionRefundRequestToJsonTest() {
@@ -230,7 +230,7 @@ final _transactionRefundRequestJson =
     '{"transaction_id":"","amount":1000,"ip_address":"test ipAddress","terminal_id":"test terminalId","vendor_id":"test vendorId","print_receipt":"test printReceipt","signature_required":"test signatureRequired"}';
 
 void _transactionRefundRequestGetUrlTest() {
-  expect('/transaction/test_id/refund', TransactionRefundRequest('test_id').getUrl());
+  expect('/transaction/test_id/refund', TransactionRefundRequest('test_id').getPath());
 }
 
 void _transactionVoidRequestToJsonTest() {
@@ -242,11 +242,11 @@ void _transactionVoidRequestToJsonTest() {
 final _transactionVoidRequestJson = '{"transaction_id":""}';
 
 void _transactionVoidRequestGetUrlTest() {
-  expect('/transaction/test_id/void', TransactionVoidRequest('test_id').getUrl());
+  expect('/transaction/test_id/void', TransactionVoidRequest('test_id').getPath());
 }
 
 void _transactionCaptureRequestGetUrlTest() {
-  expect('/transaction/test_id/capture', TransactionCaptureRequest('test_id').getUrl());
+  expect('/transaction/test_id/capture', TransactionCaptureRequest('test_id').getPath());
 }
 
 void _transactionCaptureRequestToJsonTest() {
@@ -269,13 +269,13 @@ final _transactionCaptureRequestJson =
 void _transactionGetRequestGetUrlTest_merchantIdAndTransactionIdPassed() {
   final request = TransactionGetRequest('testTransactionId', merchantId: 'testMerchantId');
 
-  expect('/transaction/testMerchantId/testTransactionId', request.getUrl());
+  expect('/transaction/testMerchantId/testTransactionId', request.getPath());
 }
 
 void _transactionGetRequestGetUrlTest_onlyTransactionIdPassed() {
   final request = TransactionGetRequest('testTransactionId');
 
-  expect('/transaction/testTransactionId', request.getUrl());
+  expect('/transaction/testTransactionId', request.getPath());
 }
 
 void _transactionCreateRequestToJsonTest() {

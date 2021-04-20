@@ -9,66 +9,66 @@ part 'request.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
-  String idempotencyKey;
-  int idempotencyTime;
-  TransactionType type;
-  bool taxExempt;
-  String currency;
-  String description;
-  String orderId;
-  String poNumber;
-  String ipAddress;
-  bool emailReceipt;
-  String emailAddress;
-  String processorId;
-  bool allowPartialPayment;
-  bool createVaultRecord;
-  String vaultRecordIdFormat;
-  String vendorId;
+  String? idempotencyKey;
+  int? idempotencyTime;
+  TransactionType? type;
+  bool? taxExempt;
+  String? currency;
+  String? description;
+  String? orderId;
+  String? poNumber;
+  String? ipAddress;
+  bool? emailReceipt;
+  String? emailAddress;
+  String? processorId;
+  bool? allowPartialPayment;
+  bool? createVaultRecord;
+  String? vaultRecordIdFormat;
+  String? vendorId;
 
   // Amounts
-  int amount;
-  int taxAmount;
-  int shippingAmount;
-  int surcharge;
-  int discountAmount;
+  int? amount;
+  int? taxAmount;
+  int? shippingAmount;
+  int? surcharge;
+  int? discountAmount;
 
   // Level 3 related
 
-  int nationalTaxAmount;
-  int dutyAmount;
-  String shipFromPostalCode;
-  String summaryCommodityCode;
-  String merchantVatRegistrationNumber;
-  String customerVatRegistrationNumber;
+  int? nationalTaxAmount;
+  int? dutyAmount;
+  String? shipFromPostalCode;
+  String? summaryCommodityCode;
+  String? merchantVatRegistrationNumber;
+  String? customerVatRegistrationNumber;
 
-  PaymentAdjustmentRequest paymentAdjustment;
-  AdditionalAmountsRequest additionalAmounts;
+  PaymentAdjustmentRequest? paymentAdjustment;
+  AdditionalAmountsRequest? additionalAmounts;
 
   // Payment method
-  PaymentMethodRequest paymentMethod;
+  PaymentMethodRequest? paymentMethod;
 
   // Card On File
-  String cardOnFileIndicator;
-  String initiatedBy;
-  String initialTransactionId;
-  String storedCredentialIndicator;
+  String? cardOnFileIndicator;
+  String? initiatedBy;
+  String? initialTransactionId;
+  String? storedCredentialIndicator;
 
   // Addresses
-  Address billingAddress;
-  Address shippingAddress;
+  Address? billingAddress;
+  Address? shippingAddress;
 
-  ProcessorSpecificRequest processorSpecific;
-  Map<String, List<String>> customFields;
-  String groupName;
-  DescriptorRequest descriptor;
-  List<LineItem> lineItems;
-  Map<String, dynamic> fingerprint;
-  bool bypassRuleEngine;
-  bool voidOnSuccess;
+  ProcessorSpecificRequest? processorSpecific;
+  Map<String, List<String>>? customFields;
+  String? groupName;
+  DescriptorRequest? descriptor;
+  List<LineItem>? lineItems;
+  Map<String, dynamic>? fingerprint;
+  bool? bypassRuleEngine;
+  bool? voidOnSuccess;
 
-  String billingMethod;
-  String mcc;
+  String? billingMethod;
+  String? mcc;
 
   TransactionCreateRequest(
       {this.idempotencyKey,
@@ -122,7 +122,7 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
   TransactionCreateResponse buildResponse(Map<String, dynamic> json) => TransactionCreateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/transaction';
+  String getPath() => '/transaction';
 
   @override
   Map<String, dynamic> toJson() => _$TransactionCreateRequestToJson(this);
@@ -130,8 +130,8 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class PaymentAdjustmentRequest extends Decodable {
-  int value;
-  String type;
+  int? value;
+  String? type;
 
   PaymentAdjustmentRequest({this.value, this.type});
 
@@ -143,7 +143,7 @@ class PaymentAdjustmentRequest extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class AdditionalAmountsRequest extends Decodable {
-  HSAAmountsRequest hsa;
+  HSAAmountsRequest? hsa;
 
   AdditionalAmountsRequest({this.hsa});
 
@@ -155,12 +155,12 @@ class AdditionalAmountsRequest extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class HSAAmountsRequest extends Decodable {
-  int total;
-  int rxAmount;
-  int visionAmount;
-  int clinicAmount;
-  int dentalAmount;
-  String sku;
+  int? total;
+  int? rxAmount;
+  int? visionAmount;
+  int? clinicAmount;
+  int? dentalAmount;
+  String? sku;
 
   HSAAmountsRequest({
     this.total,
@@ -179,7 +179,7 @@ class HSAAmountsRequest extends Decodable {
 
 @JsonSerializable()
 class ProcessorSpecificRequest {
-  BoltPay boltPay;
+  BoltPay? boltPay;
 
   ProcessorSpecificRequest({this.boltPay});
 
@@ -190,7 +190,7 @@ class ProcessorSpecificRequest {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class BoltPay {
-  String recurringCycle;
+  String? recurringCycle;
 
   BoltPay({this.recurringCycle});
 
@@ -201,13 +201,13 @@ class BoltPay {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class DescriptorRequest {
-  String name;
-  String address;
-  String city;
-  String state;
-  String postalCode;
-  String email;
-  String phone;
+  String? name;
+  String? address;
+  String? city;
+  String? state;
+  String? postalCode;
+  String? email;
+  String? phone;
 
   DescriptorRequest({
     this.name,
@@ -225,7 +225,7 @@ class DescriptorRequest {
 }
 
 class TransactionGetRequest extends Searchable<TransactionGetResponse> {
-  final String merchantId;
+  final String? merchantId;
   final String transactionId;
 
   TransactionGetRequest(this.transactionId, {this.merchantId});
@@ -234,7 +234,7 @@ class TransactionGetRequest extends Searchable<TransactionGetResponse> {
   TransactionGetResponse buildResponse(Map<String, dynamic> json) => TransactionGetResponse.fromJson(json);
 
   @override
-  String getUrl() {
+  String getPath() {
     var result = '/transaction';
 
     if (merchantId != null) {
@@ -282,19 +282,19 @@ abstract class TransactionActionRequest<Response extends Responsable> extends Up
   TransactionActionRequest(this.transactionId, this.type);
 
   @override
-  String getUrl() => '/transaction/$transactionId/${type.name}';
+  String getPath() => '/transaction/$transactionId/${type.name}';
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionCaptureRequest extends TransactionActionRequest<TransactionCaptureResponse> {
-  int amount;
-  int taxAmount;
-  bool taxExempt;
-  int shippingAmount;
-  String orderId;
-  String poNumber;
-  String ipAddress;
-  String vendorId;
+  int? amount;
+  int? taxAmount;
+  bool? taxExempt;
+  int? shippingAmount;
+  String? orderId;
+  String? poNumber;
+  String? ipAddress;
+  String? vendorId;
 
   TransactionCaptureRequest(
     String transactionId, {
@@ -328,12 +328,12 @@ class TransactionVoidRequest extends TransactionActionRequest<TransactionVoidRes
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionRefundRequest extends TransactionActionRequest<TransactionRefundResponse> {
-  int amount;
-  String ipAddress;
-  String terminalId;
-  String vendorId;
-  String printReceipt;
-  String signatureRequired;
+  int? amount;
+  String? ipAddress;
+  String? terminalId;
+  String? vendorId;
+  String? printReceipt;
+  String? signatureRequired;
 
   TransactionRefundRequest(
     String transactionId, {
@@ -390,8 +390,8 @@ class TransactionPrintReceiptRequest extends TransactionActionRequest<Transactio
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionTipAdjustmentRequest extends TransactionActionRequest<TransactionTipAdjustmentResponse> {
-  int tip;
-  int baseAmount;
+  int? tip;
+  int? baseAmount;
 
   TransactionTipAdjustmentRequest(String transactionId, {this.tip, this.baseAmount})
       : super(transactionId, TransactionActionRequestType.tipAdjust);
@@ -405,15 +405,15 @@ class TransactionTipAdjustmentRequest extends TransactionActionRequest<Transacti
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionMultiRequest extends Creatable<TransactionMultiResponse> {
-  bool createVaultRecord;
-  String createVaultRecordMerchantId;
+  bool? createVaultRecord;
+  String? createVaultRecordMerchantId;
 
-  PaymentMethodRequest paymentMethod;
+  PaymentMethodRequest? paymentMethod;
 
-  Address billingAddress;
-  Address shippingAddress;
+  Address? billingAddress;
+  Address? shippingAddress;
 
-  List<TransactionMultiRequestData> transactions;
+  List<TransactionMultiRequestData>? transactions;
 
   TransactionMultiRequest(
       {this.createVaultRecord,
@@ -427,7 +427,7 @@ class TransactionMultiRequest extends Creatable<TransactionMultiResponse> {
   TransactionMultiResponse buildResponse(Map<String, dynamic> json) => TransactionMultiResponse.fromJson(json);
 
   @override
-  String getUrl() => '/transaction/multi';
+  String getPath() => '/transaction/multi';
 
   @override
   Map<String, dynamic> toJson() => _$TransactionMultiRequestToJson(this);
@@ -435,21 +435,21 @@ class TransactionMultiRequest extends Creatable<TransactionMultiResponse> {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionMultiRequestData extends Decodable {
-  String merchantId;
-  String processorId;
-  TransactionType type;
+  String? merchantId;
+  String? processorId;
+  TransactionType? type;
 
-  int amount;
-  int taxAmount;
-  int shippingAmount;
+  int? amount;
+  int? taxAmount;
+  int? shippingAmount;
 
-  String currency;
-  String description;
-  String orderId;
-  String poNumber;
-  String ipAddress;
+  String? currency;
+  String? description;
+  String? orderId;
+  String? poNumber;
+  String? ipAddress;
 
-  List<LineItem> lineItems;
+  List<LineItem>? lineItems;
 
   TransactionMultiRequestData({
     this.merchantId,
@@ -474,7 +474,7 @@ class TransactionMultiRequestData extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionMultiVoidRequest extends Creatable<TransactionMultiVoidResponse> {
-  List<VoidTransactionData> transactions;
+  List<VoidTransactionData>? transactions;
 
   TransactionMultiVoidRequest({this.transactions});
 
@@ -482,7 +482,7 @@ class TransactionMultiVoidRequest extends Creatable<TransactionMultiVoidResponse
   TransactionMultiVoidResponse buildResponse(Map<String, dynamic> json) => TransactionMultiVoidResponse.fromJson(json);
 
   @override
-  String getUrl() => '/transaction/multi/void';
+  String getPath() => '/transaction/multi/void';
 
   @override
   Map<String, dynamic> toJson() => _$TransactionMultiVoidRequestToJson(this);
@@ -490,7 +490,7 @@ class TransactionMultiVoidRequest extends Creatable<TransactionMultiVoidResponse
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class VoidTransactionData extends Decodable {
-  String id;
+  String? id;
 
   VoidTransactionData({this.id});
 
@@ -502,7 +502,7 @@ class VoidTransactionData extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionMultiRefundRequest extends Creatable<TransactionMultiRefundResponse> {
-  List<RefundTransactionData> transactions;
+  List<RefundTransactionData>? transactions;
 
   TransactionMultiRefundRequest({this.transactions});
 
@@ -510,7 +510,7 @@ class TransactionMultiRefundRequest extends Creatable<TransactionMultiRefundResp
   TransactionMultiRefundResponse buildResponse(Map<String, dynamic> json) => TransactionMultiRefundResponse.fromJson(json);
 
   @override
-  String getUrl() => '/transaction/multi/void';
+  String getPath() => '/transaction/multi/void';
 
   @override
   Map<String, dynamic> toJson() => _$TransactionMultiRefundRequestToJson(this);
@@ -518,8 +518,8 @@ class TransactionMultiRefundRequest extends Creatable<TransactionMultiRefundResp
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class RefundTransactionData extends Decodable {
-  String id;
-  int amount;
+  String? id;
+  int? amount;
 
   RefundTransactionData({this.id, this.amount});
 
@@ -532,61 +532,61 @@ class RefundTransactionData extends Decodable {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionSearchRequest extends Searchable<TransactionSearchResponse> {
   @JsonKey(ignore: true)
-  final String merchantId;
+  final String? merchantId;
 
-  QuerySearchParamString transactionOrOrderId;
-  QuerySearchParamString transactionId;
-  QuerySearchParamString userId;
-  QuerySearchParamString userName;
-  QuerySearchParamString type;
-  QuerySearchParamString transactionSource;
-  QuerySearchParamString ipAddress;
+  QuerySearchParamString? transactionOrOrderId;
+  QuerySearchParamString? transactionId;
+  QuerySearchParamString? userId;
+  QuerySearchParamString? userName;
+  QuerySearchParamString? type;
+  QuerySearchParamString? transactionSource;
+  QuerySearchParamString? ipAddress;
 
-  QuerySearchParamInt amount;
-  QuerySearchParamInt amountAuthorized;
-  QuerySearchParamInt amountCaptured;
-  QuerySearchParamInt amountSettled;
-  QuerySearchParamInt taxAmount;
+  QuerySearchParamInt? amount;
+  QuerySearchParamInt? amountAuthorized;
+  QuerySearchParamInt? amountCaptured;
+  QuerySearchParamInt? amountSettled;
+  QuerySearchParamInt? taxAmount;
 
-  QuerySearchParamString poNumber;
-  QuerySearchParamString orderId;
+  QuerySearchParamString? poNumber;
+  QuerySearchParamString? orderId;
 
-  QuerySearchParamString settlementBatchId;
-  QuerySearchParamString currencyIsoCode;
+  QuerySearchParamString? settlementBatchId;
+  QuerySearchParamString? currencyIsoCode;
 
-  QuerySearchParamString paymentMethod;
-  QuerySearchParamString paymentType;
+  QuerySearchParamString? paymentMethod;
+  QuerySearchParamString? paymentType;
 
-  QuerySearchParamString status;
-  QuerySearchParamString state;
+  QuerySearchParamString? status;
+  QuerySearchParamString? state;
 
-  QuerySearchParamString processorId;
-  QuerySearchParamString processorName;
-  QuerySearchParamString terminalId;
-  QuerySearchParamString terminalDescription;
-  QuerySearchParamString subscriptionId;
+  QuerySearchParamString? processorId;
+  QuerySearchParamString? processorName;
+  QuerySearchParamString? terminalId;
+  QuerySearchParamString? terminalDescription;
+  QuerySearchParamString? subscriptionId;
 
-  QuerySearchParamString customerId;
+  QuerySearchParamString? customerId;
 
   @JsonKey(name: 'full_cc_number')
-  QuerySearchParamString fullCCNumber;
+  QuerySearchParamString? fullCCNumber;
   @JsonKey(name: 'cc_last_four')
-  QuerySearchParamString last4CCNumber;
+  QuerySearchParamString? last4CCNumber;
   @JsonKey(name: 'cc_first_six')
-  QuerySearchParamString first6CCNumber;
+  QuerySearchParamString? first6CCNumber;
 
-  Address billingAddress;
-  Address shippingAddress;
+  Address? billingAddress;
+  Address? shippingAddress;
 
-  Map<String, QuerySearchParamString> customFields;
+  Map<String, QuerySearchParamString>? customFields;
 
-  SearchDateRange createdAt;
-  SearchDateRange updatedAt;
-  SearchDateRange capturedAt;
-  SearchDateRange settledAt;
+  SearchDateRange? createdAt;
+  SearchDateRange? updatedAt;
+  SearchDateRange? capturedAt;
+  SearchDateRange? settledAt;
 
-  int limit;
-  int offset;
+  int? limit;
+  int? offset;
 
   TransactionSearchRequest(
       {this.merchantId,
@@ -633,7 +633,7 @@ class TransactionSearchRequest extends Searchable<TransactionSearchResponse> {
   TransactionSearchResponse buildResponse(Map<String, dynamic> json) => TransactionSearchResponse.fromJson(json);
 
   @override
-  String getUrl() => '/transaction/search${merchantId != null ? '/$merchantId' : ''}';
+  String getPath() => '/transaction/search${merchantId != null ? '/$merchantId' : ''}';
 
   @override
   Map<String, dynamic> toJson() => _$TransactionSearchRequestToJson(this);
@@ -654,9 +654,9 @@ enum SearchDateRangeDuration {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class SearchDateRange extends QuerySearchParamDateRange {
-  SearchDateRangeDuration duration;
+  SearchDateRangeDuration? duration;
 
-  SearchDateRange({DateTime startDate, DateTime endDate, this.duration}) : super(startDate: startDate, endDate: endDate);
+  SearchDateRange({DateTime? startDate, DateTime? endDate, this.duration}) : super(startDate: startDate, endDate: endDate);
 
   SearchDateRange.fromDuration(SearchDateRangeDuration duration) {
     final now = DateTime.now();

@@ -40,21 +40,22 @@ void testDiscountSearchResponse() {
     expect(resp.statusCode, 200);
     expect(resp.totalCount, 2);
 
-    expect(resp.data[0].id, '132');
-    expect(resp.data[0].name, 'test discount');
-    expect(resp.data[0].description, 'test discount description');
-    expect(resp.data[0].amount, 200);
-    expect(resp.data[0].duration, 0);
-    expect(resp.data[0].updatedAt, '2025-01-01');
-    expect(resp.data[0].createdAt, '2025-01-01');
+    expect(resp.data?.isNotEmpty, true);
+    expect(resp.data?[0].id, '132');
+    expect(resp.data?[0].name, 'test discount');
+    expect(resp.data?[0].description, 'test discount description');
+    expect(resp.data?[0].amount, 200);
+    expect(resp.data?[0].duration, 0);
+    expect(resp.data?[0].updatedAt, '2025-01-01');
+    expect(resp.data?[0].createdAt, '2025-01-01');
 
-    expect(resp.data[1].id, '999');
-    expect(resp.data[1].name, 'test discount');
-    expect(resp.data[1].description, 'test discount description');
-    expect(resp.data[1].percentage, 10);
-    expect(resp.data[1].duration, 0);
-    expect(resp.data[1].updatedAt, '2025-01-01');
-    expect(resp.data[1].createdAt, '2025-01-01');
+    expect(resp.data?[1].id, '999');
+    expect(resp.data?[1].name, 'test discount');
+    expect(resp.data?[1].description, 'test discount description');
+    expect(resp.data?[1].percentage, 10);
+    expect(resp.data?[1].duration, 0);
+    expect(resp.data?[1].updatedAt, '2025-01-01');
+    expect(resp.data?[1].createdAt, '2025-01-01');
 
     expect(jsonEncode(resp.data),
         '[{"id":"132","name":"test discount","description":"test discount description","amount":200,"percentage":null,"duration":0,"created_at":"2025-01-01","updated_at":"2025-01-01"},{"id":"999","name":"test discount","description":"test discount description","amount":null,"percentage":10,"duration":0,"created_at":"2025-01-01","updated_at":"2025-01-01"}]');
@@ -79,7 +80,7 @@ void testDiscountResponse() {
         'created_at': '2025-01-01'
       }
     });
-    expect(jsonEncode(resp.data.toJson()),
+    expect(jsonEncode(resp.data?.toJson()),
         '{"id":"132","name":"test discount","description":"test discount description","amount":200,"percentage":null,"duration":0,"created_at":"2025-01-01","updated_at":"2025-01-01"}');
     expect(jsonEncode(resp.toJson()),
         '{"status":"success","msg":"success","status_code":200,"total_count":null,"data":{"id":"132","name":"test discount","description":"test discount description","amount":200,"percentage":null,"duration":0,"created_at":"2025-01-01","updated_at":"2025-01-01"}}');

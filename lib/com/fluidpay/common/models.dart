@@ -5,20 +5,20 @@ part 'models.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Address extends Decodable {
-  String firstName;
-  String lastName;
-  String company;
+  String? firstName;
+  String? lastName;
+  String? company;
   @JsonKey(name: 'address_line_1')
-  String addressLine1;
+  String? addressLine1;
   @JsonKey(name: 'address_line_2')
-  String addressLine2;
-  String city;
-  String state;
-  String postalCode;
-  String country;
-  String phone;
-  String fax;
-  String email;
+  String? addressLine2;
+  String? city;
+  String? state;
+  String? postalCode;
+  String? country;
+  String? phone;
+  String? fax;
+  String? email;
 
   Address({
     this.firstName,
@@ -43,7 +43,7 @@ class Address extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class LineItem extends Decodable {
-  static LineItemStatus lineItemStatusFromJson(String value) {
+  static LineItemStatus? lineItemStatusFromJson(String value) {
     switch (value) {
       case 'paid': return LineItemStatus.paid;
       case 'pending': return LineItemStatus.pending;
@@ -54,31 +54,31 @@ class LineItem extends Decodable {
     return null;
   }
 
-  String id;
+  String? id;
   @JsonKey(fromJson: lineItemStatusFromJson)
-  LineItemStatus status;
-  String type;
-  String name;
-  String description;
-  double quantity;
-  double quantityShipped;
-  String productCode;
-  String commodityCode;
-  String unitOfMeasure;
-  String alternateTaxIdentifier;
-  bool taxable;
-  String localTaxRate;
-  int localTax;
-  String nationalTaxRate;
-  int nationalTax;
-  String taxRate;
-  int taxAmount;
-  int discountAmount;
-  int freightAmount;
-  int unitPrice;
-  String discountRate;
-  int subtotal;
-  int amount;
+  LineItemStatus? status;
+  String? type;
+  String? name;
+  String? description;
+  double? quantity;
+  double? quantityShipped;
+  String? productCode;
+  String? commodityCode;
+  String? unitOfMeasure;
+  String? alternateTaxIdentifier;
+  bool? taxable;
+  String? localTaxRate;
+  int? localTax;
+  String? nationalTaxRate;
+  int? nationalTax;
+  String? taxRate;
+  int? taxAmount;
+  int? discountAmount;
+  int? freightAmount;
+  int? unitPrice;
+  String? discountRate;
+  int? subtotal;
+  int? amount;
 
   LineItem(
       {this.id,
@@ -115,15 +115,15 @@ class LineItem extends Decodable {
 enum LineItemStatus { paid, pending, rejected, empty }
 
 abstract class QuerySearchParam<Value> extends Decodable {
-  SearchOperator operator;
-  Value value;
+  SearchOperator? operator;
+  Value? value;
 
   QuerySearchParam(this.operator, this.value);
 }
 
 @JsonSerializable()
 class QuerySearchParamString extends QuerySearchParam<String> {
-  QuerySearchParamString({SearchOperator operator, String value}) : super(operator, value);
+  QuerySearchParamString({SearchOperator? operator, String? value}) : super(operator, value);
 
   @override
   Map<String, dynamic> toJson() => _$QuerySearchParamStringToJson(this);
@@ -133,7 +133,7 @@ class QuerySearchParamString extends QuerySearchParam<String> {
 
 @JsonSerializable()
 class QuerySearchParamInt extends QuerySearchParam<int> {
-  QuerySearchParamInt({SearchOperator operator, int value}) : super(operator, value);
+  QuerySearchParamInt({SearchOperator? operator, int? value}) : super(operator, value);
 
   @override
   Map<String, dynamic> toJson() => _$QuerySearchParamIntToJson(this);
@@ -156,8 +156,8 @@ enum SearchOperator {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class QuerySearchParamDateRange extends Decodable {
-  DateTime startDate;
-  DateTime endDate;
+  DateTime? startDate;
+  DateTime? endDate;
 
   QuerySearchParamDateRange({this.startDate, this.endDate});
 

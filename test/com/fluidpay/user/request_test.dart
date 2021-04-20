@@ -24,15 +24,15 @@ void main() {
 }
 
 void _userResendWelcomeRequestGetUrlTest() {
-  final request = UserResendWelcomeEmailRequest(userId: 'userId');
+  final request = UserResendWelcomeEmailRequest('userId');
 
-  expect(request.getUrl(), '/user/userId/resend-welcome');
+  expect(request.getPath(), '/user/userId/resend-welcome');
 }
 
 void _userCopyRequestGetUrlTest() {
   final request = UserCopyRequest(userId: 'userId');
 
-  expect(request.getUrl(), '/user/userId/copy');
+  expect(request.getPath(), '/user/userId/copy');
 }
 
 void _userCopyRequestToJsonTest() {
@@ -50,33 +50,33 @@ void _userCopyRequestToJsonTest() {
 final _userCopyRequestJson = '{"username":"test username","name":"test name","phone":"test phone","email":"test email","status":"test status"}';
 
 void _userDeleteRequestGetUrlTest() {
-  final request = UserDeleteRequest(userId: 'userId');
+  final request = UserDeleteRequest('userId');
 
-  expect(request.getUrl(), '/user/userId');
+  expect(request.getPath(), '/user/userId');
 }
 
 void _userLoginAsRequestGetUrlTest() {
   final request = UserLoginAsRequest(userId: 'userId');
 
-  expect(request.getUrl(), '/user/loginas/userId');
+  expect(request.getPath(), '/user/loginas/userId');
 }
 
 void _usersRequestGetUrlTest_withParams_urlContainsParams() {
   final request = UsersRequest(accountType: 'accountType', accountTypeId: 'accountTypeId');
 
-  expect(request.getUrl(), '/users/accountType/accountTypeId');
+  expect(request.getPath(), '/users/accountType/accountTypeId');
 }
 
 void _usersRequestGetUrlTest_withoutParams_urlHasNoParams() {
   final request = UsersRequest();
 
-  expect(request.getUrl(), '/users');
+  expect(request.getPath(), '/users');
 }
 
 void _userUpdateRequestGetUrlTest_idPassed_urlContainsId() {
   final request = UserUpdateRequest(userId: 'userId');
 
-  expect(request.getUrl(), '/user/userId');
+  expect(request.getPath(), '/user/userId');
 }
 
 
@@ -111,31 +111,31 @@ void _userCreateRequestToJsonTest() {
 final _userCreateJson = '{"username":"test username","name":"test name","phone":"test phone","email":"test email","status":"test status","role":"test role","defaults":"test defaults"}';
 
 void _removeTotpRequestToJsonTest() {
-  final request = UserRemoveTotpRequest(totp: '939474', userId: 'userId');
+  final request = UserRemoveTotpRequest('939474', 'userId');
 
   expect(jsonEncode(request.toJson()), '{"totp":"939474","user_id":"userId"}');
 }
 
 void _userGetRequestGetUrlTest_idPassed_urlContainsId() {
-  final request = UserGetRequest('userId');
+  final request = UserGetRequest(userId: 'userId');
 
-  expect(request.getUrl(), '/user/userId');
+  expect(request.getPath(), '/user/userId');
 }
 
 void _userGetRequestGetUrlTest_withoutId_urlHasNoId() {
   final request = UserGetRequest();
-  expect(request.getUrl(), '/user');
+  expect(request.getPath(), '/user');
 }
 
 void _forgotUsernameRequestToJsonTest() {
-  final request = ForgotUsernameRequest(email: 'test email');
+  final request = ForgotUsernameRequest('test email');
 
   expect(jsonEncode(request.toJson()), _forgotUsernameRequestJson);
 }
 final _forgotUsernameRequestJson = '{"email":"test email"}';
 
 void _forgotPasswordRequestToJsonTest() {
-  final request = ForgotPasswordRequest(username: 'test username');
+  final request = ForgotPasswordRequest('test username');
 
   expect(jsonEncode(request.toJson()), _forgotPasswordRequestJson);
 }
@@ -143,9 +143,9 @@ final _forgotPasswordRequestJson = '{"username":"test username"}';
 
 void _forgotPasswordResetRequestToJsonTest() {
   final request = ForgotPasswordResetRequest(
-      username: 'test username',
-      resetCode: 'test resetCode',
-      password: 'test password');
+      'test username',
+      'test resetCode',
+      'test password');
 
   expect(jsonEncode(request.toJson()), _forgotPasswordResetRequestJson);
 }

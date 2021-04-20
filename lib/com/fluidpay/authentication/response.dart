@@ -15,8 +15,8 @@ class AuthLoginResponse extends Responsable<AuthLoginResponseData> {
 
 @JsonSerializable()
 class AuthLoginResponseData extends Decodable {
-  String token;
-  String sid;
+  String? token;
+  String? sid;
 
   AuthLoginResponseData();
 

@@ -12,27 +12,27 @@ part 'subscription_request.g.dart';
 @JsonSerializable()
 class SubscriptionCreateRequest extends Creatable<SubscriptionResponse> {
   @JsonKey(name: 'plan_id')
-  String planId;
-  String description;
+  String? planId;
+  String? description;
   @JsonKey(name: 'customer')
-  CustomerRequest customer;
-  int amount;
-  String currency;
+  CustomerRequest? customer;
+  int? amount;
+  String? currency;
   @JsonKey(name: 'billing_cycle_interval')
-  int billingCycleInterval;
+  int? billingCycleInterval;
   @JsonKey(name: 'billing_frequency')
-  String billingFrequency;
+  String? billingFrequency;
   @JsonKey(name: 'billing_days')
-  String billingDays;
-  int duration;
+  String? billingDays;
+  int? duration;
   @JsonKey(name: 'next_bill_date')
-  String nextBillDate;
+  String? nextBillDate;
   @JsonKey(name: 'add_ons')
-  List<AddOnRequest> addOns;
+  List<AddOnRequest>? addOns;
   @JsonKey(name: 'discounts')
-  List<DiscountRequest> discounts;
+  List<DiscountRequest>? discounts;
   @JsonKey(name: 'processor_id')
-  String processorId;
+  String? processorId;
 
   SubscriptionCreateRequest(
       {this.planId,
@@ -53,7 +53,7 @@ class SubscriptionCreateRequest extends Creatable<SubscriptionResponse> {
   Map<String, dynamic> toJson() => _$SubscriptionCreateRequestToJson(this);
 
   @override
-  String getUrl() => '/recurring/subscription';
+  String getPath() => '/recurring/subscription';
 
   @override
   SubscriptionResponse buildResponse(Map<String, dynamic> json) {
@@ -62,10 +62,10 @@ class SubscriptionCreateRequest extends Creatable<SubscriptionResponse> {
 }
 
 class SubscriptionSearchRequest extends Searchable<SubscriptionSearchResponse> {
-  String id;
+  String? id;
 
   @override
-  String getUrl() => id?.isNotEmpty == true
+  String getPath() => id?.isNotEmpty == true
       ? '/recurring/subscription/$id'
       : '/recurring/subscription/search';
 
