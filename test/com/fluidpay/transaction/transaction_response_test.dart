@@ -331,8 +331,8 @@ void _transactionCreateResponseFromJsonTest() {
   expect(transactionCreateResponse.data?.responseBody?.apm?.documentCode, 'test documentCode');
 
   expect(transactionCreateResponse.data?.customFields, {
-    'test_custom_fields_key_1': ['test ?custom field 1', 'test custom field 2'],
-    'test_custom_fields_key_2': ['test ?custom field 3', 'test custom field 4'],
+    'test_custom_fields_key_1': ['test custom field 1', 'test custom field 2'],
+    'test_custom_fields_key_2': ['test custom field 3', 'test custom field 4'],
   });
   expect(transactionCreateResponse.data?.lineItems?.length, 1);
   expect(transactionCreateResponse.data?.lineItems?[0].id, 'test id');
