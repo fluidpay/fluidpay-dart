@@ -6,14 +6,14 @@ part 'common.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerAddress extends Address {
-  String id;
+  String? id;
   @override
   @JsonKey(name: 'line_1')
-  String addressLine1;
+  String? addressLine1;
   @override
   @JsonKey(name: 'line_2')
-  String addressLine2;
-  String hash;
+  String? addressLine2;
+  String? hash;
 
   CustomerAddress({
     this.id,
@@ -58,20 +58,20 @@ abstract class CustomerPaymentMethod extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerCard extends CustomerPaymentMethod {
-  String id;
-  String number;
-  String maskedNumber;
-  String encryptedNumber;
-  String digest;
-  String expirationDate;
-  String cardType;
-  String processorId;
-  List<String> flags;
-  String lockValue;
-  String cvc;
-  String initialTransactionId;
-  String instrumentType;
-  String genericCardLevel;
+  String? id;
+  String? number;
+  String? maskedNumber;
+  String? encryptedNumber;
+  String? digest;
+  String? expirationDate;
+  String? cardType;
+  String? processorId;
+  List<String>? flags;
+  String? lockValue;
+  String? cvc;
+  String? initialTransactionId;
+  String? instrumentType;
+  String? genericCardLevel;
 
   CustomerCard({
     this.id,
@@ -100,17 +100,17 @@ class CustomerCard extends CustomerPaymentMethod {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerACH extends CustomerPaymentMethod {
-  String id;
-  String accountNumber;
-  String maskedAccountNumber;
-  String encryptedAccountNumber;
-  String digest;
-  String routingNumber;
-  String accountType;
-  String secCode;
-  String processorId;
-  List<String> flags;
-  String lockValue;
+  String? id;
+  String? accountNumber;
+  String? maskedAccountNumber;
+  String? encryptedAccountNumber;
+  String? digest;
+  String? routingNumber;
+  String? accountType;
+  String? secCode;
+  String? processorId;
+  List<String>? flags;
+  String? lockValue;
 
   CustomerACH({
     this.id,

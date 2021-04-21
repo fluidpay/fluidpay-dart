@@ -10,9 +10,9 @@ enum Method {
 }
 
 abstract class Requestable<Response extends Responsable> with Serializable {
-  Map<String, String> getQueryParams() => null;
+  Map<String, String>? getQueryParams() => null;
 
-  String getUrl();
+  String getPath();
 
   Method getRequestMethod();
 
@@ -25,13 +25,13 @@ abstract class Requestable<Response extends Responsable> with Serializable {
 }
 
 abstract class Responsable<Data> {
-  String status;
-  String msg;
+  String? status;
+  String? msg;
   @JsonKey(name: 'status_code')
-  int statusCode;
+  int? statusCode;
   @JsonKey(name: 'total_count')
-  int totalCount;
-  Data data;
+  int? totalCount;
+  Data? data;
 
   Responsable();
 

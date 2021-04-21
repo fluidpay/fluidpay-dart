@@ -55,7 +55,7 @@ void testAddonUpdateRequest() {
     expect(req['amount'], expected['amount']);
     expect(req['percentage'], expected['percentage']);
     expect(req['duration'], expected['duration']);
-    expect(addonReq.getUrl(), '/recurring/addon/test_id');
+    expect(addonReq.getPath(), '/recurring/addon/test_id');
   });
 }
 
@@ -91,6 +91,6 @@ void testAddonDeleteRequest() {
     var req = addonReq.toJson();
     var expected = {};
     expect(req, expected);
-    expect(addonReq.getUrl(), '/recurring/addon/test_id');
+    expect(addonReq.getPath(), '/recurring/addon/test_id');
   });
 }

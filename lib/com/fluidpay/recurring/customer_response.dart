@@ -16,11 +16,11 @@ class CustomerResponse
 
 @JsonSerializable()
 class CustomerResponseData extends Decodable {
-  String id;
-  String paymentMethodType;
-  String paymentMethodID;
-  String billingAddressID;
-  String shippingAddressID;
+  String? id;
+  String? paymentMethodType;
+  String? paymentMethodID;
+  String? billingAddressID;
+  String? shippingAddressID;
 
   CustomerResponseData();
 

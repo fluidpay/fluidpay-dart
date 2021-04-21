@@ -4,10 +4,10 @@ part 'apple_pay.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ApplePayTokenRequest {
-  String keyId;
-  String processorId;
+  String? keyId;
+  String? processorId;
   @JsonKey(name: 'pkpaymenttoken')
-  PKPaymentToken pkPaymentToken;
+  PKPaymentToken? pkPaymentToken;
 
   ApplePayTokenRequest({
     this.keyId,
@@ -23,10 +23,10 @@ class ApplePayTokenRequest {
 
 @JsonSerializable()
 class PKPaymentToken {
-  DateTime transactionTime;
-  String transactionIdentifier;
-  PaymentMethod paymentMethod;
-  PaymentData paymentData;
+  DateTime? transactionTime;
+  String? transactionIdentifier;
+  PaymentMethod? paymentMethod;
+  PaymentData? paymentData;
 
   PKPaymentToken({
     this.transactionTime,
@@ -43,9 +43,9 @@ class PKPaymentToken {
 
 @JsonSerializable()
 class PaymentMethod {
-  String type;
-  String network;
-  String displayName;
+  String? type;
+  String? network;
+  String? displayName;
 
   PaymentMethod({
     this.type,
@@ -61,10 +61,10 @@ class PaymentMethod {
 
 @JsonSerializable()
 class PaymentData {
-  String version;
-  String signature;
-  Header header;
-  String data;
+  String? version;
+  String? signature;
+  Header? header;
+  String? data;
 
   PaymentData({
     this.version,
@@ -81,12 +81,12 @@ class PaymentData {
 
 @JsonSerializable()
 class Header {
-  String applicationData;
-  String ephemeralPublicKey;
-  String wrappedKey;
-  String publicKeyHash;
+  String? applicationData;
+  String? ephemeralPublicKey;
+  String? wrappedKey;
+  String? publicKeyHash;
   @JsonKey(name: 'transactionID')
-  String transactionId;
+  String? transactionId;
 
   Header({
     this.applicationData,

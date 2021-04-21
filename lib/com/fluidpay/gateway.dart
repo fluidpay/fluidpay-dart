@@ -10,25 +10,25 @@ import 'common/base.dart';
 class Gateway {
   static final instance = Gateway._internal();
 
-  String _baseUrl;
-  String apiKey;
-  AuthLoginResponseData authData;
-  Map<String, String> Function() _createAuthHeader;
+  String? _baseUrl;
+  String? apiKey;
+  AuthLoginResponseData? authData;
+  Map<String, String> Function()? _createAuthHeader;
 
   Gateway._internal();
 
-  void init(String baseUrl, {String apiKey}) {
+  void init(String baseUrl, {String? apiKey}) {
     _baseUrl = baseUrl;
     this.apiKey = apiKey;
   }
 
   _CommonClient get _client {
-    if (_baseUrl?.isEmpty != false) {
+    if (_baseUrl?.isNotEmpty != true) {
       throw ArgumentError(
           '\'baseUrl\' must not be null or empty. Use init method to set it properly.');
     }
     return _CommonClient(
-        _baseUrl, apiKey, _createAuthHeader ?? _defaultAuthHeaderCreator);
+        _baseUrl!, apiKey, _createAuthHeader ?? _defaultAuthHeaderCreator);
   }
 
   Future<AuthLoginResponse> login(AuthLoginRequest loginRequest) async {
@@ -68,8 +68,8 @@ class Gateway {
     final result = <String, String>{};
 
     if (authData != null) {
-      result['Authorization'] = 'Bearer ${authData.token}';
-      result['Cookie'] = 'sid=${authData.sid}';
+      result['Authorization'] = 'Bearer ${authData!.token}';
+      result['Cookie'] = 'sid=${authData!.sid}';
     }
 
     return result;
@@ -78,14 +78,14 @@ class Gateway {
 
 class _CommonClient {
   final String baseUrl;
-  final String apiKey;
+  final String? apiKey;
 
   final headers = {'Content-Type': 'application/json'};
 
   _CommonClient(this.baseUrl, this.apiKey,
       Map<String, String> Function() createAuthHeader) {
     if (apiKey != null) {
-      headers['Authorization'] = apiKey;
+      headers['Authorization'] = apiKey!;
     } else {
       headers.addAll(createAuthHeader());
     }
@@ -101,11 +101,7 @@ class _CommonClient {
 
   Future<Map<String, dynamic>> post(Requestable baseRequest) => http
       .post(
-        baseUrl +
-            Uri(
-              path: baseRequest.getUrl(),
-              queryParameters: baseRequest.getQueryParams(),
-            ).toString(),
+        _buildUri(baseRequest),
         headers: headers,
         body: jsonEncode(baseRequest.toJson()),
       )
@@ -113,23 +109,27 @@ class _CommonClient {
 
   Future<Map<String, dynamic>> get(Requestable baseRequest) => http
       .get(
-        baseUrl +
-            Uri(
-              path: baseRequest.getUrl(),
-              queryParameters: baseRequest.getQueryParams(),
-            ).toString(),
+        _buildUri(baseRequest),
         headers: headers,
       )
       .then(_createJsonFromResponse);
 
   Future<Map<String, dynamic>> delete(Requestable baseRequest) => http
       .delete(
-        baseUrl +
-            Uri(
-              path: baseRequest.getUrl(),
-              queryParameters: baseRequest.getQueryParams(),
-            ).toString(),
+        _buildUri(baseRequest),
         headers: headers,
       )
       .then(_createJsonFromResponse);
+
+  Uri _buildUri(Requestable baseRequest) {
+    final baseUri = Uri.parse(baseUrl);
+
+    if (baseUri.scheme == 'https') {
+      return Uri.https(
+          baseUri.host, '${baseUri.path}${baseRequest.getPath()}', baseRequest.getQueryParams());
+    }
+
+    return Uri.http(
+        baseUri.host, baseRequest.getPath(), baseRequest.getQueryParams());
+  }
 }

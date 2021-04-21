@@ -7,11 +7,11 @@ part 'customer_request.g.dart';
 @JsonSerializable()
 class CustomerRequest
     extends Creatable<CustomerResponse> {
-  String id;
-  String paymentMethodType;
-  String paymentMethodID;
-  String billingAddressID;
-  String shippingAddressID;
+  String? id;
+  String? paymentMethodType;
+  String? paymentMethodID;
+  String? billingAddressID;
+  String? shippingAddressID;
 
   CustomerRequest(
       {this.id,
@@ -27,7 +27,7 @@ class CustomerRequest
       _$CustomerRequestFromJson(json);
 
   @override
-  String getUrl() => null;
+  String getPath() => '';
 
   @override
   CustomerResponse buildResponse(Map<String, dynamic> json) {

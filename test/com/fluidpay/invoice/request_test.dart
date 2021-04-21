@@ -153,27 +153,27 @@ void testInvoiceUpdateRequestToJson() {
 
 void testInvoiceResendRequestGetUrl() {
   var req = InvoiceResendRequest('some_id');
-  expect(req.getUrl(), '/invoice/some_id/resend');
+  expect(req.getPath(), '/invoice/some_id/resend');
 }
 
 void testInvoiceMarkAsPaidRequestGetUrl() {
   var req = InvoiceMarkAsPaidRequest('some_id');
-  expect(req.getUrl(), '/invoice/some_id/mark-as-paid');
+  expect(req.getPath(), '/invoice/some_id/mark-as-paid');
 }
 
 void testInvoiceReactivateRequestGetUrl() {
   var req = InvoiceReactivateRequest('some_id');
-  expect(req.getUrl(), '/invoice/some_id/reactivate');
+  expect(req.getPath(), '/invoice/some_id/reactivate');
 }
 
 void testInvoiceDeleteRequestGetUrl() {
   var req = InvoiceDeleteRequest('some_id');
-  expect(req.getUrl(), '/invoice/some_id');
+  expect(req.getPath(), '/invoice/some_id');
 }
 
 void testInvoiceGetRequestGetUrl() {
   var req = InvoiceGetRequest('some_id');
-  expect(req.getUrl(), '/invoice/some_id');
+  expect(req.getPath(), '/invoice/some_id');
 }
 
 void testInvoiceSearchRequestGetUrl() {

@@ -7,11 +7,11 @@ part 'addon_request.g.dart';
 
 @JsonSerializable()
 class AddOnCreateRequest extends Creatable<AddOnResponse> {
-  String name;
-  String description;
-  int amount;
-  int percentage;
-  int duration;
+  String? name;
+  String? description;
+  int? amount;
+  int? percentage;
+  int? duration;
 
   AddOnCreateRequest(
       {this.name,
@@ -24,7 +24,7 @@ class AddOnCreateRequest extends Creatable<AddOnResponse> {
   Map<String, dynamic> toJson() => _$AddOnCreateRequestToJson(this);
 
   @override
-  String getUrl() => '/recurring/addon';
+  String getPath() => '/recurring/addon';
 
   @override
   AddOnResponse buildResponse(Map<String, dynamic> json) {
@@ -35,12 +35,12 @@ class AddOnCreateRequest extends Creatable<AddOnResponse> {
 @JsonSerializable()
 class AddOnUpdateRequest extends Updatable<AddOnUpdateResponse> {
   @JsonKey(ignore: true)
-  String id;
-  String name;
-  String description;
-  int amount;
-  int percentage;
-  int duration;
+  String? id;
+  String? name;
+  String? description;
+  int? amount;
+  int? percentage;
+  int? duration;
 
   AddOnUpdateRequest(
       {this.id,
@@ -55,17 +55,17 @@ class AddOnUpdateRequest extends Updatable<AddOnUpdateResponse> {
       AddOnUpdateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/recurring/addon/${id}';
+  String getPath() => '/recurring/addon/${id}';
 
   @override
   Map<String, dynamic> toJson() => _$AddOnUpdateRequestToJson(this);
 }
 
 class AddOnSearchRequest extends Searchable<AddOnSearchResponse> {
-  String id;
+  String? id;
 
   @override
-  String getUrl() =>
+  String getPath() =>
       id?.isNotEmpty == true ? '/recurring/addon/$id' : '/recurring/addons';
 
   @override
@@ -91,16 +91,16 @@ class AddOnDeleteRequest extends Deletable<AddOnDeleteResponse> {
       AddOnDeleteResponse.fromJson(json);
 
   @override
-  String getUrl() => '/recurring/addon/$id';
+  String getPath() => '/recurring/addon/$id';
 }
 
 @JsonSerializable()
 class AddOnRequest extends Creatable<AddOnResponse> {
-  String id;
-  String description;
-  int amount;
-  int percentage;
-  int duration;
+  String? id;
+  String? description;
+  int? amount;
+  int? percentage;
+  int? duration;
 
   AddOnRequest(
       {this.id, this.description, this.amount, this.percentage, this.duration});
@@ -112,7 +112,7 @@ class AddOnRequest extends Creatable<AddOnResponse> {
       _$AddOnRequestFromJson(json);
 
   @override
-  String getUrl() => null;
+  String getPath() => '';
 
   @override
   AddOnResponse buildResponse(Map<String, dynamic> json) {

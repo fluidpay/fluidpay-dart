@@ -30,34 +30,34 @@ class SubscriptionSearchResponse
 
 @JsonSerializable()
 class SubscriptionResponseData extends Decodable {
-  String id;
+  String? id;
   @JsonKey(name: 'plan_id')
-  String planId;
-  String status;
-  String description;
+  String? planId;
+  String? status;
+  String? description;
   @JsonKey(name: 'customer')
-  CustomerResponseData customer;
-  int amount;
-  String currency;
+  CustomerResponseData? customer;
+  int? amount;
+  String? currency;
   @JsonKey(name: 'billing_cycle_interval')
-  int billingCycleInterval;
+  int? billingCycleInterval;
   @JsonKey(name: 'billing_frequency')
-  String billingFrequency;
+  String? billingFrequency;
   @JsonKey(name: 'billing_days')
-  String billingDays;
-  int duration;
+  String? billingDays;
+  int? duration;
   @JsonKey(name: 'next_bill_date')
-  String nextBillDate;
+  String? nextBillDate;
   @JsonKey(name: 'add_ons')
-  List<AddOnResponseData> addOns;
+  List<AddOnResponseData>? addOns;
   @JsonKey(name: 'discounts')
-  List<DiscountResponseData> discounts;
+  List<DiscountResponseData>? discounts;
   @JsonKey(name: 'processor_id')
-  String processorId;
+  String? processorId;
   @JsonKey(name: 'created_at')
-  String createdAt;
+  String? createdAt;
   @JsonKey(name: 'updated_at')
-  String updatedAt;
+  String? updatedAt;
 
   SubscriptionResponseData();
 

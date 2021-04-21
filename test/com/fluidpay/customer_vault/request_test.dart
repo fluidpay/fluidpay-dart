@@ -68,13 +68,13 @@ void testCustomerCreateRequestToJson() {
 void testCustomerGetRequestGetUrl() {
   var req = CustomerGetRequest(id: 'asanfqi123owjfqid12qw');
 
-  expect(req.getUrl(), '/vault/asanfqi123owjfqid12qw');
+  expect(req.getPath(), '/vault/asanfqi123owjfqid12qw');
 }
 
 void testCustomerDeleteRequestGetUrl() {
   var req = CustomerDeleteRequest(id: 'asanfqi123owjfqid12qw');
 
-  expect(req.getUrl(), '/vault/asanfqi123owjfqid12qw');
+  expect(req.getPath(), '/vault/asanfqi123owjfqid12qw');
 }
 
 void testCustomerUpdateRequestGetUrlAndToJson() {
@@ -89,7 +89,7 @@ void testCustomerUpdateRequestGetUrlAndToJson() {
         shippingAddressId: '1928479',
       ));
 
-  expect(req.getUrl(), '/vault/customer/asanfqi123owjfqid12qw');
+  expect(req.getPath(), '/vault/customer/asanfqi123owjfqid12qw');
   expect(jsonEncode((req.toJson())),
       '{"id":"asanfqi123owjfqid12qw","description":"description","notes":"notes","defaults":{"billing_address_id":"123","shipping_address_id":"1928479","payment_method_type":"card","payment_method_id":"4123"},"flags":["flag1"]}');
 }
@@ -139,7 +139,7 @@ void testCustomerSearchRequestGetUrlAndToJson() {
     offset: 0,
   );
 
-  expect(req.getUrl(), '/vault/customer/search');
+  expect(req.getPath(), '/vault/customer/search');
   expect(jsonEncode((req.toJson())),
       '{"id":{"operator":"=","value":"asfgwrgj"},"payment_method_type":{"operator":"=","value":"waddafawfa"},"payment_method_id":{"operator":"=","value":"awfafafaf"},"billing_address_id":{"operator":"=","value":"afwafa"},"shipping_address_id":{"operator":"=","value":"awfafaaf"},"address_id":{"operator":"=","value":"awfafwaf"},"first_name":{"operator":"=","value":"john"},"last_name":{"operator":"=","value":"doe"},"company":{"operator":"=","value":"john doe inc"},"address_line_1":{"operator":"=","value":"2nd street"},"address_line_2":{"operator":"=","value":"2123"},"city":{"operator":"=","value":"Chicago"},"state":{"operator":"=","value":"IL"},"postal_code":{"operator":"=","value":"60123"},"country":{"operator":"=","value":"US"},"email":{"operator":"=","value":"johndoe@johndoe.com"},"phone":{"operator":"=","value":"1231512525"},"fax":{"operator":"=","value":"1231512525"},"created_at":{"start_date":"${startDate.toIso8601String()}","end_date":"${now.toIso8601String()}"},"updated_at":{"start_date":"${startDate.toIso8601String()}","end_date":"${now.toIso8601String()}"},"limit":10,"offset":0}');
 }
@@ -163,7 +163,7 @@ void testCustomerAddressCreateGetUrlAndToJson() {
         hash: 'hashhashhash',
       ));
 
-  expect(req.getUrl(), '/vault/customer/some_id/address');
+  expect(req.getPath(), '/vault/customer/some_id/address');
   expect(jsonEncode((req.toJson())),
       '{"first_name":"Jane","last_name":"Doe","company":"Jane Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"5145125125","fax":"5145125125","email":"jane@doe.asd","id":"some_addr_id","line_1":"2nd street","line_2":"124124","hash":"hashhashhash"}');
 }
@@ -187,7 +187,7 @@ void testCustomerAddressUpdateGetUrlAndToJson() {
         hash: 'hashhashhash',
       ));
 
-  expect(req.getUrl(), '/vault/customer/some_id/address/some_addr_id');
+  expect(req.getPath(), '/vault/customer/some_id/address/some_addr_id');
   expect(jsonEncode((req.toJson())),
       '{"first_name":"Jane","last_name":"Doe","company":"Jane Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"5145125125","fax":"5145125125","email":"jane@doe.asd","id":"some_addr_id","line_1":"2nd street","line_2":"124124","hash":"hashhashhash"}');
 }
@@ -195,7 +195,7 @@ void testCustomerAddressUpdateGetUrlAndToJson() {
 void testCustomerAddressDeleteGetUrl() {
   var req = CustomerAddressDeleteRequest('some_id', 'some_addr_id');
 
-  expect(req.getUrl(), '/vault/customer/some_id/address/some_addr_id');
+  expect(req.getPath(), '/vault/customer/some_id/address/some_addr_id');
 }
 
 void testCustomerPaymentTypeCreateRequest() {
@@ -208,7 +208,7 @@ void testCustomerPaymentTypeCreateRequest() {
             cardType: 'visa',
           ));
 
-  expect(req.getUrl(), '/vault/customer/customer_id/card');
+  expect(req.getPath(), '/vault/customer/customer_id/card');
   expect(req.getQueryParams(), {
     'validate': 'false',
     'currency': 'USD',
@@ -227,7 +227,7 @@ void testCustomerPaymentTypeUpdateRequest() {
         cardType: 'visa',
       ));
 
-  expect(req.getUrl(), '/vault/customer/customer_id/card/payment_type_id');
+  expect(req.getPath(), '/vault/customer/customer_id/card/payment_type_id');
   expect(jsonEncode(req.toJson()),
       '{"id":null,"number":"4111111111111111","masked_number":null,"encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":null,"flags":null,"lock_value":null,"cvc":"999","initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}');
 }
@@ -239,5 +239,5 @@ void testCustomerPaymentTypeDeleteRequestGetUrl() {
     'payment_type_id',
   );
 
-  expect(req.getUrl(), '/vault/customer/customer_id/card/payment_type_id');
+  expect(req.getPath(), '/vault/customer/customer_id/card/payment_type_id');
 }
