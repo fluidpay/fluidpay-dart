@@ -9,10 +9,10 @@ part of 'response.dart';
 TransactionCreateResponse _$TransactionCreateResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionCreateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : TransactionResponseData.fromJson(
@@ -32,10 +32,10 @@ Map<String, dynamic> _$TransactionCreateResponseToJson(
 TransactionGetResponse _$TransactionGetResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionGetResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : TransactionResponseData.fromJson(
@@ -55,10 +55,10 @@ Map<String, dynamic> _$TransactionGetResponseToJson(
 TransactionCaptureResponse _$TransactionCaptureResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionCaptureResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : TransactionResponseData.fromJson(
@@ -78,10 +78,10 @@ Map<String, dynamic> _$TransactionCaptureResponseToJson(
 TransactionVoidResponse _$TransactionVoidResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionVoidResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : TransactionVoidResponseData.fromJson(
@@ -101,10 +101,10 @@ Map<String, dynamic> _$TransactionVoidResponseToJson(
 TransactionRefundResponse _$TransactionRefundResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionRefundResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : TransactionResponseData.fromJson(
@@ -124,10 +124,10 @@ Map<String, dynamic> _$TransactionRefundResponseToJson(
 TransactionCreateVaultResponse _$TransactionCreateVaultResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionCreateVaultResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : TransactionCreateVaultResponseData.fromJson(
@@ -147,10 +147,10 @@ Map<String, dynamic> _$TransactionCreateVaultResponseToJson(
 TransactionEmailReceiptResponse _$TransactionEmailReceiptResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionEmailReceiptResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : TransactionResponseData.fromJson(
@@ -170,11 +170,11 @@ Map<String, dynamic> _$TransactionEmailReceiptResponseToJson(
 TransactionPrintReceiptResponse _$TransactionPrintReceiptResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionPrintReceiptResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = json['data'] as String;
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
+    ..data = json['data'] as String?;
 }
 
 Map<String, dynamic> _$TransactionPrintReceiptResponseToJson(
@@ -190,10 +190,10 @@ Map<String, dynamic> _$TransactionPrintReceiptResponseToJson(
 TransactionTipAdjustmentResponse _$TransactionTipAdjustmentResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionTipAdjustmentResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -210,10 +210,10 @@ Map<String, dynamic> _$TransactionTipAdjustmentResponseToJson(
 TransactionMultiResponse _$TransactionMultiResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionMultiResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : TransactionResponseData.fromJson(
@@ -233,16 +233,14 @@ Map<String, dynamic> _$TransactionMultiResponseToJson(
 TransactionMultiVoidResponse _$TransactionMultiVoidResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionMultiVoidResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TransactionMultiVoidResponseData.fromJson(
-                e as Map<String, dynamic>))
-        ?.toList();
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
+    ..data = (json['data'] as List<dynamic>?)
+        ?.map((e) => TransactionMultiVoidResponseData.fromJson(
+            e as Map<String, dynamic>))
+        .toList();
 }
 
 Map<String, dynamic> _$TransactionMultiVoidResponseToJson(
@@ -258,10 +256,10 @@ Map<String, dynamic> _$TransactionMultiVoidResponseToJson(
 TransactionMultiRefundResponse _$TransactionMultiRefundResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionMultiRefundResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : TransactionResponseData.fromJson(
@@ -281,15 +279,14 @@ Map<String, dynamic> _$TransactionMultiRefundResponseToJson(
 TransactionSearchResponse _$TransactionSearchResponseFromJson(
     Map<String, dynamic> json) {
   return TransactionSearchResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TransactionResponseData.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
+    ..data = (json['data'] as List<dynamic>?)
+        ?.map(
+            (e) => TransactionResponseData.fromJson(e as Map<String, dynamic>))
+        .toList();
 }
 
 Map<String, dynamic> _$TransactionSearchResponseToJson(

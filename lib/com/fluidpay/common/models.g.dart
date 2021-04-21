@@ -8,18 +8,18 @@ part of 'models.dart';
 
 Address _$AddressFromJson(Map<String, dynamic> json) {
   return Address(
-    firstName: json['first_name'] as String,
-    lastName: json['last_name'] as String,
-    company: json['company'] as String,
-    addressLine1: json['address_line_1'] as String,
-    addressLine2: json['address_line_2'] as String,
-    city: json['city'] as String,
-    state: json['state'] as String,
-    postalCode: json['postal_code'] as String,
-    country: json['country'] as String,
-    phone: json['phone'] as String,
-    fax: json['fax'] as String,
-    email: json['email'] as String,
+    firstName: json['first_name'] as String?,
+    lastName: json['last_name'] as String?,
+    company: json['company'] as String?,
+    addressLine1: json['address_line_1'] as String?,
+    addressLine2: json['address_line_2'] as String?,
+    city: json['city'] as String?,
+    state: json['state'] as String?,
+    postalCode: json['postal_code'] as String?,
+    country: json['country'] as String?,
+    phone: json['phone'] as String?,
+    fax: json['fax'] as String?,
+    email: json['email'] as String?,
   );
 }
 
@@ -40,30 +40,30 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
 
 LineItem _$LineItemFromJson(Map<String, dynamic> json) {
   return LineItem(
-    id: json['id'] as String,
+    id: json['id'] as String?,
     status: LineItem.lineItemStatusFromJson(json['status'] as String),
-    type: json['type'] as String,
-    name: json['name'] as String,
-    description: json['description'] as String,
-    quantity: (json['quantity'] as num)?.toDouble(),
-    quantityShipped: (json['quantity_shipped'] as num)?.toDouble(),
-    productCode: json['product_code'] as String,
-    commodityCode: json['commodity_code'] as String,
-    unitOfMeasure: json['unit_of_measure'] as String,
-    alternateTaxIdentifier: json['alternate_tax_identifier'] as String,
-    taxable: json['taxable'] as bool,
-    localTaxRate: json['local_tax_rate'] as String,
-    localTax: json['local_tax'] as int,
-    nationalTaxRate: json['national_tax_rate'] as String,
-    nationalTax: json['national_tax'] as int,
-    taxRate: json['tax_rate'] as String,
-    taxAmount: json['tax_amount'] as int,
-    discountAmount: json['discount_amount'] as int,
-    freightAmount: json['freight_amount'] as int,
-    unitPrice: json['unit_price'] as int,
-    discountRate: json['discount_rate'] as String,
-    subtotal: json['subtotal'] as int,
-    amount: json['amount'] as int,
+    type: json['type'] as String?,
+    name: json['name'] as String?,
+    description: json['description'] as String?,
+    quantity: (json['quantity'] as num?)?.toDouble(),
+    quantityShipped: (json['quantity_shipped'] as num?)?.toDouble(),
+    productCode: json['product_code'] as String?,
+    commodityCode: json['commodity_code'] as String?,
+    unitOfMeasure: json['unit_of_measure'] as String?,
+    alternateTaxIdentifier: json['alternate_tax_identifier'] as String?,
+    taxable: json['taxable'] as bool?,
+    localTaxRate: json['local_tax_rate'] as String?,
+    localTax: json['local_tax'] as int?,
+    nationalTaxRate: json['national_tax_rate'] as String?,
+    nationalTax: json['national_tax'] as int?,
+    taxRate: json['tax_rate'] as String?,
+    taxAmount: json['tax_amount'] as int?,
+    discountAmount: json['discount_amount'] as int?,
+    freightAmount: json['freight_amount'] as int?,
+    unitPrice: json['unit_price'] as int?,
+    discountRate: json['discount_rate'] as String?,
+    subtotal: json['subtotal'] as int?,
+    amount: json['amount'] as int?,
   );
 }
 
@@ -105,7 +105,7 @@ QuerySearchParamString _$QuerySearchParamStringFromJson(
     Map<String, dynamic> json) {
   return QuerySearchParamString(
     operator: _$enumDecodeNullable(_$SearchOperatorEnumMap, json['operator']),
-    value: json['value'] as String,
+    value: json['value'] as String?,
   );
 }
 
@@ -116,36 +116,41 @@ Map<String, dynamic> _$QuerySearchParamStringToJson(
       'value': instance.value,
     };
 
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
 }) {
   if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
   }
 
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
 }
 
-T _$enumDecodeNullable<T>(
-  Map<T, dynamic> enumValues,
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
   dynamic source, {
-  T unknownValue,
+  K? unknownValue,
 }) {
   if (source == null) {
     return null;
   }
-  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
 }
 
 const _$SearchOperatorEnumMap = {
@@ -159,7 +164,7 @@ const _$SearchOperatorEnumMap = {
 QuerySearchParamInt _$QuerySearchParamIntFromJson(Map<String, dynamic> json) {
   return QuerySearchParamInt(
     operator: _$enumDecodeNullable(_$SearchOperatorEnumMap, json['operator']),
-    value: json['value'] as int,
+    value: json['value'] as int?,
   );
 }
 

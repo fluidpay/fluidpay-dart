@@ -9,10 +9,10 @@ part of 'response.dart';
 ForgotUsernameResponse _$ForgotUsernameResponseFromJson(
     Map<String, dynamic> json) {
   return ForgotUsernameResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -29,10 +29,10 @@ Map<String, dynamic> _$ForgotUsernameResponseToJson(
 ForgotPasswordResponse _$ForgotPasswordResponseFromJson(
     Map<String, dynamic> json) {
   return ForgotPasswordResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -49,10 +49,10 @@ Map<String, dynamic> _$ForgotPasswordResponseToJson(
 ForgotPasswordResetResponse _$ForgotPasswordResetResponseFromJson(
     Map<String, dynamic> json) {
   return ForgotPasswordResetResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -68,10 +68,10 @@ Map<String, dynamic> _$ForgotPasswordResetResponseToJson(
 
 UserGetResponse _$UserGetResponseFromJson(Map<String, dynamic> json) {
   return UserGetResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : UserResponseData.fromJson(json['data'] as Map<String, dynamic>);
@@ -89,10 +89,10 @@ Map<String, dynamic> _$UserGetResponseToJson(UserGetResponse instance) =>
 UserPasswordChangeResponse _$UserPasswordChangeResponseFromJson(
     Map<String, dynamic> json) {
   return UserPasswordChangeResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -108,10 +108,10 @@ Map<String, dynamic> _$UserPasswordChangeResponseToJson(
 
 UserSetTotpResponse _$UserSetTotpResponseFromJson(Map<String, dynamic> json) {
   return UserSetTotpResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -128,10 +128,10 @@ Map<String, dynamic> _$UserSetTotpResponseToJson(
 UserRemoveTotpResponse _$UserRemoveTotpResponseFromJson(
     Map<String, dynamic> json) {
   return UserRemoveTotpResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -147,10 +147,10 @@ Map<String, dynamic> _$UserRemoveTotpResponseToJson(
 
 UserCreateResponse _$UserCreateResponseFromJson(Map<String, dynamic> json) {
   return UserCreateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : UserResponseData.fromJson(json['data'] as Map<String, dynamic>);
@@ -167,10 +167,10 @@ Map<String, dynamic> _$UserCreateResponseToJson(UserCreateResponse instance) =>
 
 UserUpdateResponse _$UserUpdateResponseFromJson(Map<String, dynamic> json) {
   return UserUpdateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -185,15 +185,13 @@ Map<String, dynamic> _$UserUpdateResponseToJson(UserUpdateResponse instance) =>
 
 UsersResponse _$UsersResponseFromJson(Map<String, dynamic> json) {
   return UsersResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : UserResponseData.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
+    ..data = (json['data'] as List<dynamic>?)
+        ?.map((e) => UserResponseData.fromJson(e as Map<String, dynamic>))
+        .toList();
 }
 
 Map<String, dynamic> _$UsersResponseToJson(UsersResponse instance) =>
@@ -207,10 +205,10 @@ Map<String, dynamic> _$UsersResponseToJson(UsersResponse instance) =>
 
 UserLoginAsResponse _$UserLoginAsResponseFromJson(Map<String, dynamic> json) {
   return UserLoginAsResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -226,10 +224,10 @@ Map<String, dynamic> _$UserLoginAsResponseToJson(
 
 UserDeleteResponse _$UserDeleteResponseFromJson(Map<String, dynamic> json) {
   return UserDeleteResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -244,10 +242,10 @@ Map<String, dynamic> _$UserDeleteResponseToJson(UserDeleteResponse instance) =>
 
 UserCopyResponse _$UserCopyResponseFromJson(Map<String, dynamic> json) {
   return UserCopyResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : UserResponseData.fromJson(json['data'] as Map<String, dynamic>);
@@ -265,10 +263,10 @@ Map<String, dynamic> _$UserCopyResponseToJson(UserCopyResponse instance) =>
 UserResendWelcomeEmailResponse _$UserResendWelcomeEmailResponseFromJson(
     Map<String, dynamic> json) {
   return UserResendWelcomeEmailResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : UserResponseData.fromJson(json['data'] as Map<String, dynamic>);

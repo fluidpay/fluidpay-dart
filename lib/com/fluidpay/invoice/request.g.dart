@@ -8,41 +8,41 @@ part of 'request.dart';
 
 InvoiceCreateRequest _$InvoiceCreateRequestFromJson(Map<String, dynamic> json) {
   return InvoiceCreateRequest(
-    currency: json['currency'] as String,
-    companyName: json['company_name'] as String,
-    customerNumber: json['customer_number'] as String,
-    invoiceNumber: json['invoice_number'] as String,
-    customerId: json['customer_id'] as String,
+    currency: json['currency'] as String?,
+    companyName: json['company_name'] as String?,
+    customerNumber: json['customer_number'] as String?,
+    invoiceNumber: json['invoice_number'] as String?,
+    customerId: json['customer_id'] as String?,
     payableTo: json['payable_to'] == null
         ? null
         : InvoicePayableTo.fromJson(json['payable_to'] as Map<String, dynamic>),
     billTo: json['bill_to'] == null
         ? null
         : InvoiceBillTo.fromJson(json['bill_to'] as Map<String, dynamic>),
-    dateDue: json['date_due'] as String,
-    items: (json['items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    advancedFields: json['advanced_fields'] as bool,
-    enableTax: json['enable_tax'] as bool,
-    enableShipping: json['enable_shipping'] as bool,
-    requireShippingDetails: json['require_shipping_details'] as bool,
+    dateDue: json['date_due'] as String?,
+    items: (json['items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    advancedFields: json['advanced_fields'] as bool?,
+    enableTax: json['enable_tax'] as bool?,
+    enableShipping: json['enable_shipping'] as bool?,
+    requireShippingDetails: json['require_shipping_details'] as bool?,
     requireBillingDetailsOnPaymentOnly:
-        json['require_billing_details_on_payment_only'] as bool,
-    taxPercent: json['tax_percent'] as String,
-    shipping: json['shipping'] as int,
-    amountPaid: json['amount_paid'] as int,
-    adjustment: json['adjustment'] as int,
-    allowPartialPayment: json['allow_partial_payment'] as bool,
-    transactionType: json['transaction_type'] as String,
-    paymentMethods:
-        (json['payment_methods'] as List)?.map((e) => e as String)?.toList(),
-    cardProcessorId: json['card_processor_id'] as String,
-    achProcessorId: json['ach_processor_id'] as String,
-    message: json['message'] as String,
+        json['require_billing_details_on_payment_only'] as bool?,
+    taxPercent: json['tax_percent'] as String?,
+    shipping: json['shipping'] as int?,
+    amountPaid: json['amount_paid'] as int?,
+    adjustment: json['adjustment'] as int?,
+    allowPartialPayment: json['allow_partial_payment'] as bool?,
+    transactionType: json['transaction_type'] as String?,
+    paymentMethods: (json['payment_methods'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
+    cardProcessorId: json['card_processor_id'] as String?,
+    achProcessorId: json['ach_processor_id'] as String?,
+    message: json['message'] as String?,
     sendVia: _$enumDecodeNullable(_$SendViaEnumMap, json['send_via']),
-    emailTo: json['email_to'] as String,
+    emailTo: json['email_to'] as String?,
   );
 }
 
@@ -78,36 +78,41 @@ Map<String, dynamic> _$InvoiceCreateRequestToJson(
       'email_to': instance.emailTo,
     };
 
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
 }) {
   if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
   }
 
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
 }
 
-T _$enumDecodeNullable<T>(
-  Map<T, dynamic> enumValues,
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
   dynamic source, {
-  T unknownValue,
+  K? unknownValue,
 }) {
   if (source == null) {
     return null;
   }
-  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
 }
 
 const _$SendViaEnumMap = {
@@ -119,44 +124,44 @@ const _$SendViaEnumMap = {
 
 InvoiceUpdateRequest _$InvoiceUpdateRequestFromJson(Map<String, dynamic> json) {
   return InvoiceUpdateRequest(
-    json['id'] as String,
-    currency: json['currency'] as String,
-    companyName: json['company_name'] as String,
-    customerNumber: json['customer_number'] as String,
-    invoiceNumber: json['invoice_number'] as String,
-    customerId: json['customer_id'] as String,
+    json['id'] as String?,
+    currency: json['currency'] as String?,
+    companyName: json['company_name'] as String?,
+    customerNumber: json['customer_number'] as String?,
+    invoiceNumber: json['invoice_number'] as String?,
+    customerId: json['customer_id'] as String?,
     payableTo: json['payable_to'] == null
         ? null
         : InvoicePayableTo.fromJson(json['payable_to'] as Map<String, dynamic>),
     billTo: json['bill_to'] == null
         ? null
         : InvoiceBillTo.fromJson(json['bill_to'] as Map<String, dynamic>),
-    dateDue: json['date_due'] as String,
-    items: (json['items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    advancedFields: json['advanced_fields'] as bool,
-    enableTax: json['enable_tax'] as bool,
-    enableShipping: json['enable_shipping'] as bool,
-    requireShippingDetails: json['require_shipping_details'] as bool,
+    dateDue: json['date_due'] as String?,
+    items: (json['items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    advancedFields: json['advanced_fields'] as bool?,
+    enableTax: json['enable_tax'] as bool?,
+    enableShipping: json['enable_shipping'] as bool?,
+    requireShippingDetails: json['require_shipping_details'] as bool?,
     requireBillingDetailsOnPaymentOnly:
-        json['require_billing_details_on_payment_only'] as bool,
-    taxPercent: json['tax_percent'] as String,
-    shipping: json['shipping'] as int,
-    amountPaid: json['amount_paid'] as int,
-    adjustment: json['adjustment'] as int,
-    allowPartialPayment: json['allow_partial_payment'] as bool,
-    transactionType: json['transaction_type'] as String,
-    paymentMethods:
-        (json['payment_methods'] as List)?.map((e) => e as String)?.toList(),
-    cardProcessorId: json['card_processor_id'] as String,
-    achProcessorId: json['ach_processor_id'] as String,
-    message: json['message'] as String,
+        json['require_billing_details_on_payment_only'] as bool?,
+    taxPercent: json['tax_percent'] as String?,
+    shipping: json['shipping'] as int?,
+    amountPaid: json['amount_paid'] as int?,
+    adjustment: json['adjustment'] as int?,
+    allowPartialPayment: json['allow_partial_payment'] as bool?,
+    transactionType: json['transaction_type'] as String?,
+    paymentMethods: (json['payment_methods'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
+    cardProcessorId: json['card_processor_id'] as String?,
+    achProcessorId: json['ach_processor_id'] as String?,
+    message: json['message'] as String?,
     sendVia: _$enumDecodeNullable(_$SendViaEnumMap, json['send_via']),
-    emailTo: json['email_to'] as String,
-    markAsPaid: json['mark_as_paid'] as bool,
-    reactivate: json['reactivate'] as bool,
+    emailTo: json['email_to'] as String?,
+    markAsPaid: json['mark_as_paid'] as bool?,
+    reactivate: json['reactivate'] as bool?,
   );
 }
 
@@ -281,8 +286,8 @@ InvoiceSearchRequest _$InvoiceSearchRequestFromJson(Map<String, dynamic> json) {
         ? null
         : QuerySearchParamString.fromJson(
             json['status'] as Map<String, dynamic>),
-    offset: json['offset'] as int,
-    limit: json['limit'] as int,
+    offset: json['offset'] as int?,
+    limit: json['limit'] as int?,
   );
 }
 

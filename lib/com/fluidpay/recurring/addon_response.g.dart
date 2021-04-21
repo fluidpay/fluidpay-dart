@@ -8,10 +8,10 @@ part of 'addon_response.dart';
 
 AddOnResponse _$AddOnResponseFromJson(Map<String, dynamic> json) {
   return AddOnResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : AddOnResponseData.fromJson(json['data'] as Map<String, dynamic>);
@@ -28,10 +28,10 @@ Map<String, dynamic> _$AddOnResponseToJson(AddOnResponse instance) =>
 
 AddOnUpdateResponse _$AddOnUpdateResponseFromJson(Map<String, dynamic> json) {
   return AddOnUpdateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -47,15 +47,13 @@ Map<String, dynamic> _$AddOnUpdateResponseToJson(
 
 AddOnSearchResponse _$AddOnSearchResponseFromJson(Map<String, dynamic> json) {
   return AddOnSearchResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : AddOnResponseData.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
+    ..data = (json['data'] as List<dynamic>?)
+        ?.map((e) => AddOnResponseData.fromJson(e as Map<String, dynamic>))
+        .toList();
 }
 
 Map<String, dynamic> _$AddOnSearchResponseToJson(
@@ -70,10 +68,10 @@ Map<String, dynamic> _$AddOnSearchResponseToJson(
 
 AddOnDeleteResponse _$AddOnDeleteResponseFromJson(Map<String, dynamic> json) {
   return AddOnDeleteResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -89,14 +87,14 @@ Map<String, dynamic> _$AddOnDeleteResponseToJson(
 
 AddOnResponseData _$AddOnResponseDataFromJson(Map<String, dynamic> json) {
   return AddOnResponseData()
-    ..id = json['id'] as String
-    ..name = json['name'] as String
-    ..description = json['description'] as String
-    ..amount = json['amount'] as int
-    ..percentage = json['percentage'] as int
-    ..duration = json['duration'] as int
-    ..createdAt = json['created_at'] as String
-    ..updatedAt = json['updated_at'] as String;
+    ..id = json['id'] as String?
+    ..name = json['name'] as String?
+    ..description = json['description'] as String?
+    ..amount = json['amount'] as int?
+    ..percentage = json['percentage'] as int?
+    ..duration = json['duration'] as int?
+    ..createdAt = json['created_at'] as String?
+    ..updatedAt = json['updated_at'] as String?;
 }
 
 Map<String, dynamic> _$AddOnResponseDataToJson(AddOnResponseData instance) =>

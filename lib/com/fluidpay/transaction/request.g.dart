@@ -9,35 +9,35 @@ part of 'request.dart';
 TransactionCreateRequest _$TransactionCreateRequestFromJson(
     Map<String, dynamic> json) {
   return TransactionCreateRequest(
-    idempotencyKey: json['idempotency_key'] as String,
-    idempotencyTime: json['idempotency_time'] as int,
+    idempotencyKey: json['idempotency_key'] as String?,
+    idempotencyTime: json['idempotency_time'] as int?,
     type: _$enumDecodeNullable(_$TransactionTypeEnumMap, json['type']),
-    taxExempt: json['tax_exempt'] as bool,
-    currency: json['currency'] as String,
-    description: json['description'] as String,
-    orderId: json['order_id'] as String,
-    poNumber: json['po_number'] as String,
-    ipAddress: json['ip_address'] as String,
-    emailReceipt: json['email_receipt'] as bool,
-    emailAddress: json['email_address'] as String,
-    processorId: json['processor_id'] as String,
-    allowPartialPayment: json['allow_partial_payment'] as bool,
-    createVaultRecord: json['create_vault_record'] as bool,
-    vaultRecordIdFormat: json['vault_record_id_format'] as String,
-    vendorId: json['vendor_id'] as String,
-    amount: json['amount'] as int,
-    taxAmount: json['tax_amount'] as int,
-    shippingAmount: json['shipping_amount'] as int,
-    surcharge: json['surcharge'] as int,
-    discountAmount: json['discount_amount'] as int,
-    nationalTaxAmount: json['national_tax_amount'] as int,
-    dutyAmount: json['duty_amount'] as int,
-    shipFromPostalCode: json['ship_from_postal_code'] as String,
-    summaryCommodityCode: json['summary_commodity_code'] as String,
+    taxExempt: json['tax_exempt'] as bool?,
+    currency: json['currency'] as String?,
+    description: json['description'] as String?,
+    orderId: json['order_id'] as String?,
+    poNumber: json['po_number'] as String?,
+    ipAddress: json['ip_address'] as String?,
+    emailReceipt: json['email_receipt'] as bool?,
+    emailAddress: json['email_address'] as String?,
+    processorId: json['processor_id'] as String?,
+    allowPartialPayment: json['allow_partial_payment'] as bool?,
+    createVaultRecord: json['create_vault_record'] as bool?,
+    vaultRecordIdFormat: json['vault_record_id_format'] as String?,
+    vendorId: json['vendor_id'] as String?,
+    amount: json['amount'] as int?,
+    taxAmount: json['tax_amount'] as int?,
+    shippingAmount: json['shipping_amount'] as int?,
+    surcharge: json['surcharge'] as int?,
+    discountAmount: json['discount_amount'] as int?,
+    nationalTaxAmount: json['national_tax_amount'] as int?,
+    dutyAmount: json['duty_amount'] as int?,
+    shipFromPostalCode: json['ship_from_postal_code'] as String?,
+    summaryCommodityCode: json['summary_commodity_code'] as String?,
     merchantVatRegistrationNumber:
-        json['merchant_vat_registration_number'] as String,
+        json['merchant_vat_registration_number'] as String?,
     customerVatRegistrationNumber:
-        json['customer_vat_registration_number'] as String,
+        json['customer_vat_registration_number'] as String?,
     paymentAdjustment: json['payment_adjustment'] == null
         ? null
         : PaymentAdjustmentRequest.fromJson(
@@ -50,10 +50,10 @@ TransactionCreateRequest _$TransactionCreateRequestFromJson(
         ? null
         : PaymentMethodRequest.fromJson(
             json['payment_method'] as Map<String, dynamic>),
-    cardOnFileIndicator: json['card_on_file_indicator'] as String,
-    initiatedBy: json['initiated_by'] as String,
-    initialTransactionId: json['initial_transaction_id'] as String,
-    storedCredentialIndicator: json['stored_credential_indicator'] as String,
+    cardOnFileIndicator: json['card_on_file_indicator'] as String?,
+    initiatedBy: json['initiated_by'] as String?,
+    initialTransactionId: json['initial_transaction_id'] as String?,
+    storedCredentialIndicator: json['stored_credential_indicator'] as String?,
     billingAddress: json['billing_address'] == null
         ? null
         : Address.fromJson(json['billing_address'] as Map<String, dynamic>),
@@ -64,23 +64,23 @@ TransactionCreateRequest _$TransactionCreateRequestFromJson(
         ? null
         : ProcessorSpecificRequest.fromJson(
             json['processor_specific'] as Map<String, dynamic>),
-    customFields: (json['custom_fields'] as Map<String, dynamic>)?.map(
-      (k, e) => MapEntry(k, (e as List)?.map((e) => e as String)?.toList()),
+    customFields: (json['custom_fields'] as Map<String, dynamic>?)?.map(
+      (k, e) =>
+          MapEntry(k, (e as List<dynamic>).map((e) => e as String).toList()),
     ),
-    groupName: json['group_name'] as String,
+    groupName: json['group_name'] as String?,
     descriptor: json['descriptor'] == null
         ? null
         : DescriptorRequest.fromJson(
             json['descriptor'] as Map<String, dynamic>),
-    lineItems: (json['line_items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    fingerprint: json['fingerprint'] as Map<String, dynamic>,
-    bypassRuleEngine: json['bypass_rule_engine'] as bool,
-    voidOnSuccess: json['void_on_success'] as bool,
-    billingMethod: json['billing_method'] as String,
-    mcc: json['mcc'] as String,
+    lineItems: (json['line_items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    fingerprint: json['fingerprint'] as Map<String, dynamic>?,
+    bypassRuleEngine: json['bypass_rule_engine'] as bool?,
+    voidOnSuccess: json['void_on_success'] as bool?,
+    billingMethod: json['billing_method'] as String?,
+    mcc: json['mcc'] as String?,
   );
 }
 
@@ -137,36 +137,41 @@ Map<String, dynamic> _$TransactionCreateRequestToJson(
       'mcc': instance.mcc,
     };
 
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
 }) {
   if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
   }
 
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
 }
 
-T _$enumDecodeNullable<T>(
-  Map<T, dynamic> enumValues,
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
   dynamic source, {
-  T unknownValue,
+  K? unknownValue,
 }) {
   if (source == null) {
     return null;
   }
-  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
 }
 
 const _$TransactionTypeEnumMap = {
@@ -181,8 +186,8 @@ const _$TransactionTypeEnumMap = {
 PaymentAdjustmentRequest _$PaymentAdjustmentRequestFromJson(
     Map<String, dynamic> json) {
   return PaymentAdjustmentRequest(
-    value: json['value'] as int,
-    type: json['type'] as String,
+    value: json['value'] as int?,
+    type: json['type'] as String?,
   );
 }
 
@@ -210,12 +215,12 @@ Map<String, dynamic> _$AdditionalAmountsRequestToJson(
 
 HSAAmountsRequest _$HSAAmountsRequestFromJson(Map<String, dynamic> json) {
   return HSAAmountsRequest(
-    total: json['total'] as int,
-    rxAmount: json['rx_amount'] as int,
-    visionAmount: json['vision_amount'] as int,
-    clinicAmount: json['clinic_amount'] as int,
-    dentalAmount: json['dental_amount'] as int,
-    sku: json['sku'] as String,
+    total: json['total'] as int?,
+    rxAmount: json['rx_amount'] as int?,
+    visionAmount: json['vision_amount'] as int?,
+    clinicAmount: json['clinic_amount'] as int?,
+    dentalAmount: json['dental_amount'] as int?,
+    sku: json['sku'] as String?,
   );
 }
 
@@ -246,7 +251,7 @@ Map<String, dynamic> _$ProcessorSpecificRequestToJson(
 
 BoltPay _$BoltPayFromJson(Map<String, dynamic> json) {
   return BoltPay(
-    recurringCycle: json['recurring_cycle'] as String,
+    recurringCycle: json['recurring_cycle'] as String?,
   );
 }
 
@@ -256,13 +261,13 @@ Map<String, dynamic> _$BoltPayToJson(BoltPay instance) => <String, dynamic>{
 
 DescriptorRequest _$DescriptorRequestFromJson(Map<String, dynamic> json) {
   return DescriptorRequest(
-    name: json['name'] as String,
-    address: json['address'] as String,
-    city: json['city'] as String,
-    state: json['state'] as String,
-    postalCode: json['postal_code'] as String,
-    email: json['email'] as String,
-    phone: json['phone'] as String,
+    name: json['name'] as String?,
+    address: json['address'] as String?,
+    city: json['city'] as String?,
+    state: json['state'] as String?,
+    postalCode: json['postal_code'] as String?,
+    email: json['email'] as String?,
+    phone: json['phone'] as String?,
   );
 }
 
@@ -281,14 +286,14 @@ TransactionCaptureRequest _$TransactionCaptureRequestFromJson(
     Map<String, dynamic> json) {
   return TransactionCaptureRequest(
     json['transaction_id'] as String,
-    amount: json['amount'] as int,
-    taxAmount: json['tax_amount'] as int,
-    taxExempt: json['tax_exempt'] as bool,
-    shippingAmount: json['shipping_amount'] as int,
-    orderId: json['order_id'] as String,
-    poNumber: json['po_number'] as String,
-    ipAddress: json['ip_address'] as String,
-    vendorId: json['vendor_id'] as String,
+    amount: json['amount'] as int?,
+    taxAmount: json['tax_amount'] as int?,
+    taxExempt: json['tax_exempt'] as bool?,
+    shippingAmount: json['shipping_amount'] as int?,
+    orderId: json['order_id'] as String?,
+    poNumber: json['po_number'] as String?,
+    ipAddress: json['ip_address'] as String?,
+    vendorId: json['vendor_id'] as String?,
   );
 }
 
@@ -323,12 +328,12 @@ TransactionRefundRequest _$TransactionRefundRequestFromJson(
     Map<String, dynamic> json) {
   return TransactionRefundRequest(
     json['transaction_id'] as String,
-    amount: json['amount'] as int,
-    ipAddress: json['ip_address'] as String,
-    terminalId: json['terminal_id'] as String,
-    vendorId: json['vendor_id'] as String,
-    printReceipt: json['print_receipt'] as String,
-    signatureRequired: json['signature_required'] as String,
+    amount: json['amount'] as int?,
+    ipAddress: json['ip_address'] as String?,
+    terminalId: json['terminal_id'] as String?,
+    vendorId: json['vendor_id'] as String?,
+    printReceipt: json['print_receipt'] as String?,
+    signatureRequired: json['signature_required'] as String?,
   );
 }
 
@@ -389,8 +394,8 @@ TransactionTipAdjustmentRequest _$TransactionTipAdjustmentRequestFromJson(
     Map<String, dynamic> json) {
   return TransactionTipAdjustmentRequest(
     json['transaction_id'] as String,
-    tip: json['tip'] as int,
-    baseAmount: json['base_amount'] as int,
+    tip: json['tip'] as int?,
+    baseAmount: json['base_amount'] as int?,
   );
 }
 
@@ -405,9 +410,9 @@ Map<String, dynamic> _$TransactionTipAdjustmentRequestToJson(
 TransactionMultiRequest _$TransactionMultiRequestFromJson(
     Map<String, dynamic> json) {
   return TransactionMultiRequest(
-    createVaultRecord: json['create_vault_record'] as bool,
+    createVaultRecord: json['create_vault_record'] as bool?,
     createVaultRecordMerchantId:
-        json['create_vault_record_merchant_id'] as String,
+        json['create_vault_record_merchant_id'] as String?,
     paymentMethod: json['payment_method'] == null
         ? null
         : PaymentMethodRequest.fromJson(
@@ -418,11 +423,10 @@ TransactionMultiRequest _$TransactionMultiRequestFromJson(
     shippingAddress: json['shipping_address'] == null
         ? null
         : Address.fromJson(json['shipping_address'] as Map<String, dynamic>),
-    transactions: (json['transactions'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TransactionMultiRequestData.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    transactions: (json['transactions'] as List<dynamic>?)
+        ?.map((e) =>
+            TransactionMultiRequestData.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -440,21 +444,20 @@ Map<String, dynamic> _$TransactionMultiRequestToJson(
 TransactionMultiRequestData _$TransactionMultiRequestDataFromJson(
     Map<String, dynamic> json) {
   return TransactionMultiRequestData(
-    merchantId: json['merchant_id'] as String,
-    processorId: json['processor_id'] as String,
+    merchantId: json['merchant_id'] as String?,
+    processorId: json['processor_id'] as String?,
     type: _$enumDecodeNullable(_$TransactionTypeEnumMap, json['type']),
-    amount: json['amount'] as int,
-    taxAmount: json['tax_amount'] as int,
-    shippingAmount: json['shipping_amount'] as int,
-    currency: json['currency'] as String,
-    description: json['description'] as String,
-    orderId: json['order_id'] as String,
-    poNumber: json['po_number'] as String,
-    ipAddress: json['ip_address'] as String,
-    lineItems: (json['line_items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    amount: json['amount'] as int?,
+    taxAmount: json['tax_amount'] as int?,
+    shippingAmount: json['shipping_amount'] as int?,
+    currency: json['currency'] as String?,
+    description: json['description'] as String?,
+    orderId: json['order_id'] as String?,
+    poNumber: json['po_number'] as String?,
+    ipAddress: json['ip_address'] as String?,
+    lineItems: (json['line_items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -478,11 +481,9 @@ Map<String, dynamic> _$TransactionMultiRequestDataToJson(
 TransactionMultiVoidRequest _$TransactionMultiVoidRequestFromJson(
     Map<String, dynamic> json) {
   return TransactionMultiVoidRequest(
-    transactions: (json['transactions'] as List)
-        ?.map((e) => e == null
-            ? null
-            : VoidTransactionData.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    transactions: (json['transactions'] as List<dynamic>?)
+        ?.map((e) => VoidTransactionData.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -494,7 +495,7 @@ Map<String, dynamic> _$TransactionMultiVoidRequestToJson(
 
 VoidTransactionData _$VoidTransactionDataFromJson(Map<String, dynamic> json) {
   return VoidTransactionData(
-    id: json['id'] as String,
+    id: json['id'] as String?,
   );
 }
 
@@ -507,11 +508,9 @@ Map<String, dynamic> _$VoidTransactionDataToJson(
 TransactionMultiRefundRequest _$TransactionMultiRefundRequestFromJson(
     Map<String, dynamic> json) {
   return TransactionMultiRefundRequest(
-    transactions: (json['transactions'] as List)
-        ?.map((e) => e == null
-            ? null
-            : RefundTransactionData.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    transactions: (json['transactions'] as List<dynamic>?)
+        ?.map((e) => RefundTransactionData.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -524,8 +523,8 @@ Map<String, dynamic> _$TransactionMultiRefundRequestToJson(
 RefundTransactionData _$RefundTransactionDataFromJson(
     Map<String, dynamic> json) {
   return RefundTransactionData(
-    id: json['id'] as String,
-    amount: json['amount'] as int,
+    id: json['id'] as String?,
+    amount: json['amount'] as int?,
   );
 }
 
@@ -659,12 +658,9 @@ TransactionSearchRequest _$TransactionSearchRequestFromJson(
     shippingAddress: json['shipping_address'] == null
         ? null
         : Address.fromJson(json['shipping_address'] as Map<String, dynamic>),
-    customFields: (json['custom_fields'] as Map<String, dynamic>)?.map(
+    customFields: (json['custom_fields'] as Map<String, dynamic>?)?.map(
       (k, e) => MapEntry(
-          k,
-          e == null
-              ? null
-              : QuerySearchParamString.fromJson(e as Map<String, dynamic>)),
+          k, QuerySearchParamString.fromJson(e as Map<String, dynamic>)),
     ),
     createdAt: json['created_at'] == null
         ? null
@@ -678,8 +674,8 @@ TransactionSearchRequest _$TransactionSearchRequestFromJson(
     settledAt: json['settled_at'] == null
         ? null
         : SearchDateRange.fromJson(json['settled_at'] as Map<String, dynamic>),
-    limit: json['limit'] as int,
-    offset: json['offset'] as int,
+    limit: json['limit'] as int?,
+    offset: json['offset'] as int?,
   );
 }
 

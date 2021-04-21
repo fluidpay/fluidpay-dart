@@ -9,28 +9,25 @@ part of 'subscription_request.dart';
 SubscriptionCreateRequest _$SubscriptionCreateRequestFromJson(
     Map<String, dynamic> json) {
   return SubscriptionCreateRequest(
-    planId: json['plan_id'] as String,
-    description: json['description'] as String,
+    planId: json['plan_id'] as String?,
+    description: json['description'] as String?,
     customer: json['customer'] == null
         ? null
         : CustomerRequest.fromJson(json['customer'] as Map<String, dynamic>),
-    amount: json['amount'] as int,
-    currency: json['currency'] as String,
-    billingCycleInterval: json['billing_cycle_interval'] as int,
-    billingFrequency: json['billing_frequency'] as String,
-    billingDays: json['billing_days'] as String,
-    duration: json['duration'] as int,
-    nextBillDate: json['next_bill_date'] as String,
-    addOns: (json['add_ons'] as List)
-        ?.map((e) =>
-            e == null ? null : AddOnRequest.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    discounts: (json['discounts'] as List)
-        ?.map((e) => e == null
-            ? null
-            : DiscountRequest.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    processorId: json['processor_id'] as String,
+    amount: json['amount'] as int?,
+    currency: json['currency'] as String?,
+    billingCycleInterval: json['billing_cycle_interval'] as int?,
+    billingFrequency: json['billing_frequency'] as String?,
+    billingDays: json['billing_days'] as String?,
+    duration: json['duration'] as int?,
+    nextBillDate: json['next_bill_date'] as String?,
+    addOns: (json['add_ons'] as List<dynamic>?)
+        ?.map((e) => AddOnRequest.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    discounts: (json['discounts'] as List<dynamic>?)
+        ?.map((e) => DiscountRequest.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    processorId: json['processor_id'] as String?,
   );
 }
 

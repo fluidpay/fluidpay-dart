@@ -9,7 +9,7 @@ part of 'request.dart';
 ForgotUsernameRequest _$ForgotUsernameRequestFromJson(
     Map<String, dynamic> json) {
   return ForgotUsernameRequest(
-    email: json['email'] as String,
+    json['email'] as String,
   );
 }
 
@@ -22,7 +22,7 @@ Map<String, dynamic> _$ForgotUsernameRequestToJson(
 ForgotPasswordRequest _$ForgotPasswordRequestFromJson(
     Map<String, dynamic> json) {
   return ForgotPasswordRequest(
-    username: json['username'] as String,
+    json['username'] as String,
   );
 }
 
@@ -35,9 +35,9 @@ Map<String, dynamic> _$ForgotPasswordRequestToJson(
 ForgotPasswordResetRequest _$ForgotPasswordResetRequestFromJson(
     Map<String, dynamic> json) {
   return ForgotPasswordResetRequest(
-    username: json['username'] as String,
-    resetCode: json['reset_code'] as String,
-    password: json['password'] as String,
+    json['username'] as String,
+    json['reset_code'] as String,
+    json['password'] as String,
   );
 }
 
@@ -59,9 +59,9 @@ Map<String, dynamic> _$UserGetRequestToJson(UserGetRequest instance) =>
 UserPasswordChangeRequest _$UserPasswordChangeRequestFromJson(
     Map<String, dynamic> json) {
   return UserPasswordChangeRequest(
-    username: json['username'] as String,
-    currentPassword: json['current_password'] as String,
-    newPassword: json['new_password'] as String,
+    json['username'] as String,
+    json['current_password'] as String,
+    json['new_password'] as String,
   );
 }
 
@@ -83,8 +83,8 @@ Map<String, dynamic> _$UserSetTotpRequestToJson(UserSetTotpRequest instance) =>
 UserRemoveTotpRequest _$UserRemoveTotpRequestFromJson(
     Map<String, dynamic> json) {
   return UserRemoveTotpRequest(
-    totp: json['totp'] as String,
-    userId: json['user_id'] as String,
+    json['totp'] as String,
+    json['user_id'] as String,
   );
 }
 
@@ -97,12 +97,12 @@ Map<String, dynamic> _$UserRemoveTotpRequestToJson(
 
 UserCreateRequest _$UserCreateRequestFromJson(Map<String, dynamic> json) {
   return UserCreateRequest(
-    username: json['username'] as String,
-    name: json['name'] as String,
-    phone: json['phone'] as String,
-    email: json['email'] as String,
-    status: json['status'] as String,
-    role: json['role'] as String,
+    username: json['username'] as String?,
+    name: json['name'] as String?,
+    phone: json['phone'] as String?,
+    email: json['email'] as String?,
+    status: json['status'] as String?,
+    role: json['role'] as String?,
     defaults: json['defaults'],
   );
 }
@@ -120,12 +120,12 @@ Map<String, dynamic> _$UserCreateRequestToJson(UserCreateRequest instance) =>
 
 UserUpdateRequest _$UserUpdateRequestFromJson(Map<String, dynamic> json) {
   return UserUpdateRequest(
-    username: json['username'] as String,
-    name: json['name'] as String,
-    phone: json['phone'] as String,
-    email: json['email'] as String,
-    status: json['status'] as String,
-    role: json['role'] as String,
+    username: json['username'] as String?,
+    name: json['name'] as String?,
+    phone: json['phone'] as String?,
+    email: json['email'] as String?,
+    status: json['status'] as String?,
+    role: json['role'] as String?,
     defaults: json['defaults'],
   );
 }
@@ -156,19 +156,23 @@ Map<String, dynamic> _$UserLoginAsRequestToJson(UserLoginAsRequest instance) =>
     <String, dynamic>{};
 
 UserDeleteRequest _$UserDeleteRequestFromJson(Map<String, dynamic> json) {
-  return UserDeleteRequest();
+  return UserDeleteRequest(
+    json['userId'] as String,
+  );
 }
 
 Map<String, dynamic> _$UserDeleteRequestToJson(UserDeleteRequest instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'userId': instance.userId,
+    };
 
 UserCopyRequest _$UserCopyRequestFromJson(Map<String, dynamic> json) {
   return UserCopyRequest(
-    username: json['username'] as String,
-    name: json['name'] as String,
-    phone: json['phone'] as String,
-    email: json['email'] as String,
-    status: json['status'] as String,
+    username: json['username'] as String?,
+    name: json['name'] as String?,
+    phone: json['phone'] as String?,
+    email: json['email'] as String?,
+    status: json['status'] as String?,
   );
 }
 
@@ -183,9 +187,13 @@ Map<String, dynamic> _$UserCopyRequestToJson(UserCopyRequest instance) =>
 
 UserResendWelcomeEmailRequest _$UserResendWelcomeEmailRequestFromJson(
     Map<String, dynamic> json) {
-  return UserResendWelcomeEmailRequest();
+  return UserResendWelcomeEmailRequest(
+    json['userId'] as String,
+  );
 }
 
 Map<String, dynamic> _$UserResendWelcomeEmailRequestToJson(
         UserResendWelcomeEmailRequest instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'userId': instance.userId,
+    };

@@ -8,10 +8,10 @@ part of 'response.dart';
 
 AuthLoginResponse _$AuthLoginResponseFromJson(Map<String, dynamic> json) {
   return AuthLoginResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : AuthLoginResponseData.fromJson(json['data'] as Map<String, dynamic>);
@@ -29,8 +29,8 @@ Map<String, dynamic> _$AuthLoginResponseToJson(AuthLoginResponse instance) =>
 AuthLoginResponseData _$AuthLoginResponseDataFromJson(
     Map<String, dynamic> json) {
   return AuthLoginResponseData()
-    ..token = json['token'] as String
-    ..sid = json['sid'] as String;
+    ..token = json['token'] as String?
+    ..sid = json['sid'] as String?;
 }
 
 Map<String, dynamic> _$AuthLoginResponseDataToJson(

@@ -9,9 +9,9 @@ part of 'request.dart';
 CustomerCreateRequest _$CustomerCreateRequestFromJson(
     Map<String, dynamic> json) {
   return CustomerCreateRequest(
-    id: json['id'] as String,
-    idFormat: json['id_format'] as String,
-    description: json['description'] as String,
+    id: json['id'] as String?,
+    idFormat: json['id_format'] as String?,
+    description: json['description'] as String?,
     defaultBillingAddress: json['default_billing_address'] == null
         ? null
         : CustomerAddress.fromJson(
@@ -24,7 +24,7 @@ CustomerCreateRequest _$CustomerCreateRequestFromJson(
         ? null
         : CustomerPaymentCreate.fromJson(
             json['default_payment'] as Map<String, dynamic>),
-    flags: (json['flags'] as List)?.map((e) => e as String)?.toList(),
+    flags: (json['flags'] as List<dynamic>?)?.map((e) => e as String).toList(),
   );
 }
 
@@ -49,7 +49,7 @@ CustomerPaymentCreate _$CustomerPaymentCreateFromJson(
     ach: json['ach'] == null
         ? null
         : CustomerACH.fromJson(json['ach'] as Map<String, dynamic>),
-    token: json['token'] as String,
+    token: json['token'] as String?,
   );
 }
 
@@ -63,7 +63,7 @@ Map<String, dynamic> _$CustomerPaymentCreateToJson(
 
 CustomerGetRequest _$CustomerGetRequestFromJson(Map<String, dynamic> json) {
   return CustomerGetRequest(
-    id: json['id'] as String,
+    id: json['id'] as String?,
   );
 }
 
@@ -75,7 +75,7 @@ Map<String, dynamic> _$CustomerGetRequestToJson(CustomerGetRequest instance) =>
 CustomerDeleteRequest _$CustomerDeleteRequestFromJson(
     Map<String, dynamic> json) {
   return CustomerDeleteRequest(
-    id: json['id'] as String,
+    id: json['id'] as String?,
   );
 }
 
@@ -89,12 +89,12 @@ CustomerUpdateRequest _$CustomerUpdateRequestFromJson(
     Map<String, dynamic> json) {
   return CustomerUpdateRequest(
     json['id'] as String,
-    description: json['description'] as String,
-    notes: json['notes'] as String,
+    description: json['description'] as String?,
+    notes: json['notes'] as String?,
     defaults: json['defaults'] == null
         ? null
         : CustomerDefaults.fromJson(json['defaults'] as Map<String, dynamic>),
-    flags: (json['flags'] as List)?.map((e) => e as String)?.toList(),
+    flags: (json['flags'] as List<dynamic>?)?.map((e) => e as String).toList(),
   );
 }
 
@@ -188,8 +188,8 @@ CustomerSearchRequest _$CustomerSearchRequestFromJson(
         ? null
         : QuerySearchParamDateRange.fromJson(
             json['updated_at'] as Map<String, dynamic>),
-    limit: json['limit'] as int,
-    offset: json['offset'] as int,
+    limit: json['limit'] as int?,
+    offset: json['offset'] as int?,
   );
 }
 

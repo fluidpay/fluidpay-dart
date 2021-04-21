@@ -9,58 +9,58 @@ part of 'response.dart';
 InvoiceCreateResponseData _$InvoiceCreateResponseDataFromJson(
     Map<String, dynamic> json) {
   return InvoiceCreateResponseData()
-    ..id = json['id'] as String
-    ..currency = json['currency'] as String
-    ..companyName = json['company_name'] as String
-    ..companyLogoUrl = json['company_logo_url'] as String
-    ..customerNumber = json['customer_number'] as String
-    ..invoiceNumber = json['invoice_number'] as String
+    ..id = json['id'] as String?
+    ..currency = json['currency'] as String?
+    ..companyName = json['company_name'] as String?
+    ..companyLogoUrl = json['company_logo_url'] as String?
+    ..customerNumber = json['customer_number'] as String?
+    ..invoiceNumber = json['invoice_number'] as String?
     ..payableTo = json['payable_to'] == null
         ? null
         : InvoicePayableTo.fromJson(json['payable_to'] as Map<String, dynamic>)
     ..billTo = json['bill_to'] == null
         ? null
         : InvoiceBillTo.fromJson(json['bill_to'] as Map<String, dynamic>)
-    ..createdAt = json['created_at'] as String
-    ..dateDue = json['date_due'] as String
-    ..items = (json['items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..advancedFields = json['advanced_fields'] as bool
-    ..subtotal = json['subtotal'] as int
-    ..enableTax = json['enable_tax'] as bool
-    ..enableShipping = json['enable_shipping'] as bool
-    ..requireShippingDetails = json['require_shipping_details'] as bool
+    ..createdAt = json['created_at'] as String?
+    ..dateDue = json['date_due'] as String?
+    ..items = (json['items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList()
+    ..advancedFields = json['advanced_fields'] as bool?
+    ..subtotal = json['subtotal'] as int?
+    ..enableTax = json['enable_tax'] as bool?
+    ..enableShipping = json['enable_shipping'] as bool?
+    ..requireShippingDetails = json['require_shipping_details'] as bool?
     ..requireBillingDetailsOnPaymentOnly =
-        json['require_billing_details_on_payment_only'] as bool
-    ..taxPercent = json['tax_percent'] as String
-    ..tax = json['tax'] as int
-    ..shipping = json['shipping'] as int
-    ..total = json['total'] as int
-    ..amountPaid = json['amount_paid'] as int
-    ..serviceFeesPaid = json['service_fees_paid'] as int
-    ..surchargePaid = json['surcharge_paid'] as int
-    ..discountCredited = json['discount_credited'] as int
-    ..adjustment = json['adjustment'] as int
-    ..amountDue = json['amount_due'] as int
-    ..allowPartialPayment = json['allow_partial_payment'] as bool
-    ..transactionType = json['transaction_type'] as String
-    ..paymentMethods =
-        (json['payment_methods'] as List)?.map((e) => e as String)?.toList()
-    ..cardProcessorId = json['card_processor_id'] as String
-    ..achProcessorId = json['ach_processor_id'] as String
+        json['require_billing_details_on_payment_only'] as bool?
+    ..taxPercent = json['tax_percent'] as String?
+    ..tax = json['tax'] as int?
+    ..shipping = json['shipping'] as int?
+    ..total = json['total'] as int?
+    ..amountPaid = json['amount_paid'] as int?
+    ..serviceFeesPaid = json['service_fees_paid'] as int?
+    ..surchargePaid = json['surcharge_paid'] as int?
+    ..discountCredited = json['discount_credited'] as int?
+    ..adjustment = json['adjustment'] as int?
+    ..amountDue = json['amount_due'] as int?
+    ..allowPartialPayment = json['allow_partial_payment'] as bool?
+    ..transactionType = json['transaction_type'] as String?
+    ..paymentMethods = (json['payment_methods'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList()
+    ..cardProcessorId = json['card_processor_id'] as String?
+    ..achProcessorId = json['ach_processor_id'] as String?
     ..status = _$enumDecodeNullable(_$InvoiceStatusEnumMap, json['status'])
-    ..message = json['message'] as String
-    ..rejectMessage = json['reject_message'] as String
+    ..message = json['message'] as String?
+    ..rejectMessage = json['reject_message'] as String?
     ..sendVia = _$enumDecodeNullable(_$SendViaEnumMap, json['send_via'])
-    ..emailTo = json['email_to'] as String
-    ..lastSentAt = json['last_sent_at'] as String
-    ..updatedAt = json['updated_at'] as String
-    ..publicHash = json['public_hash'] as String
-    ..hostedUrl = json['hosted_url'] as String
-    ..merchantId = json['merchant_id'] as String
-    ..customerId = json['customer_id'] as String;
+    ..emailTo = json['email_to'] as String?
+    ..lastSentAt = json['last_sent_at'] as String?
+    ..updatedAt = json['updated_at'] as String?
+    ..publicHash = json['public_hash'] as String?
+    ..hostedUrl = json['hosted_url'] as String?
+    ..merchantId = json['merchant_id'] as String?
+    ..customerId = json['customer_id'] as String?;
 }
 
 Map<String, dynamic> _$InvoiceCreateResponseDataToJson(
@@ -112,36 +112,41 @@ Map<String, dynamic> _$InvoiceCreateResponseDataToJson(
       'customer_id': instance.customerId,
     };
 
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
 }) {
   if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
   }
 
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
 }
 
-T _$enumDecodeNullable<T>(
-  Map<T, dynamic> enumValues,
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
   dynamic source, {
-  T unknownValue,
+  K? unknownValue,
 }) {
   if (source == null) {
     return null;
   }
-  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
 }
 
 const _$InvoiceStatusEnumMap = {
@@ -165,10 +170,10 @@ const _$SendViaEnumMap = {
 InvoiceCreateResponse _$InvoiceCreateResponseFromJson(
     Map<String, dynamic> json) {
   return InvoiceCreateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : InvoiceCreateResponseData.fromJson(
@@ -188,10 +193,10 @@ Map<String, dynamic> _$InvoiceCreateResponseToJson(
 InvoiceUpdateResponse _$InvoiceUpdateResponseFromJson(
     Map<String, dynamic> json) {
   return InvoiceUpdateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : InvoiceUpdateResponseData.fromJson(
@@ -211,58 +216,58 @@ Map<String, dynamic> _$InvoiceUpdateResponseToJson(
 InvoiceUpdateResponseData _$InvoiceUpdateResponseDataFromJson(
     Map<String, dynamic> json) {
   return InvoiceUpdateResponseData()
-    ..id = json['id'] as String
-    ..currency = json['currency'] as String
-    ..companyName = json['company_name'] as String
-    ..companyLogoUrl = json['company_logo_url'] as String
-    ..customerNumber = json['customer_number'] as String
-    ..invoiceNumber = json['invoice_number'] as String
+    ..id = json['id'] as String?
+    ..currency = json['currency'] as String?
+    ..companyName = json['company_name'] as String?
+    ..companyLogoUrl = json['company_logo_url'] as String?
+    ..customerNumber = json['customer_number'] as String?
+    ..invoiceNumber = json['invoice_number'] as String?
     ..payableTo = json['payable_to'] == null
         ? null
         : InvoicePayableTo.fromJson(json['payable_to'] as Map<String, dynamic>)
     ..billTo = json['bill_to'] == null
         ? null
         : InvoiceBillTo.fromJson(json['bill_to'] as Map<String, dynamic>)
-    ..createdAt = json['created_at'] as String
-    ..dateDue = json['date_due'] as String
-    ..items = (json['items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..advancedFields = json['advanced_fields'] as bool
-    ..subtotal = json['subtotal'] as int
-    ..enableTax = json['enable_tax'] as bool
-    ..enableShipping = json['enable_shipping'] as bool
-    ..requireShippingDetails = json['require_shipping_details'] as bool
+    ..createdAt = json['created_at'] as String?
+    ..dateDue = json['date_due'] as String?
+    ..items = (json['items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList()
+    ..advancedFields = json['advanced_fields'] as bool?
+    ..subtotal = json['subtotal'] as int?
+    ..enableTax = json['enable_tax'] as bool?
+    ..enableShipping = json['enable_shipping'] as bool?
+    ..requireShippingDetails = json['require_shipping_details'] as bool?
     ..requireBillingDetailsOnPaymentOnly =
-        json['require_billing_details_on_payment_only'] as bool
-    ..taxPercent = json['tax_percent'] as String
-    ..tax = json['tax'] as int
-    ..shipping = json['shipping'] as int
-    ..total = json['total'] as int
-    ..amountPaid = json['amount_paid'] as int
-    ..serviceFeesPaid = json['service_fees_paid'] as int
-    ..surchargePaid = json['surcharge_paid'] as int
-    ..discountCredited = json['discount_credited'] as int
-    ..adjustment = json['adjustment'] as int
-    ..amountDue = json['amount_due'] as int
-    ..allowPartialPayment = json['allow_partial_payment'] as bool
-    ..transactionType = json['transaction_type'] as String
-    ..paymentMethods =
-        (json['payment_methods'] as List)?.map((e) => e as String)?.toList()
-    ..cardProcessorId = json['card_processor_id'] as String
-    ..achProcessorId = json['ach_processor_id'] as String
+        json['require_billing_details_on_payment_only'] as bool?
+    ..taxPercent = json['tax_percent'] as String?
+    ..tax = json['tax'] as int?
+    ..shipping = json['shipping'] as int?
+    ..total = json['total'] as int?
+    ..amountPaid = json['amount_paid'] as int?
+    ..serviceFeesPaid = json['service_fees_paid'] as int?
+    ..surchargePaid = json['surcharge_paid'] as int?
+    ..discountCredited = json['discount_credited'] as int?
+    ..adjustment = json['adjustment'] as int?
+    ..amountDue = json['amount_due'] as int?
+    ..allowPartialPayment = json['allow_partial_payment'] as bool?
+    ..transactionType = json['transaction_type'] as String?
+    ..paymentMethods = (json['payment_methods'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList()
+    ..cardProcessorId = json['card_processor_id'] as String?
+    ..achProcessorId = json['ach_processor_id'] as String?
     ..status = _$enumDecodeNullable(_$InvoiceStatusEnumMap, json['status'])
-    ..message = json['message'] as String
-    ..rejectMessage = json['reject_message'] as String
+    ..message = json['message'] as String?
+    ..rejectMessage = json['reject_message'] as String?
     ..sendVia = _$enumDecodeNullable(_$SendViaEnumMap, json['send_via'])
-    ..emailTo = json['email_to'] as String
-    ..lastSentAt = json['last_sent_at'] as String
-    ..updatedAt = json['updated_at'] as String
-    ..publicHash = json['public_hash'] as String
-    ..hostedUrl = json['hosted_url'] as String
-    ..merchantId = json['merchant_id'] as String
-    ..customerId = json['customer_id'] as String;
+    ..emailTo = json['email_to'] as String?
+    ..lastSentAt = json['last_sent_at'] as String?
+    ..updatedAt = json['updated_at'] as String?
+    ..publicHash = json['public_hash'] as String?
+    ..hostedUrl = json['hosted_url'] as String?
+    ..merchantId = json['merchant_id'] as String?
+    ..customerId = json['customer_id'] as String?;
 }
 
 Map<String, dynamic> _$InvoiceUpdateResponseDataToJson(
@@ -317,10 +322,10 @@ Map<String, dynamic> _$InvoiceUpdateResponseDataToJson(
 InvoiceMarkAsPaidResponse _$InvoiceMarkAsPaidResponseFromJson(
     Map<String, dynamic> json) {
   return InvoiceMarkAsPaidResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : InvoiceMarkAsPaidResponseData.fromJson(
@@ -340,58 +345,58 @@ Map<String, dynamic> _$InvoiceMarkAsPaidResponseToJson(
 InvoiceMarkAsPaidResponseData _$InvoiceMarkAsPaidResponseDataFromJson(
     Map<String, dynamic> json) {
   return InvoiceMarkAsPaidResponseData()
-    ..id = json['id'] as String
-    ..currency = json['currency'] as String
-    ..companyName = json['company_name'] as String
-    ..companyLogoUrl = json['company_logo_url'] as String
-    ..customerNumber = json['customer_number'] as String
-    ..invoiceNumber = json['invoice_number'] as String
+    ..id = json['id'] as String?
+    ..currency = json['currency'] as String?
+    ..companyName = json['company_name'] as String?
+    ..companyLogoUrl = json['company_logo_url'] as String?
+    ..customerNumber = json['customer_number'] as String?
+    ..invoiceNumber = json['invoice_number'] as String?
     ..payableTo = json['payable_to'] == null
         ? null
         : InvoicePayableTo.fromJson(json['payable_to'] as Map<String, dynamic>)
     ..billTo = json['bill_to'] == null
         ? null
         : InvoiceBillTo.fromJson(json['bill_to'] as Map<String, dynamic>)
-    ..createdAt = json['created_at'] as String
-    ..dateDue = json['date_due'] as String
-    ..items = (json['items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..advancedFields = json['advanced_fields'] as bool
-    ..subtotal = json['subtotal'] as int
-    ..enableTax = json['enable_tax'] as bool
-    ..enableShipping = json['enable_shipping'] as bool
-    ..requireShippingDetails = json['require_shipping_details'] as bool
+    ..createdAt = json['created_at'] as String?
+    ..dateDue = json['date_due'] as String?
+    ..items = (json['items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList()
+    ..advancedFields = json['advanced_fields'] as bool?
+    ..subtotal = json['subtotal'] as int?
+    ..enableTax = json['enable_tax'] as bool?
+    ..enableShipping = json['enable_shipping'] as bool?
+    ..requireShippingDetails = json['require_shipping_details'] as bool?
     ..requireBillingDetailsOnPaymentOnly =
-        json['require_billing_details_on_payment_only'] as bool
-    ..taxPercent = json['tax_percent'] as String
-    ..tax = json['tax'] as int
-    ..shipping = json['shipping'] as int
-    ..total = json['total'] as int
-    ..amountPaid = json['amount_paid'] as int
-    ..serviceFeesPaid = json['service_fees_paid'] as int
-    ..surchargePaid = json['surcharge_paid'] as int
-    ..discountCredited = json['discount_credited'] as int
-    ..adjustment = json['adjustment'] as int
-    ..amountDue = json['amount_due'] as int
-    ..allowPartialPayment = json['allow_partial_payment'] as bool
-    ..transactionType = json['transaction_type'] as String
-    ..paymentMethods =
-        (json['payment_methods'] as List)?.map((e) => e as String)?.toList()
-    ..cardProcessorId = json['card_processor_id'] as String
-    ..achProcessorId = json['ach_processor_id'] as String
+        json['require_billing_details_on_payment_only'] as bool?
+    ..taxPercent = json['tax_percent'] as String?
+    ..tax = json['tax'] as int?
+    ..shipping = json['shipping'] as int?
+    ..total = json['total'] as int?
+    ..amountPaid = json['amount_paid'] as int?
+    ..serviceFeesPaid = json['service_fees_paid'] as int?
+    ..surchargePaid = json['surcharge_paid'] as int?
+    ..discountCredited = json['discount_credited'] as int?
+    ..adjustment = json['adjustment'] as int?
+    ..amountDue = json['amount_due'] as int?
+    ..allowPartialPayment = json['allow_partial_payment'] as bool?
+    ..transactionType = json['transaction_type'] as String?
+    ..paymentMethods = (json['payment_methods'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList()
+    ..cardProcessorId = json['card_processor_id'] as String?
+    ..achProcessorId = json['ach_processor_id'] as String?
     ..status = _$enumDecodeNullable(_$InvoiceStatusEnumMap, json['status'])
-    ..message = json['message'] as String
-    ..rejectMessage = json['reject_message'] as String
+    ..message = json['message'] as String?
+    ..rejectMessage = json['reject_message'] as String?
     ..sendVia = _$enumDecodeNullable(_$SendViaEnumMap, json['send_via'])
-    ..emailTo = json['email_to'] as String
-    ..lastSentAt = json['last_sent_at'] as String
-    ..updatedAt = json['updated_at'] as String
-    ..publicHash = json['public_hash'] as String
-    ..hostedUrl = json['hosted_url'] as String
-    ..merchantId = json['merchant_id'] as String
-    ..customerId = json['customer_id'] as String;
+    ..emailTo = json['email_to'] as String?
+    ..lastSentAt = json['last_sent_at'] as String?
+    ..updatedAt = json['updated_at'] as String?
+    ..publicHash = json['public_hash'] as String?
+    ..hostedUrl = json['hosted_url'] as String?
+    ..merchantId = json['merchant_id'] as String?
+    ..customerId = json['customer_id'] as String?;
 }
 
 Map<String, dynamic> _$InvoiceMarkAsPaidResponseDataToJson(
@@ -446,10 +451,10 @@ Map<String, dynamic> _$InvoiceMarkAsPaidResponseDataToJson(
 InvoiceReactivateResponse _$InvoiceReactivateResponseFromJson(
     Map<String, dynamic> json) {
   return InvoiceReactivateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : InvoiceResponseData.fromJson(json['data'] as Map<String, dynamic>);
@@ -468,58 +473,58 @@ Map<String, dynamic> _$InvoiceReactivateResponseToJson(
 InvoiceReactivateResponseData _$InvoiceReactivateResponseDataFromJson(
     Map<String, dynamic> json) {
   return InvoiceReactivateResponseData()
-    ..id = json['id'] as String
-    ..currency = json['currency'] as String
-    ..companyName = json['company_name'] as String
-    ..companyLogoUrl = json['company_logo_url'] as String
-    ..customerNumber = json['customer_number'] as String
-    ..invoiceNumber = json['invoice_number'] as String
+    ..id = json['id'] as String?
+    ..currency = json['currency'] as String?
+    ..companyName = json['company_name'] as String?
+    ..companyLogoUrl = json['company_logo_url'] as String?
+    ..customerNumber = json['customer_number'] as String?
+    ..invoiceNumber = json['invoice_number'] as String?
     ..payableTo = json['payable_to'] == null
         ? null
         : InvoicePayableTo.fromJson(json['payable_to'] as Map<String, dynamic>)
     ..billTo = json['bill_to'] == null
         ? null
         : InvoiceBillTo.fromJson(json['bill_to'] as Map<String, dynamic>)
-    ..createdAt = json['created_at'] as String
-    ..dateDue = json['date_due'] as String
-    ..items = (json['items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..advancedFields = json['advanced_fields'] as bool
-    ..subtotal = json['subtotal'] as int
-    ..enableTax = json['enable_tax'] as bool
-    ..enableShipping = json['enable_shipping'] as bool
-    ..requireShippingDetails = json['require_shipping_details'] as bool
+    ..createdAt = json['created_at'] as String?
+    ..dateDue = json['date_due'] as String?
+    ..items = (json['items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList()
+    ..advancedFields = json['advanced_fields'] as bool?
+    ..subtotal = json['subtotal'] as int?
+    ..enableTax = json['enable_tax'] as bool?
+    ..enableShipping = json['enable_shipping'] as bool?
+    ..requireShippingDetails = json['require_shipping_details'] as bool?
     ..requireBillingDetailsOnPaymentOnly =
-        json['require_billing_details_on_payment_only'] as bool
-    ..taxPercent = json['tax_percent'] as String
-    ..tax = json['tax'] as int
-    ..shipping = json['shipping'] as int
-    ..total = json['total'] as int
-    ..amountPaid = json['amount_paid'] as int
-    ..serviceFeesPaid = json['service_fees_paid'] as int
-    ..surchargePaid = json['surcharge_paid'] as int
-    ..discountCredited = json['discount_credited'] as int
-    ..adjustment = json['adjustment'] as int
-    ..amountDue = json['amount_due'] as int
-    ..allowPartialPayment = json['allow_partial_payment'] as bool
-    ..transactionType = json['transaction_type'] as String
-    ..paymentMethods =
-        (json['payment_methods'] as List)?.map((e) => e as String)?.toList()
-    ..cardProcessorId = json['card_processor_id'] as String
-    ..achProcessorId = json['ach_processor_id'] as String
+        json['require_billing_details_on_payment_only'] as bool?
+    ..taxPercent = json['tax_percent'] as String?
+    ..tax = json['tax'] as int?
+    ..shipping = json['shipping'] as int?
+    ..total = json['total'] as int?
+    ..amountPaid = json['amount_paid'] as int?
+    ..serviceFeesPaid = json['service_fees_paid'] as int?
+    ..surchargePaid = json['surcharge_paid'] as int?
+    ..discountCredited = json['discount_credited'] as int?
+    ..adjustment = json['adjustment'] as int?
+    ..amountDue = json['amount_due'] as int?
+    ..allowPartialPayment = json['allow_partial_payment'] as bool?
+    ..transactionType = json['transaction_type'] as String?
+    ..paymentMethods = (json['payment_methods'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList()
+    ..cardProcessorId = json['card_processor_id'] as String?
+    ..achProcessorId = json['ach_processor_id'] as String?
     ..status = _$enumDecodeNullable(_$InvoiceStatusEnumMap, json['status'])
-    ..message = json['message'] as String
-    ..rejectMessage = json['reject_message'] as String
+    ..message = json['message'] as String?
+    ..rejectMessage = json['reject_message'] as String?
     ..sendVia = _$enumDecodeNullable(_$SendViaEnumMap, json['send_via'])
-    ..emailTo = json['email_to'] as String
-    ..lastSentAt = json['last_sent_at'] as String
-    ..updatedAt = json['updated_at'] as String
-    ..publicHash = json['public_hash'] as String
-    ..hostedUrl = json['hosted_url'] as String
-    ..merchantId = json['merchant_id'] as String
-    ..customerId = json['customer_id'] as String;
+    ..emailTo = json['email_to'] as String?
+    ..lastSentAt = json['last_sent_at'] as String?
+    ..updatedAt = json['updated_at'] as String?
+    ..publicHash = json['public_hash'] as String?
+    ..hostedUrl = json['hosted_url'] as String?
+    ..merchantId = json['merchant_id'] as String?
+    ..customerId = json['customer_id'] as String?;
 }
 
 Map<String, dynamic> _$InvoiceReactivateResponseDataToJson(
@@ -573,10 +578,10 @@ Map<String, dynamic> _$InvoiceReactivateResponseDataToJson(
 
 InvoiceGetResponse _$InvoiceGetResponseFromJson(Map<String, dynamic> json) {
   return InvoiceGetResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : InvoiceGetResponseData.fromJson(json['data'] as Map<String, dynamic>);
@@ -594,58 +599,58 @@ Map<String, dynamic> _$InvoiceGetResponseToJson(InvoiceGetResponse instance) =>
 InvoiceGetResponseData _$InvoiceGetResponseDataFromJson(
     Map<String, dynamic> json) {
   return InvoiceGetResponseData()
-    ..id = json['id'] as String
-    ..currency = json['currency'] as String
-    ..companyName = json['company_name'] as String
-    ..companyLogoUrl = json['company_logo_url'] as String
-    ..customerNumber = json['customer_number'] as String
-    ..invoiceNumber = json['invoice_number'] as String
+    ..id = json['id'] as String?
+    ..currency = json['currency'] as String?
+    ..companyName = json['company_name'] as String?
+    ..companyLogoUrl = json['company_logo_url'] as String?
+    ..customerNumber = json['customer_number'] as String?
+    ..invoiceNumber = json['invoice_number'] as String?
     ..payableTo = json['payable_to'] == null
         ? null
         : InvoicePayableTo.fromJson(json['payable_to'] as Map<String, dynamic>)
     ..billTo = json['bill_to'] == null
         ? null
         : InvoiceBillTo.fromJson(json['bill_to'] as Map<String, dynamic>)
-    ..createdAt = json['created_at'] as String
-    ..dateDue = json['date_due'] as String
-    ..items = (json['items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..advancedFields = json['advanced_fields'] as bool
-    ..subtotal = json['subtotal'] as int
-    ..enableTax = json['enable_tax'] as bool
-    ..enableShipping = json['enable_shipping'] as bool
-    ..requireShippingDetails = json['require_shipping_details'] as bool
+    ..createdAt = json['created_at'] as String?
+    ..dateDue = json['date_due'] as String?
+    ..items = (json['items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList()
+    ..advancedFields = json['advanced_fields'] as bool?
+    ..subtotal = json['subtotal'] as int?
+    ..enableTax = json['enable_tax'] as bool?
+    ..enableShipping = json['enable_shipping'] as bool?
+    ..requireShippingDetails = json['require_shipping_details'] as bool?
     ..requireBillingDetailsOnPaymentOnly =
-        json['require_billing_details_on_payment_only'] as bool
-    ..taxPercent = json['tax_percent'] as String
-    ..tax = json['tax'] as int
-    ..shipping = json['shipping'] as int
-    ..total = json['total'] as int
-    ..amountPaid = json['amount_paid'] as int
-    ..serviceFeesPaid = json['service_fees_paid'] as int
-    ..surchargePaid = json['surcharge_paid'] as int
-    ..discountCredited = json['discount_credited'] as int
-    ..adjustment = json['adjustment'] as int
-    ..amountDue = json['amount_due'] as int
-    ..allowPartialPayment = json['allow_partial_payment'] as bool
-    ..transactionType = json['transaction_type'] as String
-    ..paymentMethods =
-        (json['payment_methods'] as List)?.map((e) => e as String)?.toList()
-    ..cardProcessorId = json['card_processor_id'] as String
-    ..achProcessorId = json['ach_processor_id'] as String
+        json['require_billing_details_on_payment_only'] as bool?
+    ..taxPercent = json['tax_percent'] as String?
+    ..tax = json['tax'] as int?
+    ..shipping = json['shipping'] as int?
+    ..total = json['total'] as int?
+    ..amountPaid = json['amount_paid'] as int?
+    ..serviceFeesPaid = json['service_fees_paid'] as int?
+    ..surchargePaid = json['surcharge_paid'] as int?
+    ..discountCredited = json['discount_credited'] as int?
+    ..adjustment = json['adjustment'] as int?
+    ..amountDue = json['amount_due'] as int?
+    ..allowPartialPayment = json['allow_partial_payment'] as bool?
+    ..transactionType = json['transaction_type'] as String?
+    ..paymentMethods = (json['payment_methods'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList()
+    ..cardProcessorId = json['card_processor_id'] as String?
+    ..achProcessorId = json['ach_processor_id'] as String?
     ..status = _$enumDecodeNullable(_$InvoiceStatusEnumMap, json['status'])
-    ..message = json['message'] as String
-    ..rejectMessage = json['reject_message'] as String
+    ..message = json['message'] as String?
+    ..rejectMessage = json['reject_message'] as String?
     ..sendVia = _$enumDecodeNullable(_$SendViaEnumMap, json['send_via'])
-    ..emailTo = json['email_to'] as String
-    ..lastSentAt = json['last_sent_at'] as String
-    ..updatedAt = json['updated_at'] as String
-    ..publicHash = json['public_hash'] as String
-    ..hostedUrl = json['hosted_url'] as String
-    ..merchantId = json['merchant_id'] as String
-    ..customerId = json['customer_id'] as String;
+    ..emailTo = json['email_to'] as String?
+    ..lastSentAt = json['last_sent_at'] as String?
+    ..updatedAt = json['updated_at'] as String?
+    ..publicHash = json['public_hash'] as String?
+    ..hostedUrl = json['hosted_url'] as String?
+    ..merchantId = json['merchant_id'] as String?
+    ..customerId = json['customer_id'] as String?;
 }
 
 Map<String, dynamic> _$InvoiceGetResponseDataToJson(
@@ -700,15 +705,13 @@ Map<String, dynamic> _$InvoiceGetResponseDataToJson(
 InvoiceSearchResponse _$InvoiceSearchResponseFromJson(
     Map<String, dynamic> json) {
   return InvoiceSearchResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : InvoiceResponseData.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
+    ..data = (json['data'] as List<dynamic>?)
+        ?.map((e) => InvoiceResponseData.fromJson(e as Map<String, dynamic>))
+        .toList();
 }
 
 Map<String, dynamic> _$InvoiceSearchResponseToJson(
@@ -723,58 +726,58 @@ Map<String, dynamic> _$InvoiceSearchResponseToJson(
 
 InvoiceResponseData _$InvoiceResponseDataFromJson(Map<String, dynamic> json) {
   return InvoiceResponseData()
-    ..id = json['id'] as String
-    ..currency = json['currency'] as String
-    ..companyName = json['company_name'] as String
-    ..companyLogoUrl = json['company_logo_url'] as String
-    ..customerNumber = json['customer_number'] as String
-    ..invoiceNumber = json['invoice_number'] as String
+    ..id = json['id'] as String?
+    ..currency = json['currency'] as String?
+    ..companyName = json['company_name'] as String?
+    ..companyLogoUrl = json['company_logo_url'] as String?
+    ..customerNumber = json['customer_number'] as String?
+    ..invoiceNumber = json['invoice_number'] as String?
     ..payableTo = json['payable_to'] == null
         ? null
         : InvoicePayableTo.fromJson(json['payable_to'] as Map<String, dynamic>)
     ..billTo = json['bill_to'] == null
         ? null
         : InvoiceBillTo.fromJson(json['bill_to'] as Map<String, dynamic>)
-    ..createdAt = json['created_at'] as String
-    ..dateDue = json['date_due'] as String
-    ..items = (json['items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..advancedFields = json['advanced_fields'] as bool
-    ..subtotal = json['subtotal'] as int
-    ..enableTax = json['enable_tax'] as bool
-    ..enableShipping = json['enable_shipping'] as bool
-    ..requireShippingDetails = json['require_shipping_details'] as bool
+    ..createdAt = json['created_at'] as String?
+    ..dateDue = json['date_due'] as String?
+    ..items = (json['items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList()
+    ..advancedFields = json['advanced_fields'] as bool?
+    ..subtotal = json['subtotal'] as int?
+    ..enableTax = json['enable_tax'] as bool?
+    ..enableShipping = json['enable_shipping'] as bool?
+    ..requireShippingDetails = json['require_shipping_details'] as bool?
     ..requireBillingDetailsOnPaymentOnly =
-        json['require_billing_details_on_payment_only'] as bool
-    ..taxPercent = json['tax_percent'] as String
-    ..tax = json['tax'] as int
-    ..shipping = json['shipping'] as int
-    ..total = json['total'] as int
-    ..amountPaid = json['amount_paid'] as int
-    ..serviceFeesPaid = json['service_fees_paid'] as int
-    ..surchargePaid = json['surcharge_paid'] as int
-    ..discountCredited = json['discount_credited'] as int
-    ..adjustment = json['adjustment'] as int
-    ..amountDue = json['amount_due'] as int
-    ..allowPartialPayment = json['allow_partial_payment'] as bool
-    ..transactionType = json['transaction_type'] as String
-    ..paymentMethods =
-        (json['payment_methods'] as List)?.map((e) => e as String)?.toList()
-    ..cardProcessorId = json['card_processor_id'] as String
-    ..achProcessorId = json['ach_processor_id'] as String
+        json['require_billing_details_on_payment_only'] as bool?
+    ..taxPercent = json['tax_percent'] as String?
+    ..tax = json['tax'] as int?
+    ..shipping = json['shipping'] as int?
+    ..total = json['total'] as int?
+    ..amountPaid = json['amount_paid'] as int?
+    ..serviceFeesPaid = json['service_fees_paid'] as int?
+    ..surchargePaid = json['surcharge_paid'] as int?
+    ..discountCredited = json['discount_credited'] as int?
+    ..adjustment = json['adjustment'] as int?
+    ..amountDue = json['amount_due'] as int?
+    ..allowPartialPayment = json['allow_partial_payment'] as bool?
+    ..transactionType = json['transaction_type'] as String?
+    ..paymentMethods = (json['payment_methods'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList()
+    ..cardProcessorId = json['card_processor_id'] as String?
+    ..achProcessorId = json['ach_processor_id'] as String?
     ..status = _$enumDecodeNullable(_$InvoiceStatusEnumMap, json['status'])
-    ..message = json['message'] as String
-    ..rejectMessage = json['reject_message'] as String
+    ..message = json['message'] as String?
+    ..rejectMessage = json['reject_message'] as String?
     ..sendVia = _$enumDecodeNullable(_$SendViaEnumMap, json['send_via'])
-    ..emailTo = json['email_to'] as String
-    ..lastSentAt = json['last_sent_at'] as String
-    ..updatedAt = json['updated_at'] as String
-    ..publicHash = json['public_hash'] as String
-    ..hostedUrl = json['hosted_url'] as String
-    ..merchantId = json['merchant_id'] as String
-    ..customerId = json['customer_id'] as String;
+    ..emailTo = json['email_to'] as String?
+    ..lastSentAt = json['last_sent_at'] as String?
+    ..updatedAt = json['updated_at'] as String?
+    ..publicHash = json['public_hash'] as String?
+    ..hostedUrl = json['hosted_url'] as String?
+    ..merchantId = json['merchant_id'] as String?
+    ..customerId = json['customer_id'] as String?;
 }
 
 Map<String, dynamic> _$InvoiceResponseDataToJson(
@@ -829,10 +832,10 @@ Map<String, dynamic> _$InvoiceResponseDataToJson(
 InvoiceResendResponse _$InvoiceResendResponseFromJson(
     Map<String, dynamic> json) {
   return InvoiceResendResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -849,10 +852,10 @@ Map<String, dynamic> _$InvoiceResendResponseToJson(
 InvoiceDeleteResponse _$InvoiceDeleteResponseFromJson(
     Map<String, dynamic> json) {
   return InvoiceDeleteResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 

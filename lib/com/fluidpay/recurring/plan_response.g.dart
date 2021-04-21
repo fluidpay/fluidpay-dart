@@ -8,10 +8,10 @@ part of 'plan_response.dart';
 
 PlanResponse _$PlanResponseFromJson(Map<String, dynamic> json) {
   return PlanResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : PlanResponseData.fromJson(json['data'] as Map<String, dynamic>);
@@ -28,15 +28,13 @@ Map<String, dynamic> _$PlanResponseToJson(PlanResponse instance) =>
 
 PlanSearchResponse _$PlanSearchResponseFromJson(Map<String, dynamic> json) {
   return PlanSearchResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : PlanResponseData.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
+    ..data = (json['data'] as List<dynamic>?)
+        ?.map((e) => PlanResponseData.fromJson(e as Map<String, dynamic>))
+        .toList();
 }
 
 Map<String, dynamic> _$PlanSearchResponseToJson(PlanSearchResponse instance) =>
@@ -50,30 +48,26 @@ Map<String, dynamic> _$PlanSearchResponseToJson(PlanSearchResponse instance) =>
 
 PlanResponseData _$PlanResponseDataFromJson(Map<String, dynamic> json) {
   return PlanResponseData()
-    ..id = json['id'] as String
-    ..name = json['name'] as String
-    ..description = json['description'] as String
-    ..amount = json['amount'] as int
-    ..currency = json['currency'] as String
-    ..billingCycleInterval = json['billing_cycle_interval'] as int
-    ..billingFrequency = json['billing_frequency'] as String
-    ..billingDays = json['billing_days'] as String
-    ..duration = json['duration'] as int
-    ..addOns = (json['add_ons'] as List)
-        ?.map((e) => e == null
-            ? null
-            : AddOnResponseData.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..totalAddOns = json['total_add_ons'] as int
-    ..totalDiscounts = json['total_discounts'] as int
-    ..discounts = (json['discounts'] as List)
-        ?.map((e) => e == null
-            ? null
-            : DiscountResponseData.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..subscriptionCount = json['subscription_count'] as int
-    ..createdAt = json['created_at'] as String
-    ..updatedAt = json['updated_at'] as String;
+    ..id = json['id'] as String?
+    ..name = json['name'] as String?
+    ..description = json['description'] as String?
+    ..amount = json['amount'] as int?
+    ..currency = json['currency'] as String?
+    ..billingCycleInterval = json['billing_cycle_interval'] as int?
+    ..billingFrequency = json['billing_frequency'] as String?
+    ..billingDays = json['billing_days'] as String?
+    ..duration = json['duration'] as int?
+    ..addOns = (json['add_ons'] as List<dynamic>?)
+        ?.map((e) => AddOnResponseData.fromJson(e as Map<String, dynamic>))
+        .toList()
+    ..totalAddOns = json['total_add_ons'] as int?
+    ..totalDiscounts = json['total_discounts'] as int?
+    ..discounts = (json['discounts'] as List<dynamic>?)
+        ?.map((e) => DiscountResponseData.fromJson(e as Map<String, dynamic>))
+        .toList()
+    ..subscriptionCount = json['subscription_count'] as int?
+    ..createdAt = json['created_at'] as String?
+    ..updatedAt = json['updated_at'] as String?;
 }
 
 Map<String, dynamic> _$PlanResponseDataToJson(PlanResponseData instance) =>

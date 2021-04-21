@@ -9,11 +9,11 @@ part of 'discount_request.dart';
 DiscountCreateRequest _$DiscountCreateRequestFromJson(
     Map<String, dynamic> json) {
   return DiscountCreateRequest(
-    name: json['name'] as String,
-    description: json['description'] as String,
-    amount: json['amount'] as int,
-    percentage: json['percentage'] as int,
-    duration: json['duration'] as int,
+    name: json['name'] as String?,
+    description: json['description'] as String?,
+    amount: json['amount'] as int?,
+    percentage: json['percentage'] as int?,
+    duration: json['duration'] as int?,
   );
 }
 
@@ -30,11 +30,11 @@ Map<String, dynamic> _$DiscountCreateRequestToJson(
 DiscountUpdateRequest _$DiscountUpdateRequestFromJson(
     Map<String, dynamic> json) {
   return DiscountUpdateRequest(
-    name: json['name'] as String,
-    description: json['description'] as String,
-    amount: json['amount'] as int,
-    percentage: json['percentage'] as int,
-    duration: json['duration'] as int,
+    name: json['name'] as String?,
+    description: json['description'] as String?,
+    amount: json['amount'] as int?,
+    percentage: json['percentage'] as int?,
+    duration: json['duration'] as int?,
   );
 }
 
@@ -54,11 +54,11 @@ Map<String, dynamic> _$DiscountDeleteRequestToJson(
 
 DiscountRequest _$DiscountRequestFromJson(Map<String, dynamic> json) {
   return DiscountRequest(
-    id: json['id'] as String,
-    description: json['description'] as String,
-    amount: json['amount'] as int,
-    percentage: json['percentage'] as int,
-    duration: json['duration'] as int,
+    id: json['id'] as String?,
+    description: json['description'] as String?,
+    amount: json['amount'] as int?,
+    percentage: json['percentage'] as int?,
+    duration: json['duration'] as int?,
   );
 }
 

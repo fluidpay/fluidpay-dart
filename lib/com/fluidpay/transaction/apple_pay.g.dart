@@ -8,8 +8,8 @@ part of 'apple_pay.dart';
 
 ApplePayTokenRequest _$ApplePayTokenRequestFromJson(Map<String, dynamic> json) {
   return ApplePayTokenRequest(
-    keyId: json['key_id'] as String,
-    processorId: json['processor_id'] as String,
+    keyId: json['key_id'] as String?,
+    processorId: json['processor_id'] as String?,
     pkPaymentToken: json['pkpaymenttoken'] == null
         ? null
         : PKPaymentToken.fromJson(
@@ -30,7 +30,7 @@ PKPaymentToken _$PKPaymentTokenFromJson(Map<String, dynamic> json) {
     transactionTime: json['transactionTime'] == null
         ? null
         : DateTime.parse(json['transactionTime'] as String),
-    transactionIdentifier: json['transactionIdentifier'] as String,
+    transactionIdentifier: json['transactionIdentifier'] as String?,
     paymentMethod: json['paymentMethod'] == null
         ? null
         : PaymentMethod.fromJson(json['paymentMethod'] as Map<String, dynamic>),
@@ -50,9 +50,9 @@ Map<String, dynamic> _$PKPaymentTokenToJson(PKPaymentToken instance) =>
 
 PaymentMethod _$PaymentMethodFromJson(Map<String, dynamic> json) {
   return PaymentMethod(
-    type: json['type'] as String,
-    network: json['network'] as String,
-    displayName: json['displayName'] as String,
+    type: json['type'] as String?,
+    network: json['network'] as String?,
+    displayName: json['displayName'] as String?,
   );
 }
 
@@ -65,12 +65,12 @@ Map<String, dynamic> _$PaymentMethodToJson(PaymentMethod instance) =>
 
 PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) {
   return PaymentData(
-    version: json['version'] as String,
-    signature: json['signature'] as String,
+    version: json['version'] as String?,
+    signature: json['signature'] as String?,
     header: json['header'] == null
         ? null
         : Header.fromJson(json['header'] as Map<String, dynamic>),
-    data: json['data'] as String,
+    data: json['data'] as String?,
   );
 }
 
@@ -84,11 +84,11 @@ Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) =>
 
 Header _$HeaderFromJson(Map<String, dynamic> json) {
   return Header(
-    applicationData: json['applicationData'] as String,
-    ephemeralPublicKey: json['ephemeralPublicKey'] as String,
-    wrappedKey: json['wrappedKey'] as String,
-    publicKeyHash: json['publicKeyHash'] as String,
-    transactionId: json['transactionID'] as String,
+    applicationData: json['applicationData'] as String?,
+    ephemeralPublicKey: json['ephemeralPublicKey'] as String?,
+    wrappedKey: json['wrappedKey'] as String?,
+    publicKeyHash: json['publicKeyHash'] as String?,
+    transactionId: json['transactionID'] as String?,
   );
 }
 

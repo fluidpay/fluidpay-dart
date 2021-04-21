@@ -8,10 +8,10 @@ part of 'customer_response.dart';
 
 CustomerResponse _$CustomerResponseFromJson(Map<String, dynamic> json) {
   return CustomerResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : CustomerResponseData.fromJson(json['data'] as Map<String, dynamic>);
@@ -28,11 +28,11 @@ Map<String, dynamic> _$CustomerResponseToJson(CustomerResponse instance) =>
 
 CustomerResponseData _$CustomerResponseDataFromJson(Map<String, dynamic> json) {
   return CustomerResponseData()
-    ..id = json['id'] as String
-    ..paymentMethodType = json['paymentMethodType'] as String
-    ..paymentMethodID = json['paymentMethodID'] as String
-    ..billingAddressID = json['billingAddressID'] as String
-    ..shippingAddressID = json['shippingAddressID'] as String;
+    ..id = json['id'] as String?
+    ..paymentMethodType = json['paymentMethodType'] as String?
+    ..paymentMethodID = json['paymentMethodID'] as String?
+    ..billingAddressID = json['billingAddressID'] as String?
+    ..shippingAddressID = json['shippingAddressID'] as String?;
 }
 
 Map<String, dynamic> _$CustomerResponseDataToJson(

@@ -9,69 +9,70 @@ part of 'response_data.dart';
 TransactionResponseData _$TransactionResponseDataFromJson(
     Map<String, dynamic> json) {
   return TransactionResponseData(
-    id: json['id'] as String,
-    userId: json['user_id'] as String,
-    userName: json['user_name'] as String,
-    merchantId: json['merchant_id'] as String,
-    merchantName: json['merchant_name'] as String,
-    idempotencyKey: json['idempotency_key'] as String,
-    idempotencyTime: json['idempotency_time'] as int,
-    type: json['type'] as String,
-    amount: json['amount'] as int,
-    baseAmount: json['base_amount'] as int,
-    amountAuthorized: json['amount_authorized'] as int,
-    amountCaptured: json['amount_captured'] as int,
-    amountSettled: json['amount_settled'] as int,
-    amountRefunded: json['amount_refunded'] as int,
-    paymentAdjustment: json['payment_adjustment'] as int,
-    tipAmount: json['tip_amount'] as int,
-    settlementBatchId: json['settlement_batch_id'] as String,
-    processorId: json['processor_id'] as String,
-    processorType: json['processor_type'] as String,
-    processorName: json['processor_name'] as String,
-    paymentMethod: json['payment_method'] as String,
-    paymentType: json['payment_type'] as String,
-    features: (json['features'] as List)?.map((e) => e as String)?.toList(),
-    nationalTaxAmount: json['national_tax_amount'] as int,
-    dutyAmount: json['duty_amount'] as int,
-    shipFromPostalCode: json['ship_from_postal_code'] as String,
-    summaryCommodityCode: json['summary_commodity_code'] as String,
+    id: json['id'] as String?,
+    userId: json['user_id'] as String?,
+    userName: json['user_name'] as String?,
+    merchantId: json['merchant_id'] as String?,
+    merchantName: json['merchant_name'] as String?,
+    idempotencyKey: json['idempotency_key'] as String?,
+    idempotencyTime: json['idempotency_time'] as int?,
+    type: json['type'] as String?,
+    amount: json['amount'] as int?,
+    baseAmount: json['base_amount'] as int?,
+    amountAuthorized: json['amount_authorized'] as int?,
+    amountCaptured: json['amount_captured'] as int?,
+    amountSettled: json['amount_settled'] as int?,
+    amountRefunded: json['amount_refunded'] as int?,
+    paymentAdjustment: json['payment_adjustment'] as int?,
+    tipAmount: json['tip_amount'] as int?,
+    settlementBatchId: json['settlement_batch_id'] as String?,
+    processorId: json['processor_id'] as String?,
+    processorType: json['processor_type'] as String?,
+    processorName: json['processor_name'] as String?,
+    paymentMethod: json['payment_method'] as String?,
+    paymentType: json['payment_type'] as String?,
+    features:
+        (json['features'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    nationalTaxAmount: json['national_tax_amount'] as int?,
+    dutyAmount: json['duty_amount'] as int?,
+    shipFromPostalCode: json['ship_from_postal_code'] as String?,
+    summaryCommodityCode: json['summary_commodity_code'] as String?,
     merchantVatRegistrationNumber:
-        json['merchant_vat_registration_number'] as String,
+        json['merchant_vat_registration_number'] as String?,
     customerVatRegistrationNumber:
-        json['customer_vat_registration_number'] as String,
-    taxAmount: json['tax_amount'] as int,
-    taxExempt: json['tax_exempt'] as bool,
-    shippingAmount: json['shipping_amount'] as int,
-    surcharge: json['surcharge'] as int,
-    discountAmount: json['discount_amount'] as int,
-    currency: json['currency'] as String,
-    description: json['description'] as String,
-    orderId: json['order_id'] as String,
-    poNumber: json['po_number'] as String,
-    ipAddress: json['ip_address'] as String,
-    transactionSource: json['transaction_source'] as String,
-    emailReceipt: json['email_receipt'] as bool,
-    emailAddress: json['email_address'] as String,
-    customerId: json['customer_id'] as String,
-    customerPaymentType: json['customer_payment_type'] as String,
-    customerPaymentId: json['customer_payment_id'] as String,
-    subscriptionId: json['subscription_id'] as String,
-    referencedTransactionId: json['referenced_transaction_id'] as String,
+        json['customer_vat_registration_number'] as String?,
+    taxAmount: json['tax_amount'] as int?,
+    taxExempt: json['tax_exempt'] as bool?,
+    shippingAmount: json['shipping_amount'] as int?,
+    surcharge: json['surcharge'] as int?,
+    discountAmount: json['discount_amount'] as int?,
+    currency: json['currency'] as String?,
+    description: json['description'] as String?,
+    orderId: json['order_id'] as String?,
+    poNumber: json['po_number'] as String?,
+    ipAddress: json['ip_address'] as String?,
+    transactionSource: json['transaction_source'] as String?,
+    emailReceipt: json['email_receipt'] as bool?,
+    emailAddress: json['email_address'] as String?,
+    customerId: json['customer_id'] as String?,
+    customerPaymentType: json['customer_payment_type'] as String?,
+    customerPaymentId: json['customer_payment_id'] as String?,
+    subscriptionId: json['subscription_id'] as String?,
+    referencedTransactionId: json['referenced_transaction_id'] as String?,
     responseBody: json['response_body'] == null
         ? null
         : TransactionResponseBody.fromJson(
             json['response_body'] as Map<String, dynamic>),
-    customFields: (json['custom_fields'] as Map<String, dynamic>)?.map(
-      (k, e) => MapEntry(k, (e as List)?.map((e) => e as String)?.toList()),
+    customFields: (json['custom_fields'] as Map<String, dynamic>?)?.map(
+      (k, e) =>
+          MapEntry(k, (e as List<dynamic>).map((e) => e as String).toList()),
     ),
-    lineItems: (json['line_items'] as List)
-        ?.map((e) =>
-            e == null ? null : LineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    status: json['status'] as String,
-    response: json['response'] as String,
-    responseCode: json['response_code'] as int,
+    lineItems: (json['line_items'] as List<dynamic>?)
+        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    status: json['status'] as String?,
+    response: json['response'] as String?,
+    responseCode: json['response_code'] as int?,
     billingAddress: json['billing_address'] == null
         ? null
         : Address.fromJson(json['billing_address'] as Map<String, dynamic>),
@@ -192,14 +193,14 @@ Map<String, dynamic> _$TransactionResponseBodyToJson(
 
 TokenCardResponse _$TokenCardResponseFromJson(Map<String, dynamic> json) {
   return TokenCardResponse(
-    id: json['id'] as String,
-    cardType: json['card_type'] as String,
-    firstSix: json['first_six'] as String,
-    lastFour: json['last_four'] as String,
-    maskedCard: json['masked_card'] as String,
-    expirationDate: json['expiration_date'] as String,
-    flags: (json['flags'] as List)?.map((e) => e as String)?.toList(),
-    processorId: json['processor_id'] as String,
+    id: json['id'] as String?,
+    cardType: json['card_type'] as String?,
+    firstSix: json['first_six'] as String?,
+    lastFour: json['last_four'] as String?,
+    maskedCard: json['masked_card'] as String?,
+    expirationDate: json['expiration_date'] as String?,
+    flags: (json['flags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    processorId: json['processor_id'] as String?,
     createdAt: json['created_at'] == null
         ? null
         : DateTime.parse(json['created_at'] as String),
@@ -225,26 +226,26 @@ Map<String, dynamic> _$TokenCardResponseToJson(TokenCardResponse instance) =>
 
 CreditCardResponse _$CreditCardResponseFromJson(Map<String, dynamic> json) {
   return CreditCardResponse(
-    response: json['response'] as String,
-    responseCode: json['response_code'] as int,
-    authCode: json['auth_code'] as String,
-    processorResponseCode: json['processor_response_code'] as String,
-    processorResponseText: json['processor_response_text'] as String,
-    processorTransactionId: json['processor_transaction_id'] as String,
-    processorType: json['processor_type'] as String,
-    bin_type: json['bin_type'] as String,
-    type: json['type'] as String,
-    avsResponseCode: json['avs_response_code'] as String,
-    cvvResponseCode: json['cvv_response_code'] as String,
+    response: json['response'] as String?,
+    responseCode: json['response_code'] as int?,
+    authCode: json['auth_code'] as String?,
+    processorResponseCode: json['processor_response_code'] as String?,
+    processorResponseText: json['processor_response_text'] as String?,
+    processorTransactionId: json['processor_transaction_id'] as String?,
+    processorType: json['processor_type'] as String?,
+    bin_type: json['bin_type'] as String?,
+    type: json['type'] as String?,
+    avsResponseCode: json['avs_response_code'] as String?,
+    cvvResponseCode: json['cvv_response_code'] as String?,
     processorSpecific: json['processor_specific'],
-    id: json['id'] as String,
-    cardType: json['card_type'] as String,
-    firstSix: json['first_six'] as String,
-    lastFour: json['last_four'] as String,
-    maskedCard: json['masked_card'] as String,
-    expirationDate: json['expiration_date'] as String,
-    flags: (json['flags'] as List)?.map((e) => e as String)?.toList(),
-    processorId: json['processor_id'] as String,
+    id: json['id'] as String?,
+    cardType: json['card_type'] as String?,
+    firstSix: json['first_six'] as String?,
+    lastFour: json['last_four'] as String?,
+    maskedCard: json['masked_card'] as String?,
+    expirationDate: json['expiration_date'] as String?,
+    flags: (json['flags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    processorId: json['processor_id'] as String?,
     createdAt: json['created_at'] == null
         ? null
         : DateTime.parse(json['created_at'] as String),
@@ -282,25 +283,25 @@ Map<String, dynamic> _$CreditCardResponseToJson(CreditCardResponse instance) =>
 
 TerminalResponse _$TerminalResponseFromJson(Map<String, dynamic> json) {
   return TerminalResponse(
-    id: json['id'] as String,
-    terminalId: json['terminal_id'] as String,
-    terminalDescription: json['terminal_description'] as String,
-    cardType: json['card_type'] as String,
-    paymentType: json['payment_type'] as String,
-    entryType: json['entry_type'] as String,
-    firstFour: json['first_four'] as String,
-    lastFour: json['last_four'] as String,
-    maskedCard: json['masked_card'] as String,
-    cardholderName: json['cardholder_name'] as String,
-    authCode: json['auth_code'] as String,
-    responseCode: json['response_code'] as int,
-    processorResponseText: json['processor_response_text'] as String,
-    processorSpecific: json['processor_specific'] as Map<String, dynamic>,
-    emvAid: json['emv_aid'] as String,
-    emvAppName: json['emv_app_name'] as String,
-    emvTvr: json['emv_tvr'] as String,
-    emvTsi: json['emv_tsi'] as String,
-    signatureData: json['signature_data'] as String,
+    id: json['id'] as String?,
+    terminalId: json['terminal_id'] as String?,
+    terminalDescription: json['terminal_description'] as String?,
+    cardType: json['card_type'] as String?,
+    paymentType: json['payment_type'] as String?,
+    entryType: json['entry_type'] as String?,
+    firstFour: json['first_four'] as String?,
+    lastFour: json['last_four'] as String?,
+    maskedCard: json['masked_card'] as String?,
+    cardholderName: json['cardholder_name'] as String?,
+    authCode: json['auth_code'] as String?,
+    responseCode: json['response_code'] as int?,
+    processorResponseText: json['processor_response_text'] as String?,
+    processorSpecific: json['processor_specific'] as Map<String, dynamic>?,
+    emvAid: json['emv_aid'] as String?,
+    emvAppName: json['emv_app_name'] as String?,
+    emvTvr: json['emv_tvr'] as String?,
+    emvTsi: json['emv_tsi'] as String?,
+    signatureData: json['signature_data'] as String?,
     createdAt: json['created_at'] == null
         ? null
         : DateTime.parse(json['created_at'] as String),
@@ -337,13 +338,13 @@ Map<String, dynamic> _$TerminalResponseToJson(TerminalResponse instance) =>
 
 TokenACHResponse _$TokenACHResponseFromJson(Map<String, dynamic> json) {
   return TokenACHResponse(
-    id: json['id'] as String,
-    maskedAccountNumber: json['masked_account_number'] as String,
-    routingNumber: json['routing_number'] as String,
-    accountType: json['account_type'] as String,
-    secCode: json['sec_code'] as String,
-    flags: (json['flags'] as List)?.map((e) => e as String)?.toList(),
-    processorId: json['processor_id'] as String,
+    id: json['id'] as String?,
+    maskedAccountNumber: json['masked_account_number'] as String?,
+    routingNumber: json['routing_number'] as String?,
+    accountType: json['account_type'] as String?,
+    secCode: json['sec_code'] as String?,
+    flags: (json['flags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    processorId: json['processor_id'] as String?,
     createdAt: json['created_at'] == null
         ? null
         : DateTime.parse(json['created_at'] as String),
@@ -368,20 +369,20 @@ Map<String, dynamic> _$TokenACHResponseToJson(TokenACHResponse instance) =>
 
 ACHResponse _$ACHResponseFromJson(Map<String, dynamic> json) {
   return ACHResponse(
-    authCode: json['auth_code'] as String,
-    response: json['response'] as String,
-    responseCode: json['response_code'] as int,
-    processorResponseCode: json['processor_response_code'] as String,
-    processorResponseText: json['processor_response_text'] as String,
-    processorType: json['processor_type'] as String,
+    authCode: json['auth_code'] as String?,
+    response: json['response'] as String?,
+    responseCode: json['response_code'] as int?,
+    processorResponseCode: json['processor_response_code'] as String?,
+    processorResponseText: json['processor_response_text'] as String?,
+    processorType: json['processor_type'] as String?,
     processorSpecific: json['processor_specific'],
-    id: json['id'] as String,
-    maskedAccountNumber: json['masked_account_number'] as String,
-    routingNumber: json['routing_number'] as String,
-    accountType: json['account_type'] as String,
-    secCode: json['sec_code'] as String,
-    flags: (json['flags'] as List)?.map((e) => e as String)?.toList(),
-    processorId: json['processor_id'] as String,
+    id: json['id'] as String?,
+    maskedAccountNumber: json['masked_account_number'] as String?,
+    routingNumber: json['routing_number'] as String?,
+    accountType: json['account_type'] as String?,
+    secCode: json['sec_code'] as String?,
+    flags: (json['flags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    processorId: json['processor_id'] as String?,
     createdAt: json['created_at'] == null
         ? null
         : DateTime.parse(json['created_at'] as String),
@@ -413,17 +414,17 @@ Map<String, dynamic> _$ACHResponseToJson(ACHResponse instance) =>
 
 APMResponse _$APMResponseFromJson(Map<String, dynamic> json) {
   return APMResponse(
-    status: json['status'] as String,
-    processorTransactionId: json['processor_transaction_id'] as String,
-    transactionId: json['transaction_id'] as String,
-    fundingStatus: json['funding_status'] as String,
-    flags: json['flags'] as String,
-    errorMsg: json['error_msg'] as String,
-    redirectUrl: json['redirect_url'] as String,
-    failReason: json['fail_reason'] as String,
-    channel: json['channel'] as String,
-    tag: json['tag'] as String,
-    documentCode: json['document_code'] as String,
+    status: json['status'] as String?,
+    processorTransactionId: json['processor_transaction_id'] as String?,
+    transactionId: json['transaction_id'] as String?,
+    fundingStatus: json['funding_status'] as String?,
+    flags: json['flags'] as String?,
+    errorMsg: json['error_msg'] as String?,
+    redirectUrl: json['redirect_url'] as String?,
+    failReason: json['fail_reason'] as String?,
+    channel: json['channel'] as String?,
+    tag: json['tag'] as String?,
+    documentCode: json['document_code'] as String?,
   );
 }
 
@@ -452,8 +453,8 @@ Map<String, dynamic> _$CashResponseToJson(CashResponse instance) =>
 TransactionVoidResponseData _$TransactionVoidResponseDataFromJson(
     Map<String, dynamic> json) {
   return TransactionVoidResponseData(
-    id: json['id'] as String,
-    type: json['type'] as String,
+    id: json['id'] as String?,
+    type: json['type'] as String?,
   );
 }
 
@@ -467,14 +468,14 @@ Map<String, dynamic> _$TransactionVoidResponseDataToJson(
 TransactionCreateVaultResponseData _$TransactionCreateVaultResponseDataFromJson(
     Map<String, dynamic> json) {
   return TransactionCreateVaultResponseData(
-    id: json['id'] as String,
-    description: json['description'] as String,
-    flags: (json['flags'] as List)?.map((e) => e as String)?.toList(),
+    id: json['id'] as String?,
+    description: json['description'] as String?,
+    flags: (json['flags'] as List<dynamic>?)?.map((e) => e as String).toList(),
     paymentMethod: json['payment_method'] == null
         ? null
         : TokenPaymentMethodResponse.fromJson(
             json['payment_method'] as Map<String, dynamic>),
-    paymentMethodType: json['payment_method_type'] as String,
+    paymentMethodType: json['payment_method_type'] as String?,
     billingAddress: json['billing_address'] == null
         ? null
         : TokenAddressResponse.fromJson(
@@ -527,8 +528,8 @@ Map<String, dynamic> _$TokenPaymentMethodResponseToJson(
 
 TokenAddressResponse _$TokenAddressResponseFromJson(Map<String, dynamic> json) {
   return TokenAddressResponse(
-    id: json['id'] as String,
-    customerId: json['customer_id'] as String,
+    id: json['id'] as String?,
+    customerId: json['customer_id'] as String?,
     createdAt: json['created_at'] == null
         ? null
         : DateTime.parse(json['created_at'] as String),
@@ -536,18 +537,18 @@ TokenAddressResponse _$TokenAddressResponseFromJson(Map<String, dynamic> json) {
         ? null
         : DateTime.parse(json['updated_at'] as String),
   )
-    ..firstName = json['first_name'] as String
-    ..lastName = json['last_name'] as String
-    ..company = json['company'] as String
-    ..addressLine1 = json['address_line_1'] as String
-    ..addressLine2 = json['address_line_2'] as String
-    ..city = json['city'] as String
-    ..state = json['state'] as String
-    ..postalCode = json['postal_code'] as String
-    ..country = json['country'] as String
-    ..phone = json['phone'] as String
-    ..fax = json['fax'] as String
-    ..email = json['email'] as String;
+    ..firstName = json['first_name'] as String?
+    ..lastName = json['last_name'] as String?
+    ..company = json['company'] as String?
+    ..addressLine1 = json['address_line_1'] as String?
+    ..addressLine2 = json['address_line_2'] as String?
+    ..city = json['city'] as String?
+    ..state = json['state'] as String?
+    ..postalCode = json['postal_code'] as String?
+    ..country = json['country'] as String?
+    ..phone = json['phone'] as String?
+    ..fax = json['fax'] as String?
+    ..email = json['email'] as String?;
 }
 
 Map<String, dynamic> _$TokenAddressResponseToJson(
@@ -574,10 +575,10 @@ Map<String, dynamic> _$TokenAddressResponseToJson(
 TransactionMultiVoidResponseData _$TransactionMultiVoidResponseDataFromJson(
     Map<String, dynamic> json) {
   return TransactionMultiVoidResponseData(
-    transactionId: json['transaction_id'] as String,
-    status: json['status'] as String,
-    orderId: json['order_id'] as String,
-    msg: json['msg'] as String,
+    transactionId: json['transaction_id'] as String?,
+    status: json['status'] as String?,
+    orderId: json['order_id'] as String?,
+    msg: json['msg'] as String?,
   );
 }
 

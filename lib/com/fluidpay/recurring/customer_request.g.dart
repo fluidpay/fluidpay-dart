@@ -8,11 +8,11 @@ part of 'customer_request.dart';
 
 CustomerRequest _$CustomerRequestFromJson(Map<String, dynamic> json) {
   return CustomerRequest(
-    id: json['id'] as String,
-    paymentMethodType: json['paymentMethodType'] as String,
-    paymentMethodID: json['paymentMethodID'] as String,
-    billingAddressID: json['billingAddressID'] as String,
-    shippingAddressID: json['shippingAddressID'] as String,
+    id: json['id'] as String?,
+    paymentMethodType: json['paymentMethodType'] as String?,
+    paymentMethodID: json['paymentMethodID'] as String?,
+    billingAddressID: json['billingAddressID'] as String?,
+    shippingAddressID: json['shippingAddressID'] as String?,
   );
 }
 

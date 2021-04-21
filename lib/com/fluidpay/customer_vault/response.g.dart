@@ -9,10 +9,10 @@ part of 'response.dart';
 CustomerCreateResponse _$CustomerCreateResponseFromJson(
     Map<String, dynamic> json) {
   return CustomerCreateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : CustomerCreateResponseData.fromJson(
@@ -32,7 +32,7 @@ Map<String, dynamic> _$CustomerCreateResponseToJson(
 CustomerCreateResponseData _$CustomerCreateResponseDataFromJson(
     Map<String, dynamic> json) {
   return CustomerCreateResponseData()
-    ..id = json['id'] as String
+    ..id = json['id'] as String?
     ..data = json['data'] == null
         ? null
         : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
@@ -55,10 +55,10 @@ Map<String, dynamic> _$CustomerCreateResponseDataToJson(
 
 CustomerGetResponse _$CustomerGetResponseFromJson(Map<String, dynamic> json) {
   return CustomerGetResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : CustomerGetResponseData.fromJson(
@@ -78,7 +78,7 @@ Map<String, dynamic> _$CustomerGetResponseToJson(
 CustomerGetResponseData _$CustomerGetResponseDataFromJson(
     Map<String, dynamic> json) {
   return CustomerGetResponseData()
-    ..id = json['id'] as String
+    ..id = json['id'] as String?
     ..data = json['data'] == null
         ? null
         : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
@@ -102,15 +102,13 @@ Map<String, dynamic> _$CustomerGetResponseDataToJson(
 CustomerSearchResponse _$CustomerSearchResponseFromJson(
     Map<String, dynamic> json) {
   return CustomerSearchResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : CustomerResponseData.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
+    ..data = (json['data'] as List<dynamic>?)
+        ?.map((e) => CustomerResponseData.fromJson(e as Map<String, dynamic>))
+        .toList();
 }
 
 Map<String, dynamic> _$CustomerSearchResponseToJson(
@@ -126,10 +124,10 @@ Map<String, dynamic> _$CustomerSearchResponseToJson(
 CustomerAddressCreateResponse _$CustomerAddressCreateResponseFromJson(
     Map<String, dynamic> json) {
   return CustomerAddressCreateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : CustomerAddressCreateResponseData.fromJson(
@@ -149,7 +147,7 @@ Map<String, dynamic> _$CustomerAddressCreateResponseToJson(
 CustomerAddressCreateResponseData _$CustomerAddressCreateResponseDataFromJson(
     Map<String, dynamic> json) {
   return CustomerAddressCreateResponseData()
-    ..id = json['id'] as String
+    ..id = json['id'] as String?
     ..data = json['data'] == null
         ? null
         : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
@@ -173,10 +171,10 @@ Map<String, dynamic> _$CustomerAddressCreateResponseDataToJson(
 CustomerAddressUpdateResponse _$CustomerAddressUpdateResponseFromJson(
     Map<String, dynamic> json) {
   return CustomerAddressUpdateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : CustomerAddressUpdateResponseData.fromJson(
@@ -196,7 +194,7 @@ Map<String, dynamic> _$CustomerAddressUpdateResponseToJson(
 CustomerAddressUpdateResponseData _$CustomerAddressUpdateResponseDataFromJson(
     Map<String, dynamic> json) {
   return CustomerAddressUpdateResponseData()
-    ..id = json['id'] as String
+    ..id = json['id'] as String?
     ..data = json['data'] == null
         ? null
         : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
@@ -220,10 +218,10 @@ Map<String, dynamic> _$CustomerAddressUpdateResponseDataToJson(
 CustomerPaymentTypeCreateResponse _$CustomerPaymentTypeCreateResponseFromJson(
     Map<String, dynamic> json) {
   return CustomerPaymentTypeCreateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : CustomerPaymentTypeCreateResponseData.fromJson(
@@ -243,7 +241,7 @@ Map<String, dynamic> _$CustomerPaymentTypeCreateResponseToJson(
 CustomerPaymentTypeCreateResponseData
     _$CustomerPaymentTypeCreateResponseDataFromJson(Map<String, dynamic> json) {
   return CustomerPaymentTypeCreateResponseData()
-    ..id = json['id'] as String
+    ..id = json['id'] as String?
     ..data = json['data'] == null
         ? null
         : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
@@ -267,10 +265,10 @@ Map<String, dynamic> _$CustomerPaymentTypeCreateResponseDataToJson(
 CustomerPaymentTypeUpdateResponse _$CustomerPaymentTypeUpdateResponseFromJson(
     Map<String, dynamic> json) {
   return CustomerPaymentTypeUpdateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : CustomerPaymentTypeUpdateResponseData.fromJson(
@@ -290,7 +288,7 @@ Map<String, dynamic> _$CustomerPaymentTypeUpdateResponseToJson(
 CustomerPaymentTypeUpdateResponseData
     _$CustomerPaymentTypeUpdateResponseDataFromJson(Map<String, dynamic> json) {
   return CustomerPaymentTypeUpdateResponseData()
-    ..id = json['id'] as String
+    ..id = json['id'] as String?
     ..data = json['data'] == null
         ? null
         : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
@@ -314,10 +312,10 @@ Map<String, dynamic> _$CustomerPaymentTypeUpdateResponseDataToJson(
 CustomerDeleteResponse _$CustomerDeleteResponseFromJson(
     Map<String, dynamic> json) {
   return CustomerDeleteResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -334,10 +332,10 @@ Map<String, dynamic> _$CustomerDeleteResponseToJson(
 CustomerAddressDeleteResponse _$CustomerAddressDeleteResponseFromJson(
     Map<String, dynamic> json) {
   return CustomerAddressDeleteResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -354,10 +352,10 @@ Map<String, dynamic> _$CustomerAddressDeleteResponseToJson(
 CustomerUpdateResponse _$CustomerUpdateResponseFromJson(
     Map<String, dynamic> json) {
   return CustomerUpdateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -374,10 +372,10 @@ Map<String, dynamic> _$CustomerUpdateResponseToJson(
 CustomerPaymentTypeDeleteResponse _$CustomerPaymentTypeDeleteResponseFromJson(
     Map<String, dynamic> json) {
   return CustomerPaymentTypeDeleteResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -393,7 +391,7 @@ Map<String, dynamic> _$CustomerPaymentTypeDeleteResponseToJson(
 
 CustomerResponseData _$CustomerResponseDataFromJson(Map<String, dynamic> json) {
   return CustomerResponseData(
-    id: json['id'] as String,
+    id: json['id'] as String?,
     data: json['data'] == null
         ? null
         : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>),
@@ -432,20 +430,18 @@ Map<String, dynamic> _$CustomerDataContainerToJson(
 
 Customer _$CustomerFromJson(Map<String, dynamic> json) {
   return Customer(
-    description: json['description'] as String,
+    description: json['description'] as String?,
     defaults: json['defaults'] == null
         ? null
         : CustomerDefaults.fromJson(json['defaults'] as Map<String, dynamic>),
     payments: json['payments'] == null
         ? null
         : CustomerPayments.fromJson(json['payments'] as Map<String, dynamic>),
-    addresses: (json['addresses'] as List)
-        ?.map((e) => e == null
-            ? null
-            : CustomerAddress.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    flags: (json['flags'] as List)?.map((e) => e as String)?.toList(),
-    notes: json['notes'] as String,
+    addresses: (json['addresses'] as List<dynamic>?)
+        ?.map((e) => CustomerAddress.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    flags: (json['flags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    notes: json['notes'] as String?,
   );
 }
 
@@ -460,14 +456,12 @@ Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
 
 CustomerPayments _$CustomerPaymentsFromJson(Map<String, dynamic> json) {
   return CustomerPayments(
-    cards: (json['cards'] as List)
-        ?.map((e) =>
-            e == null ? null : CustomerCard.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    ach: (json['ach'] as List)
-        ?.map((e) =>
-            e == null ? null : CustomerACH.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    cards: (json['cards'] as List<dynamic>?)
+        ?.map((e) => CustomerCard.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    ach: (json['ach'] as List<dynamic>?)
+        ?.map((e) => CustomerACH.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -479,10 +473,10 @@ Map<String, dynamic> _$CustomerPaymentsToJson(CustomerPayments instance) =>
 
 CustomerDefaults _$CustomerDefaultsFromJson(Map<String, dynamic> json) {
   return CustomerDefaults(
-    billingAddressId: json['billing_address_id'] as String,
-    shippingAddressId: json['shipping_address_id'] as String,
-    paymentMethodType: json['payment_method_type'] as String,
-    paymentMethodId: json['payment_method_id'] as String,
+    billingAddressId: json['billing_address_id'] as String?,
+    shippingAddressId: json['shipping_address_id'] as String?,
+    paymentMethodType: json['payment_method_type'] as String?,
+    paymentMethodId: json['payment_method_id'] as String?,
   );
 }
 

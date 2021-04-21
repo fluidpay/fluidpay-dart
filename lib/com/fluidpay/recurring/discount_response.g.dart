@@ -8,10 +8,10 @@ part of 'discount_response.dart';
 
 DiscountResponse _$DiscountResponseFromJson(Map<String, dynamic> json) {
   return DiscountResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
         : DiscountResponseData.fromJson(json['data'] as Map<String, dynamic>);
@@ -29,10 +29,10 @@ Map<String, dynamic> _$DiscountResponseToJson(DiscountResponse instance) =>
 DiscountUpdateResponse _$DiscountUpdateResponseFromJson(
     Map<String, dynamic> json) {
   return DiscountUpdateResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -49,15 +49,13 @@ Map<String, dynamic> _$DiscountUpdateResponseToJson(
 DiscountSearchResponse _$DiscountSearchResponseFromJson(
     Map<String, dynamic> json) {
   return DiscountSearchResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
-    ..data = (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : DiscountResponseData.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
+    ..data = (json['data'] as List<dynamic>?)
+        ?.map((e) => DiscountResponseData.fromJson(e as Map<String, dynamic>))
+        .toList();
 }
 
 Map<String, dynamic> _$DiscountSearchResponseToJson(
@@ -73,10 +71,10 @@ Map<String, dynamic> _$DiscountSearchResponseToJson(
 DiscountDeleteResponse _$DiscountDeleteResponseFromJson(
     Map<String, dynamic> json) {
   return DiscountDeleteResponse()
-    ..status = json['status'] as String
-    ..msg = json['msg'] as String
-    ..statusCode = json['status_code'] as int
-    ..totalCount = json['total_count'] as int
+    ..status = json['status'] as String?
+    ..msg = json['msg'] as String?
+    ..statusCode = json['status_code'] as int?
+    ..totalCount = json['total_count'] as int?
     ..data = json['data'];
 }
 
@@ -92,14 +90,14 @@ Map<String, dynamic> _$DiscountDeleteResponseToJson(
 
 DiscountResponseData _$DiscountResponseDataFromJson(Map<String, dynamic> json) {
   return DiscountResponseData()
-    ..id = json['id'] as String
-    ..name = json['name'] as String
-    ..description = json['description'] as String
-    ..amount = json['amount'] as int
-    ..percentage = json['percentage'] as int
-    ..duration = json['duration'] as int
-    ..createdAt = json['created_at'] as String
-    ..updatedAt = json['updated_at'] as String;
+    ..id = json['id'] as String?
+    ..name = json['name'] as String?
+    ..description = json['description'] as String?
+    ..amount = json['amount'] as int?
+    ..percentage = json['percentage'] as int?
+    ..duration = json['duration'] as int?
+    ..createdAt = json['created_at'] as String?
+    ..updatedAt = json['updated_at'] as String?;
 }
 
 Map<String, dynamic> _$DiscountResponseDataToJson(

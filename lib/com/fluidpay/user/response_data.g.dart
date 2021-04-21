@@ -8,21 +8,21 @@ part of 'response_data.dart';
 
 UserResponseData _$UserResponseDataFromJson(Map<String, dynamic> json) {
   return UserResponseData()
-    ..id = json['id'] as String
-    ..username = json['username'] as String
-    ..name = json['name'] as String
-    ..phone = json['phone'] as String
-    ..email = json['email'] as String
-    ..status = json['status'] as String
-    ..role = json['role'] as String
-    ..accountType = json['account_type'] as String
-    ..accountTypeId = json['account_type_id'] as String
+    ..id = json['id'] as String?
+    ..username = json['username'] as String?
+    ..name = json['name'] as String?
+    ..phone = json['phone'] as String?
+    ..email = json['email'] as String?
+    ..status = json['status'] as String?
+    ..role = json['role'] as String?
+    ..accountType = json['account_type'] as String?
+    ..accountTypeId = json['account_type_id'] as String?
     ..permissions = json['permissions']
     ..notifications = json['notifications'] == null
         ? null
         : Notifications.fromJson(json['notifications'] as Map<String, dynamic>)
     ..defaults = json['defaults']
-    ..twoFactorEnabled = json['two_factor_enabled'] as bool
+    ..twoFactorEnabled = json['two_factor_enabled'] as bool?
     ..createdAt = json['created_at'] == null
         ? null
         : DateTime.parse(json['created_at'] as String)
@@ -73,9 +73,9 @@ Map<String, dynamic> _$NotificationsToJson(Notifications instance) =>
 
 NotificationsDetails _$NotificationsDetailsFromJson(Map<String, dynamic> json) {
   return NotificationsDetails()
-    ..transactionReceipts = json['transaction_receipts'] as bool
-    ..settlementReceipts = json['settlement_receipts'] as bool
-    ..triggeredRules = json['triggered_rules'] as bool;
+    ..transactionReceipts = json['transaction_receipts'] as bool?
+    ..settlementReceipts = json['settlement_receipts'] as bool?
+    ..triggeredRules = json['triggered_rules'] as bool?;
 }
 
 Map<String, dynamic> _$NotificationsDetailsToJson(

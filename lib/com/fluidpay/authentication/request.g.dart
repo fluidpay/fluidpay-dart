@@ -8,10 +8,10 @@ part of 'request.dart';
 
 AuthLoginRequest _$AuthLoginRequestFromJson(Map<String, dynamic> json) {
   return AuthLoginRequest(
-    authKey: json['auth_key'] as String,
-    username: json['username'] as String,
-    password: json['password'] as String,
-    totp: json['totp'] as String,
+    json['username'] as String,
+    json['password'] as String,
+    authKey: json['auth_key'] as String?,
+    totp: json['totp'] as String?,
   );
 }
 
