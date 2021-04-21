@@ -45,16 +45,16 @@ class DiscountDeleteResponse extends Responsable<dynamic> {
 
 @JsonSerializable()
 class DiscountResponseData extends Decodable {
-  String id;
-  String name;
-  String description;
-  int amount;
-  int percentage;
-  int duration;
+  String? id;
+  String? name;
+  String? description;
+  int? amount;
+  int? percentage;
+  int? duration;
   @JsonKey(name: 'created_at')
-  String createdAt;
+  String? createdAt;
   @JsonKey(name: 'updated_at')
-  String updatedAt;
+  String? updatedAt;
 
   DiscountResponseData();
 

@@ -7,11 +7,11 @@ part 'discount_request.g.dart';
 
 @JsonSerializable()
 class DiscountCreateRequest extends Creatable<DiscountResponse> {
-  String name;
-  String description;
-  int amount;
-  int percentage;
-  int duration;
+  String? name;
+  String? description;
+  int? amount;
+  int? percentage;
+  int? duration;
 
   DiscountCreateRequest(
       {this.name,
@@ -24,7 +24,7 @@ class DiscountCreateRequest extends Creatable<DiscountResponse> {
   Map<String, dynamic> toJson() => _$DiscountCreateRequestToJson(this);
 
   @override
-  String getUrl() => '/recurring/discount';
+  String getPath() => '/recurring/discount';
 
   @override
   DiscountResponse buildResponse(Map<String, dynamic> json) {
@@ -35,12 +35,12 @@ class DiscountCreateRequest extends Creatable<DiscountResponse> {
 @JsonSerializable()
 class DiscountUpdateRequest extends Updatable<DiscountUpdateResponse> {
   @JsonKey(ignore: true)
-  String id;
-  String name;
-  String description;
-  int amount;
-  int percentage;
-  int duration;
+  String? id;
+  String? name;
+  String? description;
+  int? amount;
+  int? percentage;
+  int? duration;
 
   DiscountUpdateRequest(
       {this.id,
@@ -55,17 +55,17 @@ class DiscountUpdateRequest extends Updatable<DiscountUpdateResponse> {
       DiscountUpdateResponse.fromJson(json);
 
   @override
-  String getUrl() => '/recurring/discount/${id}';
+  String getPath() => '/recurring/discount/${id}';
 
   @override
   Map<String, dynamic> toJson() => _$DiscountUpdateRequestToJson(this);
 }
 
 class DiscountSearchRequest extends Searchable<DiscountSearchResponse> {
-  String id;
+  String? id;
 
   @override
-  String getUrl() => id?.isNotEmpty == true
+  String getPath() => id?.isNotEmpty == true
       ? '/recurring/discount/$id'
       : '/recurring/discounts';
 
@@ -92,16 +92,16 @@ class DiscountDeleteRequest extends Deletable<DiscountDeleteResponse> {
       DiscountDeleteResponse.fromJson(json);
 
   @override
-  String getUrl() => '/recurring/discount/$id';
+  String getPath() => '/recurring/discount/$id';
 }
 
 @JsonSerializable()
 class DiscountRequest extends Creatable<DiscountResponse> {
-  String id;
-  String description;
-  int amount;
-  int percentage;
-  int duration;
+  String? id;
+  String? description;
+  int? amount;
+  int? percentage;
+  int? duration;
 
   DiscountRequest(
       {this.id, this.description, this.amount, this.percentage, this.duration});
@@ -113,7 +113,7 @@ class DiscountRequest extends Creatable<DiscountResponse> {
       _$DiscountRequestFromJson(json);
 
   @override
-  String getUrl() => null;
+  String getPath() => '';
 
   @override
   DiscountResponse buildResponse(Map<String, dynamic> json) {

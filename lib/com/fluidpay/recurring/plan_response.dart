@@ -27,32 +27,32 @@ class PlanSearchResponse extends Responsable<List<PlanResponseData>> {
 
 @JsonSerializable()
 class PlanResponseData extends Decodable {
-  String id;
-  String name;
-  String description;
-  int amount;
-  String currency;
+  String? id;
+  String? name;
+  String? description;
+  int? amount;
+  String? currency;
   @JsonKey(name: 'billing_cycle_interval')
-  int billingCycleInterval;
+  int? billingCycleInterval;
   @JsonKey(name: 'billing_frequency')
-  String billingFrequency;
+  String? billingFrequency;
   @JsonKey(name: 'billing_days')
-  String billingDays;
-  int duration;
+  String? billingDays;
+  int? duration;
   @JsonKey(name: 'add_ons')
-  List<AddOnResponseData> addOns;
+  List<AddOnResponseData>? addOns;
   @JsonKey(name: 'total_add_ons')
-  int totalAddOns;
+  int? totalAddOns;
   @JsonKey(name: 'total_discounts')
-  int totalDiscounts;
+  int? totalDiscounts;
   @JsonKey(name: 'discounts')
-  List<DiscountResponseData> discounts;
+  List<DiscountResponseData>? discounts;
   @JsonKey(name: 'subscription_count')
-  int subscriptionCount;
+  int? subscriptionCount;
   @JsonKey(name: 'created_at')
-  String createdAt;
+  String? createdAt;
   @JsonKey(name: 'updated_at')
-  String updatedAt;
+  String? updatedAt;
 
   PlanResponseData();
 

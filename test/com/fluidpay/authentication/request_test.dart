@@ -8,9 +8,7 @@ void main() {
 }
 
 void _testAuthLoginRequestToJsonTest() {
-  final request = AuthLoginRequest()
-      ..username = 'test username'
-      ..password = 'test password'
+  final request = AuthLoginRequest('test username', 'test password')
       ..authKey = 'test authKey'
       ..totp = 'test totp';
 

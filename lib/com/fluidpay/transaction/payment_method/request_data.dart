@@ -15,15 +15,15 @@ enum TransactionType {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class PaymentMethodRequest extends Decodable {
-  CreditCardRequest card;
-  ACHRequest ach;
-  CustomerTransactionRequest customer;
-  TerminalTransactionRequest terminal;
-  String token;
-  ApplePayTokenRequest applePayToken;
-  APMRequest apm;
-  PlaidRequest plaid;
-  CashRequest cash;
+  CreditCardRequest? card;
+  ACHRequest? ach;
+  CustomerTransactionRequest? customer;
+  TerminalTransactionRequest? terminal;
+  String? token;
+  ApplePayTokenRequest? applePayToken;
+  APMRequest? apm;
+  PlaidRequest? plaid;
+  CashRequest? cash;
 
   PaymentMethodRequest(
       {this.card,
@@ -44,22 +44,22 @@ class PaymentMethodRequest extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CreditCardRequest extends Decodable {
-  String entryType;
-  String number;
-  String expirationDate;
-  String cvc;
+  String? entryType;
+  String? number;
+  String? expirationDate;
+  String? cvc;
   @JsonKey(name: 'track_1')
-  String track1;
+  String? track1;
   @JsonKey(name: 'track_2')
-  String track2;
+  String? track2;
   @JsonKey(name: 'encrypted_track_1')
-  String encryptedTrack1;
+  String? encryptedTrack1;
   @JsonKey(name: 'encrypted_track_2')
-  String encryptedTrack2;
-  String ksn;
-  String encryptedData;
-  CardholderAuthenticationRequest cardholderAuthentication;
-  String cardPresent;
+  String? encryptedTrack2;
+  String? ksn;
+  String? encryptedData;
+  CardholderAuthenticationRequest? cardholderAuthentication;
+  String? cardPresent;
 
   CreditCardRequest(
       {this.entryType,
@@ -83,12 +83,12 @@ class CreditCardRequest extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CardholderAuthenticationRequest extends Decodable {
-  String eci;
-  String cavv;
-  String xid;
-  String version;
-  String dsTransactionId;
-  String acsTransactionId;
+  String? eci;
+  String? cavv;
+  String? xid;
+  String? version;
+  String? dsTransactionId;
+  String? acsTransactionId;
 
   CardholderAuthenticationRequest({this.eci, this.cavv, this.xid, this.version, this.dsTransactionId, this.acsTransactionId});
 
@@ -100,13 +100,13 @@ class CardholderAuthenticationRequest extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ACHRequest extends Decodable {
-  String routingNumber;
-  String accountNumber;
-  String accountType;
-  String secCode;
-  String checkNumber;
+  String? routingNumber;
+  String? accountNumber;
+  String? accountType;
+  String? secCode;
+  String? checkNumber;
   @JsonKey(name: 'accountholder_authentication')
-  ACHAuthenticationRequest accountHolderAuthentication;
+  ACHAuthenticationRequest? accountHolderAuthentication;
 
   ACHRequest({
     this.routingNumber,
@@ -125,10 +125,10 @@ class ACHRequest extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ACHAuthenticationRequest extends Decodable {
-  String dlState;
-  String dlNumber;
-  String ssn4;
-  String dobYear;
+  String? dlState;
+  String? dlNumber;
+  String? ssn4;
+  String? dobYear;
 
   ACHAuthenticationRequest({
     this.dlState,
@@ -145,13 +145,13 @@ class ACHAuthenticationRequest extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerTransactionRequest extends Decodable {
-  String id;
-  String sourceMerchantId;
-  String paymentMethodType;
-  String paymentMethodId;
-  String billingAddressId;
-  String shippingAddressId;
-  String cvc;
+  String? id;
+  String? sourceMerchantId;
+  String? paymentMethodType;
+  String? paymentMethodId;
+  String? billingAddressId;
+  String? shippingAddressId;
+  String? cvc;
 
   CustomerTransactionRequest({
     this.id,
@@ -170,14 +170,14 @@ class CustomerTransactionRequest extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TerminalTransactionRequest extends Decodable {
-  String id;
-  String expirationDate;
-  String cvc;
-  String printReceipt;
-  bool signatureRequired;
-  int clerkId;
-  bool debit;
-  String ebt;
+  String? id;
+  String? expirationDate;
+  String? cvc;
+  String? printReceipt;
+  bool? signatureRequired;
+  int? clerkId;
+  bool? debit;
+  String? ebt;
 
   TerminalTransactionRequest({
     this.id,
@@ -198,17 +198,17 @@ class TerminalTransactionRequest extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class APMRequest extends Decodable {
-  String type;
-  String sellingPoint;
-  String soldService;
-  String merchantRedirectUrl;
-  String locale;
-  bool mobileView;
-  String nationalId;
-  String consumerRef;
-  String logoUrl;
-  String hppTitle;
-  String preferredLanguage;
+  String? type;
+  String? sellingPoint;
+  String? soldService;
+  String? merchantRedirectUrl;
+  String? locale;
+  bool? mobileView;
+  String? nationalId;
+  String? consumerRef;
+  String? logoUrl;
+  String? hppTitle;
+  String? preferredLanguage;
 
   APMRequest({
     this.type,
@@ -232,8 +232,8 @@ class APMRequest extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class PlaidRequest extends Decodable {
-  String refId;
-  String accountId;
+  String? refId;
+  String? accountId;
 
   PlaidRequest({this.refId, this.accountId});
 

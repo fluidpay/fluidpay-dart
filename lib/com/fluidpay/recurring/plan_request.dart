@@ -9,23 +9,23 @@ part 'plan_request.g.dart';
 
 @JsonSerializable()
 class PlanCreateRequest extends Creatable<PlanResponse> {
-  String name;
-  String description;
-  int amount;
-  String currency;
+  String? name;
+  String? description;
+  int? amount;
+  String? currency;
   @JsonKey(name: 'billing_cycle_interval')
-  int billingCycleInterval;
+  int? billingCycleInterval;
   @JsonKey(name: 'billing_frequency')
-  String billingFrequency;
+  String? billingFrequency;
   @JsonKey(name: 'billing_days')
-  String billingDays;
-  int duration;
+  String? billingDays;
+  int? duration;
   @JsonKey(name: 'add_ons')
-  List<AddOnRequest> addOns;
+  List<AddOnRequest>? addOns;
   @JsonKey(name: 'discounts')
-  List<DiscountRequest> discounts;
+  List<DiscountRequest>? discounts;
   @JsonKey(name: 'update_subscriptions')
-  bool updateSubscriptions;
+  bool? updateSubscriptions;
 
   PlanCreateRequest(
       {this.name,
@@ -44,7 +44,7 @@ class PlanCreateRequest extends Creatable<PlanResponse> {
   Map<String, dynamic> toJson() => _$PlanCreateRequestToJson(this);
 
   @override
-  String getUrl() => '/recurring/plan';
+  String getPath() => '/recurring/plan';
 
   @override
   PlanResponse buildResponse(Map<String, dynamic> json) {
@@ -53,10 +53,10 @@ class PlanCreateRequest extends Creatable<PlanResponse> {
 }
 
 class PlanSearchRequest extends Searchable<PlanSearchResponse> {
-  String id;
+  String? id;
 
   @override
-  String getUrl() =>
+  String getPath() =>
       id?.isNotEmpty == true ? '/recurring/plan/$id' : '/recurring/plans';
 
   @override

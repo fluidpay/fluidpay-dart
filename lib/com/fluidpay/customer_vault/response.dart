@@ -182,10 +182,10 @@ class CustomerPaymentTypeDeleteResponse extends Responsable<dynamic> {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerResponseData extends Decodable {
-  String id;
-  CustomerDataContainer data;
-  DateTime createAt;
-  DateTime updateAt;
+  String? id;
+  CustomerDataContainer? data;
+  DateTime? createAt;
+  DateTime? updateAt;
 
   CustomerResponseData({
     this.id,
@@ -203,7 +203,7 @@ class CustomerResponseData extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerDataContainer extends Decodable {
-  Customer customer;
+  Customer? customer;
 
   CustomerDataContainer({this.customer});
 
@@ -216,12 +216,12 @@ class CustomerDataContainer extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Customer extends Decodable {
-  String description;
-  CustomerDefaults defaults;
-  CustomerPayments payments;
-  List<CustomerAddress> addresses;
-  List<String> flags;
-  String notes;
+  String? description;
+  CustomerDefaults? defaults;
+  CustomerPayments? payments;
+  List<CustomerAddress>? addresses;
+  List<String>? flags;
+  String? notes;
 
   Customer({
     this.description,
@@ -241,8 +241,8 @@ class Customer extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerPayments extends Decodable {
-  List<CustomerCard> cards;
-  List<CustomerACH> ach;
+  List<CustomerCard>? cards;
+  List<CustomerACH>? ach;
 
   CustomerPayments({this.cards, this.ach});
 
@@ -255,10 +255,10 @@ class CustomerPayments extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CustomerDefaults extends Decodable {
-  String billingAddressId;
-  String shippingAddressId;
-  String paymentMethodType;
-  String paymentMethodId;
+  String? billingAddressId;
+  String? shippingAddressId;
+  String? paymentMethodType;
+  String? paymentMethodId;
 
   CustomerDefaults({
     this.billingAddressId,

@@ -6,19 +6,19 @@ part 'request.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class AuthLoginRequest extends Searchable<AuthLoginResponse> {
-  String authKey;
+  String? authKey;
   String username;
   String password;
-  String totp;
+  String? totp;
 
-  AuthLoginRequest({this.authKey, this.username, this.password, this.totp});
+  AuthLoginRequest(this.username, this.password, {this.authKey, this.totp});
 
   @override
   AuthLoginResponse buildResponse(Map<String, dynamic> json) =>
       AuthLoginResponse.fromJson(json);
 
   @override
-  String getUrl() => '/token-auth';
+  String getPath() => '/token-auth';
 
   @override
   Map<String, dynamic> toJson() => _$AuthLoginRequestToJson(this);

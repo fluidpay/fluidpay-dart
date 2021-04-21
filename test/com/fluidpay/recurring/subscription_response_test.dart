@@ -11,7 +11,7 @@ void testSubscriptionSearchResponse() {
   test('SubscriptionResponse fromJson to Json', () {
     var resp = SubscriptionSearchResponse.fromJson({
       'status': 'success',
-      'status_code':200,
+      'status_code': 200,
       'msg': 'success',
       'data': [
         {
@@ -88,80 +88,64 @@ void testSubscriptionSearchResponse() {
     expect(resp.msg, 'success');
     expect(resp.totalCount, 1);
 
-    expect(resp.data[0].id, 'test id');
-    expect(resp.data[0].planId, 'test plan');
-    expect(resp.data[0].description, 'test plan description');
-    expect(resp.data[0].amount, 100);
-    expect(resp.data[0].currency, 'USD');
-    expect(resp.data[0].billingCycleInterval, 2);
-    expect(resp.data[0].billingFrequency, '3');
-    expect(resp.data[0].billingDays, '12');
-    expect(resp.data[0].duration, 10);
-    expect(resp.data[0].updatedAt, '2020-01-01');
-    expect(resp.data[0].createdAt, '2020-01-01');
+    expect(resp.data?.isNotEmpty, true);
+    expect(resp.data?[0].id, 'test id');
+    expect(resp.data?[0].planId, 'test plan');
+    expect(resp.data?[0].description, 'test plan description');
+    expect(resp.data?[0].amount, 100);
+    expect(resp.data?[0].currency, 'USD');
+    expect(resp.data?[0].billingCycleInterval, 2);
+    expect(resp.data?[0].billingFrequency, '3');
+    expect(resp.data?[0].billingDays, '12');
+    expect(resp.data?[0].duration, 10);
+    expect(resp.data?[0].updatedAt, '2020-01-01');
+    expect(resp.data?[0].createdAt, '2020-01-01');
 
     // addons
-    expect((resp.data[0].addOns[0] as AddOnResponseData).id, 'test addon id');
-    expect(
-        (resp.data[0].addOns[0] as AddOnResponseData).name, 'test addon name');
-    expect((resp.data[0].addOns[0] as AddOnResponseData).description,
-        'test addon description');
-    expect((resp.data[0].addOns[0] as AddOnResponseData).amount, 200);
-    expect((resp.data[0].addOns[0] as AddOnResponseData).percentage, 10);
-    expect((resp.data[0].addOns[0] as AddOnResponseData).duration, 10);
-    expect(
-        (resp.data[0].addOns[0] as AddOnResponseData).createdAt, '2020-01-01');
-    expect(
-        (resp.data[0].addOns[0] as AddOnResponseData).updatedAt, '2020-01-01');
+    expect((resp.data?[0].addOns?[0] as AddOnResponseData).id, 'test addon id');
+    expect((resp.data?[0].addOns?[0] as AddOnResponseData).name, 'test addon name');
+    expect((resp.data?[0].addOns?[0] as AddOnResponseData).description, 'test addon description');
+    expect((resp.data?[0].addOns?[0] as AddOnResponseData).amount, 200);
+    expect((resp.data?[0].addOns?[0] as AddOnResponseData).percentage, 10);
+    expect((resp.data?[0].addOns?[0] as AddOnResponseData).duration, 10);
+    expect((resp.data?[0].addOns?[0] as AddOnResponseData).createdAt, '2020-01-01');
+    expect((resp.data?[0].addOns?[0] as AddOnResponseData).updatedAt, '2020-01-01');
 
-    expect((resp.data[0].addOns[1] as AddOnResponseData).id, '');
-    expect(
-        (resp.data[0].addOns[1] as AddOnResponseData).name, 'test addon name');
-    expect((resp.data[0].addOns[1] as AddOnResponseData).description,
-        'test addon description');
-    expect((resp.data[0].addOns[1] as AddOnResponseData).amount, 200);
-    expect((resp.data[0].addOns[1] as AddOnResponseData).percentage, 10);
-    expect((resp.data[0].addOns[1] as AddOnResponseData).duration, 10);
-    expect(
-        (resp.data[0].addOns[1] as AddOnResponseData).createdAt, '2020-01-01');
-    expect(
-        (resp.data[0].addOns[1] as AddOnResponseData).updatedAt, '2020-01-01');
+    expect((resp.data?[0].addOns?[1] as AddOnResponseData).id, '');
+    expect((resp.data?[0].addOns?[1] as AddOnResponseData).name, 'test addon name');
+    expect((resp.data?[0].addOns?[1] as AddOnResponseData).description, 'test addon description');
+    expect((resp.data?[0].addOns?[1] as AddOnResponseData).amount, 200);
+    expect((resp.data?[0].addOns?[1] as AddOnResponseData).percentage, 10);
+    expect((resp.data?[0].addOns?[1] as AddOnResponseData).duration, 10);
+    expect((resp.data?[0].addOns?[1] as AddOnResponseData).createdAt, '2020-01-01');
+    expect((resp.data?[0].addOns?[1] as AddOnResponseData).updatedAt, '2020-01-01');
 
     // discounts
-    expect((resp.data[0].discounts[0] as DiscountResponseData).id,
-        'test discount is');
-    expect((resp.data[0].discounts[0] as DiscountResponseData).name,
-        'test discount name');
-    expect((resp.data[0].discounts[0] as DiscountResponseData).description,
+    expect((resp.data?[0].discounts?[0] as DiscountResponseData).id, 'test discount is');
+    expect((resp.data?[0].discounts?[0] as DiscountResponseData).name, 'test discount name');
+    expect((resp.data?[0].discounts?[0] as DiscountResponseData).description,
         'test discount description');
-    expect((resp.data[0].discounts[0] as DiscountResponseData).amount, 200);
-    expect((resp.data[0].discounts[0] as DiscountResponseData).percentage, 10);
-    expect((resp.data[0].discounts[0] as DiscountResponseData).duration, 10);
-    expect((resp.data[0].discounts[0] as DiscountResponseData).createdAt,
-        '2020-01-01');
-    expect((resp.data[0].discounts[0] as DiscountResponseData).updatedAt,
-        '2020-01-01');
+    expect((resp.data?[0].discounts?[0] as DiscountResponseData).amount, 200);
+    expect((resp.data?[0].discounts?[0] as DiscountResponseData).percentage, 10);
+    expect((resp.data?[0].discounts?[0] as DiscountResponseData).duration, 10);
+    expect((resp.data?[0].discounts?[0] as DiscountResponseData).createdAt, '2020-01-01');
+    expect((resp.data?[0].discounts?[0] as DiscountResponseData).updatedAt, '2020-01-01');
 
-    expect((resp.data[0].discounts[1] as DiscountResponseData).id, '');
-    expect((resp.data[0].discounts[1] as DiscountResponseData).name,
-        'test discount name');
-    expect((resp.data[0].discounts[1] as DiscountResponseData).description,
+    expect((resp.data?[0].discounts?[1] as DiscountResponseData).id, '');
+    expect((resp.data?[0].discounts?[1] as DiscountResponseData).name, 'test discount name');
+    expect((resp.data?[0].discounts?[1] as DiscountResponseData).description,
         'test discount description');
-    expect((resp.data[0].discounts[1] as DiscountResponseData).amount, 200);
-    expect((resp.data[0].discounts[1] as DiscountResponseData).percentage, 10);
-    expect((resp.data[0].discounts[1] as DiscountResponseData).duration, 10);
-    expect((resp.data[0].discounts[1] as DiscountResponseData).createdAt,
-        '2020-01-01');
-    expect((resp.data[0].discounts[1] as DiscountResponseData).updatedAt,
-        '2020-01-01');
+    expect((resp.data?[0].discounts?[1] as DiscountResponseData).amount, 200);
+    expect((resp.data?[0].discounts?[1] as DiscountResponseData).percentage, 10);
+    expect((resp.data?[0].discounts?[1] as DiscountResponseData).duration, 10);
+    expect((resp.data?[0].discounts?[1] as DiscountResponseData).createdAt, '2020-01-01');
+    expect((resp.data?[0].discounts?[1] as DiscountResponseData).updatedAt, '2020-01-01');
 
     // customer
-    expect(resp.data[0].customer.id, 'id');
-    expect(resp.data[0].customer.paymentMethodType, 'card');
-    expect(resp.data[0].customer.paymentMethodID, 'pmID');
-    expect(resp.data[0].customer.shippingAddressID,
-        'addressID');
-    expect(resp.data[0].customer.billingAddressID,
-        'addressID');
+    expect(resp.data?[0].customer?.id, 'id');
+    expect(resp.data?[0].customer?.paymentMethodType, 'card');
+    expect(resp.data?[0].customer?.paymentMethodID, 'pmID');
+    expect(resp.data?[0].customer?.shippingAddressID, 'addressID');
+    expect(resp.data?[0].customer?.billingAddressID, 'addressID');
   });
 }

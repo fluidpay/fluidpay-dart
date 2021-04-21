@@ -54,7 +54,7 @@ void testDiscountUpdateRequest() {
     expect(req['amount'], expected['amount']);
     expect(req['percentage'], expected['percentage']);
     expect(req['duration'], expected['duration']);
-    expect(discountReq.getUrl(), '/recurring/discount/test_id');
+    expect(discountReq.getPath(), '/recurring/discount/test_id');
   });
 }
 
@@ -90,6 +90,6 @@ void testDiscountDeleteRequest() {
     var req = discountReq.toJson();
     var expected = {};
     expect(req, expected);
-    expect(discountReq.getUrl(), '/recurring/discount/test_id');
+    expect(discountReq.getPath(), '/recurring/discount/test_id');
   });
 }

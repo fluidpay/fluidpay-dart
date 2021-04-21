@@ -25,21 +25,21 @@ enum InvoiceStatus {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class InvoiceBillTo extends Decodable {
-  String id;
-  String firstName;
-  String lastName;
-  String company;
+  String? id;
+  String? firstName;
+  String? lastName;
+  String? company;
   @JsonKey(name: 'address_line_1')
-  String addressLine1;
+  String? addressLine1;
   @JsonKey(name: 'address_line_2')
-  String addressLine2;
-  String city;
-  String state;
-  String postalCode;
-  String country;
-  String phone;
-  String fax;
-  String email;
+  String? addressLine2;
+  String? city;
+  String? state;
+  String? postalCode;
+  String? country;
+  String? phone;
+  String? fax;
+  String? email;
 
   InvoiceBillTo(
       {this.id,
@@ -65,21 +65,21 @@ class InvoiceBillTo extends Decodable {
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class InvoicePayableTo extends Decodable {
-  String id;
-  String firstName;
-  String lastName;
-  String company;
+  String? id;
+  String? firstName;
+  String? lastName;
+  String? company;
   @JsonKey(name: 'address_line_1')
-  String addressLine1;
+  String? addressLine1;
   @JsonKey(name: 'address_line_2')
-  String addressLine2;
-  String city;
-  String state;
-  String postalCode;
-  String country;
-  String phone;
-  String fax;
-  String email;
+  String? addressLine2;
+  String? city;
+  String? state;
+  String? postalCode;
+  String? country;
+  String? phone;
+  String? fax;
+  String? email;
 
   InvoicePayableTo(
       {this.id,
