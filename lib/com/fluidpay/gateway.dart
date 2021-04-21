@@ -126,7 +126,7 @@ class _CommonClient {
 
     if (baseUri.scheme == 'https') {
       return Uri.https(
-          baseUri.host, baseRequest.getPath(), baseRequest.getQueryParams());
+          baseUri.host, '${baseUri.path}${baseRequest.getPath()}', baseRequest.getQueryParams());
     }
 
     return Uri.http(
