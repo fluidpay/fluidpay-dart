@@ -60,6 +60,7 @@ class CreditCardRequest extends Decodable {
   String? encryptedData;
   CardholderAuthenticationRequest? cardholderAuthentication;
   String? cardPresent;
+  String? signatureData;
 
   CreditCardRequest(
       {this.entryType,
@@ -73,7 +74,9 @@ class CreditCardRequest extends Decodable {
       this.ksn,
       this.encryptedData,
       this.cardholderAuthentication,
-      this.cardPresent});
+      this.cardPresent,
+      this.signatureData
+      });
 
   factory CreditCardRequest.fromJson(Map<String, dynamic> json) => _$CreditCardRequestFromJson(json);
 
