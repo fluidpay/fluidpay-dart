@@ -70,6 +70,7 @@ CreditCardRequest _$CreditCardRequestFromJson(Map<String, dynamic> json) {
         : CardholderAuthenticationRequest.fromJson(
             json['cardholder_authentication'] as Map<String, dynamic>),
     cardPresent: json['card_present'] as String?,
+    signatureData: json['signature_data'] as String?,
   );
 }
 
@@ -87,6 +88,7 @@ Map<String, dynamic> _$CreditCardRequestToJson(CreditCardRequest instance) =>
       'encrypted_data': instance.encryptedData,
       'cardholder_authentication': instance.cardholderAuthentication,
       'card_present': instance.cardPresent,
+      'signature_data': instance.signatureData,
     };
 
 CardholderAuthenticationRequest _$CardholderAuthenticationRequestFromJson(
