@@ -4,7 +4,6 @@ import 'package:fluidpay/com/fluidpay/authentication/request.dart';
 import 'package:fluidpay/com/fluidpay/authentication/response.dart';
 import 'package:http/http.dart' as http;
 
-import 'common/actions.dart';
 import 'common/base.dart';
 
 class Gateway {
@@ -60,7 +59,7 @@ class Gateway {
     return result.then((value) => request.buildResponse(value));
   }
 
-  void setAuthHeaderCreator(Map<String, String> Function() authHeaderCreator) {
+  void setAuthHeaderCreator(Map<String, String> Function()? authHeaderCreator) {
     _createAuthHeader = authHeaderCreator;
   }
 
