@@ -124,11 +124,13 @@ class _CommonClient {
     final baseUri = Uri.parse(baseUrl);
 
     if (baseUri.scheme == 'https') {
-      return Uri.https(
-          baseUri.host, '${baseUri.path}${baseRequest.getPath()}', baseRequest.getQueryParams());
+      return Uri.https(baseUri.host, '${baseUri.path}${baseRequest.getPath()}',
+          baseRequest.getQueryParams());
     }
 
     return Uri.http(
-        baseUri.host, baseRequest.getPath(), baseRequest.getQueryParams());
+        '${baseUri.host}:${baseUri.port}',
+        '${baseUri.path}${baseRequest.getPath()}',
+        baseRequest.getQueryParams());
   }
 }
