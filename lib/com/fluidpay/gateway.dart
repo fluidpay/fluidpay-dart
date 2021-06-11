@@ -51,6 +51,9 @@ class Gateway {
       case Method.POST:
         result = _client.post(request);
         break;
+      case Method.PUT:
+        result = _client.put(request);
+        break;
       case Method.DELETE:
         result = _client.delete(request);
         break;
@@ -100,6 +103,14 @@ class _CommonClient {
 
   Future<Map<String, dynamic>> post(Requestable baseRequest) => http
       .post(
+        _buildUri(baseRequest),
+        headers: headers,
+        body: jsonEncode(baseRequest.toJson()),
+      )
+      .then(_createJsonFromResponse);
+
+  Future<Map<String, dynamic>> put(Requestable baseRequest) => http
+      .put(
         _buildUri(baseRequest),
         headers: headers,
         body: jsonEncode(baseRequest.toJson()),
