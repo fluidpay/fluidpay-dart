@@ -6,6 +6,7 @@ import 'serialization.dart';
 enum Method {
   GET,
   POST,
+  PUT,
   DELETE
 }
 
