@@ -155,6 +155,7 @@ class CustomerTransactionRequest extends Decodable {
   String? billingAddressId;
   String? shippingAddressId;
   String? cvc;
+  String? terminalId;
 
   CustomerTransactionRequest({
     this.id,
@@ -164,6 +165,7 @@ class CustomerTransactionRequest extends Decodable {
     this.billingAddressId,
     this.shippingAddressId,
     this.cvc,
+    this.terminalId,
   });
 
   factory CustomerTransactionRequest.fromJson(Map<String, dynamic> json) => _$CustomerTransactionRequestFromJson(json);
@@ -181,6 +183,8 @@ class TerminalTransactionRequest extends Decodable {
   int? clerkId;
   bool? debit;
   String? ebt;
+  String? traceNum;
+  String? hostToken;
 
   TerminalTransactionRequest({
     this.id,
@@ -191,6 +195,8 @@ class TerminalTransactionRequest extends Decodable {
     this.clerkId,
     this.debit,
     this.ebt,
+    this.traceNum,
+    this.hostToken,
   });
 
   factory TerminalTransactionRequest.fromJson(Map<String, dynamic> json) => _$TerminalTransactionRequestFromJson(json);
