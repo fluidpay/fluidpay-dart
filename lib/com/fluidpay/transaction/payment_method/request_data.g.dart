@@ -167,6 +167,7 @@ CustomerTransactionRequest _$CustomerTransactionRequestFromJson(
     billingAddressId: json['billing_address_id'] as String?,
     shippingAddressId: json['shipping_address_id'] as String?,
     cvc: json['cvc'] as String?,
+    terminalId: json['terminal_id'] as String?,
   );
 }
 
@@ -180,6 +181,7 @@ Map<String, dynamic> _$CustomerTransactionRequestToJson(
       'billing_address_id': instance.billingAddressId,
       'shipping_address_id': instance.shippingAddressId,
       'cvc': instance.cvc,
+      'terminal_id': instance.terminalId,
     };
 
 TerminalTransactionRequest _$TerminalTransactionRequestFromJson(
@@ -193,6 +195,8 @@ TerminalTransactionRequest _$TerminalTransactionRequestFromJson(
     clerkId: json['clerk_id'] as int?,
     debit: json['debit'] as bool?,
     ebt: json['ebt'] as String?,
+    traceNum: json['trace_num'] as String?,
+    hostToken: json['host_token'] as String?,
   );
 }
 
@@ -207,6 +211,8 @@ Map<String, dynamic> _$TerminalTransactionRequestToJson(
       'clerk_id': instance.clerkId,
       'debit': instance.debit,
       'ebt': instance.ebt,
+      'trace_num': instance.traceNum,
+      'host_token': instance.hostToken,
     };
 
 APMRequest _$APMRequestFromJson(Map<String, dynamic> json) {
