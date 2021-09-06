@@ -7,41 +7,62 @@ import 'package:fluidpay/com/fluidpay/transaction/request.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('transaction create request toJson', _transactionCreateRequestToJsonTest);
+  test(
+      'transaction create request toJson', _transactionCreateRequestToJsonTest);
 
-  test('transaction get request getUrl only transactionId passed', _transactionGetRequestGetUrlTest_onlyTransactionIdPassed);
-  test('transaction get request getUrl both merchantId and transactionId passed', _transactionGetRequestGetUrlTest_merchantIdAndTransactionIdPassed);
+  test('transaction get request getUrl only transactionId passed',
+      _transactionGetRequestGetUrlTest_onlyTransactionIdPassed);
+  test(
+      'transaction get request getUrl both merchantId and transactionId passed',
+      _transactionGetRequestGetUrlTest_merchantIdAndTransactionIdPassed);
 
-  test('transaction capture request toJson', _transactionCaptureRequestToJsonTest);
-  test('transaction capture request getUrl', _transactionCaptureRequestGetUrlTest);
+  test('transaction capture request toJson',
+      _transactionCaptureRequestToJsonTest);
+  test('transaction capture request getUrl',
+      _transactionCaptureRequestGetUrlTest);
 
   test('transaction void request toJson', _transactionVoidRequestToJsonTest);
   test('transaction void request getUrl', _transactionVoidRequestGetUrlTest);
 
-  test('transaction refund request toJson', _transactionRefundRequestToJsonTest);
-  test('transaction refund request getUrl', _transactionRefundRequestGetUrlTest);
+  test(
+      'transaction refund request toJson', _transactionRefundRequestToJsonTest);
+  test(
+      'transaction refund request getUrl', _transactionRefundRequestGetUrlTest);
 
-  test('transaction create vault request toJson', _transactionCreateVaultRequestToJsonTest);
-  test('transaction create vault request getUrl', _transactionCreateVaultRequestGetUrlTest);
+  test('transaction create vault request toJson',
+      _transactionCreateVaultRequestToJsonTest);
+  test('transaction create vault request getUrl',
+      _transactionCreateVaultRequestGetUrlTest);
 
-  test('transaction email receipt request toJson', _transactionEmailReceiptRequestToJsonTest);
-  test('transaction email receipt request getUrl', _transactionEmailReceiptRequestGetUrlTest);
+  test('transaction email receipt request toJson',
+      _transactionEmailReceiptRequestToJsonTest);
+  test('transaction email receipt request getUrl',
+      _transactionEmailReceiptRequestGetUrlTest);
 
-  test('transaction print receipt request toJson', _transactionPrintReceiptRequestToJsonTest);
-  test('transaction print receipt request getUrl', _transactionPrintReceiptRequestGetUrlTest);
+  test('transaction print receipt request toJson',
+      _transactionPrintReceiptRequestToJsonTest);
+  test('transaction print receipt request getUrl',
+      _transactionPrintReceiptRequestGetUrlTest);
 
-  test('transaction tip adjustment request toJson', _transactionTipAdjustmentRequestToJsonTest);
-  test('transaction tip adjustment request getUrl', _transactionTipAdjustmentRequestGetUrlTest);
+  test('transaction tip adjustment request toJson',
+      _transactionTipAdjustmentRequestToJsonTest);
+  test('transaction tip adjustment request getUrl',
+      _transactionTipAdjustmentRequestGetUrlTest);
 
   test('transaction multi request toJson', _transactionMultiRequestToJsonTest);
 
-  test('transaction multi void request toJson', _transactionMultiVoidRequestToJsonTest);
+  test('transaction multi void request toJson',
+      _transactionMultiVoidRequestToJsonTest);
 
-  test('transaction multi refund request toJson', _transactionMultiRefundRequestToJsonTest);
+  test('transaction multi refund request toJson',
+      _transactionMultiRefundRequestToJsonTest);
 
-  test('transaction search request toJson', _transactionSearchRequestToJsonTest);
-  test('transaction search request getUrl merchant passed', _transactionSearchRequestGetUrlTest_merchantPassed);
-  test('transaction search request getUrl without merchant', _transactionSearchRequestGetUrlTest_withoutMerchant);
+  test(
+      'transaction search request toJson', _transactionSearchRequestToJsonTest);
+  test('transaction search request getUrl merchant passed',
+      _transactionSearchRequestGetUrlTest_merchantPassed);
+  test('transaction search request getUrl without merchant',
+      _transactionSearchRequestGetUrlTest_withoutMerchant);
 }
 
 void _transactionSearchRequestGetUrlTest_withoutMerchant() {
@@ -49,7 +70,8 @@ void _transactionSearchRequestGetUrlTest_withoutMerchant() {
 }
 
 void _transactionSearchRequestGetUrlTest_merchantPassed() {
-  expect('/transaction/search/testMerchantId', TransactionSearchRequest(merchantId: 'testMerchantId').getPath());
+  expect('/transaction/search/testMerchantId',
+      TransactionSearchRequest(merchantId: 'testMerchantId').getPath());
 }
 
 void _transactionSearchRequestToJsonTest() {
@@ -103,9 +125,11 @@ final _querySPIntJson = '{"operator":"!=","value":100}';
 final _searchDateRangeJson =
     '{"start_date":"2020-02-01T00:00:00.000Z","end_date":"2020-03-01T00:00:00.000Z","duration":"this_month"}';
 
-QuerySearchParamString _createQSPS() => QuerySearchParamString(operator: SearchOperator.notEquals, value: 'test value');
+QuerySearchParamString _createQSPS() => QuerySearchParamString(
+    operator: SearchOperator.notEquals, value: 'test value');
 
-QuerySearchParamInt _createQSPI() => QuerySearchParamInt(operator: SearchOperator.notEquals, value: 100);
+QuerySearchParamInt _createQSPI() =>
+    QuerySearchParamInt(operator: SearchOperator.notEquals, value: 100);
 
 SearchDateRange _createSDR() => SearchDateRange()
   ..startDate = DateTime.utc(2020, 2)
@@ -123,10 +147,12 @@ void _transactionMultiRefundRequestToJsonTest() {
   expect(_transactionMultiRefundRequestJson, jsonEncode(request.toJson()));
 }
 
-final _transactionMultiRefundRequestJson = '{"transactions":[{"id":"test id","amount":100}]}';
+final _transactionMultiRefundRequestJson =
+    '{"transactions":[{"id":"test id","amount":100}]}';
 
 void _transactionMultiVoidRequestToJsonTest() {
-  final request = TransactionMultiVoidRequest()..transactions = [VoidTransactionData()..id = 'test id'];
+  final request = TransactionMultiVoidRequest()
+    ..transactions = [VoidTransactionData()..id = 'test id'];
 
   expect(_transactionMultiVoidRequestJson, jsonEncode(request.toJson()));
 }
@@ -172,10 +198,12 @@ void _transactionTipAdjustmentRequestToJsonTest() {
   expect(_transactionTipAdjustmentRequestJson, jsonEncode(request.toJson()));
 }
 
-final _transactionTipAdjustmentRequestJson = '{"transaction_id":"","tip":1000,"base_amount":2000}';
+final _transactionTipAdjustmentRequestJson =
+    '{"transaction_id":"","tip":1000,"base_amount":2000}';
 
 void _transactionTipAdjustmentRequestGetUrlTest() {
-  expect('/transaction/test_id/tipadjust', TransactionTipAdjustmentRequest('test_id').getPath());
+  expect('/transaction/test_id/tipadjust',
+      TransactionTipAdjustmentRequest('test_id').getPath());
 }
 
 void _transactionPrintReceiptRequestToJsonTest() {
@@ -187,7 +215,8 @@ void _transactionPrintReceiptRequestToJsonTest() {
 final _transactionPrintReceiptRequestJson = '{"transaction_id":""}';
 
 void _transactionPrintReceiptRequestGetUrlTest() {
-  expect('/transaction/test_id/print', TransactionPrintReceiptRequest('test_id').getPath());
+  expect('/transaction/test_id/print',
+      TransactionPrintReceiptRequest('test_id').getPath());
 }
 
 void _transactionEmailReceiptRequestToJsonTest() {
@@ -196,10 +225,12 @@ void _transactionEmailReceiptRequestToJsonTest() {
   expect(_transactionEmailReceiptRequestJson, jsonEncode(request.toJson()));
 }
 
-final _transactionEmailReceiptRequestJson = '{"transaction_id":"","email_address":"test email address"}';
+final _transactionEmailReceiptRequestJson =
+    '{"transaction_id":"","email_address":"test email address"}';
 
 void _transactionEmailReceiptRequestGetUrlTest() {
-  expect('/transaction/test_id/email', TransactionEmailReceiptRequest('', 'test_id').getPath());
+  expect('/transaction/test_id/email',
+      TransactionEmailReceiptRequest('', 'test_id').getPath());
 }
 
 void _transactionCreateVaultRequestToJsonTest() {
@@ -211,7 +242,8 @@ void _transactionCreateVaultRequestToJsonTest() {
 final _transactionCreateVaultRequestJson = '{"transaction_id":""}';
 
 void _transactionCreateVaultRequestGetUrlTest() {
-  expect('/transaction/test_id/vault', TransactionCreateVaultRequest('test_id').getPath());
+  expect('/transaction/test_id/vault',
+      TransactionCreateVaultRequest('test_id').getPath());
 }
 
 void _transactionRefundRequestToJsonTest() {
@@ -230,7 +262,8 @@ final _transactionRefundRequestJson =
     '{"transaction_id":"","amount":1000,"ip_address":"test ipAddress","terminal_id":"test terminalId","vendor_id":"test vendorId","print_receipt":"test printReceipt","signature_required":"test signatureRequired"}';
 
 void _transactionRefundRequestGetUrlTest() {
-  expect('/transaction/test_id/refund', TransactionRefundRequest('test_id').getPath());
+  expect('/transaction/test_id/refund',
+      TransactionRefundRequest('test_id').getPath());
 }
 
 void _transactionVoidRequestToJsonTest() {
@@ -242,11 +275,13 @@ void _transactionVoidRequestToJsonTest() {
 final _transactionVoidRequestJson = '{"transaction_id":""}';
 
 void _transactionVoidRequestGetUrlTest() {
-  expect('/transaction/test_id/void', TransactionVoidRequest('test_id').getPath());
+  expect(
+      '/transaction/test_id/void', TransactionVoidRequest('test_id').getPath());
 }
 
 void _transactionCaptureRequestGetUrlTest() {
-  expect('/transaction/test_id/capture', TransactionCaptureRequest('test_id').getPath());
+  expect('/transaction/test_id/capture',
+      TransactionCaptureRequest('test_id').getPath());
 }
 
 void _transactionCaptureRequestToJsonTest() {
@@ -267,7 +302,8 @@ final _transactionCaptureRequestJson =
     '{"transaction_id":"test_transaction_id","amount":1000,"tax_amount":1001,"tax_exempt":true,"shipping_amount":1002,"order_id":"test orderId","po_number":"test poNumber","ip_address":"test ipAddress","vendor_id":"test vendorId"}';
 
 void _transactionGetRequestGetUrlTest_merchantIdAndTransactionIdPassed() {
-  final request = TransactionGetRequest('testTransactionId', merchantId: 'testMerchantId');
+  final request =
+      TransactionGetRequest('testTransactionId', merchantId: 'testMerchantId');
 
   expect('/transaction/testMerchantId/testTransactionId', request.getPath());
 }
@@ -287,7 +323,7 @@ void _transactionCreateRequestToJsonTest() {
 final _transactionCreateRequestJson =
     '{"idempotency_key":"test idempotency key","idempotency_time":159,"type":"verification","tax_exempt":true,"currency":"PHP","description":"test description","order_id":"test order id","po_number":"test po number","ip_address":"127.0.0.1","email_receipt":true,"email_address":"test@gateway.com","processor_id":"test processor id","allow_partial_payment":true,"create_vault_record":true,"vault_record_id_format":"test vault record id format","vendor_id":"test vendor id","amount":100,"tax_amount":101,"shipping_amount":102,"surcharge":103,"discount_amount":104,"national_tax_amount":105,"duty_amount":106,"ship_from_postal_code":"test postal code","summary_commodity_code":"test summary commodity code","merchant_vat_registration_number":"test m vat number","customer_vat_registration_number":"test c vat number","payment_adjustment":{"value":107,"type":"test type"},"additional_amounts":{"hsa":{"total":108,"rx_amount":109,"vision_amount":110,"clinic_amount":111,"dental_amount":112,"sku":"test sku"}},"payment_method":$_paymentMethodJson,"card_on_file_indicator":"test card on file indicator","initiated_by":"test initiated by","initial_transaction_id":"test initial transaction id","stored_credential_indicator":"test stored credential indicator","billing_address":$_addressJson,"shipping_address":$_addressJson,"processor_specific":{"boltPay":{"recurring_cycle":"test recurring cycle"}},"custom_fields":{"test custom field key 1":["test custom field value 1","test custom field value 2"]},"group_name":"test group name","descriptor":{"name":"test name","address":"test address","city":"test city","state":"test state","postal_code":"test postalCode","email":"test email","phone":"test phone"},"line_items":[$_lineItemJson],"fingerprint":{"test fingerprint key":"test value 1"},"bypass_rule_engine":true,"void_on_success":true,"billing_method":"test billing method","mcc":"test mcc"}';
 final _paymentMethodJson =
-    '{"card":{"entry_type":"test entry type","number":"test number","expiration_date":"10/20","cvc":"123","track_1":"test track 1","track_2":"test track 2","encrypted_track_1":"test encrypted track 1","encrypted_track_2":"test encrypted track 2","ksn":"test ksn","encrypted_data":"test encrypted data","cardholder_authentication":{"eci":"test eci","cavv":"test cavv","xid":"test xid","version":"test version","ds_transaction_id":"test ds transaction id","acs_transaction_id":"test acs transaction id"},"card_present":"test card present","signature_data":"test_signature_data"},"ach":{"routing_number":"test routing number","account_number":"test account number","account_type":"text account type","sec_code":"test sec code","check_number":"test check number","accountholder_authentication":{"dl_state":"test dl state","dl_number":"test dl number","ssn4":"test ssn4","dob_year":"test dob year"}},"customer":{"id":"test id","source_merchant_id":"test source merchant id","payment_method_type":"test payment method type","payment_method_id":"test payment method id","billing_address_id":"test billing address id","shipping_address_id":"test shipping address id","cvc":"test cvc"},"terminal":{"id":"test id","expiration_date":"test expiration date","cvc":"test cvc","print_receipt":"test print receipt","signature_required":true,"clerk_id":999,"debit":true,"ebt":"test ebt"},"token":"test token","apple_pay_token":{"key_id":"test key id","processor_id":"test processor id","pkpaymenttoken":{"transactionTime":"2020-02-01T00:00:00.000Z","transactionIdentifier":"test transaction id","paymentMethod":{"type":"test type","network":"test network","displayName":"test display name"},"paymentData":{"version":"test version","signature":"test signature","header":{"applicationData":"test application data","ephemeralPublicKey":"test ephemeral public key","wrappedKey":"test wrapped key","publicKeyHash":"test public key hash","transactionID":"test transaction id"},"data":"test data"}}},"apm":{"type":"test type","selling_point":"test selling point","sold_service":"test sold service","merchant_redirect_url":"test merchant redirect url","locale":"test locale","mobile_view":true,"national_id":"test national id","consumer_ref":"test consumer ref","logo_url":"test logo url","hpp_title":"test hpp title","preferred_language":"test preferred language"},"plaid":{"ref_id":"test ref id","account_id":"test account id"},"cash":{}}';
+    '{"card":{"entry_type":"test entry type","number":"test number","expiration_date":"10/20","cvc":"123","track_1":"test track 1","track_2":"test track 2","encrypted_track_1":"test encrypted track 1","encrypted_track_2":"test encrypted track 2","ksn":"test ksn","encrypted_data":"test encrypted data","cardholder_authentication":{"eci":"test eci","cavv":"test cavv","xid":"test xid","version":"test version","ds_transaction_id":"test ds transaction id","acs_transaction_id":"test acs transaction id"},"card_present":"test card present","signature_data":"test_signature_data"},"ach":{"routing_number":"test routing number","account_number":"test account number","account_type":"text account type","sec_code":"test sec code","check_number":"test check number","accountholder_authentication":{"dl_state":"test dl state","dl_number":"test dl number","ssn4":"test ssn4","dob_year":"test dob year"}},"customer":{"id":"test id","source_merchant_id":"test source merchant id","payment_method_type":"test payment method type","payment_method_id":"test payment method id","billing_address_id":"test billing address id","shipping_address_id":"test shipping address id","cvc":"test cvc","terminal_id":"test terminal id"},"terminal":{"id":"test id","expiration_date":"test expiration date","cvc":"test cvc","print_receipt":"test print receipt","signature_required":true,"clerk_id":999,"debit":true,"ebt":"test ebt","trace_num":"test trace number","host_token":"test token"},"token":"test token","apple_pay_token":{"key_id":"test key id","processor_id":"test processor id","pkpaymenttoken":{"transactionTime":"2020-02-01T00:00:00.000Z","transactionIdentifier":"test transaction id","paymentMethod":{"type":"test type","network":"test network","displayName":"test display name"},"paymentData":{"version":"test version","signature":"test signature","header":{"applicationData":"test application data","ephemeralPublicKey":"test ephemeral public key","wrappedKey":"test wrapped key","publicKeyHash":"test public key hash","transactionID":"test transaction id"},"data":"test data"}}},"apm":{"type":"test type","selling_point":"test selling point","sold_service":"test sold service","merchant_redirect_url":"test merchant redirect url","locale":"test locale","mobile_view":true,"national_id":"test national id","consumer_ref":"test consumer ref","logo_url":"test logo url","hpp_title":"test hpp title","preferred_language":"test preferred language"},"plaid":{"ref_id":"test ref id","account_id":"test account id"},"cash":{}}';
 final _addressJson =
     '{"first_name":"test firstName","last_name":"test lastName","company":"test company","address_line_1":"test addressLine1","address_line_2":"test addressLine2","city":"test city","state":"test state","postal_code":"test postalCode","country":"test country","phone":"test phone","fax":"test fax","email":"test email"}';
 final _lineItemJson =
@@ -354,9 +390,13 @@ TransactionCreateRequest _createTransactionCreateRequest() {
     ..billingAddress = _createAddress()
     ..shippingAddress = _createAddress();
 
-  request.processorSpecific = ProcessorSpecificRequest()..boltPay = (BoltPay()..recurringCycle = 'test recurring cycle');
+  request.processorSpecific = ProcessorSpecificRequest()
+    ..boltPay = (BoltPay()..recurringCycle = 'test recurring cycle');
   request.customFields = {
-    'test custom field key 1': ['test custom field value 1', 'test custom field value 2'],
+    'test custom field key 1': [
+      'test custom field value 1',
+      'test custom field value 2'
+    ],
   };
   request.groupName = 'test group name';
   request.descriptor = DescriptorRequest()
@@ -457,7 +497,8 @@ PaymentMethodRequest _createPaymentMethodRequest() => PaymentMethodRequest()
     ..paymentMethodId = 'test payment method id'
     ..billingAddressId = 'test billing address id'
     ..shippingAddressId = 'test shipping address id'
-    ..cvc = 'test cvc')
+    ..cvc = 'test cvc'
+    ..terminalId = 'test terminal id')
   ..terminal = (TerminalTransactionRequest()
     ..id = 'test id'
     ..expirationDate = 'test expiration date'
@@ -466,7 +507,9 @@ PaymentMethodRequest _createPaymentMethodRequest() => PaymentMethodRequest()
     ..signatureRequired = true
     ..clerkId = 999
     ..debit = true
-    ..ebt = 'test ebt')
+    ..ebt = 'test ebt'
+    ..traceNum = 'test trace number'
+    ..hostToken = 'test token')
   ..token = 'test token'
   ..applePayToken = (ApplePayTokenRequest()
     ..keyId = 'test key id'
