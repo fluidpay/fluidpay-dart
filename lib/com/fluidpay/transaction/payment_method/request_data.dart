@@ -181,6 +181,8 @@ class TerminalTransactionRequest extends Decodable {
   int? clerkId;
   bool? debit;
   String? ebt;
+  String? traceNum;
+  String? hostToken;
 
   TerminalTransactionRequest({
     this.id,
@@ -191,6 +193,8 @@ class TerminalTransactionRequest extends Decodable {
     this.clerkId,
     this.debit,
     this.ebt,
+    this.traceNum,
+    this.hostToken,
   });
 
   factory TerminalTransactionRequest.fromJson(Map<String, dynamic> json) => _$TerminalTransactionRequestFromJson(json);
