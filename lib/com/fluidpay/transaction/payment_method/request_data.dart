@@ -155,7 +155,7 @@ class CustomerTransactionRequest extends Decodable {
   String? billingAddressId;
   String? shippingAddressId;
   String? cvc;
-  String? terminalID;
+  String? terminalId;
 
   CustomerTransactionRequest({
     this.id,
@@ -165,7 +165,7 @@ class CustomerTransactionRequest extends Decodable {
     this.billingAddressId,
     this.shippingAddressId,
     this.cvc,
-    this.terminalID,
+    this.terminalId,
   });
 
   factory CustomerTransactionRequest.fromJson(Map<String, dynamic> json) => _$CustomerTransactionRequestFromJson(json);
