@@ -317,9 +317,7 @@ void _transactionGetRequestGetUrlTest_onlyTransactionIdPassed() {
 void _transactionCreateRequestToJsonTest() {
   final request = _createTransactionCreateRequest();
 
-  final js = jsonEncode(request.toJson());
-  final res = _transactionCreateRequestJson;
-  expect(js, _transactionCreateRequestJson);
+  expect(jsonEncode(request.toJson()), _transactionCreateRequestJson);
 }
 
 final _transactionCreateRequestJson =
