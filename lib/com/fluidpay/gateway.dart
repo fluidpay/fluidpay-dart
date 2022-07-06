@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 
 import 'common/base.dart';
 
+typedef RawResponseCallback = void Function(http.Response);
+
 class Gateway {
   static final instance = Gateway._internal();
 
@@ -13,6 +15,7 @@ class Gateway {
   String? apiKey;
   AuthLoginResponseData? authData;
   Map<String, String> Function()? _createAuthHeader;
+  RawResponseCallback? rawResponseCallback;
 
   Gateway._internal();
 
@@ -23,11 +26,10 @@ class Gateway {
 
   _CommonClient get _client {
     if (_baseUrl?.isNotEmpty != true) {
-      throw ArgumentError(
-          '\'baseUrl\' must not be null or empty. Use init method to set it properly.');
+      throw ArgumentError('\'baseUrl\' must not be null or empty. Use init method to set it properly.');
     }
-    return _CommonClient(
-        _baseUrl!, apiKey, _createAuthHeader ?? _defaultAuthHeaderCreator);
+    return _CommonClient(_baseUrl!, apiKey, _createAuthHeader ?? _defaultAuthHeaderCreator,
+        (response) => rawResponseCallback?.call(response));
   }
 
   Future<AuthLoginResponse> login(AuthLoginRequest loginRequest) async {
@@ -40,8 +42,7 @@ class Gateway {
     return authResponse;
   }
 
-  Future<Response> execute<Response extends Responsable>(
-      Requestable<Response> request) {
+  Future<Response> execute<Response extends Responsable>(Requestable<Response> request) {
     Future<Map<String, dynamic>> result;
 
     switch (request.getRequestMethod()) {
@@ -81,11 +82,12 @@ class Gateway {
 class _CommonClient {
   final String baseUrl;
   final String? apiKey;
+  final RawResponseCallback rawResponseCallback;
 
   final headers = {'Content-Type': 'application/json'};
 
-  _CommonClient(this.baseUrl, this.apiKey,
-      Map<String, String> Function() createAuthHeader) {
+  _CommonClient(
+      this.baseUrl, this.apiKey, Map<String, String> Function() createAuthHeader, this.rawResponseCallback) {
     if (apiKey != null) {
       headers['Authorization'] = apiKey!;
     } else {
@@ -93,10 +95,12 @@ class _CommonClient {
     }
   }
 
-  Map<String, dynamic> _createJsonFromResponse(http.Response resp) {
-    final result = jsonDecode(resp.body);
+  Map<String, dynamic> _handleResponse(http.Response response) {
+    rawResponseCallback(response);
 
-    result['status_code'] = resp.statusCode;
+    final result = jsonDecode(response.body);
+
+    result['status_code'] = response.statusCode;
 
     return result;
   }
@@ -107,7 +111,7 @@ class _CommonClient {
         headers: headers,
         body: jsonEncode(baseRequest.toJson()),
       )
-      .then(_createJsonFromResponse);
+      .then(_handleResponse);
 
   Future<Map<String, dynamic>> put(Requestable baseRequest) => http
       .put(
@@ -115,33 +119,30 @@ class _CommonClient {
         headers: headers,
         body: jsonEncode(baseRequest.toJson()),
       )
-      .then(_createJsonFromResponse);
+      .then(_handleResponse);
 
   Future<Map<String, dynamic>> get(Requestable baseRequest) => http
       .get(
         _buildUri(baseRequest),
         headers: headers,
       )
-      .then(_createJsonFromResponse);
+      .then(_handleResponse);
 
   Future<Map<String, dynamic>> delete(Requestable baseRequest) => http
       .delete(
         _buildUri(baseRequest),
         headers: headers,
       )
-      .then(_createJsonFromResponse);
+      .then(_handleResponse);
 
   Uri _buildUri(Requestable baseRequest) {
     final baseUri = Uri.parse(baseUrl);
 
     if (baseUri.scheme == 'https') {
-      return Uri.https(baseUri.host, '${baseUri.path}${baseRequest.getPath()}',
-          baseRequest.getQueryParams());
+      return Uri.https(baseUri.host, '${baseUri.path}${baseRequest.getPath()}', baseRequest.getQueryParams());
     }
 
-    return Uri.http(
-        '${baseUri.host}:${baseUri.port}',
-        '${baseUri.path}${baseRequest.getPath()}',
+    return Uri.http('${baseUri.host}:${baseUri.port}', '${baseUri.path}${baseRequest.getPath()}',
         baseRequest.getQueryParams());
   }
 }
