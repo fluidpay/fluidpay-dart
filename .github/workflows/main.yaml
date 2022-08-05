@@ -15,7 +15,5 @@ jobs:
       - uses: dart-lang/setup-dart@v1.3
       - name: Pull dependencies
         run: dart pub get
-      - name: Build generated source
-        run: dart pub run build_runner build
       - name: Run tests
         run: dart pub run test
