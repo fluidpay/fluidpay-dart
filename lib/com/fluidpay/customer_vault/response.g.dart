@@ -6,8 +6,7 @@ part of 'response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CustomerCreateResponse _$CustomerCreateResponseFromJson(
-    Map<String, dynamic> json) {
+CustomerCreateResponse _$CustomerCreateResponseFromJson(Map<String, dynamic> json) {
   return CustomerCreateResponse()
     ..status = json['status'] as String?
     ..msg = json['msg'] as String?
@@ -15,13 +14,10 @@ CustomerCreateResponse _$CustomerCreateResponseFromJson(
     ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
-        : CustomerCreateResponseData.fromJson(
-            json['data'] as Map<String, dynamic>);
+        : CustomerCreateResponseData.fromJson(json['data'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$CustomerCreateResponseToJson(
-        CustomerCreateResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerCreateResponseToJson(CustomerCreateResponse instance) => <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
       'status_code': instance.statusCode,
@@ -29,28 +25,21 @@ Map<String, dynamic> _$CustomerCreateResponseToJson(
       'data': instance.data,
     };
 
-CustomerCreateResponseData _$CustomerCreateResponseDataFromJson(
-    Map<String, dynamic> json) {
+CustomerCreateResponseData _$CustomerCreateResponseDataFromJson(Map<String, dynamic> json) {
   return CustomerCreateResponseData()
     ..id = json['id'] as String?
-    ..data = json['data'] == null
-        ? null
-        : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
-    ..createAt = json['create_at'] == null
-        ? null
-        : DateTime.parse(json['create_at'] as String)
-    ..updateAt = json['update_at'] == null
-        ? null
-        : DateTime.parse(json['update_at'] as String);
+    ..data =
+        json['data'] == null ? null : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
+    ..createdAt = json['created_at'] == null ? null : DateTime.parse(json['created_at'] as String)
+    ..updatedAt = json['updated_at'] == null ? null : DateTime.parse(json['updated_at'] as String);
 }
 
-Map<String, dynamic> _$CustomerCreateResponseDataToJson(
-        CustomerCreateResponseData instance) =>
+Map<String, dynamic> _$CustomerCreateResponseDataToJson(CustomerCreateResponseData instance) =>
     <String, dynamic>{
       'id': instance.id,
       'data': instance.data,
-      'create_at': instance.createAt?.toIso8601String(),
-      'update_at': instance.updateAt?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };
 
 CustomerGetResponse _$CustomerGetResponseFromJson(Map<String, dynamic> json) {
@@ -59,15 +48,11 @@ CustomerGetResponse _$CustomerGetResponseFromJson(Map<String, dynamic> json) {
     ..msg = json['msg'] as String?
     ..statusCode = json['status_code'] as int?
     ..totalCount = json['total_count'] as int?
-    ..data = json['data'] == null
-        ? null
-        : CustomerGetResponseData.fromJson(
-            json['data'] as Map<String, dynamic>);
+    ..data =
+        json['data'] == null ? null : CustomerGetResponseData.fromJson(json['data'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$CustomerGetResponseToJson(
-        CustomerGetResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerGetResponseToJson(CustomerGetResponse instance) => <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
       'status_code': instance.statusCode,
@@ -75,32 +60,23 @@ Map<String, dynamic> _$CustomerGetResponseToJson(
       'data': instance.data,
     };
 
-CustomerGetResponseData _$CustomerGetResponseDataFromJson(
-    Map<String, dynamic> json) {
+CustomerGetResponseData _$CustomerGetResponseDataFromJson(Map<String, dynamic> json) {
   return CustomerGetResponseData()
     ..id = json['id'] as String?
-    ..data = json['data'] == null
-        ? null
-        : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
-    ..createAt = json['create_at'] == null
-        ? null
-        : DateTime.parse(json['create_at'] as String)
-    ..updateAt = json['update_at'] == null
-        ? null
-        : DateTime.parse(json['update_at'] as String);
+    ..data =
+        json['data'] == null ? null : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
+    ..createdAt = json['created_at'] == null ? null : DateTime.parse(json['created_at'] as String)
+    ..updatedAt = json['updated_at'] == null ? null : DateTime.parse(json['updated_at'] as String);
 }
 
-Map<String, dynamic> _$CustomerGetResponseDataToJson(
-        CustomerGetResponseData instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerGetResponseDataToJson(CustomerGetResponseData instance) => <String, dynamic>{
       'id': instance.id,
       'data': instance.data,
-      'create_at': instance.createAt?.toIso8601String(),
-      'update_at': instance.updateAt?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };
 
-CustomerSearchResponse _$CustomerSearchResponseFromJson(
-    Map<String, dynamic> json) {
+CustomerSearchResponse _$CustomerSearchResponseFromJson(Map<String, dynamic> json) {
   return CustomerSearchResponse()
     ..status = json['status'] as String?
     ..msg = json['msg'] as String?
@@ -111,9 +87,7 @@ CustomerSearchResponse _$CustomerSearchResponseFromJson(
         .toList();
 }
 
-Map<String, dynamic> _$CustomerSearchResponseToJson(
-        CustomerSearchResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerSearchResponseToJson(CustomerSearchResponse instance) => <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
       'status_code': instance.statusCode,
@@ -121,8 +95,7 @@ Map<String, dynamic> _$CustomerSearchResponseToJson(
       'data': instance.data,
     };
 
-CustomerAddressCreateResponse _$CustomerAddressCreateResponseFromJson(
-    Map<String, dynamic> json) {
+CustomerAddressCreateResponse _$CustomerAddressCreateResponseFromJson(Map<String, dynamic> json) {
   return CustomerAddressCreateResponse()
     ..status = json['status'] as String?
     ..msg = json['msg'] as String?
@@ -130,12 +103,10 @@ CustomerAddressCreateResponse _$CustomerAddressCreateResponseFromJson(
     ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
-        : CustomerAddressCreateResponseData.fromJson(
-            json['data'] as Map<String, dynamic>);
+        : CustomerAddressCreateResponseData.fromJson(json['data'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$CustomerAddressCreateResponseToJson(
-        CustomerAddressCreateResponse instance) =>
+Map<String, dynamic> _$CustomerAddressCreateResponseToJson(CustomerAddressCreateResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
@@ -144,32 +115,24 @@ Map<String, dynamic> _$CustomerAddressCreateResponseToJson(
       'data': instance.data,
     };
 
-CustomerAddressCreateResponseData _$CustomerAddressCreateResponseDataFromJson(
-    Map<String, dynamic> json) {
+CustomerAddressCreateResponseData _$CustomerAddressCreateResponseDataFromJson(Map<String, dynamic> json) {
   return CustomerAddressCreateResponseData()
     ..id = json['id'] as String?
-    ..data = json['data'] == null
-        ? null
-        : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
-    ..createAt = json['create_at'] == null
-        ? null
-        : DateTime.parse(json['create_at'] as String)
-    ..updateAt = json['update_at'] == null
-        ? null
-        : DateTime.parse(json['update_at'] as String);
+    ..data =
+        json['data'] == null ? null : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
+    ..createdAt = json['created_at'] == null ? null : DateTime.parse(json['created_at'] as String)
+    ..updatedAt = json['updated_at'] == null ? null : DateTime.parse(json['updated_at'] as String);
 }
 
-Map<String, dynamic> _$CustomerAddressCreateResponseDataToJson(
-        CustomerAddressCreateResponseData instance) =>
+Map<String, dynamic> _$CustomerAddressCreateResponseDataToJson(CustomerAddressCreateResponseData instance) =>
     <String, dynamic>{
       'id': instance.id,
       'data': instance.data,
-      'create_at': instance.createAt?.toIso8601String(),
-      'update_at': instance.updateAt?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };
 
-CustomerAddressUpdateResponse _$CustomerAddressUpdateResponseFromJson(
-    Map<String, dynamic> json) {
+CustomerAddressUpdateResponse _$CustomerAddressUpdateResponseFromJson(Map<String, dynamic> json) {
   return CustomerAddressUpdateResponse()
     ..status = json['status'] as String?
     ..msg = json['msg'] as String?
@@ -177,12 +140,10 @@ CustomerAddressUpdateResponse _$CustomerAddressUpdateResponseFromJson(
     ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
-        : CustomerAddressUpdateResponseData.fromJson(
-            json['data'] as Map<String, dynamic>);
+        : CustomerAddressUpdateResponseData.fromJson(json['data'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$CustomerAddressUpdateResponseToJson(
-        CustomerAddressUpdateResponse instance) =>
+Map<String, dynamic> _$CustomerAddressUpdateResponseToJson(CustomerAddressUpdateResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
@@ -191,32 +152,24 @@ Map<String, dynamic> _$CustomerAddressUpdateResponseToJson(
       'data': instance.data,
     };
 
-CustomerAddressUpdateResponseData _$CustomerAddressUpdateResponseDataFromJson(
-    Map<String, dynamic> json) {
+CustomerAddressUpdateResponseData _$CustomerAddressUpdateResponseDataFromJson(Map<String, dynamic> json) {
   return CustomerAddressUpdateResponseData()
     ..id = json['id'] as String?
-    ..data = json['data'] == null
-        ? null
-        : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
-    ..createAt = json['create_at'] == null
-        ? null
-        : DateTime.parse(json['create_at'] as String)
-    ..updateAt = json['update_at'] == null
-        ? null
-        : DateTime.parse(json['update_at'] as String);
+    ..data =
+        json['data'] == null ? null : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
+    ..createdAt = json['created_at'] == null ? null : DateTime.parse(json['created_at'] as String)
+    ..updatedAt = json['updated_at'] == null ? null : DateTime.parse(json['updated_at'] as String);
 }
 
-Map<String, dynamic> _$CustomerAddressUpdateResponseDataToJson(
-        CustomerAddressUpdateResponseData instance) =>
+Map<String, dynamic> _$CustomerAddressUpdateResponseDataToJson(CustomerAddressUpdateResponseData instance) =>
     <String, dynamic>{
       'id': instance.id,
       'data': instance.data,
-      'create_at': instance.createAt?.toIso8601String(),
-      'update_at': instance.updateAt?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };
 
-CustomerPaymentTypeCreateResponse _$CustomerPaymentTypeCreateResponseFromJson(
-    Map<String, dynamic> json) {
+CustomerPaymentTypeCreateResponse _$CustomerPaymentTypeCreateResponseFromJson(Map<String, dynamic> json) {
   return CustomerPaymentTypeCreateResponse()
     ..status = json['status'] as String?
     ..msg = json['msg'] as String?
@@ -224,12 +177,10 @@ CustomerPaymentTypeCreateResponse _$CustomerPaymentTypeCreateResponseFromJson(
     ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
-        : CustomerPaymentTypeCreateResponseData.fromJson(
-            json['data'] as Map<String, dynamic>);
+        : CustomerPaymentTypeCreateResponseData.fromJson(json['data'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$CustomerPaymentTypeCreateResponseToJson(
-        CustomerPaymentTypeCreateResponse instance) =>
+Map<String, dynamic> _$CustomerPaymentTypeCreateResponseToJson(CustomerPaymentTypeCreateResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
@@ -238,19 +189,14 @@ Map<String, dynamic> _$CustomerPaymentTypeCreateResponseToJson(
       'data': instance.data,
     };
 
-CustomerPaymentTypeCreateResponseData
-    _$CustomerPaymentTypeCreateResponseDataFromJson(Map<String, dynamic> json) {
+CustomerPaymentTypeCreateResponseData _$CustomerPaymentTypeCreateResponseDataFromJson(
+    Map<String, dynamic> json) {
   return CustomerPaymentTypeCreateResponseData()
     ..id = json['id'] as String?
-    ..data = json['data'] == null
-        ? null
-        : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
-    ..createAt = json['create_at'] == null
-        ? null
-        : DateTime.parse(json['create_at'] as String)
-    ..updateAt = json['update_at'] == null
-        ? null
-        : DateTime.parse(json['update_at'] as String);
+    ..data =
+        json['data'] == null ? null : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
+    ..createdAt = json['created_at'] == null ? null : DateTime.parse(json['created_at'] as String)
+    ..updatedAt = json['updated_at'] == null ? null : DateTime.parse(json['updated_at'] as String);
 }
 
 Map<String, dynamic> _$CustomerPaymentTypeCreateResponseDataToJson(
@@ -258,12 +204,11 @@ Map<String, dynamic> _$CustomerPaymentTypeCreateResponseDataToJson(
     <String, dynamic>{
       'id': instance.id,
       'data': instance.data,
-      'create_at': instance.createAt?.toIso8601String(),
-      'update_at': instance.updateAt?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };
 
-CustomerPaymentTypeUpdateResponse _$CustomerPaymentTypeUpdateResponseFromJson(
-    Map<String, dynamic> json) {
+CustomerPaymentTypeUpdateResponse _$CustomerPaymentTypeUpdateResponseFromJson(Map<String, dynamic> json) {
   return CustomerPaymentTypeUpdateResponse()
     ..status = json['status'] as String?
     ..msg = json['msg'] as String?
@@ -271,12 +216,10 @@ CustomerPaymentTypeUpdateResponse _$CustomerPaymentTypeUpdateResponseFromJson(
     ..totalCount = json['total_count'] as int?
     ..data = json['data'] == null
         ? null
-        : CustomerPaymentTypeUpdateResponseData.fromJson(
-            json['data'] as Map<String, dynamic>);
+        : CustomerPaymentTypeUpdateResponseData.fromJson(json['data'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$CustomerPaymentTypeUpdateResponseToJson(
-        CustomerPaymentTypeUpdateResponse instance) =>
+Map<String, dynamic> _$CustomerPaymentTypeUpdateResponseToJson(CustomerPaymentTypeUpdateResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
@@ -285,19 +228,14 @@ Map<String, dynamic> _$CustomerPaymentTypeUpdateResponseToJson(
       'data': instance.data,
     };
 
-CustomerPaymentTypeUpdateResponseData
-    _$CustomerPaymentTypeUpdateResponseDataFromJson(Map<String, dynamic> json) {
+CustomerPaymentTypeUpdateResponseData _$CustomerPaymentTypeUpdateResponseDataFromJson(
+    Map<String, dynamic> json) {
   return CustomerPaymentTypeUpdateResponseData()
     ..id = json['id'] as String?
-    ..data = json['data'] == null
-        ? null
-        : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
-    ..createAt = json['create_at'] == null
-        ? null
-        : DateTime.parse(json['create_at'] as String)
-    ..updateAt = json['update_at'] == null
-        ? null
-        : DateTime.parse(json['update_at'] as String);
+    ..data =
+        json['data'] == null ? null : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>)
+    ..createdAt = json['created_at'] == null ? null : DateTime.parse(json['created_at'] as String)
+    ..updatedAt = json['updated_at'] == null ? null : DateTime.parse(json['updated_at'] as String);
 }
 
 Map<String, dynamic> _$CustomerPaymentTypeUpdateResponseDataToJson(
@@ -305,12 +243,11 @@ Map<String, dynamic> _$CustomerPaymentTypeUpdateResponseDataToJson(
     <String, dynamic>{
       'id': instance.id,
       'data': instance.data,
-      'create_at': instance.createAt?.toIso8601String(),
-      'update_at': instance.updateAt?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };
 
-CustomerDeleteResponse _$CustomerDeleteResponseFromJson(
-    Map<String, dynamic> json) {
+CustomerDeleteResponse _$CustomerDeleteResponseFromJson(Map<String, dynamic> json) {
   return CustomerDeleteResponse()
     ..status = json['status'] as String?
     ..msg = json['msg'] as String?
@@ -319,9 +256,7 @@ CustomerDeleteResponse _$CustomerDeleteResponseFromJson(
     ..data = json['data'];
 }
 
-Map<String, dynamic> _$CustomerDeleteResponseToJson(
-        CustomerDeleteResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerDeleteResponseToJson(CustomerDeleteResponse instance) => <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
       'status_code': instance.statusCode,
@@ -329,8 +264,7 @@ Map<String, dynamic> _$CustomerDeleteResponseToJson(
       'data': instance.data,
     };
 
-CustomerAddressDeleteResponse _$CustomerAddressDeleteResponseFromJson(
-    Map<String, dynamic> json) {
+CustomerAddressDeleteResponse _$CustomerAddressDeleteResponseFromJson(Map<String, dynamic> json) {
   return CustomerAddressDeleteResponse()
     ..status = json['status'] as String?
     ..msg = json['msg'] as String?
@@ -339,8 +273,7 @@ CustomerAddressDeleteResponse _$CustomerAddressDeleteResponseFromJson(
     ..data = json['data'];
 }
 
-Map<String, dynamic> _$CustomerAddressDeleteResponseToJson(
-        CustomerAddressDeleteResponse instance) =>
+Map<String, dynamic> _$CustomerAddressDeleteResponseToJson(CustomerAddressDeleteResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
@@ -349,8 +282,7 @@ Map<String, dynamic> _$CustomerAddressDeleteResponseToJson(
       'data': instance.data,
     };
 
-CustomerUpdateResponse _$CustomerUpdateResponseFromJson(
-    Map<String, dynamic> json) {
+CustomerUpdateResponse _$CustomerUpdateResponseFromJson(Map<String, dynamic> json) {
   return CustomerUpdateResponse()
     ..status = json['status'] as String?
     ..msg = json['msg'] as String?
@@ -359,9 +291,7 @@ CustomerUpdateResponse _$CustomerUpdateResponseFromJson(
     ..data = json['data'];
 }
 
-Map<String, dynamic> _$CustomerUpdateResponseToJson(
-        CustomerUpdateResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerUpdateResponseToJson(CustomerUpdateResponse instance) => <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
       'status_code': instance.statusCode,
@@ -369,8 +299,7 @@ Map<String, dynamic> _$CustomerUpdateResponseToJson(
       'data': instance.data,
     };
 
-CustomerPaymentTypeDeleteResponse _$CustomerPaymentTypeDeleteResponseFromJson(
-    Map<String, dynamic> json) {
+CustomerPaymentTypeDeleteResponse _$CustomerPaymentTypeDeleteResponseFromJson(Map<String, dynamic> json) {
   return CustomerPaymentTypeDeleteResponse()
     ..status = json['status'] as String?
     ..msg = json['msg'] as String?
@@ -379,8 +308,7 @@ CustomerPaymentTypeDeleteResponse _$CustomerPaymentTypeDeleteResponseFromJson(
     ..data = json['data'];
 }
 
-Map<String, dynamic> _$CustomerPaymentTypeDeleteResponseToJson(
-        CustomerPaymentTypeDeleteResponse instance) =>
+Map<String, dynamic> _$CustomerPaymentTypeDeleteResponseToJson(CustomerPaymentTypeDeleteResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'msg': instance.msg,
@@ -392,51 +320,36 @@ Map<String, dynamic> _$CustomerPaymentTypeDeleteResponseToJson(
 CustomerResponseData _$CustomerResponseDataFromJson(Map<String, dynamic> json) {
   return CustomerResponseData(
     id: json['id'] as String?,
-    data: json['data'] == null
-        ? null
-        : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>),
-    createAt: json['create_at'] == null
-        ? null
-        : DateTime.parse(json['create_at'] as String),
-    updateAt: json['update_at'] == null
-        ? null
-        : DateTime.parse(json['update_at'] as String),
+    data: json['data'] == null ? null : CustomerDataContainer.fromJson(json['data'] as Map<String, dynamic>),
+    createdAt: json['created_at'] == null ? null : DateTime.parse(json['created_at'] as String),
+    updatedAt: json['updated_at'] == null ? null : DateTime.parse(json['updated_at'] as String),
   );
 }
 
-Map<String, dynamic> _$CustomerResponseDataToJson(
-        CustomerResponseData instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerResponseDataToJson(CustomerResponseData instance) => <String, dynamic>{
       'id': instance.id,
       'data': instance.data,
-      'create_at': instance.createAt?.toIso8601String(),
-      'update_at': instance.updateAt?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };
 
-CustomerDataContainer _$CustomerDataContainerFromJson(
-    Map<String, dynamic> json) {
+CustomerDataContainer _$CustomerDataContainerFromJson(Map<String, dynamic> json) {
   return CustomerDataContainer(
-    customer: json['customer'] == null
-        ? null
-        : Customer.fromJson(json['customer'] as Map<String, dynamic>),
+    customer: json['customer'] == null ? null : Customer.fromJson(json['customer'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$CustomerDataContainerToJson(
-        CustomerDataContainer instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerDataContainerToJson(CustomerDataContainer instance) => <String, dynamic>{
       'customer': instance.customer,
     };
 
 Customer _$CustomerFromJson(Map<String, dynamic> json) {
   return Customer(
     description: json['description'] as String?,
-    defaults: json['defaults'] == null
-        ? null
-        : CustomerDefaults.fromJson(json['defaults'] as Map<String, dynamic>),
-    payments: json['payments'] == null
-        ? null
-        : CustomerPayments.fromJson(json['payments'] as Map<String, dynamic>),
+    defaults:
+        json['defaults'] == null ? null : CustomerDefaults.fromJson(json['defaults'] as Map<String, dynamic>),
+    payments:
+        json['payments'] == null ? null : CustomerPayments.fromJson(json['payments'] as Map<String, dynamic>),
     addresses: (json['addresses'] as List<dynamic>?)
         ?.map((e) => CustomerAddress.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -459,14 +372,12 @@ CustomerPayments _$CustomerPaymentsFromJson(Map<String, dynamic> json) {
     cards: (json['cards'] as List<dynamic>?)
         ?.map((e) => CustomerCard.fromJson(e as Map<String, dynamic>))
         .toList(),
-    ach: (json['ach'] as List<dynamic>?)
-        ?.map((e) => CustomerACH.fromJson(e as Map<String, dynamic>))
-        .toList(),
+    ach:
+        (json['ach'] as List<dynamic>?)?.map((e) => CustomerACH.fromJson(e as Map<String, dynamic>)).toList(),
   );
 }
 
-Map<String, dynamic> _$CustomerPaymentsToJson(CustomerPayments instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerPaymentsToJson(CustomerPayments instance) => <String, dynamic>{
       'cards': instance.cards,
       'ach': instance.ach,
     };
@@ -480,8 +391,7 @@ CustomerDefaults _$CustomerDefaultsFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CustomerDefaultsToJson(CustomerDefaults instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerDefaultsToJson(CustomerDefaults instance) => <String, dynamic>{
       'billing_address_id': instance.billingAddressId,
       'shipping_address_id': instance.shippingAddressId,
       'payment_method_type': instance.paymentMethodType,

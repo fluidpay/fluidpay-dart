@@ -40,7 +40,7 @@ void testCustomerCreateResponseToJson() {
   _testInputData(resp.data);
 
   expect(jsonEncode(resp.toJson()),
-      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"create_at":null,"update_at":null}}');
+      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"created_at":null,"updated_at":null}}');
 }
 
 void testCustomerGetResponseToJson() {
@@ -57,7 +57,7 @@ void testCustomerGetResponseToJson() {
   _testInputData(resp.data);
 
   expect(jsonEncode(resp.toJson()),
-      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"create_at":null,"update_at":null}}');
+      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"created_at":null,"updated_at":null}}');
 }
 
 void testCustomerSearchResponse() {
@@ -74,7 +74,7 @@ void testCustomerSearchResponse() {
   _testInputData(resp.data?[0]);
 
   expect(jsonEncode(resp.toJson()),
-      '{"status":"success","msg":"success","status_code":null,"total_count":1,"data":[{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"create_at":null,"update_at":null}]}');
+      '{"status":"success","msg":"success","status_code":null,"total_count":1,"data":[{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"created_at":null,"updated_at":null}]}');
 }
 
 void testCustomerAddressCreateResponse() {
@@ -91,7 +91,7 @@ void testCustomerAddressCreateResponse() {
   _testInputData(resp.data);
 
   expect(jsonEncode(resp.toJson()),
-      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"create_at":null,"update_at":null}}');
+      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"created_at":null,"updated_at":null}}');
 }
 
 void testCustomerAddressUpdateResponse() {
@@ -108,7 +108,7 @@ void testCustomerAddressUpdateResponse() {
   _testInputData(resp.data);
 
   expect(jsonEncode(resp.toJson()),
-      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"create_at":null,"update_at":null}}');
+      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"created_at":null,"updated_at":null}}');
 }
 
 void testCustomerPaymentTypeCreateResponse() {
@@ -125,7 +125,7 @@ void testCustomerPaymentTypeCreateResponse() {
   _testInputData(resp.data);
 
   expect(jsonEncode(resp.toJson()),
-      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"create_at":null,"update_at":null}}');
+      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"created_at":null,"updated_at":null}}');
 }
 
 void testCustomerPaymentTypeUpdateResponse() {
@@ -142,7 +142,7 @@ void testCustomerPaymentTypeUpdateResponse() {
   _testInputData(resp.data);
 
   expect(jsonEncode(resp.toJson()),
-      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"create_at":null,"update_at":null}}');
+      '{"status":"success","msg":"success","status_code":null,"total_count":null,"data":{"id":"buhtj19erttq05jclhvg","data":{"customer":{"description":"some description","defaults":{"billing_address_id":"buhtj19erttq05jclhu0","shipping_address_id":"buhtj19erttq05jclhu0","payment_method_type":"card","payment_method_id":"buhtj19erttq05jclhv0"},"payments":{"cards":[{"id":"buhtj19erttq05jclhv0","number":null,"masked_number":"411111******1111","encrypted_number":null,"digest":null,"expiration_date":"11/22","card_type":"visa","processor_id":"","flags":[],"lock_value":null,"cvc":null,"initial_transaction_id":null,"instrument_type":null,"generic_card_level":null}],"ach":[]},"addresses":[{"first_name":"John","last_name":"Doe","company":"John Doe Corp","city":"Chicago","state":"IL","postal_code":"60123","country":"US","phone":"","fax":"","email":"","id":"buhtj19erttq05jclhu0","line_1":"2nd street","line_2":"123","hash":"hashdata"}],"flags":[],"notes":""}},"created_at":null,"updated_at":null}}');
 }
 
 void testCustomerDeleteResponse() {
@@ -267,8 +267,8 @@ var _inputData = {
       'notes': ''
     }
   },
-  'create_at': null,
-  'update_at': null
+  'created_at': null,
+  'updated_at': null
 };
 
 void _testInputData(CustomerResponseData? data) {
@@ -315,6 +315,6 @@ void _testInputData(CustomerResponseData? data) {
   expect(data?.data?.customer?.addresses?[0].hash, 'hashdata');
   expect(data?.data?.customer?.flags, []);
   expect(data?.data?.customer?.notes, '');
-  expect(data?.createAt, null);
-  expect(data?.updateAt, null);
+  expect(data?.createdAt, null);
+  expect(data?.updatedAt, null);
 }
