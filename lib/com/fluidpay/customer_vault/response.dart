@@ -184,14 +184,14 @@ class CustomerPaymentTypeDeleteResponse extends Responsable<dynamic> {
 class CustomerResponseData extends Decodable {
   String? id;
   CustomerDataContainer? data;
-  DateTime? createAt;
-  DateTime? updateAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
   CustomerResponseData({
     this.id,
     this.data,
-    this.createAt,
-    this.updateAt,
+    this.createdAt,
+    this.updatedAt,
   });
 
   factory CustomerResponseData.fromJson(Map<String, dynamic> json) =>
