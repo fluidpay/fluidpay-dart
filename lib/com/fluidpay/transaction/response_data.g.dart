@@ -7,7 +7,6 @@ part of 'response_data.dart';
 // **************************************************************************
 
 TransactionResponseData _$TransactionResponseDataFromJson(Map<String, dynamic> json) {
-  print('Amount: ${json['amount']}');
   return TransactionResponseData(
     id: json['id'] as String?,
     userId: json['user_id'] as String?,
