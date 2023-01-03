@@ -510,7 +510,7 @@ class TransactionMultiRefundRequest extends Creatable<TransactionMultiRefundResp
   TransactionMultiRefundResponse buildResponse(Map<String, dynamic> json) => TransactionMultiRefundResponse.fromJson(json);
 
   @override
-  String getPath() => '/transaction/multi/void';
+  String getPath() => '/transaction/multi/refund';
 
   @override
   Map<String, dynamic> toJson() => _$TransactionMultiRefundRequestToJson(this);
