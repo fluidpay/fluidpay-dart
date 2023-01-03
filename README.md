@@ -37,7 +37,7 @@ void main() async {
   Gateway.instance.init(baseUrl);
   
   final request = AuthLoginRequest('testUser', 'testPassword');
-  Gateway.instance.login(request);
+  await Gateway.instance.login(request);
 }
 ```
 
@@ -52,8 +52,12 @@ void main() async {
   // Do the initialization
 
   final request = TransactionCreateRequest();
-  request.amount = 1000;
-  request.paymentMethod.card.number = "4111111111111111"
+  request.paymentMethod = PaymentMethodRequest()
+  ..amount = 1000
+  ..card = (
+    CreditCardRequest()
+      ..number = "4111111111111111"
+  );
   // Fill other fields
 
   final response = await Gateway.instance.execute(request); // response will be TransactionCreateResponse
