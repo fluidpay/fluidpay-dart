@@ -3,7 +3,7 @@ import 'package:fluidpay/com/fluidpay/gateway.dart';
 import 'package:fluidpay/com/fluidpay/transaction/request.dart';
 
 void main() async {
-  Gateway.instance.init('https://example.com/api/v2', apiKey: 'YourApiKey');
+  Gateway.instance.init('https://example.com/api', apiKey: 'YourApiKey');
 
   final response = await Gateway.instance.login(AuthLoginRequest('testUser', 'testPassword'));
 

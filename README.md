@@ -1,42 +1,74 @@
-Dart package for [Fluid Pay API](https://sandbox.fluidpay.com/docs/api/).
+Dart SDK for using the [Fluid Pay API](https://sandbox.fluidpay.com/docs/api/).
 
-## How to use
-
-First you have to initalize and set your base url
+### Install
 
 ```dart
-Gateway.instance.init(baseUrl);
+  fluidpay:
+    git:
+      url: git@github.com:fluidpay/fluidpay-dart.git
+      ref: v0.4.0
 ```
 
-To execute requests declared in [Fluid Pay API](https://sandbox.fluidpay.com/docs/api/)
+### Usage
 
-Every request has its own response type which the execute method returns with.
+Before you can use the SDK a pre-initialization is required. This can be done by using API key or logging in.
+
+#### Initialization - API Key
+
 
 ```dart
-Gateway.instance.execute(request);
+import 'package:fluidpay/com/fluidpay/gateway.dart';
+
+void main() async {
+  String baseUrl = "https://sandbox.fluidpay.com/api";
+  Gateway.instance.init(baseUrl, apiKey: "apixxxx");
+}
 ```
 
-There are three options to authenticate your request
+#### Initialization - User login
 
-- API Key
+If you choose this option you can use the SDK in the name of the user who logged in.
 
 ```dart
-Gateway.instance.init(baseUrl, apiKey: myKey);
+import 'package:fluidpay/com/fluidpay/gateway.dart';
+
+void main() async {
+  String baseUrl = "https://sandbox.fluidpay.com/api";
+  Gateway.instance.init(baseUrl);
+  
+  final request = AuthLoginRequest('testUser', 'testPassword');
+  Gateway.instance.login(request);
+}
 ```
 
-- Login with credentials
+#### Execute requests
+
+If you have done wny of the steps above, the SDK initialized and ready to send requests. You can execute requests by passing the right request representation to the execute function. You can see the detailed description below about the [supported operations](#supported-operations).
 
 ```dart
-Gateway.instance.login(loginRequest);
+import 'package:fluidpay/com/fluidpay/gateway.dart';
+
+void main() async {
+  // Do the initialization
+
+  final request = TransactionCreateRequest();
+  request.amount = 1000;
+  request.paymentMethod.card.number = "4111111111111111"
+  // Fill other fields
+
+  final response = await Gateway.instance.execute(request); // response will be TransactionCreateResponse
+}
 ```
 
-- You can create custom authorization header with setAuthHeaderCreator method
+#### Change Auth Header
+
+In case of reauthentication or change of the method of the authentication there is an option to set the Authorization header.
 
 ```dart
-Gateway.instance.setAuthHeaderCreator(() => {'Authorization': 'Custom token'});
+Gateway.instance.setAuthHeaderCreator(() => {'Authorization': 'token/key/etc'});
 ```
 
-- Or you can set the previous auth response to make Gateway requests authenticated
+##### Save authentication
 
 ```dart
 void setSavedAuthJson() async {
@@ -47,7 +79,7 @@ void setSavedAuthJson() async {
 }
 ```
 
-## Available Requests and Responses
+### Supported operations
 
 | <div style="width:110px">Category</div>                               | Request                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Response                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |-----------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
