@@ -21,7 +21,7 @@ There are three options to authenticate your request
 - API Key
 
 ```dart
-Gateway.instance.init(baseUrl, apiKey = myKey);
+Gateway.instance.init(baseUrl, apiKey: myKey);
 ```
 
 - Login with credentials
