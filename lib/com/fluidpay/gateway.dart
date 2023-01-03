@@ -12,7 +12,7 @@ class Gateway {
   static final instance = Gateway._internal();
 
   String? _baseUrl;
-  String? apiKey;
+  String? _apiKey;
   AuthLoginResponseData? authData;
   Map<String, String> Function()? _createAuthHeader;
   RawResponseCallback? rawResponseCallback;
@@ -21,14 +21,14 @@ class Gateway {
 
   void init(String baseUrl, {String? apiKey}) {
     _baseUrl = baseUrl;
-    this.apiKey = apiKey;
+    _apiKey = apiKey;
   }
 
   _CommonClient get _client {
     if (_baseUrl?.isNotEmpty != true) {
       throw ArgumentError('\'baseUrl\' must not be null or empty. Use init method to set it properly.');
     }
-    return _CommonClient(_baseUrl!, apiKey, _createAuthHeader ?? _defaultAuthHeaderCreator,
+    return _CommonClient(_baseUrl!, _apiKey, _createAuthHeader ?? _defaultAuthHeaderCreator,
         (response) => rawResponseCallback?.call(response));
   }
 
