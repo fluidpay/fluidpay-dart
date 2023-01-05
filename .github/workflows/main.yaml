@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: shimataro/ssh-key-action@v2
-          with:
-            key: ${{ secrets.SSH_KEY }}
-            name: id_rsa
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: id_rsa
       - uses: dart-lang/setup-dart@v1.3
       - name: Pull dependencies
         run: dart pub get
