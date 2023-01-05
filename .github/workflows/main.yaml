@@ -12,9 +12,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: appleboy/ssh-action@v0.1.6
-        with:
-          key: ${{ secrets.SSH_KEY }}
       - uses: dart-lang/setup-dart@v1.3
       - name: Pull dependencies
         run: dart pub get
