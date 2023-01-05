@@ -12,11 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: shimataro/ssh-key-action@v2
+      - uses: webfactory/ssh-agent@v0.4.0
         with:
-          name: id_rsa
-          key: ${{ secrets.SSH_KEY }}
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+          ssh-private-key: ${{ secrets.SSH_KEY }}
       - uses: dart-lang/setup-dart@v1.3
       - name: Pull dependencies
         run: dart pub get
