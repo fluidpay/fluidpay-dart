@@ -30,6 +30,7 @@ class ProcessorData extends Decodable {
   String? paymentAdjType;
   int? paymentAdjVal;
   ProcessorSettingsResponse? settings;
+  ProcessorFeatures? features;
   List<String>? supportedPaymentMethods;
   List<String>? supportedCurrencies;
 
@@ -50,6 +51,7 @@ class ProcessorData extends Decodable {
       this.paymentAdjType,
       this.paymentAdjVal,
       this.settings,
+      this.features,
       this.supportedPaymentMethods,
       this.supportedCurrencies});
 
@@ -128,6 +130,22 @@ class ProcessorSettingsResponse extends Decodable {
 
   @override
   Map<String, dynamic> toJson() => _$ProcessorSettingsResponseToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class ProcessorFeatures extends Decodable {
+  bool? hideInVT;
+  bool? disableAutoSettle;
+  List<String>? availableSECCodes;
+
+  ProcessorFeatures({this.hideInVT, this.disableAutoSettle, this.availableSECCodes});
+
+  factory ProcessorFeatures.fromJson(Map<String, dynamic> json) {
+    return _$ProcessorFeaturesFromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson() => _$ProcessorFeaturesToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)

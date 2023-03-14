@@ -56,6 +56,10 @@ ProcessorData _$ProcessorDataFromJson(Map<String, dynamic> json) {
         ? null
         : ProcessorSettingsResponse.fromJson(
             json['settings'] as Map<String, dynamic>),
+    features: json['features'] == null
+        ? null
+        : ProcessorFeatures.fromJson(
+        json['features'] as Map<String, dynamic>),
     supportedPaymentMethods:
         (json['supported_payment_methods'] as List<dynamic>?)
             ?.map((e) => e as String)
@@ -91,8 +95,35 @@ Map<String, dynamic> _$ProcessorDataToJson(ProcessorData instance) {
   writeNotNull('payment_adj_type', instance.paymentAdjType);
   writeNotNull('payment_adj_val', instance.paymentAdjVal);
   writeNotNull('settings', instance.settings);
+  writeNotNull('features', instance.features);
   writeNotNull('supported_payment_methods', instance.supportedPaymentMethods);
   writeNotNull('supported_currencies', instance.supportedCurrencies);
+  return val;
+}
+
+ProcessorFeatures _$ProcessorFeaturesFromJson(Map<String, dynamic> json) {
+  return ProcessorFeatures(
+      hideInVT: json['hide_in_vt'] as bool?,
+      disableAutoSettle: json['disable_auto_settle'] as bool?,
+      availableSECCodes: (json['available_sec_codes'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  );
+}
+
+Map<String, dynamic> _$ProcessorFeaturesToJson(ProcessorFeatures instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('hide_in_vt', instance.hideInVT);
+  writeNotNull('disable_auto_settle', instance.disableAutoSettle);
+  writeNotNull('available_sec_codes', instance.availableSECCodes);
+
   return val;
 }
 
