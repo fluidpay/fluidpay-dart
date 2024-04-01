@@ -63,6 +63,15 @@ class CalculateAmountsRequest extends Creatable<CalculateAmountsResponse> {
     this.taxOverrideAmount,
     this.localTax,
     this.nationalTax,
+    this.shippingAmount,
+    this.addonAmount,
+    this.discountAmount,
+    this.dutyAmount,
+    this.tipAmount,
+    this.nationalTaxAmount,
+    this.localTaxAmount,
+    this.serviceFee,
+    this.surcharge,
   });
 
   @override
