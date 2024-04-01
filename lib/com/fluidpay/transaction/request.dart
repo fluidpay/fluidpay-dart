@@ -70,6 +70,8 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
   String? billingMethod;
   String? mcc;
 
+  CalculateAmountsResponseData? amounts;
+
   TransactionCreateRequest(
       {this.idempotencyKey,
       this.idempotencyTime,
@@ -116,7 +118,9 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
       this.bypassRuleEngine,
       this.voidOnSuccess,
       this.billingMethod,
-      this.mcc});
+      this.mcc,
+      this.amounts
+      });
 
   @override
   TransactionCreateResponse buildResponse(Map<String, dynamic> json) => TransactionCreateResponse.fromJson(json);
