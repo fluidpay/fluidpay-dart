@@ -57,7 +57,15 @@ Map<String, dynamic> _$CalculateAmountsRequestToJson(
   writeNotNull('taxOverrideAmount', instance.taxOverrideAmount);
   writeNotNull('localTax', instance.localTax);
   writeNotNull('nationalTax', instance.nationalTax);
-
+  writeNotNull('shippingAmount', instance.shippingAmount);
+  writeNotNull('addonAmount', instance.addonAmount);
+  writeNotNull('discountAmount', instance.discountAmount);
+  writeNotNull('dutyAmount', instance.dutyAmount);
+  writeNotNull('tipAmount', instance.tipAmount);
+  writeNotNull('nationalTaxAmount', instance.nationalTaxAmount);
+  writeNotNull('localTaxAmount', instance.localTaxAmount);
+  writeNotNull('serviceFee', instance.serviceFee);
+  writeNotNull('surcharge', instance.surcharge);
   writeNotNull('shipping', instance.shipping);
   writeNotNull('tax_rate', instance.taxRate);
   writeNotNull('currency', instance.currency);

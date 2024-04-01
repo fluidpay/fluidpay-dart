@@ -10,7 +10,7 @@ enum Method {
   DELETE
 }
 
-abstract class Requestable<Response extends Responsable> with Serializable {
+abstract class Requestable<Response extends Responsable> extends Serializable {
   Map<String, String>? getQueryParams() => null;
 
   String getPath();

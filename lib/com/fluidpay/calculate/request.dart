@@ -24,6 +24,16 @@ class CalculateAmountsRequest extends Creatable<CalculateAmountsResponse> {
   int? localTax;
   int? nationalTax;
 
+  int? shippingAmount;
+  List<int>? addonAmount;
+  List<int>? discountAmount;
+  int? dutyAmount;
+  int? tipAmount;
+  int? nationalTaxAmount;
+  int? localTaxAmount;
+  int? serviceFee;
+  int? surcharge;
+
   int? base;
   int? shipping;
   double? taxRate;
@@ -81,9 +91,17 @@ class CalculateFeesRequest extends Creatable<CalculateFeesResponse> {
   String? processorID;
   PaymentAdjustmentRequest? surcharge;
 
-
-  CalculateFeesRequest({this.type, this.typeID, this.state, this.bin, this.paymentMethod, this.baseAmount,
-      this.lineItems, this.tax, this.processorID, this.surcharge});
+  CalculateFeesRequest(
+      {this.type,
+      this.typeID,
+      this.state,
+      this.bin,
+      this.paymentMethod,
+      this.baseAmount,
+      this.lineItems,
+      this.tax,
+      this.processorID,
+      this.surcharge});
 
   @override
   CalculateFeesResponse buildResponse(Map<String, dynamic> json) => CalculateFeesResponse.fromJson(json);
@@ -154,8 +172,7 @@ class AmountsIncluded extends Decodable {
     this.surcharge,
   });
 
-  factory AmountsIncluded.fromJson(Map<String, dynamic> json) =>
-      _$AmountsIncludedFromJson(json);
+  factory AmountsIncluded.fromJson(Map<String, dynamic> json) => _$AmountsIncludedFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$AmountsIncludedToJson(this);
