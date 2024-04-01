@@ -22,7 +22,7 @@ CalculateAmountsRequest _$CalculateAmountsRequestFromJson(
     paymentAdj: json['payment_adj'] == null
         ? null
         : PaymentAdjustmentRequest.fromJson(
-            json['payment_adj'] as Map<String, dynamic>),
+        json['payment_adj'] as Map<String, dynamic>),
     items: (json['items'] as List<dynamic>?)
         ?.map((e) => CalculateItem.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -49,6 +49,15 @@ Map<String, dynamic> _$CalculateAmountsRequestToJson(
   writeNotNull('cc_bin', instance.ccBin);
   writeNotNull('state', instance.state);
   writeNotNull('base', instance.base);
+
+  writeNotNull('line_items', instance.lineItems?.map((e) => e.toJson()).toList());
+  writeNotNull('transaction_type', instance.transactionType);
+  writeNotNull('subtotal', instance.subtotal);
+  writeNotNull('amount', instance.amount);
+  writeNotNull('taxOverrideAmount', instance.taxOverrideAmount);
+  writeNotNull('localTax', instance.localTax);
+  writeNotNull('nationalTax', instance.nationalTax);
+
   writeNotNull('shipping', instance.shipping);
   writeNotNull('tax_rate', instance.taxRate);
   writeNotNull('currency', instance.currency);
@@ -94,7 +103,7 @@ Map<String, dynamic> _$CalculateFeesRequestToJson(
   writeNotNull('bin', instance.bin);
   writeNotNull('payment_method', instance.paymentMethod);
   writeNotNull('base_amount', instance.baseAmount);
-  writeNotNull('line_items', instance.lineItems);
+  writeNotNull('line_items', instance.lineItems?.map((e) => e.toJson()).toList());
   writeNotNull('tax', instance.tax);
   writeNotNull('processor_id', instance.processorID);
   writeNotNull('surcharge', instance.surcharge);
@@ -146,5 +155,51 @@ Map<String, dynamic> _$CalculateItemToJson(CalculateItem instance) {
   writeNotNull('base', instance.base);
   writeNotNull('local_tax', instance.local_tax);
   writeNotNull('national_tax', instance.national_tax);
+  return val;
+}
+
+AmountsIncluded _$AmountsIncludedFromJson(Map<String, dynamic> json) {
+  return AmountsIncluded(
+    shippingAmount: json['shipping_amount'] as int?,
+    addonAmounts: (json['addon_amounts'] as List<dynamic>?)
+        ?.map((e) => e as int)
+        .toList(),
+    discountAmounts: (json['discount_amounts'] as List<dynamic>?)
+        ?.map((e) => e as int)
+        .toList(),
+    discountAmount: json['discount_amount'] as int?,
+    dutyAmount: json['duty_amount'] as int?,
+    tipAmount: json['tip_amount'] as int?,
+    additionalAmounts: json['additional_amounts'] as int?,
+    taxAmount: json['tax_amount'] as int?,
+    nationalTaxAmount: json['national_tax_amount'] as int?,
+    localTaxAmount: json['local_tax_amount'] as int?,
+    serviceFee: json['service_fee'] as int?,
+    surcharge: json['surcharge'] as int?,
+  );
+}
+
+Map<String, dynamic> _$AmountsIncludedToJson(AmountsIncluded instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('shippingAmount', instance.shippingAmount);
+  writeNotNull('addonAmounts', instance.addonAmounts);
+  writeNotNull('discountAmounts', instance.discountAmounts);
+  writeNotNull('discountAmount', instance.discountAmount);
+  writeNotNull('dutyAmount', instance.dutyAmount);
+  writeNotNull('tipAmount', instance.tipAmount);
+  writeNotNull('additionalAmounts', instance.additionalAmounts);
+  writeNotNull('taxAmount', instance.taxAmount);
+  writeNotNull('nationalTaxAmount', instance.nationalTaxAmount);
+  writeNotNull('localTaxAmount', instance.localTaxAmount);
+  writeNotNull('serviceFee', instance.serviceFee);
+  writeNotNull('surcharge', instance.surcharge);
+
   return val;
 }

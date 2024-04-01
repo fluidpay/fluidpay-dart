@@ -77,6 +77,10 @@ CalculateAmountsResponseData _$CalculateAmountsResponseDataFromJson(
         .toList(),
     shipping: json['shipping'] as int?,
     taxRate: (json['tax_rate'] as num?)?.toDouble(),
+    amountsIncluded: json['amounts_included'] == null
+        ? null
+        : AmountsIncluded.fromJson(
+        json['amounts_included'] as Map<String, dynamic>),
     subtotal: json['subtotal'] as int?,
     serviceFee: json['service_fee'] as int?,
     discount: json['discount'] as int?,
@@ -101,6 +105,7 @@ Map<String, dynamic> _$CalculateAmountsResponseDataToJson(
   writeNotNull('items', instance.items);
   writeNotNull('shipping', instance.shipping);
   writeNotNull('tax_rate', instance.taxRate);
+  writeNotNull('amounts_included', instance.amountsIncluded?.toJson());
   writeNotNull('subtotal', instance.subtotal);
   writeNotNull('service_fee', instance.serviceFee);
   writeNotNull('discount', instance.discount);

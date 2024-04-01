@@ -31,6 +31,8 @@ class CalculateAmountsResponseData extends Decodable {
   int? shipping;
   double? taxRate;
 
+  AmountsIncluded? amountsIncluded;
+
   int? subtotal;
   int? serviceFee;
   int? discount;
@@ -44,6 +46,7 @@ class CalculateAmountsResponseData extends Decodable {
       this.items,
       this.shipping,
       this.taxRate,
+      this.amountsIncluded,
       this.subtotal,
       this.serviceFee,
       this.discount,

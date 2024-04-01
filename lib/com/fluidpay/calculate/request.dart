@@ -10,13 +10,19 @@ part 'request.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CalculateAmountsRequest extends Creatable<CalculateAmountsResponse> {
   String? type;
-  @JsonKey(name: 'type_id')
   String? typeID;
-  @JsonKey(name: 'processor_id')
   String? processorID;
   String? paymentMethod;
   String? ccBin;
   String? state;
+
+  List<LineItem>? lineItems;
+  String? transactionType;
+  int? subtotal;
+  int? amount;
+  int? taxOverrideAmount;
+  int? localTax;
+  int? nationalTax;
 
   int? base;
   int? shipping;
@@ -26,12 +32,32 @@ class CalculateAmountsRequest extends Creatable<CalculateAmountsResponse> {
   List<CalculateItem>? items;
   CalculateSettings? settings;
 
-
-  CalculateAmountsRequest({this.type, this.typeID, this.processorID, this.paymentMethod, this.ccBin, this.state,
-      this.base, this.shipping, this.taxRate, this.currency, this.paymentAdj, this.items, this.settings});
+  CalculateAmountsRequest({
+    this.type,
+    this.typeID,
+    this.processorID,
+    this.paymentMethod,
+    this.ccBin,
+    this.state,
+    this.base,
+    this.shipping,
+    this.taxRate,
+    this.currency,
+    this.paymentAdj,
+    this.items,
+    this.settings,
+    this.lineItems,
+    this.transactionType,
+    this.subtotal,
+    this.amount,
+    this.taxOverrideAmount,
+    this.localTax,
+    this.nationalTax,
+  });
 
   @override
-  CalculateAmountsResponse buildResponse(Map<String, dynamic> json) => CalculateAmountsResponse.fromJson(json);
+  CalculateAmountsResponse buildResponse(Map<String, dynamic> json) =>
+      CalculateAmountsResponse.fromJson(json);
 
   @override
   String getPath() => '/calculate/amounts';
@@ -96,4 +122,41 @@ class CalculateItem extends Decodable {
 
   @override
   Map<String, dynamic> toJson() => _$CalculateItemToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class AmountsIncluded extends Decodable {
+  int? shippingAmount;
+  List<int>? addonAmounts;
+  List<int>? discountAmounts;
+  int? discountAmount;
+  int? dutyAmount;
+  int? tipAmount;
+  int? additionalAmounts;
+  int? taxAmount;
+  int? nationalTaxAmount;
+  int? localTaxAmount;
+  int? serviceFee;
+  int? surcharge;
+
+  AmountsIncluded({
+    this.shippingAmount,
+    this.addonAmounts,
+    this.discountAmounts,
+    this.discountAmount,
+    this.dutyAmount,
+    this.tipAmount,
+    this.additionalAmounts,
+    this.taxAmount,
+    this.nationalTaxAmount,
+    this.localTaxAmount,
+    this.serviceFee,
+    this.surcharge,
+  });
+
+  factory AmountsIncluded.fromJson(Map<String, dynamic> json) =>
+      _$AmountsIncludedFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$AmountsIncludedToJson(this);
 }
