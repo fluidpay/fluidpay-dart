@@ -135,7 +135,7 @@ Map<String, dynamic> _$TransactionCreateRequestToJson(
       'void_on_success': instance.voidOnSuccess,
       'billing_method': instance.billingMethod,
       'mcc': instance.mcc,
-      'amounts': instance.amounts.toJson()
+      'amounts': instance.amounts?.toJson()
     };
 
 K _$enumDecode<K, V>(
