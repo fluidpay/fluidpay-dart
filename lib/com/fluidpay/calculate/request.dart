@@ -1,5 +1,6 @@
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
 import 'package:fluidpay/com/fluidpay/common/base.dart';
+import 'package:fluidpay/com/fluidpay/common/typed_value.dart';
 import 'package:fluidpay/com/fluidpay/transaction/request.dart';
 import 'package:fluidpay/com/fluidpay/calculate/response.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -17,22 +18,19 @@ class CalculateAmountsRequest extends Creatable<CalculateAmountsResponse> {
   String? state;
 
   List<LineItem>? lineItems;
-  String? transactionType;
   int? subtotal;
   int? amount;
-  int? taxOverrideAmount;
-  int? localTax;
-  int? nationalTax;
+  TypedValue? taxOverrideAmount;
 
-  int? shippingAmount;
-  List<int>? addonAmount;
-  List<int>? discountAmount;
-  int? dutyAmount;
-  int? tipAmount;
-  int? nationalTaxAmount;
-  int? localTaxAmount;
-  int? serviceFee;
-  int? surcharge;
+  TypedValue? shippingAmount;
+  List<TypedValue>? addonAmount;
+  List<TypedValue>? discountAmount;
+  TypedValue? dutyAmount;
+  TypedValue? tipAmount;
+  TypedValue? nationalTaxAmount;
+  TypedValue? localTaxAmount;
+  TypedValue? serviceFee;
+  TypedValue? surcharge;
 
   int? base;
   int? shipping;
@@ -57,12 +55,9 @@ class CalculateAmountsRequest extends Creatable<CalculateAmountsResponse> {
     this.items,
     this.settings,
     this.lineItems,
-    this.transactionType,
     this.subtotal,
     this.amount,
     this.taxOverrideAmount,
-    this.localTax,
-    this.nationalTax,
     this.shippingAmount,
     this.addonAmount,
     this.discountAmount,
