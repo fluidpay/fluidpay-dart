@@ -102,6 +102,7 @@ class CalculateAmountsRequest extends Creatable<CalculateAmountsResponse> {
     this.localTaxAmount,
     this.serviceFee,
     this.surcharge,
+    this.flags,
   });
 
   @override

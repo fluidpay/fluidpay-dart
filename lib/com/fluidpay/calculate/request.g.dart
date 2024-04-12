@@ -67,7 +67,7 @@ Map<String, dynamic> _$CalculateAmountsRequestToJson(CalculateAmountsRequest ins
   writeNotNull('items', instance.items);
   writeNotNull('settings', instance.settings);
   writeNotNull('flags', instance.flags?.toJson());
-  
+
   return val;
 }
 
