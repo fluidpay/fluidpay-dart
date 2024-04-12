@@ -6,8 +6,7 @@ part of 'request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CalculateAmountsRequest _$CalculateAmountsRequestFromJson(
-    Map<String, dynamic> json) {
+CalculateAmountsRequest _$CalculateAmountsRequestFromJson(Map<String, dynamic> json) {
   return CalculateAmountsRequest(
     type: json['type'] as String?,
     typeID: json['type_id'] as String?,
@@ -21,8 +20,7 @@ CalculateAmountsRequest _$CalculateAmountsRequestFromJson(
     currency: json['currency'] as String?,
     paymentAdj: json['payment_adj'] == null
         ? null
-        : PaymentAdjustmentRequest.fromJson(
-        json['payment_adj'] as Map<String, dynamic>),
+        : PaymentAdjustmentRequest.fromJson(json['payment_adj'] as Map<String, dynamic>),
     items: (json['items'] as List<dynamic>?)
         ?.map((e) => CalculateItem.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -32,8 +30,7 @@ CalculateAmountsRequest _$CalculateAmountsRequestFromJson(
   );
 }
 
-Map<String, dynamic> _$CalculateAmountsRequestToJson(
-    CalculateAmountsRequest instance) {
+Map<String, dynamic> _$CalculateAmountsRequestToJson(CalculateAmountsRequest instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -69,6 +66,8 @@ Map<String, dynamic> _$CalculateAmountsRequestToJson(
   writeNotNull('payment_adj', instance.paymentAdj);
   writeNotNull('items', instance.items);
   writeNotNull('settings', instance.settings);
+  writeNotNull('flags', instance.flags?.toJson());
+  
   return val;
 }
 
@@ -87,13 +86,11 @@ CalculateFeesRequest _$CalculateFeesRequestFromJson(Map<String, dynamic> json) {
     processorID: json['processor_id'] as String?,
     surcharge: json['surcharge'] == null
         ? null
-        : PaymentAdjustmentRequest.fromJson(
-            json['surcharge'] as Map<String, dynamic>),
+        : PaymentAdjustmentRequest.fromJson(json['surcharge'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$CalculateFeesRequestToJson(
-    CalculateFeesRequest instance) {
+Map<String, dynamic> _$CalculateFeesRequestToJson(CalculateFeesRequest instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -166,12 +163,8 @@ Map<String, dynamic> _$CalculateItemToJson(CalculateItem instance) {
 AmountsIncluded _$AmountsIncludedFromJson(Map<String, dynamic> json) {
   return AmountsIncluded(
     shippingAmount: json['shipping_amount'] as int?,
-    addonAmounts: (json['addon_amounts'] as List<dynamic>?)
-        ?.map((e) => e as int)
-        .toList(),
-    discountAmounts: (json['discount_amounts'] as List<dynamic>?)
-        ?.map((e) => e as int)
-        .toList(),
+    addonAmounts: (json['addon_amounts'] as List<dynamic>?)?.map((e) => e as int).toList(),
+    discountAmounts: (json['discount_amounts'] as List<dynamic>?)?.map((e) => e as int).toList(),
     discountAmount: json['discount_amount'] as int?,
     dutyAmount: json['duty_amount'] as int?,
     tipAmount: json['tip_amount'] as int?,

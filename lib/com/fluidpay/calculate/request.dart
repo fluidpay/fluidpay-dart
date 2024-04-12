@@ -8,6 +8,40 @@ import 'package:fluidpay/com/fluidpay/common/models.dart';
 
 part 'request.g.dart';
 
+class AmountsFlags extends Decodable {
+  bool skipCashDiscount;
+  bool skipSurcharge;
+  bool skipServiceFee;
+  bool skipConsumerChoice;
+  bool? includeDefaultTaxToTotal;
+  bool? taxExempt;
+  bool processorSurchargeFallback;
+  bool? addTaxToTotal;
+
+  AmountsFlags({
+    this.skipCashDiscount = false,
+    this.skipSurcharge = false,
+    this.skipServiceFee = false,
+    this.skipConsumerChoice = false,
+    this.includeDefaultTaxToTotal,
+    this.taxExempt,
+    this.processorSurchargeFallback = false,
+    this.addTaxToTotal,
+  });
+
+  @override
+  Map<String, dynamic>? toJson() => {
+        'skip_cash_discount': skipCashDiscount,
+        'skip_surcharge': skipSurcharge,
+        'skip_service_fee': skipServiceFee,
+        'skip_consumer_choice': skipConsumerChoice,
+        'include_default_tax_to_total': includeDefaultTaxToTotal,
+        'tax_exempt': taxExempt,
+        'processor_surcharge_fallback': processorSurchargeFallback,
+        'add_tax_to_total': addTaxToTotal,
+      };
+}
+
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CalculateAmountsRequest extends Creatable<CalculateAmountsResponse> {
   String? type;
@@ -39,6 +73,7 @@ class CalculateAmountsRequest extends Creatable<CalculateAmountsResponse> {
   PaymentAdjustmentRequest? paymentAdj;
   List<CalculateItem>? items;
   CalculateSettings? settings;
+  AmountsFlags? flags;
 
   CalculateAmountsRequest({
     this.type,
