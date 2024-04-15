@@ -50,14 +50,14 @@ Map<String, dynamic> _$CalculateAmountsRequestToJson(CalculateAmountsRequest ins
   writeNotNull('line_items', instance.lineItems?.map((e) => e.toJson()).toList());
   writeNotNull('subtotal', instance.subtotal);
   writeNotNull('amount', instance.amount);
-  writeNotNull('taxOverrideAmount', instance.taxOverrideAmount?.toJson());
-  writeNotNull('shippingAmount', instance.shippingAmount?.toJson());
-  writeNotNull('addonAmount', instance.addonAmount?.map((e) => e.toJson()).toList());
-  writeNotNull('discountAmount', instance.discountAmount?.map((e) => e.toJson()).toList());
-  writeNotNull('dutyAmount', instance.dutyAmount?.toJson());
-  writeNotNull('tipAmount', instance.tipAmount?.toJson());
-  writeNotNull('nationalTaxAmount', instance.nationalTaxAmount?.toJson());
-  writeNotNull('localTaxAmount', instance.localTaxAmount?.toJson());
+  writeNotNull('tax_override_amount', instance.taxOverrideAmount?.toJson());
+  writeNotNull('shipping_amount', instance.shippingAmount?.toJson());
+  writeNotNull('addon_amount', instance.addonAmount?.map((e) => e.toJson()).toList());
+  writeNotNull('discount_amount', instance.discountAmount?.map((e) => e.toJson()).toList());
+  writeNotNull('duty_amount', instance.dutyAmount?.toJson());
+  writeNotNull('tip_amount', instance.tipAmount?.toJson());
+  writeNotNull('national_tax_amount', instance.nationalTaxAmount?.toJson());
+  writeNotNull('local_tax_amount', instance.localTaxAmount?.toJson());
   writeNotNull('serviceFee', instance.serviceFee?.toJson());
   writeNotNull('surcharge', instance.surcharge?.toJson());
   writeNotNull('shipping', instance.shipping);
@@ -186,17 +186,17 @@ Map<String, dynamic> _$AmountsIncludedToJson(AmountsIncluded instance) {
     }
   }
 
-  writeNotNull('shippingAmount', instance.shippingAmount);
-  writeNotNull('addonAmounts', instance.addonAmounts);
-  writeNotNull('discountAmounts', instance.discountAmounts);
-  writeNotNull('discountAmount', instance.discountAmount);
-  writeNotNull('dutyAmount', instance.dutyAmount);
-  writeNotNull('tipAmount', instance.tipAmount);
-  writeNotNull('additionalAmounts', instance.additionalAmounts);
-  writeNotNull('taxAmount', instance.taxAmount);
-  writeNotNull('nationalTaxAmount', instance.nationalTaxAmount);
-  writeNotNull('localTaxAmount', instance.localTaxAmount);
-  writeNotNull('serviceFee', instance.serviceFee);
+  writeNotNull('shipping_amount', instance.shippingAmount);
+  writeNotNull('addon_amounts', instance.addonAmounts);
+  writeNotNull('discount_amounts', instance.discountAmounts);
+  writeNotNull('discount_amount', instance.discountAmount);
+  writeNotNull('duty_amount', instance.dutyAmount);
+  writeNotNull('tip_amount', instance.tipAmount);
+  writeNotNull('additional_amounts', instance.additionalAmounts);
+  writeNotNull('tax_amount', instance.taxAmount);
+  writeNotNull('national_tax_amount', instance.nationalTaxAmount);
+  writeNotNull('local_tax_amount', instance.localTaxAmount);
+  writeNotNull('service_fee', instance.serviceFee);
   writeNotNull('surcharge', instance.surcharge);
 
   return val;
