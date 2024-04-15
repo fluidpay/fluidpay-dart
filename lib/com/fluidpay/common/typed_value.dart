@@ -6,11 +6,8 @@ class TypedValue {
   TypedValue({required this.type, required this.value, required this.include});
 
   Map<String, dynamic> toJson() => {
-    'valid': true,
-    'typed_value': {
-      'type': type,
-      'value': value,
-      'include': include
-    }
+    'type': type,
+    'value': value,
+    'include': include
   };
 }
