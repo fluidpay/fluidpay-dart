@@ -72,7 +72,7 @@ CalculateAmountsResponseData _$CalculateAmountsResponseDataFromJson(
     Map<String, dynamic> json) {
   return CalculateAmountsResponseData(
     base: json['base'] as int?,
-    items: (json['items'] as List<dynamic>?)
+    items: (json['line_items'] as List<dynamic>?)
         ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
         .toList(),
     shipping: json['shipping'] as int?,
