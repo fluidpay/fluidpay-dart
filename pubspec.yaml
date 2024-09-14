@@ -2,16 +2,16 @@ name: fluidpay
 # version: 1.0.0
 
 environment:
-  sdk: '>=2.19.6 <4.0.0'
+  sdk: '>=3.5.0 <4.0.0'
 
 dependencies:
   dcrypto: ^0.3.0
-  http: ^0.13.5
-  json_annotation: ^4.8.1
+  http: ^1.2.2
+  json_annotation: ^4.9.0
 
 
 dev_dependencies:
   pedantic: ^1.11.1
-  test: ^1.25.2
-  build_runner: ^2.4.9
-  json_serializable: ^6.7.1
+  test: ^1.25.8
+  build_runner: ^2.4.12
+  json_serializable: ^6.8.0
