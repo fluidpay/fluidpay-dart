@@ -104,13 +104,15 @@ Map<String, dynamic> _$CalculateAmountsResponseDataToJson(
   }
 
   writeNotNull('base', instance.base);
-  writeNotNull('items', instance.items);
+  writeNotNull('items', instance.items?.map((item) => item.toJson()).toList());
   writeNotNull('shipping', instance.shipping);
   writeNotNull('tax_rate', instance.taxRate);
   writeNotNull('amounts_included', instance.amountsIncluded?.toJson());
   writeNotNull('subtotal', instance.subtotal);
   writeNotNull('service_fee', instance.serviceFee);
-  writeNotNull('discount', instance.discountAmount);
+  writeNotNull('discount_amount', instance.discountAmount);
+  writeNotNull('tip_amount', instance.tipAmount);
+  writeNotNull('tax_amount', instance.taxAmount);
   writeNotNull('surcharge', instance.surcharge);
   writeNotNull('payment_adj', instance.paymentAdj);
   writeNotNull('tax', instance.tax);
