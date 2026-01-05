@@ -6,198 +6,306 @@ part of 'request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CalculateAmountsRequest _$CalculateAmountsRequestFromJson(Map<String, dynamic> json) {
-  return CalculateAmountsRequest(
-    type: json['type'] as String?,
-    typeID: json['type_id'] as String?,
-    processorID: json['processor_id'] as String?,
-    paymentMethod: json['payment_method'] as String?,
-    ccBin: json['cc_bin'] as String?,
-    state: json['state'] as String?,
-    base: json['base'] as int?,
-    shipping: json['shipping'] as int?,
-    taxRate: (json['tax_rate'] as num?)?.toDouble(),
-    currency: json['currency'] as String?,
-    paymentAdj: json['payment_adj'] == null
-        ? null
-        : PaymentAdjustmentRequest.fromJson(json['payment_adj'] as Map<String, dynamic>),
-    items: (json['items'] as List<dynamic>?)
-        ?.map((e) => CalculateItem.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    settings: json['settings'] == null
-        ? null
-        : CalculateSettings.fromJson(json['settings'] as Map<String, dynamic>),
-  );
-}
+PaymentMethodRequest _$PaymentMethodRequestFromJson(
+        Map<String, dynamic> json) =>
+    PaymentMethodRequest(
+      card: json['card'] == null
+          ? null
+          : CreditCardRequest.fromJson(json['card'] as Map<String, dynamic>),
+      ach: json['ach'] == null
+          ? null
+          : ACHRequest.fromJson(json['ach'] as Map<String, dynamic>),
+      customer: json['customer'] == null
+          ? null
+          : CustomerTransactionRequest.fromJson(
+              json['customer'] as Map<String, dynamic>),
+      terminal: json['terminal'] == null
+          ? null
+          : TerminalTransactionRequest.fromJson(
+              json['terminal'] as Map<String, dynamic>),
+      token: json['token'] as String?,
+      applePayToken: json['apple_pay_token'] == null
+          ? null
+          : ApplePayTokenRequest.fromJson(
+              json['apple_pay_token'] as Map<String, dynamic>),
+      apm: json['apm'] == null
+          ? null
+          : APMRequest.fromJson(json['apm'] as Map<String, dynamic>),
+      plaid: json['plaid'] == null
+          ? null
+          : PlaidRequest.fromJson(json['plaid'] as Map<String, dynamic>),
+      cash: json['cash'] == null
+          ? null
+          : CashRequest.fromJson(json['cash'] as Map<String, dynamic>),
+      emv: json['emv'] == null
+          ? null
+          : EMVRequest.fromJson(json['emv'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$CalculateAmountsRequestToJson(CalculateAmountsRequest instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$PaymentMethodRequestToJson(
+        PaymentMethodRequest instance) =>
+    <String, dynamic>{
+      'card': instance.card,
+      'ach': instance.ach,
+      'customer': instance.customer,
+      'terminal': instance.terminal,
+      'token': instance.token,
+      'apple_pay_token': instance.applePayToken,
+      'apm': instance.apm,
+      'plaid': instance.plaid,
+      'cash': instance.cash,
+      'emv': instance.emv,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+CreditCardRequest _$CreditCardRequestFromJson(Map<String, dynamic> json) =>
+    CreditCardRequest(
+      entryType: json['entry_type'] as String?,
+      number: json['number'] as String?,
+      expirationDate: json['expiration_date'] as String?,
+      cvc: json['cvc'] as String?,
+      track1: json['track_1'] as String?,
+      track2: json['track_2'] as String?,
+      encryptedTrack1: json['encrypted_track_1'] as String?,
+      encryptedTrack2: json['encrypted_track_2'] as String?,
+      ksn: json['ksn'] as String?,
+      encryptedData: json['encrypted_data'] as String?,
+      cardholderAuthentication: json['cardholder_authentication'] == null
+          ? null
+          : CardholderAuthenticationRequest.fromJson(
+              json['cardholder_authentication'] as Map<String, dynamic>),
+      cardPresent: json['card_present'] as String?,
+      signatureData: json['signature_data'] as String?,
+    );
 
-  writeNotNull('type', instance.type);
-  writeNotNull('type_id', instance.typeID);
-  writeNotNull('processor_id', instance.processorID);
-  writeNotNull('payment_method', instance.paymentMethod);
-  writeNotNull('cc_bin', instance.ccBin);
-  writeNotNull('state', instance.state);
-  writeNotNull('base', instance.base);
+Map<String, dynamic> _$CreditCardRequestToJson(CreditCardRequest instance) =>
+    <String, dynamic>{
+      'entry_type': instance.entryType,
+      'number': instance.number,
+      'expiration_date': instance.expirationDate,
+      'cvc': instance.cvc,
+      'track_1': instance.track1,
+      'track_2': instance.track2,
+      'encrypted_track_1': instance.encryptedTrack1,
+      'encrypted_track_2': instance.encryptedTrack2,
+      'ksn': instance.ksn,
+      'encrypted_data': instance.encryptedData,
+      'cardholder_authentication': instance.cardholderAuthentication,
+      'card_present': instance.cardPresent,
+      'signature_data': instance.signatureData,
+    };
 
-  writeNotNull('line_items', instance.lineItems?.map((e) => e.toJson()).toList());
-  writeNotNull('subtotal', instance.subtotal);
-  writeNotNull('amount', instance.amount);
-  writeNotNull('tax_override_amount', instance.taxOverrideAmount?.toJson());
-  writeNotNull('shipping_amount', instance.shippingAmount?.toJson());
-  writeNotNull('addon_amount', instance.addonAmount?.map((e) => e.toJson()).toList());
-  writeNotNull('discount_amount', instance.discountAmount?.map((e) => e.toJson()).toList());
-  writeNotNull('duty_amount', instance.dutyAmount?.toJson());
-  writeNotNull('tip_amount', instance.tipAmount?.toJson());
-  writeNotNull('national_tax_amount', instance.nationalTaxAmount?.toJson());
-  writeNotNull('local_tax_amount', instance.localTaxAmount?.toJson());
-  writeNotNull('serviceFee', instance.serviceFee?.toJson());
-  writeNotNull('surcharge', instance.surcharge?.toJson());
-  writeNotNull('shipping', instance.shipping);
-  writeNotNull('tax_rate', instance.taxRate);
-  writeNotNull('currency', instance.currency);
-  writeNotNull('payment_adj', instance.paymentAdj);
-  writeNotNull('items', instance.items);
-  writeNotNull('settings', instance.settings);
-  writeNotNull('flags', instance.flags?.toJson());
+CardholderAuthenticationRequest _$CardholderAuthenticationRequestFromJson(
+        Map<String, dynamic> json) =>
+    CardholderAuthenticationRequest(
+      eci: json['eci'] as String?,
+      cavv: json['cavv'] as String?,
+      xid: json['xid'] as String?,
+      version: json['version'] as String?,
+      dsTransactionId: json['ds_transaction_id'] as String?,
+      acsTransactionId: json['acs_transaction_id'] as String?,
+    );
 
-  return val;
-}
+Map<String, dynamic> _$CardholderAuthenticationRequestToJson(
+        CardholderAuthenticationRequest instance) =>
+    <String, dynamic>{
+      'eci': instance.eci,
+      'cavv': instance.cavv,
+      'xid': instance.xid,
+      'version': instance.version,
+      'ds_transaction_id': instance.dsTransactionId,
+      'acs_transaction_id': instance.acsTransactionId,
+    };
 
-CalculateFeesRequest _$CalculateFeesRequestFromJson(Map<String, dynamic> json) {
-  return CalculateFeesRequest(
-    type: json['type'] as String?,
-    typeID: json['type_id'] as String?,
-    state: json['state'] as String?,
-    bin: json['bin'] as String?,
-    paymentMethod: json['payment_method'] as String?,
-    baseAmount: json['base_amount'] as int?,
-    lineItems: (json['line_items'] as List<dynamic>?)
-        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    tax: json['tax'] as int?,
-    processorID: json['processor_id'] as String?,
-    surcharge: json['surcharge'] == null
-        ? null
-        : PaymentAdjustmentRequest.fromJson(json['surcharge'] as Map<String, dynamic>),
-  );
-}
+ACHRequest _$ACHRequestFromJson(Map<String, dynamic> json) => ACHRequest(
+      routingNumber: json['routing_number'] as String?,
+      accountNumber: json['account_number'] as String?,
+      accountType: json['account_type'] as String?,
+      secCode: json['sec_code'] as String?,
+      checkNumber: json['check_number'] as String?,
+      accountHolderAuthentication: json['accountholder_authentication'] == null
+          ? null
+          : ACHAuthenticationRequest.fromJson(
+              json['accountholder_authentication'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$CalculateFeesRequestToJson(CalculateFeesRequest instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$ACHRequestToJson(ACHRequest instance) =>
+    <String, dynamic>{
+      'routing_number': instance.routingNumber,
+      'account_number': instance.accountNumber,
+      'account_type': instance.accountType,
+      'sec_code': instance.secCode,
+      'check_number': instance.checkNumber,
+      'accountholder_authentication': instance.accountHolderAuthentication,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+ACHAuthenticationRequest _$ACHAuthenticationRequestFromJson(
+        Map<String, dynamic> json) =>
+    ACHAuthenticationRequest(
+      dlState: json['dl_state'] as String?,
+      dlNumber: json['dl_number'] as String?,
+      ssn4: json['ssn4'] as String?,
+      dobYear: json['dob_year'] as String?,
+    );
 
-  writeNotNull('type', instance.type);
-  writeNotNull('type_id', instance.typeID);
-  writeNotNull('state', instance.state);
-  writeNotNull('bin', instance.bin);
-  writeNotNull('payment_method', instance.paymentMethod);
-  writeNotNull('base_amount', instance.baseAmount);
-  writeNotNull('line_items', instance.lineItems?.map((e) => e.toJson()).toList());
-  writeNotNull('tax', instance.tax);
-  writeNotNull('processor_id', instance.processorID);
-  writeNotNull('surcharge', instance.surcharge);
-  return val;
-}
+Map<String, dynamic> _$ACHAuthenticationRequestToJson(
+        ACHAuthenticationRequest instance) =>
+    <String, dynamic>{
+      'dl_state': instance.dlState,
+      'dl_number': instance.dlNumber,
+      'ssn4': instance.ssn4,
+      'dob_year': instance.dobYear,
+    };
 
-CalculateSettings _$CalculateSettingsFromJson(Map<String, dynamic> json) {
-  return CalculateSettings(
-    cashDiscount: json['cash_discount'] as String?,
-    surcharge: json['surcharge'] as String?,
-    consumerChoice: json['consumer_choice'] as String?,
-  );
-}
+CustomerTransactionRequest _$CustomerTransactionRequestFromJson(
+        Map<String, dynamic> json) =>
+    CustomerTransactionRequest(
+      id: json['id'] as String?,
+      sourceMerchantId: json['source_merchant_id'] as String?,
+      paymentMethodType: json['payment_method_type'] as String?,
+      paymentMethodId: json['payment_method_id'] as String?,
+      billingAddressId: json['billing_address_id'] as String?,
+      shippingAddressId: json['shipping_address_id'] as String?,
+      cvc: json['cvc'] as String?,
+      terminalId: json['terminal_id'] as String?,
+    );
 
-Map<String, dynamic> _$CalculateSettingsToJson(CalculateSettings instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$CustomerTransactionRequestToJson(
+        CustomerTransactionRequest instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'source_merchant_id': instance.sourceMerchantId,
+      'payment_method_type': instance.paymentMethodType,
+      'payment_method_id': instance.paymentMethodId,
+      'billing_address_id': instance.billingAddressId,
+      'shipping_address_id': instance.shippingAddressId,
+      'cvc': instance.cvc,
+      'terminal_id': instance.terminalId,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+TerminalTransactionRequest _$TerminalTransactionRequestFromJson(
+        Map<String, dynamic> json) =>
+    TerminalTransactionRequest(
+      id: json['id'] as String?,
+      expirationDate: json['expiration_date'] as String?,
+      cvc: json['cvc'] as String?,
+      printReceipt: json['print_receipt'] as String?,
+      signatureRequired: json['signature_required'] as bool?,
+      clerkId: (json['clerk_id'] as num?)?.toInt(),
+      debit: json['debit'] as bool?,
+      ebt: json['ebt'] as String?,
+      traceNum: json['trace_num'] as String?,
+      hostToken: json['host_token'] as String?,
+    );
 
-  writeNotNull('cash_discount', instance.cashDiscount);
-  writeNotNull('surcharge', instance.surcharge);
-  writeNotNull('consumer_choice', instance.consumerChoice);
-  return val;
-}
+Map<String, dynamic> _$TerminalTransactionRequestToJson(
+        TerminalTransactionRequest instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'expiration_date': instance.expirationDate,
+      'cvc': instance.cvc,
+      'print_receipt': instance.printReceipt,
+      'signature_required': instance.signatureRequired,
+      'clerk_id': instance.clerkId,
+      'debit': instance.debit,
+      'ebt': instance.ebt,
+      'trace_num': instance.traceNum,
+      'host_token': instance.hostToken,
+    };
 
-CalculateItem _$CalculateItemFromJson(Map<String, dynamic> json) {
-  return CalculateItem(
-    qty: json['qty'] as int?,
-    base: json['base'] as int?,
-    local_tax: (json['local_tax'] as num?)?.toDouble(),
-    national_tax: (json['national_tax'] as num?)?.toDouble(),
-  );
-}
+APMRequest _$APMRequestFromJson(Map<String, dynamic> json) => APMRequest(
+      type: json['type'] as String?,
+      sellingPoint: json['selling_point'] as String?,
+      soldService: json['sold_service'] as String?,
+      merchantRedirectUrl: json['merchant_redirect_url'] as String?,
+      locale: json['locale'] as String?,
+      mobileView: json['mobile_view'] as bool?,
+      nationalId: json['national_id'] as String?,
+      consumerRef: json['consumer_ref'] as String?,
+      logoUrl: json['logo_url'] as String?,
+      hppTitle: json['hpp_title'] as String?,
+      preferredLanguage: json['preferred_language'] as String?,
+    );
 
-Map<String, dynamic> _$CalculateItemToJson(CalculateItem instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$APMRequestToJson(APMRequest instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'selling_point': instance.sellingPoint,
+      'sold_service': instance.soldService,
+      'merchant_redirect_url': instance.merchantRedirectUrl,
+      'locale': instance.locale,
+      'mobile_view': instance.mobileView,
+      'national_id': instance.nationalId,
+      'consumer_ref': instance.consumerRef,
+      'logo_url': instance.logoUrl,
+      'hpp_title': instance.hppTitle,
+      'preferred_language': instance.preferredLanguage,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+PlaidRequest _$PlaidRequestFromJson(Map<String, dynamic> json) => PlaidRequest(
+      refId: json['ref_id'] as String?,
+      accountId: json['account_id'] as String?,
+    );
 
-  writeNotNull('qty', instance.qty);
-  writeNotNull('base', instance.base);
-  writeNotNull('local_tax', instance.local_tax);
-  writeNotNull('national_tax', instance.national_tax);
-  return val;
-}
+Map<String, dynamic> _$PlaidRequestToJson(PlaidRequest instance) =>
+    <String, dynamic>{
+      'ref_id': instance.refId,
+      'account_id': instance.accountId,
+    };
 
-AmountsIncluded _$AmountsIncludedFromJson(Map<String, dynamic> json) {
-  return AmountsIncluded(
-    shippingAmount: json['shipping_amount'] as int?,
-    addonAmounts: (json['addon_amounts'] as List<dynamic>?)?.map((e) => e as int).toList(),
-    discountAmounts: (json['discount_amounts'] as List<dynamic>?)?.map((e) => e as int).toList(),
-    discountAmount: json['discount_amount'] as int?,
-    dutyAmount: json['duty_amount'] as int?,
-    tipAmount: json['tip_amount'] as int?,
-    additionalAmounts: json['additional_amounts'] as int?,
-    taxAmount: json['tax_amount'] as int?,
-    nationalTaxAmount: json['national_tax_amount'] as int?,
-    localTaxAmount: json['local_tax_amount'] as int?,
-    serviceFee: json['service_fee'] as int?,
-    surcharge: json['surcharge'] as int?,
-  );
-}
+CashRequest _$CashRequestFromJson(Map<String, dynamic> json) => CashRequest();
 
-Map<String, dynamic> _$AmountsIncludedToJson(AmountsIncluded instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$CashRequestToJson(CashRequest instance) =>
+    <String, dynamic>{};
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+EMVRequest _$EMVRequestFromJson(Map<String, dynamic> json) => EMVRequest(
+      deviceType: json['device_type'] as String?,
+      deviceSerialNumber: json['device_serial_number'] as String?,
+      ksn: json['ksn'] as String?,
+      tlvData: (json['tlv_data'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
+    );
 
-  writeNotNull('shipping_amount', instance.shippingAmount);
-  writeNotNull('addon_amounts', instance.addonAmounts);
-  writeNotNull('discount_amounts', instance.discountAmounts);
-  writeNotNull('discount_amount', instance.discountAmount);
-  writeNotNull('duty_amount', instance.dutyAmount);
-  writeNotNull('tip_amount', instance.tipAmount);
-  writeNotNull('additional_amounts', instance.additionalAmounts);
-  writeNotNull('tax_amount', instance.taxAmount);
-  writeNotNull('national_tax_amount', instance.nationalTaxAmount);
-  writeNotNull('local_tax_amount', instance.localTaxAmount);
-  writeNotNull('service_fee', instance.serviceFee);
-  writeNotNull('surcharge', instance.surcharge);
+Map<String, dynamic> _$EMVRequestToJson(EMVRequest instance) =>
+    <String, dynamic>{
+      'device_type': instance.deviceType,
+      'device_serial_number': instance.deviceSerialNumber,
+      'ksn': instance.ksn,
+      'tlv_data': instance.tlvData,
+    };
 
-  return val;
-}
+AmountsIncluded _$AmountsIncludedFromJson(Map<String, dynamic> json) =>
+    AmountsIncluded(
+      shippingAmount: (json['shipping_amount'] as num?)?.toInt(),
+      addonAmounts: (json['addon_amounts'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
+      discountAmounts: (json['discount_amounts'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
+      discountAmount: (json['discount_amount'] as num?)?.toInt(),
+      dutyAmount: (json['duty_amount'] as num?)?.toInt(),
+      tipAmount: (json['tip_amount'] as num?)?.toInt(),
+      additionalAmounts: (json['additional_amounts'] as num?)?.toInt(),
+      taxAmount: (json['tax_amount'] as num?)?.toInt(),
+      nationalTaxAmount: (json['national_tax_amount'] as num?)?.toInt(),
+      localTaxAmount: (json['local_tax_amount'] as num?)?.toInt(),
+      serviceFee: (json['service_fee'] as num?)?.toInt(),
+      surcharge: (json['surcharge'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$AmountsIncludedToJson(AmountsIncluded instance) =>
+    <String, dynamic>{
+      'shipping_amount': instance.shippingAmount,
+      'addon_amounts': instance.addonAmounts,
+      'discount_amounts': instance.discountAmounts,
+      'discount_amount': instance.discountAmount,
+      'duty_amount': instance.dutyAmount,
+      'tip_amount': instance.tipAmount,
+      'additional_amounts': instance.additionalAmounts,
+      'tax_amount': instance.taxAmount,
+      'national_tax_amount': instance.nationalTaxAmount,
+      'local_tax_amount': instance.localTaxAmount,
+      'service_fee': instance.serviceFee,
+      'surcharge': instance.surcharge,
+    };

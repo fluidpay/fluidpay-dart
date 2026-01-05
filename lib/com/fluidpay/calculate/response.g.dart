@@ -7,157 +7,121 @@ part of 'response.dart';
 // **************************************************************************
 
 CalculateAmountsResponse _$CalculateAmountsResponseFromJson(
-    Map<String, dynamic> json) {
-  return CalculateAmountsResponse()
-    ..status = json['status'] as String?
-    ..msg = json['msg'] as String?
-    ..statusCode = json['status_code'] as int?
-    ..totalCount = json['total_count'] as int?
-    ..data = json['data'] == null
-        ? null
-        : CalculateAmountsResponseData.fromJson(
-            json['data'] as Map<String, dynamic>);
-}
+        Map<String, dynamic> json) =>
+    CalculateAmountsResponse()
+      ..status = json['status'] as String?
+      ..msg = json['msg'] as String?
+      ..statusCode = (json['status_code'] as num?)?.toInt()
+      ..totalCount = (json['total_count'] as num?)?.toInt()
+      ..data = json['data'] == null
+          ? null
+          : CalculateAmountsResponseData.fromJson(
+              json['data'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$CalculateAmountsResponseToJson(
-    CalculateAmountsResponse instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('status', instance.status);
-  writeNotNull('msg', instance.msg);
-  writeNotNull('status_code', instance.statusCode);
-  writeNotNull('total_count', instance.totalCount);
-  writeNotNull('data', instance.data);
-  return val;
-}
+        CalculateAmountsResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'msg': instance.msg,
+      'status_code': instance.statusCode,
+      'total_count': instance.totalCount,
+      'data': instance.data,
+    };
 
 CalculateFeesResponse _$CalculateFeesResponseFromJson(
-    Map<String, dynamic> json) {
-  return CalculateFeesResponse()
-    ..status = json['status'] as String?
-    ..msg = json['msg'] as String?
-    ..statusCode = json['status_code'] as int?
-    ..totalCount = json['total_count'] as int?
-    ..data = json['data'] == null
-        ? null
-        : CalculateFeesResponseData.fromJson(
-            json['data'] as Map<String, dynamic>);
-}
+        Map<String, dynamic> json) =>
+    CalculateFeesResponse()
+      ..status = json['status'] as String?
+      ..msg = json['msg'] as String?
+      ..statusCode = (json['status_code'] as num?)?.toInt()
+      ..totalCount = (json['total_count'] as num?)?.toInt()
+      ..data = json['data'] == null
+          ? null
+          : CalculateFeesResponseData.fromJson(
+              json['data'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$CalculateFeesResponseToJson(
-    CalculateFeesResponse instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('status', instance.status);
-  writeNotNull('msg', instance.msg);
-  writeNotNull('status_code', instance.statusCode);
-  writeNotNull('total_count', instance.totalCount);
-  writeNotNull('data', instance.data);
-  return val;
-}
+        CalculateFeesResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'msg': instance.msg,
+      'status_code': instance.statusCode,
+      'total_count': instance.totalCount,
+      'data': instance.data,
+    };
 
 CalculateAmountsResponseData _$CalculateAmountsResponseDataFromJson(
-    Map<String, dynamic> json) {
-  return CalculateAmountsResponseData(
-    base: json['base'] as int?,
-    items: (json['line_items'] as List<dynamic>?)
-        ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    shipping: json['shipping'] as int?,
-    taxRate: (json['tax_rate'] as num?)?.toDouble(),
-    amountsIncluded: json['amounts_included'] == null
-        ? null
-        : AmountsIncluded.fromJson(
-        json['amounts_included'] as Map<String, dynamic>),
-    subtotal: json['subtotal'] as int?,
-    serviceFee: json['service_fee'] as int?,
-    discountAmount: json['discount_amount'] as int?,
-    tipAmount: json['tip_amount'] as int?,
-    taxAmount: json['tax_amount'] as int?,
-    surcharge: json['surcharge'] as int?,
-    paymentAdj: json['payment_adj'] as int?,
-    tax: json['tax'] as int?,
-    total: json['total'] as int?,
-  );
-}
+        Map<String, dynamic> json) =>
+    CalculateAmountsResponseData(
+      base: (json['base'] as num?)?.toInt(),
+      items: (json['items'] as List<dynamic>?)
+          ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      shipping: (json['shipping'] as num?)?.toInt(),
+      taxRate: (json['tax_rate'] as num?)?.toDouble(),
+      amountsIncluded: json['amounts_included'] == null
+          ? null
+          : AmountsIncluded.fromJson(
+              json['amounts_included'] as Map<String, dynamic>),
+      subtotal: (json['subtotal'] as num?)?.toInt(),
+      serviceFee: (json['service_fee'] as num?)?.toInt(),
+      discountAmount: (json['discount_amount'] as num?)?.toInt(),
+      tipAmount: (json['tip_amount'] as num?)?.toInt(),
+      taxAmount: (json['tax_amount'] as num?)?.toInt(),
+      surcharge: (json['surcharge'] as num?)?.toInt(),
+      paymentAdj: (json['payment_adj'] as num?)?.toInt(),
+      tax: (json['tax'] as num?)?.toInt(),
+      total: (json['total'] as num?)?.toInt(),
+    );
 
 Map<String, dynamic> _$CalculateAmountsResponseDataToJson(
-    CalculateAmountsResponseData instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('base', instance.base);
-  writeNotNull('items', instance.items?.map((item) => item.toJson()).toList());
-  writeNotNull('shipping', instance.shipping);
-  writeNotNull('tax_rate', instance.taxRate);
-  writeNotNull('amounts_included', instance.amountsIncluded?.toJson());
-  writeNotNull('subtotal', instance.subtotal);
-  writeNotNull('service_fee', instance.serviceFee);
-  writeNotNull('discount_amount', instance.discountAmount);
-  writeNotNull('tip_amount', instance.tipAmount);
-  writeNotNull('tax_amount', instance.taxAmount);
-  writeNotNull('surcharge', instance.surcharge);
-  writeNotNull('payment_adj', instance.paymentAdj);
-  writeNotNull('tax', instance.tax);
-  writeNotNull('total', instance.total);
-  return val;
-}
+        CalculateAmountsResponseData instance) =>
+    <String, dynamic>{
+      'base': instance.base,
+      'items': instance.items,
+      'shipping': instance.shipping,
+      'tax_rate': instance.taxRate,
+      'amounts_included': instance.amountsIncluded,
+      'subtotal': instance.subtotal,
+      'service_fee': instance.serviceFee,
+      'discount_amount': instance.discountAmount,
+      'tip_amount': instance.tipAmount,
+      'tax_amount': instance.taxAmount,
+      'surcharge': instance.surcharge,
+      'payment_adj': instance.paymentAdj,
+      'tax': instance.tax,
+      'total': instance.total,
+    };
 
 CalculateFeesResponseData _$CalculateFeesResponseDataFromJson(
-    Map<String, dynamic> json) {
-  return CalculateFeesResponseData(
-    serviceFee: json['service_fee'] as int?,
-    paymentAdjustment: json['payment_adjustment'] == null
-        ? null
-        : PaymentAdjustmentRequest.fromJson(
-            json['payment_adjustment'] as Map<String, dynamic>),
-    paymentTypeTotals:
-        (json['payment_type_totals'] as Map<String, dynamic>?)?.map(
-      (k, e) => MapEntry(k, e as int),
-    ),
-    paymentTypeTaxes:
-        (json['payment_type_taxes'] as Map<String, dynamic>?)?.map(
-      (k, e) => MapEntry(k, e as int),
-    ),
-    requestedAmount: json['requested_amount'] as int?,
-    discountAmount: json['discount_amount'] as int?,
-    surcharge: json['surcharge'] as int?,
-  );
-}
+        Map<String, dynamic> json) =>
+    CalculateFeesResponseData(
+      serviceFee: (json['service_fee'] as num?)?.toInt(),
+      paymentAdjustment: json['payment_adjustment'] == null
+          ? null
+          : PaymentAdjustmentRequest.fromJson(
+              json['payment_adjustment'] as Map<String, dynamic>),
+      paymentTypeTotals:
+          (json['payment_type_totals'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, (e as num).toInt()),
+      ),
+      paymentTypeTaxes:
+          (json['payment_type_taxes'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, (e as num).toInt()),
+      ),
+      requestedAmount: (json['requested_amount'] as num?)?.toInt(),
+      discountAmount: (json['discount_amount'] as num?)?.toInt(),
+      surcharge: (json['surcharge'] as num?)?.toInt(),
+    );
 
 Map<String, dynamic> _$CalculateFeesResponseDataToJson(
-    CalculateFeesResponseData instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('service_fee', instance.serviceFee);
-  writeNotNull('payment_adjustment', instance.paymentAdjustment);
-  writeNotNull('payment_type_totals', instance.paymentTypeTotals);
-  writeNotNull('payment_type_taxes', instance.paymentTypeTaxes);
-  writeNotNull('requested_amount', instance.requestedAmount);
-  writeNotNull('discount_amount', instance.discountAmount);
-  writeNotNull('surcharge', instance.surcharge);
-  return val;
-}
+        CalculateFeesResponseData instance) =>
+    <String, dynamic>{
+      'service_fee': instance.serviceFee,
+      'payment_adjustment': instance.paymentAdjustment,
+      'payment_type_totals': instance.paymentTypeTotals,
+      'payment_type_taxes': instance.paymentTypeTaxes,
+      'requested_amount': instance.requestedAmount,
+      'discount_amount': instance.discountAmount,
+      'surcharge': instance.surcharge,
+    };
