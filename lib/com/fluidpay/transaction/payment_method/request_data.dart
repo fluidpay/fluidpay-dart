@@ -24,6 +24,7 @@ class PaymentMethodRequest extends Decodable {
   APMRequest? apm;
   PlaidRequest? plaid;
   CashRequest? cash;
+  EMVRequest? emv;
 
   PaymentMethodRequest(
       {this.card,
@@ -34,7 +35,8 @@ class PaymentMethodRequest extends Decodable {
         this.applePayToken,
         this.apm,
         this.plaid,
-        this.cash});
+        this.cash,
+        this.emv});
 
   factory PaymentMethodRequest.fromJson(Map<String, dynamic> json) => _$PaymentMethodRequestFromJson(json);
 
@@ -260,4 +262,25 @@ class CashRequest extends Decodable {
 
   @override
   Map<String, dynamic> toJson() => _$CashRequestToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class EMVRequest extends Decodable {
+  String? deviceType;
+  String? deviceSerialNumber;
+  String? ksn;
+  @JsonKey(name: 'tlv_data')
+  Map<String, String>? tlvData;
+
+  EMVRequest({
+    this.deviceType,
+    this.deviceSerialNumber,
+    this.ksn,
+    this.tlvData,
+  });
+
+  factory EMVRequest.fromJson(Map<String, dynamic> json) => _$EMVRequestFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$EMVRequestToJson(this);
 }

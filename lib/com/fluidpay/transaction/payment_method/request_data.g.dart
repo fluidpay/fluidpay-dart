@@ -37,6 +37,9 @@ PaymentMethodRequest _$PaymentMethodRequestFromJson(
       cash: json['cash'] == null
           ? null
           : CashRequest.fromJson(json['cash'] as Map<String, dynamic>),
+      emv: json['emv'] == null
+          ? null
+          : EMVRequest.fromJson(json['emv'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PaymentMethodRequestToJson(
@@ -51,6 +54,7 @@ Map<String, dynamic> _$PaymentMethodRequestToJson(
       'apm': instance.apm,
       'plaid': instance.plaid,
       'cash': instance.cash,
+      'emv': instance.emv,
     };
 
 CreditCardRequest _$CreditCardRequestFromJson(Map<String, dynamic> json) =>
@@ -252,3 +256,20 @@ CashRequest _$CashRequestFromJson(Map<String, dynamic> json) => CashRequest();
 
 Map<String, dynamic> _$CashRequestToJson(CashRequest instance) =>
     <String, dynamic>{};
+
+EMVRequest _$EMVRequestFromJson(Map<String, dynamic> json) => EMVRequest(
+      deviceType: json['device_type'] as String?,
+      deviceSerialNumber: json['device_serial_number'] as String?,
+      ksn: json['ksn'] as String?,
+      tlvData: (json['tlv_data'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
+    );
+
+Map<String, dynamic> _$EMVRequestToJson(EMVRequest instance) =>
+    <String, dynamic>{
+      'device_type': instance.deviceType,
+      'device_serial_number': instance.deviceSerialNumber,
+      'ksn': instance.ksn,
+      'tlv_data': instance.tlvData,
+    };
