@@ -6,6 +6,30 @@ part of 'request_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+AmountsFlags _$AmountsFlagsFromJson(Map<String, dynamic> json) => AmountsFlags(
+      skipCashDiscount: json['skip_cash_discount'] as bool? ?? false,
+      skipSurcharge: json['skip_surcharge'] as bool? ?? false,
+      skipServiceFee: json['skip_service_fee'] as bool? ?? false,
+      skipConsumerChoice: json['skip_consumer_choice'] as bool? ?? false,
+      includeDefaultTaxToTotal: json['include_default_tax_to_total'] as bool?,
+      taxExempt: json['tax_exempt'] as bool?,
+      processorSurchargeFallback:
+          json['processor_surcharge_fallback'] as bool? ?? false,
+      addTaxToTotal: json['add_tax_to_total'] as bool?,
+    );
+
+Map<String, dynamic> _$AmountsFlagsToJson(AmountsFlags instance) =>
+    <String, dynamic>{
+      'skip_cash_discount': instance.skipCashDiscount,
+      'skip_surcharge': instance.skipSurcharge,
+      'skip_service_fee': instance.skipServiceFee,
+      'skip_consumer_choice': instance.skipConsumerChoice,
+      'include_default_tax_to_total': instance.includeDefaultTaxToTotal,
+      'tax_exempt': instance.taxExempt,
+      'processor_surcharge_fallback': instance.processorSurchargeFallback,
+      'add_tax_to_total': instance.addTaxToTotal,
+    };
+
 PaymentMethodRequest _$PaymentMethodRequestFromJson(
         Map<String, dynamic> json) =>
     PaymentMethodRequest(
@@ -55,6 +79,185 @@ Map<String, dynamic> _$PaymentMethodRequestToJson(
       'plaid': instance.plaid,
       'cash': instance.cash,
       'emv': instance.emv,
+    };
+
+CalculateAmountsRequest _$CalculateAmountsRequestFromJson(
+        Map<String, dynamic> json) =>
+    CalculateAmountsRequest(
+      type: json['type'] as String?,
+      typeID: json['type_i_d'] as String?,
+      processorID: json['processor_i_d'] as String?,
+      paymentMethod: json['payment_method'] as String?,
+      ccBin: json['cc_bin'] as String?,
+      state: json['state'] as String?,
+      base: (json['base'] as num?)?.toInt(),
+      shipping: (json['shipping'] as num?)?.toInt(),
+      taxRate: (json['tax_rate'] as num?)?.toDouble(),
+      currency: json['currency'] as String?,
+      paymentAdj: json['payment_adj'] == null
+          ? null
+          : PaymentAdjustmentRequest.fromJson(
+              json['payment_adj'] as Map<String, dynamic>),
+      items: (json['items'] as List<dynamic>?)
+          ?.map((e) => CalculateItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      settings: json['settings'] == null
+          ? null
+          : CalculateSettings.fromJson(
+              json['settings'] as Map<String, dynamic>),
+      lineItems: (json['line_items'] as List<dynamic>?)
+          ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      subtotal: (json['subtotal'] as num?)?.toInt(),
+      amount: (json['amount'] as num?)?.toInt(),
+      taxOverrideAmount: json['tax_override_amount'] == null
+          ? null
+          : TypedValue.fromJson(
+              json['tax_override_amount'] as Map<String, dynamic>),
+      shippingAmount: json['shipping_amount'] == null
+          ? null
+          : TypedValue.fromJson(
+              json['shipping_amount'] as Map<String, dynamic>),
+      addonAmount: (json['addon_amount'] as List<dynamic>?)
+          ?.map((e) => TypedValue.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      discountAmount: (json['discount_amount'] as List<dynamic>?)
+          ?.map((e) => TypedValue.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      dutyAmount: json['duty_amount'] == null
+          ? null
+          : TypedValue.fromJson(json['duty_amount'] as Map<String, dynamic>),
+      tipAmount: json['tip_amount'] == null
+          ? null
+          : TypedValue.fromJson(json['tip_amount'] as Map<String, dynamic>),
+      nationalTaxAmount: json['national_tax_amount'] == null
+          ? null
+          : TypedValue.fromJson(
+              json['national_tax_amount'] as Map<String, dynamic>),
+      localTaxAmount: json['local_tax_amount'] == null
+          ? null
+          : TypedValue.fromJson(
+              json['local_tax_amount'] as Map<String, dynamic>),
+      serviceFee: json['service_fee'] == null
+          ? null
+          : TypedValue.fromJson(json['service_fee'] as Map<String, dynamic>),
+      surcharge: json['surcharge'] == null
+          ? null
+          : TypedValue.fromJson(json['surcharge'] as Map<String, dynamic>),
+      flags: json['flags'] == null
+          ? null
+          : AmountsFlags.fromJson(json['flags'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$CalculateAmountsRequestToJson(
+        CalculateAmountsRequest instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'type_i_d': instance.typeID,
+      'processor_i_d': instance.processorID,
+      'payment_method': instance.paymentMethod,
+      'cc_bin': instance.ccBin,
+      'state': instance.state,
+      'line_items': instance.lineItems,
+      'subtotal': instance.subtotal,
+      'amount': instance.amount,
+      'tax_override_amount': instance.taxOverrideAmount,
+      'shipping_amount': instance.shippingAmount,
+      'addon_amount': instance.addonAmount,
+      'discount_amount': instance.discountAmount,
+      'duty_amount': instance.dutyAmount,
+      'tip_amount': instance.tipAmount,
+      'national_tax_amount': instance.nationalTaxAmount,
+      'local_tax_amount': instance.localTaxAmount,
+      'service_fee': instance.serviceFee,
+      'surcharge': instance.surcharge,
+      'base': instance.base,
+      'shipping': instance.shipping,
+      'tax_rate': instance.taxRate,
+      'currency': instance.currency,
+      'payment_adj': instance.paymentAdj,
+      'items': instance.items,
+      'settings': instance.settings,
+      'flags': instance.flags,
+    };
+
+CalculateFeesRequest _$CalculateFeesRequestFromJson(
+        Map<String, dynamic> json) =>
+    CalculateFeesRequest(
+      type: json['type'] as String?,
+      typeID: json['type_id'] as String?,
+      state: json['state'] as String?,
+      bin: json['bin'] as String?,
+      paymentMethod: json['payment_method'] as String?,
+      baseAmount: (json['base_amount'] as num?)?.toInt(),
+      lineItems: (json['line_items'] as List<dynamic>?)
+          ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      tax: (json['tax'] as num?)?.toInt(),
+      processorID: json['processor_id'] as String?,
+      surcharge: json['surcharge'] == null
+          ? null
+          : PaymentAdjustmentRequest.fromJson(
+              json['surcharge'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$CalculateFeesRequestToJson(
+        CalculateFeesRequest instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'type_id': instance.typeID,
+      'state': instance.state,
+      'bin': instance.bin,
+      'payment_method': instance.paymentMethod,
+      'base_amount': instance.baseAmount,
+      'line_items': instance.lineItems,
+      'tax': instance.tax,
+      'processor_id': instance.processorID,
+      'surcharge': instance.surcharge,
+    };
+
+CalculateSettings _$CalculateSettingsFromJson(Map<String, dynamic> json) =>
+    CalculateSettings(
+      cashDiscount: json['cash_discount'] as String?,
+      surcharge: json['surcharge'] as String?,
+      consumerChoice: json['consumer_choice'] as String?,
+    );
+
+Map<String, dynamic> _$CalculateSettingsToJson(CalculateSettings instance) =>
+    <String, dynamic>{
+      'cash_discount': instance.cashDiscount,
+      'surcharge': instance.surcharge,
+      'consumer_choice': instance.consumerChoice,
+    };
+
+CalculateItem _$CalculateItemFromJson(Map<String, dynamic> json) =>
+    CalculateItem(
+      qty: (json['qty'] as num?)?.toInt(),
+      base: (json['base'] as num?)?.toInt(),
+      local_tax: (json['local_tax'] as num?)?.toDouble(),
+      national_tax: (json['national_tax'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$CalculateItemToJson(CalculateItem instance) =>
+    <String, dynamic>{
+      'qty': instance.qty,
+      'base': instance.base,
+      'local_tax': instance.local_tax,
+      'national_tax': instance.national_tax,
+    };
+
+PaymentAdjustmentRequest _$PaymentAdjustmentRequestFromJson(
+        Map<String, dynamic> json) =>
+    PaymentAdjustmentRequest(
+      value: (json['value'] as num?)?.toInt(),
+      type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$PaymentAdjustmentRequestToJson(
+        PaymentAdjustmentRequest instance) =>
+    <String, dynamic>{
+      'value': instance.value,
+      'type': instance.type,
     };
 
 CreditCardRequest _$CreditCardRequestFromJson(Map<String, dynamic> json) =>

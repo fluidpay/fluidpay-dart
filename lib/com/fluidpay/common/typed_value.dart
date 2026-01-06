@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'typed_value.g.dart';
+
+@JsonSerializable()
 class TypedValue {
   final String type;
   final int value;
@@ -5,9 +10,7 @@ class TypedValue {
 
   TypedValue({required this.type, required this.value, required this.include});
 
-  Map<String, dynamic> toJson() => {
-    'type': type,
-    'value': value,
-    'include': include
-  };
+  factory TypedValue.fromJson(Map<String, dynamic> json) => _$TypedValueFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TypedValueToJson(this);
 }
