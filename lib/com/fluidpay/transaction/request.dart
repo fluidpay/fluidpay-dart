@@ -26,6 +26,7 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
   bool? createVaultRecord;
   String? vaultRecordIdFormat;
   String? vendorId;
+  String? source;
 
   // Amounts
   int? amount;
@@ -90,6 +91,7 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
       this.createVaultRecord,
       this.vaultRecordIdFormat,
       this.vendorId,
+      this.source,
       this.amount,
       this.taxAmount,
       this.shippingAmount,
