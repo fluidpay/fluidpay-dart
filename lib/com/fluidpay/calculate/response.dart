@@ -1,4 +1,5 @@
 import 'package:fluidpay/com/fluidpay/common/base.dart';
+import 'package:fluidpay/com/fluidpay/common/models.dart';
 import 'package:fluidpay/com/fluidpay/transaction/request.dart';
 import 'package:fluidpay/com/fluidpay/calculate/request.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -27,13 +28,17 @@ class CalculateFeesResponse extends Responsable<CalculateFeesResponseData> {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class CalculateAmountsResponseData extends Decodable {
   int? base;
-  List<CalculateItem>? items;
+  List<LineItem>? items;
   int? shipping;
   double? taxRate;
 
+  AmountsIncluded? amountsIncluded;
+
   int? subtotal;
   int? serviceFee;
-  int? discount;
+  int? discountAmount;
+  int? tipAmount;
+  int? taxAmount;
   int? surcharge;
   int? paymentAdj;
   int? tax;
@@ -44,9 +49,12 @@ class CalculateAmountsResponseData extends Decodable {
       this.items,
       this.shipping,
       this.taxRate,
+      this.amountsIncluded,
       this.subtotal,
       this.serviceFee,
-      this.discount,
+      this.discountAmount,
+      this.tipAmount,
+      this.taxAmount,
       this.surcharge,
       this.paymentAdj,
       this.tax,

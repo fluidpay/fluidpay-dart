@@ -1,3 +1,4 @@
+import 'package:fluidpay/com/fluidpay/calculate/response.dart';
 import 'package:fluidpay/com/fluidpay/common/actions.dart';
 import 'package:fluidpay/com/fluidpay/common/base.dart';
 import 'package:fluidpay/com/fluidpay/common/models.dart';
@@ -25,6 +26,7 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
   bool? createVaultRecord;
   String? vaultRecordIdFormat;
   String? vendorId;
+  String? source;
 
   // Amounts
   int? amount;
@@ -70,6 +72,8 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
   String? billingMethod;
   String? mcc;
 
+  CalculateAmountsResponseData? amounts;
+
   TransactionCreateRequest(
       {this.idempotencyKey,
       this.idempotencyTime,
@@ -87,6 +91,7 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
       this.createVaultRecord,
       this.vaultRecordIdFormat,
       this.vendorId,
+      this.source,
       this.amount,
       this.taxAmount,
       this.shippingAmount,
@@ -116,7 +121,9 @@ class TransactionCreateRequest extends Creatable<TransactionCreateResponse> {
       this.bypassRuleEngine,
       this.voidOnSuccess,
       this.billingMethod,
-      this.mcc});
+      this.mcc,
+      this.amounts
+      });
 
   @override
   TransactionCreateResponse buildResponse(Map<String, dynamic> json) => TransactionCreateResponse.fromJson(json);
